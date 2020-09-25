@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      /*滚动条整体样式*/
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      border-radius: 8px;
+      background: rgba(144, 147, 153, .5)
+    }
+
+    ::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      border-radius: 8px;
+      background: #ededed;
+    }
+
+    /* 右键菜单 */
+    .right-menus {
+      border: 1px solid #e2e2e2;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #545454;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 4px 1px;
+      box-shadow: rgb(174, 174, 174) 0px 0px 10px;
+      min-width: 150px;
+    }
+
+    .right-menu__list {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .right-menu__list span {
+      padding: 8px 10px;
+    }
+    .right-menu__list span:hover {
+      color: #000;
+      background: rgba(0, 0, 0, .1);
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
