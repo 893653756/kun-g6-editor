@@ -36,6 +36,15 @@ export default {
     if (targetItem && targetItem.getType() === 'node') {
       if (this.edge) {
         this.graph.removeItem(this.edge);
+        // 如果目标节点是锁定状态
+        if (!targetItem.hasLocked()) {
+          this.graph._addEdge && this.graph._addEdge({
+            id: `${this.startItem._cfg.id}-${targetItem._cfg.id}`,
+            source: this.startItem,
+            target: targetItem,
+            // type: 'quadratic', // 二次贝塞尔曲线
+          })
+        }
         // this.graph.addItem('edge', {
         //   id: `${this.startItem._cfg.id}-${targetItem._cfg.id}`,
         //   source: this.startItem,
@@ -43,13 +52,6 @@ export default {
         //   // type: 'quadratic',
         //   type: 'line',
         // });
-        this.graph._addEdge && this.graph._addEdge({
-          id: `${this.startItem._cfg.id}-${targetItem._cfg.id}`,
-          source: this.startItem,
-          target: targetItem,
-          // type: 'quadratic',
-          // type: 'line',
-        })
       }
     } else {
       if (this.edge) {

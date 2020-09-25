@@ -1,27 +1,23 @@
 import { bindEventListener } from './eventListener';
-// import { loadRelation } from './loadRelation';
+import { Algorithm } from '@antv/g6'; // 图算法库
 class Editors {
-  emit(type, payload) {
-    this.dealWithEvent(type, payload);
+  saveGraph(payload) {
+    this.graph = payload.graph;
+    // 绑定事件
+    bindEventListener(payload.graph);
   }
-  dealWithEvent(type, payload) {
-    if (type === 'graph-editors') {
-      this.graph = payload.graph;
-      // 绑定事件
-      bindEventListener(payload.graph);
-    }
-  }
-  // 添加节点 | 边
+  // 添加节点
   addNode(model) {
     const cellInfo = model.cellInfo;
     const label = Object.entries(cellInfo.properties)
     .map((v) => `${v[0]}:${v[1]}`)
     .join('\n');
-    model.img = '/entityImages/01.png';
+    model.img = '/entityImages/wp_sp.png';
     model.label = label;
     model.id = cellInfo.id;
     this.graph.add('node', model, true);
   }
+  // 添加边
   addEdge(model) {
     const cellInfo = model.cellInfo;
     model.label = cellInfo.label;
@@ -35,15 +31,34 @@ class Editors {
     console.warn('node', node);
     this.graph.removeItem(node, true);
   }
+  // 设置状态
+  setItemState(item, type, value) {
+    this.graph.setItemState(item, type, value);
+  }
+  // 更新元素
+  updateItem(item, model) {
+    this.graph.updateItem(item, model);
+  }
+  // 切换布局
+  updateLayout(cfg) {
+    this.graph.updateLayout(cfg);
+  }
+  // 路径分析
+  findShortestPath(start, end) {
+    const { findShortestPath } = Algorithm;
+    const { length, path } = findShortestPath(this.graph, start, end);
+    console.warn('findShortestPath', length, path );
+  }
   // 加载关系数据
   importRelationData(payload) {
-    const content = JSON.parse(payload.data);
+    // const content = JSON.parse(payload.data);
+    const content = payload.data;
     const { entities, links } = content;
     const nodes = entities.map(item => {
       const label = Object.entries(item.properties)
         .map((v) => `${v[0]}:${v[1]}`)
         .join('\n');
-      const img = '/entityImages/01.png';
+      const img = '/entityImages/wp_sp.png';
       return {
         id: item.id,
         label,

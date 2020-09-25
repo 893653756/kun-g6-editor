@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     editors: null, // 编辑器实例,
-    selectNode: {}, // 当前选择的节点
+    selectNode: null, // 当前选择的节点
     entitys: [], // 实体列表
     hasEdges: [], // 画布里关系类型数量
     hasEntitys: [] // 画布里实体类型数量

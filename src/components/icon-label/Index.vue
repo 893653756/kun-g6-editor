@@ -1,8 +1,8 @@
 <template>
   <div class="icon-label">
-    <span :class="icon"></span>
+    <span :class="icon" :style="{ color: color }"></span>
     <span v-if="label">
-      {{label}}
+      {{ label }}
       <slot></slot>
     </span>
   </div>
@@ -17,9 +17,12 @@ export default {
     },
     label: {
       type: String,
-    }
-  }
-}
+    },
+    color: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -29,14 +32,17 @@ export default {
   align-items: center;
   color: #555555;
   font-weight: 400;
-  & > span:first-child { 
+  & > span:first-child {
     font-size: 24px;
     line-height: 31px;
   }
   & > span:last-child {
-  font-size: 14px;
-  font-family: Microsoft YaHei;
-  line-height: 19px;
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    line-height: 19px;
+  }
+  &:hover > span:last-child {
+    color: #409eff;
   }
 }
 </style>

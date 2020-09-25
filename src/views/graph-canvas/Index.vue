@@ -1,6 +1,6 @@
 <template>
   <div class="graph-canvas">
-    <div ref="canvas"></div>
+    <div ref="canvas" style="width: 100%; height: 100%;"></div>
     <!-- 手动创建连接关系 -->
     <el-dialog
       title="关系类型"
@@ -53,7 +53,7 @@
 
 <script>
 import G6 from '@antv/g6';
-import graphCfg from '@/graph-cfg';
+import { graphCfg } from '@/graph-cfg';
 import {
   getCellRelationList,
   fetchBetweenEntitiesLink,
@@ -79,7 +79,10 @@ export default {
   methods: {
     // 初始化编辑器容器
     initGraph() {
+      const {clientHeight, clientWidth} = this.$refs.canvas;
       this.graph = new G6.Graph({
+        width: clientWidth,
+        height: clientHeight,
         container: this.$refs.canvas,
         ...graphCfg,
         plugins: this.initPlugins(),
@@ -259,6 +262,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.graph-canvas {
+  overflow: hidden;
+}
 .link-input {
   display: flex;
   align-items: center;

@@ -14,6 +14,7 @@
       <icon-label
         icon="kf-icon-save"
         label="保存"
+        color="#409eff"
         @click.native="handleSaveRelation"
       ></icon-label>
       <icon-label
@@ -23,18 +24,30 @@
       ></icon-label>
       <!-- <icon-label icon="kf-icon-export" label="导出"></icon-label> -->
     </div>
-    <!-- <div class="header-tools__small" @click="handelCellOperating">
-      <span class="kf-icon-forbid"></span>
-      <span class="kf-icon-help"></span>
-      <span class="kf-icon-arrow-up"></span>
-      <span class="kf-icon-copy"></span>
-      <span class="kf-icon-help"></span>
-      <span class="kf-icon-forbid"></span>
-      <span class="kf-icon-warning"></span>
-      <span class="kf-icon-delete" data-type="delete"></span>
-      <span class="kf-icon-help"></span>
-      <span class="kf-icon-test"></span>
-    </div> -->
+    <div class="header-tools__piece" @click="handelCellOperating">
+      <icon-label
+        icon="el-icon-lock"
+        label="锁定"
+        color="#E6A23C"
+        @click.native="handleLock"
+      ></icon-label>
+      <icon-label
+        icon="el-icon-unlock"
+        label="解锁"
+        @click.native="handleUnLock"
+      ></icon-label>
+      <icon-label
+        icon="kf-icon-info"
+        label="强调"
+        color="#E6A23C"
+        @click.native="handleEmphasize"
+      ></icon-label>
+      <icon-label
+        icon="kf-icon-info"
+        label="取消强调"
+        @click.native="handleUnEmphasize"
+      ></icon-label>
+    </div>
     <!-- <div class="header-tools__small small-second" @click="handelCellOperating">
       <span class="kf-icon-download-cloud"></span>
       <span class="kf-icon-layout"></span>
@@ -45,14 +58,31 @@
       <span class="kf-icon-redo" data-type="undo"></span>
       <span class="kf-icon-undo" data-type="redo"></span>
     </div> -->
-    <!-- <div class="header-tools__piece">
-      <icon-label icon="kf-icon-agent" label="布局"></icon-label>
-      <icon-label icon="el-icon-s-data" label="分析"></icon-label>
-      <icon-label icon="el-icon-share" label="文本"></icon-label>
+    <div class="header-tools__piece">
+      <el-dropdown>
+        <icon-label icon="kf-icon-agent" :label="layoutName" color="#F56C6C"
+          ><i class="el-icon-arrow-down el-icon--right"></i
+        ></icon-label>
+        <el-dropdown-menu slot="dropdown" @click.native="handelChangeLayout">
+          <el-dropdown-item
+            v-for="item in layoutCfg"
+            :key="item.type"
+            :data-type="item.type"
+            >{{ item.label }}</el-dropdown-item
+          >
+        </el-dropdown-menu>
+      </el-dropdown>
+      <icon-label
+        color="#67C23A"
+        icon="el-icon-s-data"
+        label="路径分析"
+        @click.native="pathAnalysis"
+      ></icon-label>
+      <!-- <icon-label icon="el-icon-share" label="文本"></icon-label>
       <icon-label icon="el-icon-set-up" label="熟悉展示"></icon-label>
-      <icon-label icon="kf-icon-full-screen" label="全屏展示"></icon-label>
+      <icon-label icon="kf-icon-full-screen" label="全屏展示"></icon-label> -->
     </div>
-    <div class="header-tools__search">
+    <!-- <div class="header-tools__search">
       <el-input
         size="mini"
         placeholder="请搜索"
@@ -137,6 +167,7 @@
 
 <script>
 import IconLabel from '@/components/icon-label/Index.vue';
+import { layoutCfg } from '@/graph-cfg';
 import { mapGetters } from 'vuex';
 import {
   saveAddUpdateRelations,
@@ -146,6 +177,8 @@ import {
 export default {
   data() {
     return {
+      layoutCfg,
+      layoutName: '布局',
       options: [
         { value: 1, label: 'AAAA' },
         { value: 2, label: 'BBBB' },
@@ -171,12 +204,58 @@ export default {
     IconLabel,
   },
   computed: {
-    ...mapGetters(['editors']),
+    ...mapGetters(['editors', 'selectNode']),
   },
   methods: {
+    // 锁定
+    handleLock() {
+      if (this.selectNode) {
+        this.selectNode.lock();
+        this.editors.setItemState(this.selectNode, 'lock', true);
+      }
+    },
+    // 解锁
+    handleUnLock() {
+      if (this.selectNode) {
+        this.selectNode.unlock();
+        this.editors.setItemState(this.selectNode, 'lock', false);
+      }
+    },
+    // 强调
+    handleEmphasize() {
+      if (this.selectNode) {
+        const model = this.selectNode.get('model');
+        if (!model.emphasize) {
+          model.emphasize = true;
+          this.editors.updateItem(this.selectNode, model);
+        }
+      }
+    },
+    // 取消强调
+    handleUnEmphasize() {
+      if (this.selectNode) {
+        const model = this.selectNode.get('model');
+        if (model.emphasize) {
+          model.emphasize = false;
+          this.editors.updateItem(this.selectNode, model);
+        }
+      }
+    },
     // 清空画布
     handleClearCanvas() {
       this.editors.graph.clear();
+    },
+    // 切换布局
+    handelChangeLayout(event) {
+      const target = event.target;
+      const { type } = target.dataset;
+      const cfg = this.layoutCfg[type];
+      this.layoutName = cfg.label;
+      this.editors.updateLayout(cfg);
+    },
+    // 路径分析
+    pathAnalysis() {
+      // this.editors.findShortestPath();
     },
     handelCellOperating(event) {
       // const target = event.target;
@@ -316,9 +395,6 @@ export default {
     border-right: 1px solid #d9d9d9;
     & > div {
       padding: 0 20px;
-      // &:hover {
-      //   color: #409eff;
-      // }
     }
   }
   &__small {

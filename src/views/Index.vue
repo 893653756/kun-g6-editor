@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     handleCreateGraph(graph) {
-      this.editors.emit('graph-editors', graph);
+      this.editors.saveGraph(graph);
       // 保存到 store
       this.$store.commit(MutationTypes.SET_EDITORS, this.editors);
     },

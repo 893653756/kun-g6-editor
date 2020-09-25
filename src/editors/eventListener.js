@@ -9,7 +9,10 @@ export const bindEventListener = function (graph) {
   // 鼠标进入现实锚点
   graph.on('node:mouseenter', (e) => {
     const item = e.item;
-    const target = e.target;
+    if (item.hasLocked()) {
+      return;
+    }
+    // const target = e.target;
     if (!item.hasState('hover')) {
       graph.setItemState(item, 'hover', true);
     }
@@ -21,6 +24,9 @@ export const bindEventListener = function (graph) {
   // 鼠标按下
   graph.on('node:mousedown', (e) => {
     const item = e.item;
+    if (item.hasLocked()) {
+      return;
+    }
     const target = e.target;
     if (target.attrs.isAnchor) {
       graph.setMode('addEdge');
@@ -28,11 +34,19 @@ export const bindEventListener = function (graph) {
   });
   // 点击更换填充颜色
   graph.on('node:click', (e) => {
+    // 单选
     const clickNodes = graph.findAllByState('node', 'click');
     clickNodes.forEach(node => {
       graph.setItemState(node, 'click', false);
     });
     graph.setItemState(e.item, 'click', true);
+    // 多选
+    // const item = e.item;
+    // if (item.hasState('click')) {
+    //   graph.setItemState(node, 'click', false);
+    // } else {
+    //   graph.setItemState(node, 'click', true);
+    // }
     store.commit(
       MutationTypes.SET_SELECT_NODE,
       e.item
@@ -40,45 +54,7 @@ export const bindEventListener = function (graph) {
   });
   // 完成布局后触发
   graph.on('afterlayout', () => {
-    // const nodes = {};
-    // const edges = {};
-    // // 计算画布节点类型数量
-    // graph.findAll('node', (n) => {
-    //   const item = n.get('model').cellInfo;
-    //   if (!nodes[item.dxId]) {
-    //     nodes[item.dxId] = {
-    //       label: item.label,
-    //       dxId: item.dxId,
-    //       count: 1,
-    //       icon: item.type,
-    //     };
-    //   } else {
-    //     nodes[item.dxId].count += 1;
-    //   }
-    // });
-    // store.commit(
-    //   MutationTypes.SET_NODE_TYPE,
-    //   Object.values(nodes)
-    // );
-    // // 计算画布边类型数量
-    // graph.findAll('edge', (n) => {
-    //   console.warn('edge', n)
-    //   const item = n.get('model').cellInfo;
-    //   if (!edges[item.id]) {
-    //     edges[item.id] = {
-    //       label: item.label,
-    //       count: 1,
-    //       linkId: item.id,
-    //     };
-    //   } else {
-    //     edges[item.id].count += 1;
-    //   }
-    // });
-    // store.commit(
-    //   MutationTypes.SET_EDGE_TYPE,
-    //   Object.values(edges)
-    // );
-  })
+  });
   graph.on('beforeadditem', (e) => {
     if (e.model.__type === 'rect-image') {
       e.model.type = 'rect-image';
@@ -103,6 +79,9 @@ export const bindEventListener = function (graph) {
     // 计算画布节点类型数量
     graph.findAll('node', (n) => {
       const item = n.get('model').cellInfo;
+      if (!item) {
+        return;
+      }
       if (!nodes[item.dxId]) {
         nodes[item.dxId] = {
           label: item.label,
@@ -120,8 +99,11 @@ export const bindEventListener = function (graph) {
     );
     // 计算画布边类型数量
     graph.findAll('edge', (n) => {
-      console.warn('edge', n)
+      // console.warn('edge', n)
       const item = n.get('model').cellInfo;
+      if (!item) {
+        return;
+      }
       if (!edges[item.id]) {
         edges[item.id] = {
           label: item.label,
@@ -137,7 +119,7 @@ export const bindEventListener = function (graph) {
       Object.values(edges)
     );
   }
-  const countCB = debounce(countNodeAddEdge, 300);
+  const countCB = debounce(countNodeAddEdge, 200);
 }
 
 /**

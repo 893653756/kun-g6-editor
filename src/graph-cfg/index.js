@@ -1,14 +1,61 @@
 /**
- * 编辑器初始化配置
+ * 布局配置
  */
-export default {
-  width: 1200,
-  height: 1000,
-  layout: {
-    type: 'force', // 指定为力导向布局
+export const layoutCfg = {
+  // 随机布局
+  random: {
+    type: 'random',
+    workerEnabled: true,
+    label: '随机'
+  },
+  // 力导向布局
+  force: {
+    type: 'force',
     preventOverlap: true, // 防止节点重叠
     linkDistance: 220, // 节点间距
+    workerEnabled: true,
+    nodeStrength: 30,
+    label: '力导向'
   },
+  // 环形布局
+  circular: {
+    type: 'circular',
+    radius: 200,
+    workerEnabled: true,
+    label: '环形'
+  },
+  // 辐射布局
+  radial: {
+    type: 'radial',
+    linkDistance: 220,
+    nodeSpacing: 180,
+    workerEnabled: true,
+    label: '辐射'
+  },
+  // 层次布局
+  dagre: {
+    type: 'dagre',
+    rankdir: 'LR',
+    nodesep: 50,
+    ranksep: 50,
+    workerEnabled: true,
+    label: '层次'
+  },
+  // 网格布局
+  grid: {
+    type: 'grid',
+    begin: [10, 20],
+    preventOverlap: true,
+    workerEnabled: true,
+    label: '网格'
+  }
+}
+/**
+ * 编辑器初始化配置
+ */
+export const graphCfg = {
+  animate: true,
+  layout: layoutCfg.force,
   // 设置为true，启用 redo & undo 栈功能
   enabledStack: true,
   modes: {
@@ -43,4 +90,4 @@ export default {
       stroke: '#ffa500'
     }
   }
-}
+};
