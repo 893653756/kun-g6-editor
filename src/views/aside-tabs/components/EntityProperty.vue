@@ -2,7 +2,7 @@
   <div class="entity-property">
     <div class="entity-property__title">
       <span>实体属性</span>
-      <span>—{{ selectNode.label }}</span>
+      <span>—{{ selectNodeInfo.label }}</span>
     </div>
     <!-- 基本信息 -->
     <div class="entity-property__base">
@@ -118,12 +118,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['selectNode', 'editors']),
+    ...mapGetters(['selectNodes', 'editors']),
+    selectNodeInfo() {
+      return this.selectNodes[0] || {};
+    },
     baseInfo() {
-      if (Object.values(this.selectNode).length === 0) {
+      if (Object.values(this.selectNodeInfo).length === 0) {
         return [];
       }
-      const cellInfo = this.selectNode.get('model').cellInfo;
+      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
       const info = cellInfo.lbProperties || {};
       return Object.entries(info).map((v) => ({
         field: v[0],
@@ -131,10 +134,10 @@ export default {
       }));
     },
     entitysLinks() {
-      if (Object.values(this.selectNode).length === 0) {
+      if (Object.values(this.selectNodeInfo).length === 0) {
         return [];
       }
-      const edges = this.selectNode.get('edges');
+      const edges = this.selectNodeInfo.get('edges');
       const obj = {};
       edges.forEach((v) => {
         const cellInfo = v.get('model').cellInfo;

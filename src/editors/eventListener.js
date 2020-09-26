@@ -34,22 +34,29 @@ export const bindEventListener = function (graph) {
   });
   // 点击更换填充颜色
   graph.on('node:click', (e) => {
+    const selectModel = store.getters.selectModel;
     // 单选
-    const clickNodes = graph.findAllByState('node', 'click');
-    clickNodes.forEach(node => {
-      graph.setItemState(node, 'click', false);
-    });
-    graph.setItemState(e.item, 'click', true);
-    // 多选
-    // const item = e.item;
-    // if (item.hasState('click')) {
-    //   graph.setItemState(node, 'click', false);
-    // } else {
-    //   graph.setItemState(node, 'click', true);
-    // }
+    if (selectModel === 'single') {
+      const clickNodes = graph.findAllByState('node', 'click');
+      clickNodes.forEach(node => {
+        graph.setItemState(node, 'click', false);
+      });
+      graph.setItemState(e.item, 'click', true);
+    } else {
+      // 多选
+      const item = e.item;
+      if (item.hasState('click')) {
+        graph.setItemState(item, 'click', false);
+      } else {
+        graph.setItemState(item, 'click', true);
+      }
+    }
     store.commit(
       MutationTypes.SET_SELECT_NODE,
-      e.item
+      {
+        type: selectModel,
+        item: e.item
+      }
     );
   });
   // 完成布局后触发
@@ -99,7 +106,6 @@ export const bindEventListener = function (graph) {
     );
     // 计算画布边类型数量
     graph.findAll('edge', (n) => {
-      // console.warn('edge', n)
       const item = n.get('model').cellInfo;
       if (!item) {
         return;
@@ -126,12 +132,12 @@ export const bindEventListener = function (graph) {
  * 防抖计算节点数量
  */
 // 防抖
-function debounce(fn, wait) {    
-  let timeout = null;    
-  return function() {        
-    if(timeout !== null) {
-      clearTimeout(timeout);   
+function debounce(fn, wait) {
+  let timeout = null;
+  return function () {
+    if (timeout !== null) {
+      clearTimeout(timeout);
     }
-    timeout = setTimeout(fn, wait);    
+    timeout = setTimeout(fn, wait);
   }
 }

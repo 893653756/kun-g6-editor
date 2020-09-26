@@ -1,5 +1,6 @@
 import { bindEventListener } from './eventListener';
 import { Algorithm } from '@antv/g6'; // 图算法库
+import { Message } from 'element-ui';
 class Editors {
   saveGraph(payload) {
     this.graph = payload.graph;
@@ -46,8 +47,31 @@ class Editors {
   // 路径分析
   findShortestPath(start, end) {
     const { findShortestPath } = Algorithm;
-    const { length, path } = findShortestPath(this.graph, start, end);
-    console.warn('findShortestPath', length, path );
+    const { path } = findShortestPath(this.graph, start, end);
+    console.warn('path', path);
+    // 给得到的路径上色
+    if (path.length === 0) {
+      Message({
+        type: 'info',
+        message: '未找到路径'
+      });
+    } else {
+      path.forEach((id, index) => {
+        const node = this.graph.findById(id);
+        this.graph.setItemState(node, 'selected', true);
+        if (index + 1 < path.length) {
+          const edges = node.get('edges');
+          const nextId = path[index + 1];
+          edges.forEach(edge => {
+            const target = edge.get('target');
+            if (target.get('id') === nextId) {
+              this.graph.setItemState(edge, 'selected', true);
+            }
+          })
+        }
+        // console.warn('node', node);
+      })
+    }
   }
   // 加载关系数据
   importRelationData(payload) {

@@ -72,15 +72,27 @@
           >
         </el-dropdown-menu>
       </el-dropdown>
+      <!-- 单选 | 多选 -->
+      <el-dropdown>
+        <icon-label icon="kf-icon-blood" :label="selectName" color="#F56C6C"
+          ><i class="el-icon-arrow-down el-icon--right"></i
+        ></icon-label>
+        <el-dropdown-menu
+          slot="dropdown"
+          @click.native="handelChangeSelectModel"
+        >
+          <el-dropdown-item data-type="single">单选</el-dropdown-item>
+          <el-dropdown-item data-type="multiple">多选</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
       <icon-label
         color="#67C23A"
         icon="el-icon-s-data"
         label="路径分析"
         @click.native="pathAnalysis"
       ></icon-label>
-      <!-- <icon-label icon="el-icon-share" label="文本"></icon-label>
-      <icon-label icon="el-icon-set-up" label="熟悉展示"></icon-label>
-      <icon-label icon="kf-icon-full-screen" label="全屏展示"></icon-label> -->
+      <icon-label icon="kf-icon-setting" label="重置" @click="handleReset"></icon-label>
+      <!-- <icon-label icon="kf-icon-full-screen" label="全屏展示"></icon-label> -->
     </div>
     <!-- <div class="header-tools__search">
       <el-input
@@ -169,6 +181,7 @@
 import IconLabel from '@/components/icon-label/Index.vue';
 import { layoutCfg } from '@/graph-cfg';
 import { mapGetters } from 'vuex';
+import * as MutationTypes from '@/store/mutation-types';
 import {
   saveAddUpdateRelations,
   getRelationsList,
@@ -204,46 +217,67 @@ export default {
     IconLabel,
   },
   computed: {
-    ...mapGetters(['editors', 'selectNode']),
+    ...mapGetters(['editors', 'selectNodes', 'selectModel']),
+    selectName() {
+      return this.selectModel === 'single' ? '单选' : '多选';
+    }
   },
   methods: {
+    // 清空画布
+    handleClearCanvas() {
+      this.editors.graph.clear();
+    },
     // 锁定
     handleLock() {
-      if (this.selectNode) {
-        this.selectNode.lock();
-        this.editors.setItemState(this.selectNode, 'lock', true);
+      if (this.selectNodes.length > 0) {
+        this.selectNodes.forEach((item) => {
+          if (!item.hasState('lock')) {
+            item.lock();
+            this.editors.setItemState(item, 'lock', true);
+          }
+        });
       }
     },
     // 解锁
     handleUnLock() {
-      if (this.selectNode) {
-        this.selectNode.unlock();
-        this.editors.setItemState(this.selectNode, 'lock', false);
+      if (this.selectNodes.length > 0) {
+        this.selectNodes.forEach((item) => {
+          if (item.hasState('lock')) {
+            item.unlock();
+            this.editors.setItemState(item, 'lock', false);
+          }
+        });
       }
     },
     // 强调
     handleEmphasize() {
-      if (this.selectNode) {
-        const model = this.selectNode.get('model');
-        if (!model.emphasize) {
-          model.emphasize = true;
-          this.editors.updateItem(this.selectNode, model);
-        }
+      if (this.selectNodes.length > 0) {
+        this.selectNodes.forEach((item) => {
+          const model = item.get('model');
+          if (!model.emphasize) {
+            model.emphasize = true;
+            this.editors.updateItem(item, model);
+          }
+        });
       }
     },
     // 取消强调
     handleUnEmphasize() {
-      if (this.selectNode) {
-        const model = this.selectNode.get('model');
-        if (model.emphasize) {
-          model.emphasize = false;
-          this.editors.updateItem(this.selectNode, model);
-        }
+      if (this.selectNodes.length > 0) {
+        this.selectNodes.forEach((item) => {
+          const model = item.get('model');
+          if (model.emphasize) {
+            model.emphasize = false;
+            this.editors.updateItem(item, model);
+          }
+        });
       }
     },
-    // 清空画布
-    handleClearCanvas() {
-      this.editors.graph.clear();
+    // 切换选择模式
+    handelChangeSelectModel(event) {
+      const target = event.target;
+      const { type } = target.dataset;
+      this.$store.commit(MutationTypes.SET_SELECT_MODEL, type);
     },
     // 切换布局
     handelChangeLayout(event) {
@@ -255,7 +289,17 @@ export default {
     },
     // 路径分析
     pathAnalysis() {
-      // this.editors.findShortestPath();
+      if (this.selectNodes.length !== 2) {
+        this.$message({
+          type: 'warning',
+          message: '请选择两个节点'
+        });
+      }
+      this.editors.findShortestPath(this.selectNodes[1], this.selectNodes[0]);
+    },
+    // 重置, 清除效果
+    handleReset() {
+      
     },
     handelCellOperating(event) {
       // const target = event.target;

@@ -8,3 +8,5 @@ export const SET_ENTITYS = 'SET_ENTITYS';
 export const SET_EDGE_TYPE = 'SET_EDGE_TYPE';
 // 画布实体类型数量
 export const SET_NODE_TYPE = 'SET_NODE_TYPE';
+// 切换选择模式 (单|多)
+export const SET_SELECT_MODEL = 'SET_SELECT_MODEL';
