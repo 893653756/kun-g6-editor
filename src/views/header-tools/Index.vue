@@ -91,8 +91,16 @@
         label="路径分析"
         @click.native="pathAnalysis"
       ></icon-label>
-      <icon-label icon="kf-icon-setting" label="重置" @click="handleReset"></icon-label>
-      <!-- <icon-label icon="kf-icon-full-screen" label="全屏展示"></icon-label> -->
+      <icon-label
+        icon="kf-icon-setting"
+        label="重置"
+        @click.native="handleStyleReset"
+      ></icon-label>
+      <icon-label
+        icon="kf-icon-full-screen"
+        label="加载关系"
+        @click.native="extendRelationship"
+      ></icon-label>
     </div>
     <!-- <div class="header-tools__search">
       <el-input
@@ -187,6 +195,8 @@ import {
   getRelationsList,
   getRelationDetailById,
 } from '@/api/headerTools';
+import { getAllRelation } from '@/api/editors';
+
 export default {
   data() {
     return {
@@ -220,7 +230,7 @@ export default {
     ...mapGetters(['editors', 'selectNodes', 'selectModel']),
     selectName() {
       return this.selectModel === 'single' ? '单选' : '多选';
-    }
+    },
   },
   methods: {
     // 清空画布
@@ -292,14 +302,36 @@ export default {
       if (this.selectNodes.length !== 2) {
         this.$message({
           type: 'warning',
-          message: '请选择两个节点'
+          message: '请选择两个节点',
         });
       }
       this.editors.findShortestPath(this.selectNodes[1], this.selectNodes[0]);
     },
     // 重置, 清除效果
-    handleReset() {
-      
+    handleStyleReset() {
+      this.editors.styleReset();
+    },
+    // 加载关系
+    async extendRelationship() {
+      const payload = {
+        tableName: 'ry_jcxx',
+        params: {
+          idMap: {
+            sfzhm: '321284198003196329',
+          },
+        },
+      };
+      const { data } = await getAllRelation(payload);
+      if (data.code === 0) {
+        console.warn('data.content', data.content);
+        // this.editors.extendRelation(data.content);
+        this.editors.importRelationData(data.content);
+      } else {
+        this.$message({
+          type: 'warning',
+          message: data.msg,
+        });
+      }
     },
     handelCellOperating(event) {
       // const target = event.target;
@@ -322,12 +354,10 @@ export default {
           message: '请输入关系图名称',
         });
       }
-      // 获取图上关系
-      const allCells = this.graph.getModel().cells;
-      // const content = {
-      //   entities: [],
-      //   links: [],
-      // };
+      const content = {
+        entities: [],
+        links: [],
+      };
       // 获取所有节点
       this.editors.graph.findAll('node', (node) => {
         const cellInfo = node.get('model').cellInfo;
@@ -411,10 +441,9 @@ export default {
       const { data } = await getRelationDetailById(this.relationList.radio);
       // 保存当前关系图id
       this.graphId = this.relationList.radio;
+      const content = JSON.parse(data.content);
       if (data.code === 0) {
-        this.editors.importRelationData({
-          data: data.content,
-        });
+        this.editors.importRelationData(content);
       } else {
         this.$message({
           type: 'warning',

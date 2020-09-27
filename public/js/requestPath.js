@@ -1,0 +1,2 @@
+window.baseUrlPath = '';
+window.baseImagePath = '';

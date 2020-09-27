@@ -1,6 +1,7 @@
 /**
  * 图片, 文本, 锚点
  */
+
 export default {
   getSize(cfg) {
     const size = cfg.size;
@@ -215,7 +216,7 @@ export default {
     function isShowLock(value) {
       const shape = group.get("children")[2];
       console.warn('shape', shape)
-      const img = value ? '/entityImages/dz_dz.png' : '';
+      const img = value ? `${window.baseImagePath}/entityImages/lock.png` : '';
       shape.attr('img', img);
     }
     if (name === 'hover') {

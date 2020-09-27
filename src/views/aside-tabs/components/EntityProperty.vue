@@ -239,6 +239,7 @@ export default {
     /deep/ {
       .table-title {
         background: #e1e1e1;
+        padding: 4px 0;
       }
     }
   }

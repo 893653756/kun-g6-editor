@@ -13,7 +13,7 @@ class Editors {
     const label = Object.entries(cellInfo.properties)
     .map((v) => `${v[0]}:${v[1]}`)
     .join('\n');
-    model.img = '/entityImages/wp_sp.png';
+    model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
     model.label = label;
     model.id = cellInfo.id;
     this.graph.add('node', model, true);
@@ -69,20 +69,29 @@ class Editors {
             }
           })
         }
-        // console.warn('node', node);
       })
     }
   }
+  // 清除样式
+  styleReset() {
+    const selectNodes = this.graph.findAllByState('node', 'selected');
+    selectNodes.forEach(item => {
+      this.graph.setItemState(item, 'selected', false);
+    });
+    const selectEdges = this.graph.findAllByState('edge', 'selected');
+    selectEdges.forEach(item => {
+      this.graph.setItemState(item, 'selected', false);
+    });
+  }
   // 加载关系数据
-  importRelationData(payload) {
-    // const content = JSON.parse(payload.data);
-    const content = payload.data;
+  importRelationData(content) {
+    // const content = payload.data;
     const { entities, links } = content;
     const nodes = entities.map(item => {
       const label = Object.entries(item.properties)
-        .map((v) => `${v[0]}:${v[1]}`)
+        .map((v) => `${v[1]}`)
         .join('\n');
-      const img = '/entityImages/wp_sp.png';
+      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
       return {
         id: item.id,
         label,
@@ -95,22 +104,6 @@ class Editors {
     const edges = links.map(item => {
       const { sourceEntityId, targetEntityId, label } = item;
       const id = sourceEntityId + '-' + targetEntityId;
-      const style = {
-        stroke: '#a3b1bf',
-        strokeOpacity: 0.9,
-        lineWidth: 1,
-        lineAppendWidth: 8,
-        endArrow: {
-          path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
-          fill: '#a3b1bf',
-        },
-      };
-      if (item.direction === 'SX') {
-        style.startArrow = {
-          path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
-          fill: '#a3b1bf',
-        }
-      }
       return {
         id: id,
         label: label,
@@ -118,7 +111,6 @@ class Editors {
         source: sourceEntityId,
         target: targetEntityId,
         type: 'line',
-        style,
         itemType: 'edge'
       }
     });
@@ -130,9 +122,48 @@ class Editors {
   }
   // 扩展关系
   extendRelation({ entities, links }) {
-    // entities.forEach(element => {
-      
-    // });
+    // 节点
+    entities.forEach(item => {
+      // 查找时候已有该节点
+      const node = this.graph.findById(item.id);
+      if (node) {
+        return;
+      }
+      const label = Object.entries(item.properties)
+        .map((v) => `${v[1]}`)
+        .join('\n');
+      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
+      const model = {
+        id: item.id,
+        label,
+        size: [40, 40],
+        type: 'rect-image',
+        img: img,
+        cellInfo: item,
+      };
+      this.graph.add('node', model, true);
+    });
+    // 关系
+    links.forEach(item => {
+      const { sourceEntityId, targetEntityId, label } = item;
+      const id = sourceEntityId + '-' + targetEntityId;
+      const edge = this.graph.findById(id);
+      if (edge) {
+        return;
+      }
+      // 是否是互换关系
+      const model = {
+        id: id,
+        label: label,
+        cellInfo: item,
+        source: sourceEntityId,
+        target: targetEntityId,
+        type: 'quadratic',
+        itemType: 'edge'
+      }
+      this.graph.add('edge', model, true);
+    });
+    this.graph.updateLayout({});
   }
 };
 

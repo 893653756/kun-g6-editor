@@ -78,7 +78,7 @@ export default {
     };
   },
   async created() {
-    // this.getEntityList();
+    this.getEntityList();
     this.activeId = this.tabsList[0].id;
     this.comp = this.tabsList[0].comp;
   },

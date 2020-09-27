@@ -20,7 +20,7 @@
         <div class="entity-list__body">
           <div v-for="(item, i) of menu.list" :key="item.id">
             <img
-              :src="`/entityImages/wp_sp.png`"
+              :src="`${$baseImagePath}/entityImages/${item.dxtbCode}.png`"
               :data-typenum="index"
               :data-listnum="i"
             />

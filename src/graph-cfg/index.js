@@ -5,7 +5,7 @@ export const layoutCfg = {
   // 随机布局
   random: {
     type: 'random',
-    workerEnabled: true,
+    // workerEnabled: true,
     label: '随机'
   },
   // 力导向布局
@@ -13,15 +13,15 @@ export const layoutCfg = {
     type: 'force',
     preventOverlap: true, // 防止节点重叠
     linkDistance: 220, // 节点间距
-    workerEnabled: true,
     nodeStrength: 30,
+    nodeSpacing: 40,
     label: '力导向'
   },
   // 环形布局
   circular: {
     type: 'circular',
     radius: 200,
-    workerEnabled: true,
+    // workerEnabled: true,
     label: '环形'
   },
   // 辐射布局
@@ -29,8 +29,9 @@ export const layoutCfg = {
     type: 'radial',
     linkDistance: 220,
     nodeSpacing: 180,
-    workerEnabled: true,
-    label: '辐射'
+    // workerEnabled: true,
+    label: '辐射',
+    nodeSpacing: 50,
   },
   // 层次布局
   dagre: {
@@ -38,7 +39,7 @@ export const layoutCfg = {
     rankdir: 'LR',
     nodesep: 50,
     ranksep: 50,
-    workerEnabled: true,
+    // workerEnabled: true,
     label: '层次'
   },
   // 网格布局
@@ -46,7 +47,7 @@ export const layoutCfg = {
     type: 'grid',
     begin: [10, 20],
     preventOverlap: true,
-    workerEnabled: true,
+    // workerEnabled: true,
     label: '网格'
   }
 }
@@ -72,6 +73,7 @@ export const graphCfg = {
     labelCfg: {
       autoRotate: true,
       fill: '#000000',
+      fontSize: 12
     },
     color: '#b8c3ce',
     style: {

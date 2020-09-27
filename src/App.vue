@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style lang="scss">
+
+@import '~element-ui/lib/theme-chalk/index.css';
+@import '~@kun/ued-components/lib/theme-blue/kf-icon.css';
 #app {
   width: 100vw;
   height: 100vh;

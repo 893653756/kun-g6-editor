@@ -58,6 +58,7 @@ import {
   getCellRelationList,
   fetchBetweenEntitiesLink,
   fetchCellRelationshipNode,
+  getAllRelation
 } from '@/api/editors';
 import { mapGetters } from 'vuex';
 export default {
@@ -226,15 +227,15 @@ export default {
     },
     // 扩展关系
     async extendRelationship(cellInfo, gxIds) {
-      const { dxId: startDxId, idMap } = cellInfo;
+      const { tab, idMap } = cellInfo;
       const payload = {
-        startDxId,
+        tableName: tab,
         params: {
           idMap,
           gxIds,
         },
       };
-      const { data } = await fetchCellRelationshipNode(payload);
+      const { data } = await getAllRelation(payload);
       if (data.code === 0) {
         // const { entities, links } = data.content;
         console.warn('data.content', data.content);

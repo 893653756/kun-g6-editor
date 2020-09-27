@@ -338,6 +338,7 @@ export default {
     /deep/ {
       .table-title {
         background: #e1e1e1;
+        padding: 4px 0;
       }
       .img-field {
         display: flex;
@@ -387,6 +388,7 @@ export default {
     /deep/ {
       .table-title {
         background: #e1e1e1;
+        padding: 4px 0;
       }
     }
   }
