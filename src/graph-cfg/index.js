@@ -55,6 +55,8 @@ export const layoutCfg = {
  * 编辑器初始化配置
  */
 export const graphCfg = {
+  minZoom: 0.5,
+  maxZoom: 3,
   animate: true,
   layout: layoutCfg.force,
   // 设置为true，启用 redo & undo 栈功能
@@ -81,10 +83,11 @@ export const graphCfg = {
       strokeOpacity: 0.9,
       lineWidth: 1,
       lineAppendWidth: 8,
-      endArrow: {
-        path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
-        fill: '#a3b1bf',
-      },
+      endArrow: true,
+      // endArrow: {
+      //   path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
+      //   fill: '#a3b1bf',
+      // },
     },
   },
   edgeStateStyles: {

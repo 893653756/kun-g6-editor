@@ -55,7 +55,7 @@ export const bindEventListener = function (graph) {
       MutationTypes.SET_SELECT_NODE,
       {
         type: selectModel,
-        item: e.item
+        id: e.item.get('id')
       }
     );
   });
@@ -63,8 +63,8 @@ export const bindEventListener = function (graph) {
   graph.on('afterlayout', () => {
   });
   graph.on('beforeadditem', (e) => {
-    if (e.model.__type === 'rect-image') {
-      e.model.type = 'rect-image';
+    if (e.model.__type === 'circle-image') {
+      e.model.type = 'circle-image';
     } else if (e.model.__type === 'edge') {
       e.model.itemType = 'edge';
     }

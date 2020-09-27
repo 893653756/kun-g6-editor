@@ -86,8 +86,7 @@ export default {
       this.model = {
         x,
         y,
-        type: 'rect-image',
-        size: [40, 40],
+        type: 'circle-image',
         cellInfo: {
           dxId: item.id,
           label: item.ypdxMc,
@@ -148,7 +147,7 @@ export default {
           this.model.cellInfo = data.content;
           this.editors.addNode(this.model);
         } else {
-          const id = `rect-image-${Date.now()}`;
+          const id = `circle-image-${Date.now()}`;
           const info = {
             idMap: params,
             lbProperties: {},
@@ -166,7 +165,6 @@ export default {
             ...this.model.cellInfo,
           };
           this.editors.addNode(this.model);
-          debugger;
         }
       } else {
         this.$message({

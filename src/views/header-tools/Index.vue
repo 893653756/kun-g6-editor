@@ -97,7 +97,7 @@
         @click.native="handleStyleReset"
       ></icon-label>
       <icon-label
-        icon="kf-icon-full-screen"
+        icon="kf-icon-loading"
         label="加载关系"
         @click.native="extendRelationship"
       ></icon-label>
@@ -235,15 +235,18 @@ export default {
   methods: {
     // 清空画布
     handleClearCanvas() {
-      this.editors.graph.clear();
+      this.editors.clearCanvas();
     },
     // 锁定
     handleLock() {
       if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((item) => {
-          if (!item.hasState('lock')) {
+        this.selectNodes.forEach((id) => {
+          const item = this.editors.graph.findById(id);
+          if (!item.hasLocked()) {
+            const model = item.get('model');
+            model.lock = true;
             item.lock();
-            this.editors.setItemState(item, 'lock', true);
+            this.editors.updateItem(item, model);
           }
         });
       }
@@ -251,10 +254,13 @@ export default {
     // 解锁
     handleUnLock() {
       if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((item) => {
-          if (item.hasState('lock')) {
+        this.selectNodes.forEach((id) => {
+          const item = this.editors.graph.findById(id);
+          if (item.hasLocked()) {
+            const model = item.get('model');
+            model.lock = false;
             item.unlock();
-            this.editors.setItemState(item, 'lock', false);
+            this.editors.updateItem(item, model);
           }
         });
       }
@@ -262,7 +268,8 @@ export default {
     // 强调
     handleEmphasize() {
       if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((item) => {
+        this.selectNodes.forEach((id) => {
+          const item = this.editors.graph.findById(id);
           const model = item.get('model');
           if (!model.emphasize) {
             model.emphasize = true;
@@ -274,7 +281,8 @@ export default {
     // 取消强调
     handleUnEmphasize() {
       if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((item) => {
+        this.selectNodes.forEach((id) => {
+          const item = this.editors.graph.findById(id);
           const model = item.get('model');
           if (model.emphasize) {
             model.emphasize = false;
@@ -300,12 +308,13 @@ export default {
     // 路径分析
     pathAnalysis() {
       if (this.selectNodes.length !== 2) {
-        this.$message({
+        console.warn('this.selectNodes', this.selectNodes);
+        return this.$message({
           type: 'warning',
           message: '请选择两个节点',
         });
       }
-      this.editors.findShortestPath(this.selectNodes[1], this.selectNodes[0]);
+      this.editors.findShortestPath(this.selectNodes[0], this.selectNodes[1]);
     },
     // 重置, 清除效果
     handleStyleReset() {
@@ -441,7 +450,8 @@ export default {
       const { data } = await getRelationDetailById(this.relationList.radio);
       // 保存当前关系图id
       this.graphId = this.relationList.radio;
-      const content = JSON.parse(data.content);
+      // const content = JSON.parse(data.content);
+      const content = data.content;
       if (data.code === 0) {
         this.editors.importRelationData(content);
       } else {

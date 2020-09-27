@@ -26,16 +26,19 @@ export default new Vuex.Store({
     },
     [MutationTypes.SET_SELECT_NODE](state, payload) {
       if (payload.type === 'single') {
-        state.selectNodes = [payload.item];
-      } else {
-        const old = [...state.selectNodes];
-        const index = old.findIndex(item => item.get('id') === payload.item.get('id'));
+        state.selectNodes = [payload.id];
+      } else if (payload.type === 'multiple') {
+        
+        const ids = [...state.selectNodes];
+        const index = ids.findIndex(id => id === payload.id);
         if (index === -1) {
-          old.unshift(payload.item);
+          state.selectNodes = [payload.id, ...ids];
         } else {
-          old.splice(index, 1);
-        };
-        state.selectNodes = [...old];
+          ids.splice(index, 1);
+          state.selectNodes = [...ids];
+        }
+      } else if (payload.type === 'clear') {
+        state.selectNodes = [];
       }
     },
     [MutationTypes.SET_ENTITYS](state, entitys) {

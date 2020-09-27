@@ -120,7 +120,10 @@ export default {
   computed: {
     ...mapGetters(['selectNodes', 'editors']),
     selectNodeInfo() {
-      return this.selectNodes[0] || {};
+      if (this.selectNodes.length > 0) {
+        return this.editors.graph.findById(this.selectNodes[0]);
+      }
+      return {};
     },
     baseInfo() {
       if (Object.values(this.selectNodeInfo).length === 0) {

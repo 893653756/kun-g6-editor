@@ -1,6 +1,6 @@
 <template>
   <div class="graph-canvas">
-    <div ref="canvas" style="width: 100%; height: 100%;"></div>
+    <div ref="canvas" style="width: 100%; height: 100%"></div>
     <!-- 手动创建连接关系 -->
     <el-dialog
       title="关系类型"
@@ -58,7 +58,7 @@ import {
   getCellRelationList,
   fetchBetweenEntitiesLink,
   fetchCellRelationshipNode,
-  getAllRelation
+  getAllRelation,
 } from '@/api/editors';
 import { mapGetters } from 'vuex';
 export default {
@@ -80,7 +80,7 @@ export default {
   methods: {
     // 初始化编辑器容器
     initGraph() {
-      const {clientHeight, clientWidth} = this.$refs.canvas;
+      const { clientHeight, clientWidth } = this.$refs.canvas;
       this.graph = new G6.Graph({
         width: clientWidth,
         height: clientHeight,
@@ -162,10 +162,10 @@ export default {
           console.warn('右键菜单', e);
           return `<div class="right-menu__list">
             <span data-type="extend-relation">扩展一层</span>
+            <span>测试01</span>
+            <span>测试01</span>
+            <span>测试01</span>
             <span data-type="delete">删除</span>
-            <span>测试01</span>
-            <span>测试01</span>
-            <span>测试01</span>
           </div>`;
         },
         handleMenuClick(target, item) {
@@ -201,7 +201,7 @@ export default {
       if (!cellInfo.gxId) {
         return this.$message({
           type: 'warning',
-          message: '该节点没有关系'
+          message: '该节点没有关系',
         });
       }
 

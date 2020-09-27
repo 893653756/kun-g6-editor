@@ -1,6 +1,8 @@
 import { bindEventListener } from './eventListener';
 import { Algorithm } from '@antv/g6'; // 图算法库
 import { Message } from 'element-ui';
+import store from '@/store/index';
+import * as MutationTypes from '@/store/mutation-types';
 class Editors {
   saveGraph(payload) {
     this.graph = payload.graph;
@@ -11,8 +13,8 @@ class Editors {
   addNode(model) {
     const cellInfo = model.cellInfo;
     const label = Object.entries(cellInfo.properties)
-    .map((v) => `${v[1]}`)
-    .join('\n');
+      .map((v) => `${v[1]}`)
+      .join('\n');
     model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
     model.label = label;
     model.id = cellInfo.id;
@@ -45,17 +47,12 @@ class Editors {
     this.graph.updateLayout(cfg);
   }
   // 路径分析
-  findShortestPath(start, end) {
-    const { findShortestPath } = Algorithm;
-    const { path } = findShortestPath(this.graph, start, end);
-    console.warn('path', path);
-    // 给得到的路径上色
-    if (path.length === 0) {
-      Message({
-        type: 'info',
-        message: '未找到路径'
-      });
-    } else {
+  findShortestPath(startId, endId) {
+    const { findAllPath } = Algorithm;
+    let allPath = findAllPath(this.graph, startId, endId, false);
+    if (allPath && allPath.length > 0) {
+      allPath = allPath.sort((a, b) => a.length - b.length);
+      const path = allPath[0];
       path.forEach((id, index) => {
         const node = this.graph.findById(id);
         this.graph.setItemState(node, 'selected', true);
@@ -63,13 +60,19 @@ class Editors {
           const edges = node.get('edges');
           const nextId = path[index + 1];
           edges.forEach(edge => {
+            const source = edge.get('source');
             const target = edge.get('target');
-            if (target.get('id') === nextId) {
+            if ((target.get('id') === nextId) || (source.get('id') === nextId)) {
               this.graph.setItemState(edge, 'selected', true);
             }
           })
         }
       })
+    } else {
+      Message({
+        type: 'info',
+        message: '未找到路径'
+      });
     }
   }
   // 清除样式
@@ -83,6 +86,22 @@ class Editors {
       this.graph.setItemState(item, 'selected', false);
     });
   }
+  // 清空画布
+  clearCanvas() {
+    // 清空操作栈
+    this.graph.clearStack();
+    // 清空元素
+    this.graph.clear();
+    // 清空选择的元素
+    store.commit(
+      MutationTypes.SET_SELECT_NODE,
+      {
+        type: 'clear',
+      }
+    );
+    store.commit(MutationTypes.SET_NODE_TYPE, []);
+    store.commit(MutationTypes.SET_EDGE_TYPE, []);
+  }
   // 加载关系数据
   importRelationData(content) {
     // const content = payload.data;
@@ -91,12 +110,12 @@ class Editors {
       const label = Object.entries(item.properties)
         .map((v) => `${v[1]}`)
         .join('\n');
-      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
+      // const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
+      const img = `${window.baseImagePath}/entityImages/ry_ry_wyy.png`;
       return {
         id: item.id,
         label,
-        size: [40, 40],
-        type: 'rect-image',
+        type: 'circle-image',
         img: img,
         cellInfo: item,
       }
@@ -136,8 +155,7 @@ class Editors {
       const model = {
         id: item.id,
         label,
-        size: [40, 40],
-        type: 'rect-image',
+        type: 'circle-image',
         img: img,
         cellInfo: item,
       };
