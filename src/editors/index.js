@@ -11,7 +11,7 @@ class Editors {
   addNode(model) {
     const cellInfo = model.cellInfo;
     const label = Object.entries(cellInfo.properties)
-    .map((v) => `${v[0]}:${v[1]}`)
+    .map((v) => `${v[1]}`)
     .join('\n');
     model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
     model.label = label;

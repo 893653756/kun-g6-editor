@@ -148,20 +148,11 @@ export default {
           this.model.cellInfo = data.content;
           this.editors.addNode(this.model);
         } else {
-          // 组装item
-          // const cellInfo = {
-          //   idMap: params,
-          //   dxId: dxId,
-          //   id: `${Date.now()}`,
-          //   label: entity.ypdxMc,
-          //   type: entity.dxtbCode,
-          //   lbProperties: {},
-          // };
           const id = `rect-image-${Date.now()}`;
           const info = {
             idMap: params,
             lbProperties: {},
-            id: id
+            id: id,
           };
           const properties = {};
           this.labelList.forEach((v) => {
@@ -175,7 +166,7 @@ export default {
             ...this.model.cellInfo,
           };
           this.editors.addNode(this.model);
-          this.dialogFormVisible = false;
+          debugger;
         }
       } else {
         this.$message({
@@ -183,6 +174,7 @@ export default {
           message: data.msg,
         });
       }
+      this.dialogFormVisible = false;
     },
     // 关闭弹框
     handleClose() {

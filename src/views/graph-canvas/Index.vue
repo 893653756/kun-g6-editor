@@ -198,6 +198,13 @@ export default {
     async openRelationBox(node) {
       const cellInfo = node.get('model').cellInfo;
       this.rightClickCellInfo = cellInfo;
+      if (!cellInfo.gxId) {
+        return this.$message({
+          type: 'warning',
+          message: '该节点没有关系'
+        });
+      }
+
       if (cellInfo.gxId.includes(',')) {
         // 请求节点所有关系
         const { data } = await getCellRelationList(cellInfo.gxId);
