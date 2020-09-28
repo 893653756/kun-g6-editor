@@ -141,7 +141,6 @@ export default {
       };
       const { data } = await fetchEntityIsExistence(payload);
       if (data.code === 0) {
-        console.warn('content', data.content);
         if (data.content) {
           // 直接添加节点
           this.model.cellInfo = data.content;

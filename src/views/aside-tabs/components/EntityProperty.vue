@@ -9,11 +9,11 @@
       <div class="entity-property__base-title">
         <div>基本信息</div>
         <div>
-          <span class="kf-icon-edit"></span>
+          <!-- <span class="kf-icon-edit"></span>
           <span class="kf-icon-share"></span>
           <span class="kf-icon-steel-industry"></span>
           <span class="kf-icon-lock"></span>
-          <span class="el-icon-lock"></span>
+          <span class="el-icon-lock"></span> -->
         </div>
       </div>
       <div>
@@ -36,11 +36,14 @@
             <span class="kf-icon-table-file"></span>
           </el-table-column>
         </el-table>
+        <div class="entity-property__base-detail" @click="LookBaseInfoDetail">
+          查看全部
+        </div>
       </div>
     </div>
 
     <!-- 该实体所拥有的连接关系 -->
-    <el-menu class="entity-property__links">
+    <el-menu class="entity-property__links" :default-openeds="['1']">
       <el-submenu index="1">
         <template slot="title">
           <div class="entity-property__links-title">
@@ -90,6 +93,13 @@
         </div>
       </el-submenu>
     </el-menu> -->
+    <!-- 详情弹框 -->
+    <el-dialog :visible.sync="dialogBaseInfoVisible" width="30%">
+      <el-table :data="baseInfoDetail" header-row-class-name="header-hidden">
+        <el-table-column prop="field" label=""></el-table-column>
+        <el-table-column prop="value" label=""></el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 
@@ -99,22 +109,14 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      // attrList: [
-      //   { filed: '姓名', value: '成飞' },
-      //   { filed: '证件号码', value: '12123123213' },
-      //   { filed: '信息编号', value: '313131321' },
-      //   { filed: '录入时间', value: '2018-04-01' },
-      //   { filed: '籍贯', value: '四川省成都市' },
-      //   { filed: '性别', value: '男' },
-      //   { filed: '年龄', value: '56' },
-      //   { filed: '年龄段', value: '50~60' },
-      // ],
       linkRelationship: [
         { relationship: 'AAA', num: 1 },
         { relationship: 'BBB', num: 2 },
         { relationship: 'CCC', num: 3 },
         { relationship: 'DDD', num: 4 },
       ],
+      dialogBaseInfoVisible: false,
+      baseInfoDetail: [],
     };
   },
   computed: {
@@ -160,18 +162,32 @@ export default {
   methods: {
     handleSelectionLink(select) {
       select = select.map((v) => v.linkId);
-      const selected = [];
-      const unselected = [];
-      this.editors.graph.findAll('edge', (edge) => {
-        const item = edge.get('model').cellInfo;
-        select.includes(item.id) ? selected.push(edge) : unselected.push(edge);
+      this.editors.setItemBackground({
+        selectType: 'edge',
+        selectIds: select,
+        idType: 'id'
       });
-      unselected.forEach((edge) => {
-        this.editors.graph.setItemState(edge, 'selected', false);
-      });
-      selected.forEach((edge) => {
-        this.editors.graph.setItemState(edge, 'selected', true);
-      });
+    },
+    // 查看全部信息
+    LookBaseInfoDetail() {
+      if (Object.keys(this.selectNodeInfo).length === 0) {
+        return this.$message({
+          type: 'warning',
+          message: '暂无详情',
+        });
+      }
+      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
+      const arr = [];
+      if (cellInfo.mxProperties) {
+        Object.entries(cellInfo.mxProperties).forEach((v) => {
+          arr.push({
+            field: v[0],
+            value: v[1],
+          });
+        });
+      }
+      this.baseInfoDetail = arr;
+      this.dialogBaseInfoVisible = true;
     },
   },
 };
@@ -183,6 +199,28 @@ export default {
   height: 0;
   padding: 0px 6px;
   font-size: 14px;
+  /deep/ {
+    .el-dialog__header {
+      padding: 10px 10px 10px 0px;
+      .el-dialog__headerbtn {
+        top: 6px;
+      }
+    }
+    .el-dialog__body {
+      padding: 10px 10px 20px 10px;
+    }
+    .el-table {
+      td, th {
+        padding: 4px 0px;
+      }
+      .header-hidden {
+        display: none;
+      }
+      .cell {
+        padding: 0 5px;
+      }
+    }
+  }
   &__title {
     margin-left: 8px;
     span {
@@ -206,15 +244,12 @@ export default {
         margin-right: 10px;
       }
     }
-    /deep/ {
-      .el-table {
-        .header-hidden {
-          display: none;
-        }
-        .cell {
-          padding: 0 5px;
-        }
-      }
+    &-detail {
+      line-height: 26px;
+      font-size: 12px;
+      text-align: right;
+      color: #409eff;
+      cursor: pointer;
     }
   }
   &__links {

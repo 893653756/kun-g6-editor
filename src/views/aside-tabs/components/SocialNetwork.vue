@@ -24,8 +24,6 @@
         <el-table-column label="对象名称" show-overflow-tooltip>
           <template slot-scope="{ row }">
             <div class="img-field">
-              <!-- <img :src="`/etlwidgetIcon/${row.icon}.png`" alt /> -->
-              <img :src="`/etlwidgetIcon/ypdx_ajxsxx_ajxsxx_aj.png`" alt />
               <span>{{ row.id }}</span>
             </div>
           </template>
@@ -79,17 +77,10 @@ export default {
   methods: {
     handleSelectionEntity(select) {
       select = select.map((v) => v.id);
-      const selected = [];
-      const unselected = [];
-      this.editors.graph.findAll('node', (node) => {
-        const item = node.get('model').cellInfo;
-        select.includes(item.id) ? selected.push(node) : unselected.push(node);
-      });
-      unselected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', false);
-      });
-      selected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', true);
+      this.editors.setItemBackground({
+        selectType: 'node',
+        selectIds: select,
+        idType: 'id'
       });
     },
   },

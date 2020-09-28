@@ -10,3 +10,5 @@ export const SET_EDGE_TYPE = 'SET_EDGE_TYPE';
 export const SET_NODE_TYPE = 'SET_NODE_TYPE';
 // 切换选择模式 (单|多)
 export const SET_SELECT_MODEL = 'SET_SELECT_MODEL';
+// 布局模式
+export const SET_LAYOUT_TYPE = 'SET_LAYOUT_TYPE';

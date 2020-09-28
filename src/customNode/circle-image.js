@@ -14,15 +14,17 @@ export default {
     }
   },
   draw(cfg, group) {
-    console.warn('cfg', cfg);
+    // console.warn('cfg', cfg);
     const r = this.getSize(cfg);
     cfg.itemType = 'node';
     cfg.__type = cfg.type;
     const keyShape = group.addShape('circle', {
+      zIndex: 1,
       attrs: {
         id: 'circle' + cfg.id,
         r: r,
         // stroke: "#ffffff",
+        lineDash: [2, 2],
         lineWidth: 2,
         fill: '#ffffff',//此处必须有fill 不然不能触发事件
         fillOpacity: 0.1,
@@ -87,7 +89,7 @@ export default {
   },
   afterDraw(cfg, group) {
     const shape = group.get("children")[0];
-    console.warn('afterDraw', cfg)
+    // console.warn('afterDraw', cfg)
     let r = shape.attr('r');
     if (cfg.emphasize) {
       // 第一个背景圆
@@ -97,95 +99,33 @@ export default {
           x: 0,
           y: 0,
           r,
-          fill: '#ffffff',
-          opacity: 0.6
+          fill: '#FF764A',
+          opacity: 0.6,
+          cursor: 'move',
         },
-        // must be assigned in G6 3.3 and later versions. it can be any value you want
-        name: 'circle-shape1'
+        name: 'circle-shape1',
+        draggable: true,
       });
-      // 第二个背景圆
-      const back2 = group.addShape('circle', {
-        zIndex: -2,
-        attrs: {
-          x: 0,
-          y: 0,
-          r,
-          fill: 'blue', // 为了显示清晰，随意设置了颜色
-          opacity: 0.6
-        },
-        // must be assigned in G6 3.3 and later versions. it can be any value you want
-        name: 'circle-shape2'
-      });
-      // 第三个背景圆
-      const back3 = group.addShape('circle', {
-        zIndex: -1,
-        attrs: {
-          x: 0,
-          y: 0,
-          r,
-          fill: 'green',
-          opacity: 0.6
-        },
-        // must be assigned in G6 3.3 and later versions. it can be any value you want
-        name: 'circle-shape3'
-      });
-      group.sort(); // 排序，根据 zIndex 排序
-
       // 第一个背景圆逐渐放大，并消失
       back1.animate({
         r: r + 10,
         opacity: 0.1
       }, {
         repeat: true, // 循环
-        duration: 3000,
+        duration: 2000,
         easing: 'easeCubic',
         delay: 0 // 无延迟
-      })
-
-      // 第二个背景圆逐渐放大，并消失
-      back2.animate({
-        r: r + 10,
-        opacity: 0.1
-      }, {
-        repeat: true, // 循环
-        duration: 3000,
-        easing: 'easeCubic',
-        delay: 1000 // 1 秒延迟
-      }) // 1 秒延迟
-
-      // 第三个背景圆逐渐放大，并消失
-      back3.animate({
-        r: r + 10,
-        opacity: 0.1
-      }, {
-        repeat: true, // 循环
-        duration: 3000,
-        easing: 'easeCubic',
-        delay: 2000 // 2 秒延迟
-      })
-    } else if (cfg.lock) {
-      // 蒙版
-      group.addShape('circle', {
-        zIndex: 1,
-        attrs: {
-          x: 0,
-          y: 0,
-          r: r,
-          // stroke: "#ffffff",
-          lineWidth: 2,
-          fill: '#cccccc',//此处必须有fill 不然不能触发事件
-          fillOpacity: 0.7,
-        },
-        name: 'circle-lock'
       });
+    } else if (cfg.lock) {
       // 锁
-      const lockWH = parseInt(r * 1.3);
+      const imgWidth = 2 * r - 4;
+      const imgHeight = 2 * r - 4;
       group.addShape('image', {
         attrs: {
-          x: 0,
-          y: 0,
-          width: lockWH,
-          height: lockWH,
+          x: - imgWidth / 2,
+          y: - imgHeight / 2,
+          width: imgWidth,
+          height: imgHeight,
           img: `${window.baseImagePath}/entityImages/lock.png`,
         },
         name: 'lock-image',
@@ -217,7 +157,7 @@ export default {
     function addStroke(value) {
       const shape = group.get("children")[0];
       // const color = value ? '#ced4d9' : '#ffffff';
-      const color = value ? '#00ffff' : '#ffffff';
+      const color = value ? '#FF764A' : '#ffffff';
       shape.attr('stroke', color);
     }
     if (name === 'hover') {

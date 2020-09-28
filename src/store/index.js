@@ -10,7 +10,8 @@ export default new Vuex.Store({
     entitys: [], // 实体列表
     hasEdges: [], // 画布里关系类型数量
     hasEntitys: [], // 画布里实体类型数量
-    selectModel: 'single' // 选取模式  single(单) | multiple(多)
+    selectModel: 'single', // 选取模式  single(单) | multiple(多)
+    layoutType: 'force'
   },
   getters: {
     editors: (state) => state.editors,
@@ -19,8 +20,12 @@ export default new Vuex.Store({
     hasEdges: (state) => state.hasEdges,
     hasEntitys: (state) => state.hasEntitys,
     selectModel: (state) => state.selectModel,
+    layoutType: (state) => state.layoutType
   },
   mutations: {
+    [MutationTypes.SET_LAYOUT_TYPE](state, layoutType) {
+      state.layoutType = layoutType;
+    },
     [MutationTypes.SET_EDITORS](state, editors) {
       state.editors = editors;
     },

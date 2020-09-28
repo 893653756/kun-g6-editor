@@ -1,2 +1,2 @@
-window.baseUrlPath = '';
+window.baseUrlPath = '/portal/dev-api';
 window.baseImagePath = '';

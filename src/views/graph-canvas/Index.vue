@@ -1,5 +1,5 @@
 <template>
-  <div class="graph-canvas">
+  <div class="graph-canvas" ref="graph-canvas">
     <div ref="canvas" style="width: 100%; height: 100%"></div>
     <!-- 手动创建连接关系 -->
     <el-dialog
@@ -80,7 +80,7 @@ export default {
   methods: {
     // 初始化编辑器容器
     initGraph() {
-      const { clientHeight, clientWidth } = this.$refs.canvas;
+      const { clientHeight, clientWidth } = this.$refs['graph-canvas'];
       this.graph = new G6.Graph({
         width: clientWidth,
         height: clientHeight,
@@ -88,10 +88,15 @@ export default {
         ...graphCfg,
         plugins: this.initPlugins(),
       });
-      this.initGraphSuccess();
       this.graph._addEdge = (model) => {
         this.getLinksBetweenEntity(model);
       };
+      // 调整大小
+      this.graph._changeSize = () => {
+        const { clientHeight, clientWidth } = this.$refs['graph-canvas'];
+        this.graph.changeSize(clientWidth, clientHeight);
+      };
+      this.initGraphSuccess();
     },
     // 节点间可以创建的关系
     async getLinksBetweenEntity(edge) {
@@ -100,7 +105,7 @@ export default {
       const startDxId = source.get('model').cellInfo.dxId;
       const endDxId = target.get('model').cellInfo.dxId;
       const { data } = await fetchBetweenEntitiesLink(startDxId, endDxId);
-      console.warn('links', data);
+      // console.warn('links', data);
       if (data.code === 0) {
         this.linksBetweenEntity = data.content.map((v) => ({
           label: v.gxMc,
@@ -159,7 +164,7 @@ export default {
         className: 'right-menus',
         itemTypes: ['node', 'edge'],
         getContent(e) {
-          console.warn('右键菜单', e);
+          // console.warn('右键菜单', e);
           return `<div class="right-menu__list">
             <span data-type="extend-relation">扩展一层</span>
             <span>测试01</span>
@@ -181,7 +186,7 @@ export default {
     },
     // 右键菜单回调
     handleMenuCB(type, item) {
-      console.warn(type, item);
+      // console.warn(type, item);
       // 扩展一层
       if (type === 'extend-relation') {
         // console.warn(item);
@@ -244,8 +249,6 @@ export default {
       };
       const { data } = await getAllRelation(payload);
       if (data.code === 0) {
-        // const { entities, links } = data.content;
-        console.warn('data.content', data.content);
         this.editors.extendRelation(data.content);
       } else {
         this.$message({
@@ -271,7 +274,7 @@ export default {
 
 <style lang="scss" scoped>
 .graph-canvas {
-  overflow: hidden;
+  overflow: auto;
 }
 .link-input {
   display: flex;

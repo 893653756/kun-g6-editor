@@ -6,14 +6,15 @@
     </div>
     <!-- 搜索 -->
     <div class="statistics__search">
-      <el-input size="mini" v-model="searchKey"></el-input>
+      <!-- 功能还未做 -->
+      <!-- <el-input size="mini" v-model="searchKey"></el-input>
       <el-button
         type="primary"
         size="mini"
         icon="el-icon-search"
         @click="handleSearchCell"
         >搜索</el-button
-      >
+      > -->
     </div>
 
     <!-- 实体 -->
@@ -34,8 +35,8 @@
             <el-table-column label="实体类型">
               <template slot-scope="{ row }">
                 <div class="img-field" @click="handleLookDetail">
-                  <!-- <img :src="`/etlwidgetIcon/${row.icon}.png`" alt /> -->
-                  <img :src="`/etlwidgetIcon/ypdx_ajxsxx_ajxsxx_aj.png`" alt />
+                  <img :src="`${$baseImagePath}/entityImages/${row.icon}.png`" alt />
+                  <!-- <img :src="`/etlwidgetIcon/ypdx_ajxsxx_ajxsxx_aj.png`" alt /> -->
                   <span>{{ row.label }}</span>
                 </div>
               </template>
@@ -223,52 +224,29 @@ export default {
     // 选择的实体节点
     handleSelectionEntity(select) {
       select = select.map((v) => v.dxId);
-      const selected = [];
-      const unselected = [];
-      this.editors.graph.findAll('node', (node) => {
-        const item = node.get('model').cellInfo;
-        select.includes(item.dxId)
-          ? selected.push(node)
-          : unselected.push(node);
-      });
-      unselected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', false);
-      });
-      selected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', true);
+      this.editors.setItemBackground({
+        selectType: 'node',
+        selectIds: select,
+        idType: 'dxId'
       });
     },
     // 选择的连接关系
     handleSelectionLink(select) {
       select = select.map((v) => v.linkId);
-      const selected = [];
-      const unselected = [];
-      this.editors.graph.findAll('edge', (edge) => {
-        const item = edge.get('model').cellInfo;
-        select.includes(item.id) ? selected.push(edge) : unselected.push(edge);
-      });
-      unselected.forEach((edge) => {
-        this.editors.graph.setItemState(edge, 'selected', false);
-      });
-      selected.forEach((edge) => {
-        this.editors.graph.setItemState(edge, 'selected', true);
+      this.editors.setItemBackground({
+        selectType: 'edge',
+        selectIds: select,
+        idType: 'id'
       });
     },
     handleLinkNum(select) {
       select = select.reduce((a, b) => {
         return [...a, ...b.ids];
       }, []);
-      const selected = [];
-      const unselected = [];
-      this.editors.graph.findAll('node', (node) => {
-        const item = node.get('model').cellInfo;
-        select.includes(item.id) ? selected.push(node) : unselected.push(node);
-      });
-      unselected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', false);
-      });
-      selected.forEach((node) => {
-        this.editors.graph.setItemState(node, 'selected', true);
+      this.editors.setItemBackground({
+        selectType: 'node',
+        selectIds: select,
+        idType: 'id'
       });
     },
   },

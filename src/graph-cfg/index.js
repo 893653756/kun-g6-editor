@@ -15,7 +15,8 @@ export const layoutCfg = {
     linkDistance: 220, // 节点间距
     nodeStrength: 30,
     nodeSpacing: 40,
-    label: '力导向'
+    label: '力导向',
+    // workerEnabled: true,
   },
   // 环形布局
   circular: {
@@ -56,7 +57,7 @@ export const layoutCfg = {
  */
 export const graphCfg = {
   minZoom: 0.5,
-  maxZoom: 3,
+  maxZoom: 2,
   animate: true,
   layout: layoutCfg.force,
   // 设置为true，启用 redo & undo 栈功能
@@ -81,7 +82,7 @@ export const graphCfg = {
     style: {
       stroke: '#a3b1bf',
       strokeOpacity: 0.9,
-      lineWidth: 1,
+      lineWidth: 2,
       lineAppendWidth: 8,
       endArrow: true,
       // endArrow: {
@@ -92,7 +93,8 @@ export const graphCfg = {
   },
   edgeStateStyles: {
     selected: {
-      stroke: '#ffa500'
+      stroke: '#FF764A',
+      lineWidth: 3
     }
   }
 };

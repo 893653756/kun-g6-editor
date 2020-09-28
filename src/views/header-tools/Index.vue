@@ -48,16 +48,6 @@
         @click.native="handleUnEmphasize"
       ></icon-label>
     </div>
-    <!-- <div class="header-tools__small small-second" @click="handelCellOperating">
-      <span class="kf-icon-download-cloud"></span>
-      <span class="kf-icon-layout"></span>
-      <span class="kf-icon-steel-industry"></span>
-      <span class="kf-icon-folder"></span>
-      <span class="kf-icon-message"></span>
-      <span class="kf-icon-data-sets"></span>
-      <span class="kf-icon-redo" data-type="undo"></span>
-      <span class="kf-icon-undo" data-type="redo"></span>
-    </div> -->
     <div class="header-tools__piece">
       <el-dropdown>
         <icon-label icon="kf-icon-agent" :label="layoutName" color="#F56C6C"
@@ -96,11 +86,11 @@
         label="重置"
         @click.native="handleStyleReset"
       ></icon-label>
-      <icon-label
+      <!-- <icon-label
         icon="kf-icon-loading"
         label="加载关系"
         @click.native="extendRelationship"
-      ></icon-label>
+      ></icon-label> -->
     </div>
     <!-- <div class="header-tools__search">
       <el-input
@@ -201,7 +191,7 @@ export default {
   data() {
     return {
       layoutCfg,
-      layoutName: '布局',
+      // layoutName: '布局',
       options: [
         { value: 1, label: 'AAAA' },
         { value: 2, label: 'BBBB' },
@@ -227,10 +217,13 @@ export default {
     IconLabel,
   },
   computed: {
-    ...mapGetters(['editors', 'selectNodes', 'selectModel']),
+    ...mapGetters(['editors', 'selectNodes', 'selectModel', 'layoutType']),
     selectName() {
       return this.selectModel === 'single' ? '单选' : '多选';
     },
+    layoutName() {
+      return this.layoutCfg[this.layoutType].label;
+    }
   },
   methods: {
     // 清空画布
@@ -302,13 +295,14 @@ export default {
       const target = event.target;
       const { type } = target.dataset;
       const cfg = this.layoutCfg[type];
-      this.layoutName = cfg.label;
+      // this.layoutName = cfg.label;
+      this.$store.commit(MutationTypes.SET_LAYOUT_TYPE, type);
       this.editors.updateLayout(cfg);
     },
     // 路径分析
     pathAnalysis() {
       if (this.selectNodes.length !== 2) {
-        console.warn('this.selectNodes', this.selectNodes);
+        // console.warn('this.selectNodes', this.selectNodes);
         return this.$message({
           type: 'warning',
           message: '请选择两个节点',
@@ -320,7 +314,7 @@ export default {
     handleStyleReset() {
       this.editors.styleReset();
     },
-    // 加载关系
+    // 加载关系 (测试用)
     async extendRelationship() {
       const payload = {
         tableName: 'ry_jcxx',
@@ -332,8 +326,7 @@ export default {
       };
       const { data } = await getAllRelation(payload);
       if (data.code === 0) {
-        console.warn('data.content', data.content);
-        // this.editors.extendRelation(data.content);
+        // console.warn('data.content', data.content);
         this.editors.importRelationData(data.content);
       } else {
         this.$message({
@@ -383,7 +376,7 @@ export default {
         }
         return false;
       });
-      console.warn('content', content);
+      // console.warn('content', content);
       this.saveRelation(content);
     },
     // 后端通讯保存
@@ -397,7 +390,7 @@ export default {
         payload.id = this.graphId;
       }
       const { data } = await saveAddUpdateRelations(payload);
-      console.warn('保存后', data);
+      // console.warn('保存后', data);
       this.$message({
         type: data.code === 0 ? 'success' : 'warning',
         message: data.msg,
@@ -416,7 +409,7 @@ export default {
     // 点击单选 (关系图)
     getCurrentRow(row) {
       this.relationList.radio = row.id;
-      console.warn('relationList.radio', this.relationList.radio);
+      // console.warn('relationList.radio', this.relationList.radio);
     },
     // 打开关系列表弹出框
     async openRelationDialog() {
@@ -437,7 +430,7 @@ export default {
         });
       }
       this.relationList.dialog = true;
-      console.warn('关系列表', data);
+      // console.warn('关系列表', data);
     },
     // 获取关系数据
     async getRelationDetail() {
@@ -450,8 +443,8 @@ export default {
       const { data } = await getRelationDetailById(this.relationList.radio);
       // 保存当前关系图id
       this.graphId = this.relationList.radio;
-      // const content = JSON.parse(data.content);
-      const content = data.content;
+      const content = JSON.parse(data.content);
+      // const content = data.content; // 本地调试用
       if (data.code === 0) {
         this.editors.importRelationData(content);
       } else {

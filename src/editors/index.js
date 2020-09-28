@@ -3,6 +3,7 @@ import { Algorithm } from '@antv/g6'; // 图算法库
 import { Message } from 'element-ui';
 import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
+import { layoutCfg } from '@/graph-cfg';
 class Editors {
   saveGraph(payload) {
     this.graph = payload.graph;
@@ -29,14 +30,27 @@ class Editors {
   }
   // 删除节点
   removeItem(item) {
-    console.warn('item', item);
     const node = this.graph.findById(item.get('id'));
-    console.warn('node', node);
     this.graph.removeItem(node, true);
   }
   // 设置状态
   setItemState(item, type, value) {
     this.graph.setItemState(item, type, value);
+  }
+  // 设置背景颜色
+  setItemBackground({ selectType, selectIds, idType }) {
+    const selected = [];
+    const unselected = [];
+    this.graph.findAll(selectType, (node) => {
+      const item = node.get('model').cellInfo;
+      selectIds.includes(item[idType]) ? selected.push(node) : unselected.push(node);
+    });
+    unselected.forEach((node) => {
+      this.graph.setItemState(node, 'selected', false);
+    });
+    selected.forEach((node) => {
+      this.graph.setItemState(node, 'selected', true);
+    });
   }
   // 更新元素
   updateItem(item, model) {
@@ -110,8 +124,7 @@ class Editors {
       const label = Object.entries(item.properties)
         .map((v) => `${v[1]}`)
         .join('\n');
-      // const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
-      const img = `${window.baseImagePath}/entityImages/ry_ry_wyy.png`;
+      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
       return {
         id: item.id,
         label,
@@ -181,10 +194,11 @@ class Editors {
       }
       this.graph.add('edge', model, true);
     });
+    // const layoutType = store.getters.layoutType;
+    // const cfg = layoutCfg[layoutType];
+    // console.warn('layput', cfg);
     this.graph.updateLayout({});
   }
 };
 
 export default new Editors();
-
-// 13408040341  杨敏 93年

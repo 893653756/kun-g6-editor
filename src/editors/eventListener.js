@@ -71,12 +71,12 @@ export const bindEventListener = function (graph) {
   });
   graph.on('afteradditem', (e) => {
     // 重新计算
-    console.warn('afteradditem');
+    // console.warn('afteradditem');
     countCB();
   });
   graph.on('afterremoveitem', () => {
     // 重新计算
-    console.warn('afterremoveitem');
+    // console.warn('afterremoveitem');
     countCB();
   });
   // 计算节点数量
@@ -126,6 +126,9 @@ export const bindEventListener = function (graph) {
     );
   }
   const countCB = debounce(countNodeAddEdge, 200);
+  graph.render();
+  // 窗口改变重新设置canvas大小
+  window.onresize = debounce(graph._changeSize, 250);
 }
 
 /**
