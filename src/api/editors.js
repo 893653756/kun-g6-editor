@@ -38,7 +38,7 @@ export function fetchRelationDetail({ linkId, params = {} }) {
  * 对象之间是否可以建立关系
  */
 export function fetchBetweenEntitiesLink(startDxId, endDxId) {
-  return request.get(`${apiClues}/api-clues/entities/links/findLinksByStartAndEndDxId`, {
+  return request.get(`${apiClues}/entities/links/findLinksByStartAndEndDxId`, {
     params: {
       startDxId,
       endDxId
