@@ -63,7 +63,37 @@ export const graphCfg = {
   // 设置为true，启用 redo & undo 栈功能
   enabledStack: true,
   modes: {
-    default: ['drag-canvas', 'zoom-canvas', 'drag-node'],
+    default: [
+      'drag-canvas',
+      'zoom-canvas',
+      'drag-node',
+      {
+        type: 'edge-tooltip', // 边提示框
+        formatText(model) {
+          const source = this.graph.findById(model.source);
+          const target = this.graph.findById(model.target);
+          const sourceInfo = source.get('model').cellInfo;
+          const targetInfo = target.get('model').cellInfo;
+          // console.warn('model', model, source, target);
+          const sourceLabel = Object.entries(sourceInfo.properties)
+          .map((v) => `<span>${v[0]}: ${v[1]}</span>`);
+          const targetLabel = Object.entries(targetInfo.properties)
+          .map((v) => `<span>${v[0]}: ${v[1]}</span>`);
+          // 边提示框文本内容
+          return `
+            <div class='g6-tooltip__box'>
+              <div class='g6-tooltip__box-source'>
+                <h3>源实体</h3>
+                ${sourceLabel.join('')}
+              </div>
+              <div class='g6-tooltip__box-target'>
+                <h3>目标实体</h3>
+                ${targetLabel.join('')}
+              </div>
+            </div>
+          `
+        },
+      },],
     addEdge: ['add-edge'],
   },
   defaultEdge: {

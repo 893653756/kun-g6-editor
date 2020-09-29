@@ -31,8 +31,8 @@ export default {
   },
   data() {
     return {
-      showClose: false
-    }
+      showClose: false,
+    };
   },
   created() {
     this.editors = editors;
@@ -52,38 +52,63 @@ export default {
     },
     // 更加url配置获取数据
     async getRelationByDxType() {
-      // http://192.168.0.80:8080/?dimCode=ry_ry&sfzhm=ssss
       // 解析 url
       const search = window.location.href.split('?')[1];
       if (!search) {
         return;
       }
-      this.showClose = true;
-      let dxType = '';
-      let idMap = {};
-      search.split('&').forEach(item => {
-        const arr = item.split('=');
-        if (arr[0] === 'dimCode') {
-          dxType = arr[1];
-        } else {
-          idMap[arr[0]] = arr[1];
+      const payloadArr = window.parent.frames["topPage"].contentWindow.vm.judgeParam;
+      // const payloadArr = [
+      //   {
+      //     dxType: 'ry_ry',
+      //     params: {
+      //       gxIds: '',
+      //       idMaps: [
+      //         { sfzhm: '321284199806296029' },
+      //         { sfzhm: '500109200407100220' },
+      //       ],
+      //     },
+      //   },
+      // ];
+      const arr = [];
+      payloadArr.forEach((payload) => {
+        arr.push(getRelationByDxType(payload));
+      });
+      const result = await Promise.all(arr);
+      // console.warn('payloadArr', result);
+      const nodes = {};
+      const edges = {};
+      result.forEach(({ data }) => {
+        if (data.code === 0) {
+          const content = data.content;
+          // 节点
+          content.entities.forEach((node) => {
+            if (!nodes[node.id]) {
+              nodes[node.id] = node;
+            }
+          });
+          // 边
+          content.links.forEach((edge) => {
+            const { sourceEntityId, targetEntityId } = edge;
+            const id = `${sourceEntityId}-${targetEntityId}`;
+            if (!edges[id]) {
+              edges[id] = edge;
+            }
+          });
         }
-      })
-      const payload = {
-        dxType,
-        params: {
-          idMap,
-        },
-      };
-      const { data } = await getRelationByDxType(payload);
-      if (data.code === 0) {
-        this.editors.importRelationData(data.content);
-      } else {
-        this.$message({
-          type: 'warning',
-          message: data.msg,
-        });
-      }
+      });
+      this.editors.importRelationData({
+        entities: Object.values(nodes),
+        links: Object.values(edges),
+      });
+      // if (data.code === 0) {
+      //   this.editors.importRelationData(data.content);
+      // } else {
+      //   this.$message({
+      //     type: 'warning',
+      //     message: data.msg,
+      //   });
+      // }
     },
   },
 };

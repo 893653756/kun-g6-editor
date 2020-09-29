@@ -3,7 +3,7 @@ import { Algorithm } from '@antv/g6'; // 图算法库
 import { Message } from 'element-ui';
 import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
-import { layoutCfg } from '@/graph-cfg';
+// import { layoutCfg } from '@/graph-cfg';
 class Editors {
   saveGraph(payload) {
     this.graph = payload.graph;
@@ -116,6 +116,23 @@ class Editors {
     store.commit(MutationTypes.SET_NODE_TYPE, []);
     store.commit(MutationTypes.SET_EDGE_TYPE, []);
   }
+  // 导出graph
+  exportGraph(type) {
+    if (type === 'image') {
+      this.graph.downloadImage(`${Date.now()}`, 'image/png');
+    } else if (type === 'json') {
+      // const data = this.graph.save();
+      // console.warn('save', data);
+      // const str = JSON.stringify(data)
+      // const dataUrl = `data:,${str}`
+      // const a = document.createElement('a')
+      // a.download = `${Date.now()}.txt`;
+      // a.rel = 'noopener';
+      // a.href = dataUrl;
+      // // 触发模拟点击
+      // a.dispatchEvent(new MouseEvent('click'))
+    }
+  }
   // 加载关系数据
   importRelationData(content) {
     // const content = payload.data;
@@ -154,6 +171,7 @@ class Editors {
   }
   // 扩展关系
   extendRelation({ entities, links }) {
+    let flag = false;
     // 节点
     entities.forEach(item => {
       // 查找时候已有该节点
@@ -161,6 +179,7 @@ class Editors {
       if (node) {
         return;
       }
+      flag = true;
       const label = Object.entries(item.properties)
         .map((v) => `${v[1]}`)
         .join('\n');
@@ -182,22 +201,34 @@ class Editors {
       if (edge) {
         return;
       }
-      // 是否是互换关系
+      flag = true;
       const model = {
         id: id,
         label: label,
         cellInfo: item,
         source: sourceEntityId,
         target: targetEntityId,
-        type: 'quadratic',
+        type: '',
         itemType: 'edge'
+      };
+      const reverseId = `${targetEntityId}-${sourceEntityId}`;
+      const reverseRelationEdge = this.graph.findById(reverseId);
+      if (reverseRelationEdge) {
+        model.type = 'quadratic';
+      } else {
+        model.type = 'line';
       }
       this.graph.add('edge', model, true);
+      if (model.type === 'quadratic') {
+        this.graph.updateItem(reverseId, {
+          type: 'quadratic',
+        });
+      }
     });
     // const layoutType = store.getters.layoutType;
     // const cfg = layoutCfg[layoutType];
     // console.warn('layput', cfg);
-    this.graph.updateLayout({});
+    flag && this.graph.layout();
   }
 };
 

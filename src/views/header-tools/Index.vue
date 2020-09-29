@@ -17,14 +17,22 @@
         color="#409eff"
         @click.native="handleSaveRelation"
       ></icon-label>
+      <el-dropdown>
+        <icon-label icon="kf-icon-export" label="导出" color="#ffcd2c"
+          ><i class="el-icon-arrow-down el-icon--right"></i
+        ></icon-label>
+        <el-dropdown-menu slot="dropdown" @click.native="handleExportGraph">
+          <el-dropdown-item data-type="image">导出图片</el-dropdown-item>
+          <!-- <el-dropdown-item data-type="json">导出JSON</el-dropdown-item> -->
+        </el-dropdown-menu>
+      </el-dropdown>
       <icon-label
         icon="kf-icon-import"
         label="导入"
         @click.native="openRelationDialog"
       ></icon-label>
-      <!-- <icon-label icon="kf-icon-export" label="导出"></icon-label> -->
     </div>
-    <div class="header-tools__piece" @click="handelCellOperating">
+    <div class="header-tools__piece">
       <icon-label
         icon="el-icon-lock"
         label="锁定"
@@ -191,7 +199,6 @@ export default {
   data() {
     return {
       layoutCfg,
-      // layoutName: '布局',
       options: [
         { value: 1, label: 'AAAA' },
         { value: 2, label: 'BBBB' },
@@ -223,12 +230,18 @@ export default {
     },
     layoutName() {
       return this.layoutCfg[this.layoutType].label;
-    }
+    },
   },
   methods: {
     // 清空画布
     handleClearCanvas() {
       this.editors.clearCanvas();
+    },
+    // 导出
+    handleExportGraph() {
+      const target = event.target;
+      const { type } = target.dataset;
+      this.editors.exportGraph(type);
     },
     // 锁定
     handleLock() {
@@ -314,32 +327,27 @@ export default {
     handleStyleReset() {
       this.editors.styleReset();
     },
-    // 加载关系 (测试用)
-    async extendRelationship() {
-      const payload = {
-        tableName: 'ry_jcxx',
-        params: {
-          idMap: {
-            sfzhm: '321284198003196329',
-          },
-        },
-      };
-      const { data } = await getAllRelation(payload);
-      if (data.code === 0) {
-        // console.warn('data.content', data.content);
-        this.editors.importRelationData(data.content);
-      } else {
-        this.$message({
-          type: 'warning',
-          message: data.msg,
-        });
-      }
-    },
-    handelCellOperating(event) {
-      // const target = event.target;
-      // const type = target.dataset.type;
-      // this.$emit('cell-operating', { type });
-    },
+    // 加载关系 (测试用,)
+    // async extendRelationship() {
+    //   const payload = {
+    //     tableName: 'ry_jcxx',
+    //     params: {
+    //       idMaps: [{
+    //         sfzhm: '321284198003196329',
+    //       }],
+    //     },
+    //   };
+    //   const { data } = await getAllRelation(payload);
+    //   if (data.code === 0) {
+    //     // console.warn('data.content', data.content);
+    //     this.editors.importRelationData(data.content);
+    //   } else {
+    //     this.$message({
+    //       type: 'warning',
+    //       message: data.msg,
+    //     });
+    //   }
+    // },
     handleSaveRelation() {
       if (this.graphId) {
         const item = this.relationList.list.find((v) => v.id === this.graphId);
@@ -356,27 +364,7 @@ export default {
           message: '请输入关系图名称',
         });
       }
-      const content = {
-        entities: [],
-        links: [],
-      };
-      // 获取所有节点
-      this.editors.graph.findAll('node', (node) => {
-        const cellInfo = node.get('model').cellInfo;
-        if (cellInfo) {
-          content.entities.push(cellInfo);
-        }
-        return false;
-      });
-      // 获取所有边
-      this.editors.graph.findAll('edge', (edge) => {
-        const cellInfo = edge.get('model').cellInfo;
-        if (cellInfo) {
-          content.links.push(cellInfo);
-        }
-        return false;
-      });
-      // console.warn('content', content);
+      const content = this.editors.graph.save();
       this.saveRelation(content);
     },
     // 后端通讯保存
@@ -446,7 +434,7 @@ export default {
       const content = JSON.parse(data.content);
       // const content = data.content; // 本地调试用
       if (data.code === 0) {
-        this.editors.importRelationData(content);
+        this.editors.graph.read(content);
       } else {
         this.$message({
           type: 'warning',

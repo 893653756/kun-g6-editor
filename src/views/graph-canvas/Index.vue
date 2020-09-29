@@ -243,7 +243,7 @@ export default {
       const payload = {
         tableName: tab,
         params: {
-          idMap,
+          idMaps: [idMap],
           gxIds,
         },
       };
