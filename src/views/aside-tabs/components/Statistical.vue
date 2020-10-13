@@ -6,15 +6,14 @@
     </div>
     <!-- 搜索 -->
     <div class="statistics__search">
-      <!-- 功能还未做 -->
-      <!-- <el-input size="mini" v-model="searchKey"></el-input>
+      <el-input size="mini" v-model="searchValue"></el-input>
       <el-button
         type="primary"
         size="mini"
         icon="el-icon-search"
-        @click="handleSearchCell"
+        @click="handleSearchEntity"
         >搜索</el-button
-      > -->
+      >
     </div>
 
     <!-- 实体 -->
@@ -35,8 +34,10 @@
             <el-table-column label="实体类型">
               <template slot-scope="{ row }">
                 <div class="img-field" @click="handleLookDetail">
-                  <img :src="`${$baseImagePath}/entityImages/${row.icon}.png`" alt />
-                  <!-- <img :src="`/etlwidgetIcon/ypdx_ajxsxx_ajxsxx_aj.png`" alt /> -->
+                  <img
+                    :src="`${$baseImagePath}/entityImages/${row.icon}.png`"
+                    alt
+                  />
                   <span>{{ row.label }}</span>
                 </div>
               </template>
@@ -155,7 +156,7 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      searchKey: '',
+      searchValue: '',
       entityLinks: [],
       linksRange: {
         start: '',
@@ -176,9 +177,16 @@ export default {
   },
   methods: {
     // 搜索实体
-    handleSearchCell() {
-      // 搜索实体
-      // 保存到 store
+    handleSearchEntity() {
+      const key = this.searchValue.trim();
+      if (!key) {
+        return this.$message({
+          type: 'warning',
+          message: '请输入搜索关键字'
+        });
+      }
+      this.editors.searchEntity(key);
+      // console.warn('handleSearchEntity')
     },
     // 下转到类型实体详情
     handleLookDetail() {
@@ -227,7 +235,7 @@ export default {
       this.editors.setItemBackground({
         selectType: 'node',
         selectIds: select,
-        idType: 'dxId'
+        idType: 'dxId',
       });
     },
     // 选择的连接关系
@@ -236,7 +244,7 @@ export default {
       this.editors.setItemBackground({
         selectType: 'edge',
         selectIds: select,
-        idType: 'id'
+        idType: 'id',
       });
     },
     handleLinkNum(select) {
@@ -246,11 +254,12 @@ export default {
       this.editors.setItemBackground({
         selectType: 'node',
         selectIds: select,
-        idType: 'id'
+        idType: 'id',
       });
     },
   },
   beforeDestroy() {
+    console.warn('2222', 'beforeDestroy')
     const graph = this.editors.graph;
     graph.findAll('node', (node) => {
       graph.setItemState(node, 'selected', false);
@@ -358,7 +367,10 @@ export default {
       & div {
         flex: 1;
         &:nth-child(2n -1) {
-          margin: 0 3px;
+          margin: 0 4px;
+        }
+        &:nth-child(2) {
+          text-align: center;
         }
       }
       margin-bottom: 10px;
@@ -368,6 +380,15 @@ export default {
         background: #e1e1e1;
         padding: 4px 0;
       }
+    }
+  }
+  /deep/ {
+    .el-submenu [class^='el-icon-'] {
+      vertical-align: baseline;;
+      margin-right: 0px;
+      width: 18px;
+      text-align: center;
+      font-size: 12px;
     }
   }
 }

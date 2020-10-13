@@ -11,7 +11,7 @@
         <span :class="item.icon"></span>
       </div>
     </div>
-    <div :class="['aside-tabs__panel', { 'zoom-in': zoomIn }]">
+    <div :class="['aside-tabs__panel', { 'zoom-in': zoomIn }]" ref="panel">
       <!-- 缩放图标 -->
       <div class="aside-tabs__panel-zoom" @click="handleZoom">
         <span class="el-icon-d-arrow-left"></span>
@@ -40,6 +40,7 @@ import EntityProperty from './components/EntityProperty.vue';
 
 import * as MutationTypes from '@/store/mutation-types';
 import { getEntityList } from '@/api/entityList';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -82,7 +83,25 @@ export default {
     this.activeId = this.tabsList[0].id;
     this.comp = this.tabsList[0].comp;
   },
+  mounted() {
+    this.bindListener()
+  },
+  beforeDestroy() {
+    this.$refs['panel'].removeEventListener('webkitTransitionEnd');
+  },
+  computed: {
+    ...mapGetters(['editors']),
+  },
   methods: {
+    // 绑定动画结束事件
+    bindListener() {
+      const self = this;
+      console.warn('bindListener');
+      this.$refs['panel'].addEventListener('webkitTransitionEnd', () => {
+        self.editors && self.editors.graph._changeSize();
+        // console.warn('ransitionEnd');
+      });
+    },
     handleChangeTab(item) {
       if (this.activeId === item.id) {
         return;
@@ -149,13 +168,14 @@ export default {
       right: 0px;
       overflow: hidden;
       cursor: pointer;
+      z-index: 10;
       & span {
         position: absolute;
         z-index: 3;
         font-size: 16px;
         font-weight: 400;
         line-height: 20px;
-        color: #555555;
+        color: #ffffff;
         bottom: 11px;
         left: 11px;
       }
@@ -164,7 +184,7 @@ export default {
         width: 44px;
         height: 28px;
         position: absolute;
-        background: #e5e5e5;
+        background: #67C23A;
         left: 0px;
         top: -12px;
         transform: rotate(45deg);

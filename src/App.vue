@@ -9,18 +9,46 @@ import IndexVue from '@/views/Index.vue';
 export default {
   name: 'App',
   components: {
-    IndexVue
-  }
-}
+    IndexVue,
+  },
+};
 </script>
 
 <style lang="scss">
-
 @import '~element-ui/lib/theme-chalk/index.css';
 @import '~@kun/ued-components/lib/theme-blue/kf-icon.css';
 #app {
   width: 100vw;
   height: 100vh;
   display: flex;
+  /deep/ {
+    .el-form-item {
+      margin-bottom: 10px;
+      .el-form-item__error {
+        padding-top: 0px;
+      }
+    }
+    .el-dialog__header {
+      padding: 10px 10px 10px 10px;
+      .el-dialog__headerbtn {
+        top: 6px;
+      }
+    }
+    .el-dialog__body {
+      padding: 10px 10px 20px 10px;
+    }
+    .el-table {
+      td,
+      th {
+        padding: 4px 0px;
+      }
+      .header-hidden {
+        display: none;
+      }
+      .cell {
+        padding: 0 5px;
+      }
+    }
+  }
 }
 </style>

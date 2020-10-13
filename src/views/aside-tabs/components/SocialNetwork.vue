@@ -19,8 +19,9 @@
         stripe
         header-cell-class-name="table-title"
         @selection-change="handleSelectionEntity"
+        row-key="id"
       >
-        <el-table-column type="selection" width="30"></el-table-column>
+        <el-table-column type="selection" width="30" :reserve-selection="true"></el-table-column>
         <el-table-column label="对象名称" show-overflow-tooltip>
           <template slot-scope="{ row }">
             <div class="img-field">
@@ -76,6 +77,7 @@ export default {
   },
   methods: {
     handleSelectionEntity(select) {
+      console.warn('1111', select)
       select = select.map((v) => v.id);
       this.editors.setItemBackground({
         selectType: 'node',
@@ -85,6 +87,7 @@ export default {
     },
   },
   beforeDestroy() {
+    console.warn('beforeDestroy')
     const graph = this.editors.graph;
     graph.findAll('node', (node) => {
       graph.setItemState(node, 'selected', false);

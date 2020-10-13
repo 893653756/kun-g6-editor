@@ -8,9 +8,9 @@
     <div class="entity-property__base">
       <div class="entity-property__base-title">
         <div>基本信息</div>
-        <div>
-          <!-- <span class="kf-icon-edit"></span>
-          <span class="kf-icon-share"></span>
+        <div @click="handleClickBaseTitle">
+          <span class="kf-icon-edit" data-type="change-info"></span>
+          <!-- <span class="kf-icon-share"></span>
           <span class="kf-icon-steel-industry"></span>
           <span class="kf-icon-lock"></span>
           <span class="el-icon-lock"></span> -->
@@ -59,8 +59,13 @@
             :resizable="false"
             @selection-change="handleSelectionLink"
             header-cell-class-name="table-title"
+            row-key="linkId"
           >
-            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column
+              type="selection"
+              width="40"
+              :reserve-selection="true"
+            ></el-table-column>
             <el-table-column label="链接关系" prop="label"></el-table-column>
             <el-table-column
               label="计数"
@@ -94,11 +99,33 @@
       </el-submenu>
     </el-menu> -->
     <!-- 详情弹框 -->
-    <el-dialog :visible.sync="dialogBaseInfoVisible" width="30%">
+    <el-dialog
+      title="对象详情"
+      :visible.sync="dialogBaseInfoDetail"
+      width="30%"
+    >
       <el-table :data="baseInfoDetail" header-row-class-name="header-hidden">
         <el-table-column prop="field" label=""></el-table-column>
         <el-table-column prop="value" label=""></el-table-column>
       </el-table>
+    </el-dialog>
+    <!-- 编辑信息 -->
+    <el-dialog
+      title="编辑对象"
+      :visible.sync="dialogBaseInfoChange"
+      width="500px"
+    >
+      <el-form v-model="baseInfoForm" label-width="100px">
+        <el-form-item v-for="(val, k) in baseInfoForm" :key="k" :label="k">
+          <el-input size="small" v-model="baseInfoForm[k]"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button size="small" @click="handleClose">取 消</el-button>
+        <el-button size="small" type="primary" @click="handleSure"
+          >确 定</el-button
+        >
+      </div>
     </el-dialog>
   </div>
 </template>
@@ -115,9 +142,16 @@ export default {
         { relationship: 'CCC', num: 3 },
         { relationship: 'DDD', num: 4 },
       ],
-      dialogBaseInfoVisible: false,
+      dialogBaseInfoDetail: false,
+      dialogBaseInfoChange: false,
       baseInfoDetail: [],
+      baseInfoForm: {},
     };
+  },
+  watch: {
+    lbProperties(val) {
+      this.baseInfoForm = { ...val };
+    },
   },
   computed: {
     ...mapGetters(['selectNodes', 'editors']),
@@ -127,13 +161,16 @@ export default {
       }
       return {};
     },
-    baseInfo() {
+    lbProperties() {
       if (Object.values(this.selectNodeInfo).length === 0) {
-        return [];
+        return {};
       }
       const cellInfo = this.selectNodeInfo.get('model').cellInfo;
       const info = cellInfo.lbProperties || {};
-      return Object.entries(info).map((v) => ({
+      return { ...info };
+    },
+    baseInfo() {
+      return Object.entries(this.lbProperties).map((v) => ({
         field: v[0],
         value: v[1],
       }));
@@ -165,8 +202,20 @@ export default {
       this.editors.setItemBackground({
         selectType: 'edge',
         selectIds: select,
-        idType: 'id'
+        idType: 'id',
       });
+    },
+    // 打开修改信息弹框
+    handleClickBaseTitle(event) {
+      const target = event.target;
+      const { type } = target.dataset;
+      this.dialogBaseInfoChange = true;
+    },
+    handleClose() {
+      this.dialogBaseInfoChange = false;
+    },
+    handleSure() {
+      this.dialogBaseInfoChange = false;
     },
     // 查看全部信息
     LookBaseInfoDetail() {
@@ -187,7 +236,7 @@ export default {
         });
       }
       this.baseInfoDetail = arr;
-      this.dialogBaseInfoVisible = true;
+      this.dialogBaseInfoDetail = true;
     },
   },
 };
@@ -199,28 +248,6 @@ export default {
   height: 0;
   padding: 0px 6px;
   font-size: 14px;
-  /deep/ {
-    .el-dialog__header {
-      padding: 10px 10px 10px 0px;
-      .el-dialog__headerbtn {
-        top: 6px;
-      }
-    }
-    .el-dialog__body {
-      padding: 10px 10px 20px 10px;
-    }
-    .el-table {
-      td, th {
-        padding: 4px 0px;
-      }
-      .header-hidden {
-        display: none;
-      }
-      .cell {
-        padding: 0 5px;
-      }
-    }
-  }
   &__title {
     margin-left: 8px;
     span {

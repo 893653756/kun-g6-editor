@@ -2,24 +2,34 @@
   <div class="header-tools">
     <div class="header-tools__piece">
       <el-dropdown>
-        <icon-label icon="kf-icon-folder" label="文件" color="#ffcd2c"
-          ><i class="el-icon-arrow-down el-icon--right"></i
-        ></icon-label>
+        <icon-label icon="kf-icon-folder" label="文件" color="#ffcd2c">
+          <i class="el-icon-arrow-down"></i>
+        </icon-label>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="handleClearCanvas"
             >清空画布</el-dropdown-item
           >
         </el-dropdown-menu>
       </el-dropdown>
-      <icon-label
+      <!-- 保存 -->
+      <el-dropdown>
+        <icon-label icon="kf-icon-save" label="保存" color="#409eff"
+          ><i class="el-icon-arrow-down"></i
+        ></icon-label>
+        <el-dropdown-menu slot="dropdown" @click.native="handleSaveRelation">
+          <el-dropdown-item data-type="save">保存</el-dropdown-item>
+          <el-dropdown-item data-type="saveAs">另存为</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <!-- <icon-label
         icon="kf-icon-save"
         label="保存"
         color="#409eff"
         @click.native="handleSaveRelation"
-      ></icon-label>
+      ></icon-label> -->
       <el-dropdown>
         <icon-label icon="kf-icon-export" label="导出" color="#ffcd2c"
-          ><i class="el-icon-arrow-down el-icon--right"></i
+          ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handleExportGraph">
           <el-dropdown-item data-type="image">导出图片</el-dropdown-item>
@@ -59,7 +69,7 @@
     <div class="header-tools__piece">
       <el-dropdown>
         <icon-label icon="kf-icon-agent" :label="layoutName" color="#F56C6C"
-          ><i class="el-icon-arrow-down el-icon--right"></i
+          ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handelChangeLayout">
           <el-dropdown-item
@@ -73,7 +83,7 @@
       <!-- 单选 | 多选 -->
       <el-dropdown>
         <icon-label icon="kf-icon-blood" :label="selectName" color="#F56C6C"
-          ><i class="el-icon-arrow-down el-icon--right"></i
+          ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu
           slot="dropdown"
@@ -83,16 +93,39 @@
           <el-dropdown-item data-type="multiple">多选</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <icon-label
+      <!-- 分析 -->
+      <el-dropdown>
+        <icon-label icon="el-icon-s-data" label="分析" color="#67C23A"
+          ><i class="el-icon-arrow-down"></i
+        ></icon-label>
+        <el-dropdown-menu slot="dropdown" @click.native="handelDataAnalysis">
+          <el-dropdown-item data-type="shortest-path"
+            >最短路径</el-dropdown-item
+          >
+        </el-dropdown-menu>
+      </el-dropdown>
+      <!-- <icon-label
         color="#67C23A"
         icon="el-icon-s-data"
         label="路径分析"
-        @click.native="pathAnalysis"
-      ></icon-label>
+        @click.native="shortestPath"
+      ></icon-label> -->
       <icon-label
         icon="kf-icon-setting"
         label="重置"
         @click.native="handleStyleReset"
+      ></icon-label>
+      <icon-label
+        icon="kf-icon-full-screen"
+        label="全屏"
+        @click.native="handleFullScreen"
+        v-if="!fullScreen"
+      ></icon-label>
+      <icon-label
+        icon=" kf-icon-small-screen"
+        label="还原"
+        @click.native="handleSmallScreen"
+        v-else
       ></icon-label>
       <!-- <icon-label
         icon="kf-icon-loading"
@@ -100,22 +133,26 @@
         @click.native="extendRelationship"
       ></icon-label> -->
     </div>
-    <!-- <div class="header-tools__search">
-      <el-input
-        size="mini"
-        placeholder="请搜索"
-        suffix-icon="el-icon-search"
-      >
+    <div class="header-tools__search">
+      <el-input size="mini" placeholder="请搜索" v-model="searchValue">
+        <i
+          slot="suffix"
+          class="el-input__icon el-icon-search"
+          @click="handleSearchEntity"
+        ></i>
       </el-input>
       <el-select placeholder="请选择" size="mini" v-model="selectValue">
         <el-option
           v-for="item in options"
           :key="item.value"
           :label="item.label"
-          :value="item.value">
+          :value="item.value"
+        >
+          <span class="kf-icon-table-file"></span>
+          <span style="margin-left: 10px">{{ item.label }}</span>
         </el-option>
       </el-select>
-    </div> -->
+    </div>
     <!-- 保存画布数据 -->
     <el-dialog title="保存关系" :visible.sync="saveCfg.dialog">
       <el-form>
@@ -204,6 +241,7 @@ export default {
         { value: 2, label: 'BBBB' },
         { value: 3, label: 'CCCC' },
       ],
+      searchValue: '',
       selectValue: '',
       // 保存
       saveCfg: {
@@ -218,6 +256,7 @@ export default {
         radio: '',
       },
       graphId: '', // 当前关系图id
+      fullScreen: false,
     };
   },
   components: {
@@ -236,6 +275,7 @@ export default {
     // 清空画布
     handleClearCanvas() {
       this.editors.clearCanvas();
+      this.graphId = '';
     },
     // 导出
     handleExportGraph() {
@@ -248,12 +288,13 @@ export default {
       if (this.selectNodes.length > 0) {
         this.selectNodes.forEach((id) => {
           const item = this.editors.graph.findById(id);
-          if (!item.hasLocked()) {
-            const model = item.get('model');
-            model.lock = true;
-            item.lock();
-            this.editors.updateItem(item, model);
-          }
+          this.editors.lockItem(item);
+          // if (!item.hasLocked()) {
+          //   const model = item.get('model');
+          //   model.lock = true;
+          //   item.lock();
+          //   this.editors.updateItem(item, model);
+          // }
         });
       }
     },
@@ -262,12 +303,13 @@ export default {
       if (this.selectNodes.length > 0) {
         this.selectNodes.forEach((id) => {
           const item = this.editors.graph.findById(id);
-          if (item.hasLocked()) {
-            const model = item.get('model');
-            model.lock = false;
-            item.unlock();
-            this.editors.updateItem(item, model);
-          }
+          this.editors.unLockItem(item);
+          // if (item.hasLocked()) {
+          //   const model = item.get('model');
+          //   model.lock = false;
+          //   item.unlock();
+          //   this.editors.updateItem(item, model);
+          // }
         });
       }
     },
@@ -276,11 +318,12 @@ export default {
       if (this.selectNodes.length > 0) {
         this.selectNodes.forEach((id) => {
           const item = this.editors.graph.findById(id);
-          const model = item.get('model');
-          if (!model.emphasize) {
-            model.emphasize = true;
-            this.editors.updateItem(item, model);
-          }
+          this.editors.emphasizeItem(item);
+          // const model = item.get('model');
+          // if (!model.emphasize) {
+          //   model.emphasize = true;
+          //   this.editors.updateItem(item, model);
+          // }
         });
       }
     },
@@ -289,11 +332,12 @@ export default {
       if (this.selectNodes.length > 0) {
         this.selectNodes.forEach((id) => {
           const item = this.editors.graph.findById(id);
-          const model = item.get('model');
-          if (model.emphasize) {
-            model.emphasize = false;
-            this.editors.updateItem(item, model);
-          }
+          this.editors.unEmphasizeItem(item);
+          // const model = item.get('model');
+          // if (model.emphasize) {
+          //   model.emphasize = false;
+          //   this.editors.updateItem(item, model);
+          // }
         });
       }
     },
@@ -312,8 +356,16 @@ export default {
       this.$store.commit(MutationTypes.SET_LAYOUT_TYPE, type);
       this.editors.updateLayout(cfg);
     },
+    // 数据分析
+    handelDataAnalysis(event) {
+      const target = event.target;
+      const { type } = target.dataset;
+      if (type === 'shortest-path') {
+        this.shortestPath();
+      }
+    },
     // 路径分析
-    pathAnalysis() {
+    shortestPath() {
       if (this.selectNodes.length !== 2) {
         // console.warn('this.selectNodes', this.selectNodes);
         return this.$message({
@@ -326,6 +378,45 @@ export default {
     // 重置, 清除效果
     handleStyleReset() {
       this.editors.styleReset();
+    },
+    // 全屏
+    handleFullScreen() {
+      const element = document.documentElement;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      }
+      this.fullScreen = true;
+    },
+    // 还原
+    handleSmallScreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      this.fullScreen = false;
+    },
+    // 搜索实体
+    handleSearchEntity() {
+      const key = this.searchValue.trim();
+      if (!key) {
+        return this.$message({
+          type: 'warning',
+          message: '请输入搜索关键字',
+        });
+      }
+      this.editors.searchEntity(key);
+      console.warn('handleSearchEntity');
     },
     // 加载关系 (测试用,)
     // async extendRelationship() {
@@ -348,11 +439,21 @@ export default {
     //     });
     //   }
     // },
-    handleSaveRelation() {
-      if (this.graphId) {
-        const item = this.relationList.list.find((v) => v.id === this.graphId);
-        this.saveCfg.description = item.description;
-        this.saveCfg.label = item.label;
+    handleSaveRelation(event) {
+      const target = event.target;
+      const { type } = target.dataset;
+      this.saveType = type;
+      if (type === 'save') {
+        if (this.graphId) {
+          const item = this.relationList.list.find(
+            (v) => v.id === this.graphId
+          );
+          this.saveCfg.description = item.description;
+          this.saveCfg.label = item.label;
+        }
+      } else {
+        this.saveCfg.description = '';
+        this.saveCfg.label = '';
       }
       this.saveCfg.dialog = true;
     },
@@ -374,7 +475,7 @@ export default {
         description: this.saveCfg.description,
         content: JSON.stringify(content),
       };
-      if (this.graphId) {
+      if (this.saveType === 'save' && this.graphId) {
         payload.id = this.graphId;
       }
       const { data } = await saveAddUpdateRelations(payload);
@@ -397,7 +498,6 @@ export default {
     // 点击单选 (关系图)
     getCurrentRow(row) {
       this.relationList.radio = row.id;
-      // console.warn('relationList.radio', this.relationList.radio);
     },
     // 打开关系列表弹出框
     async openRelationDialog() {
@@ -492,6 +592,14 @@ export default {
     align-items: center;
     & > div:last-child {
       width: 100%;
+    }
+    /deep/ {
+      .el-icon-search {
+        cursor: pointer;
+        &:hover {
+          color: #409eff;
+        }
+      }
     }
   }
   /deep/ {

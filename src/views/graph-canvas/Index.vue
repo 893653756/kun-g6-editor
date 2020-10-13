@@ -53,6 +53,7 @@
 
 <script>
 import G6 from '@antv/g6';
+import { getMenuList } from './auxiliary';
 import { graphCfg } from '@/graph-cfg';
 import {
   getCellRelationList,
@@ -164,17 +165,12 @@ export default {
         className: 'right-menus',
         itemTypes: ['node', 'edge'],
         getContent(e) {
-          // console.warn('右键菜单', e);
-          return `<div class="right-menu__list">
-            <span data-type="extend-relation">扩展一层</span>
-            <span>测试01</span>
-            <span>测试01</span>
-            <span>测试01</span>
-            <span data-type="delete">删除</span>
-          </div>`;
+          console.warn('右键菜单', e);
+          return getMenuList(e.item);
         },
         handleMenuClick(target, item) {
           const { type } = target.dataset;
+          console.warn('type:', type);
           self.handleMenuCB(type, item);
         },
       });
@@ -186,13 +182,24 @@ export default {
     },
     // 右键菜单回调
     handleMenuCB(type, item) {
-      // console.warn(type, item);
       // 扩展一层
       if (type === 'extend-relation') {
-        // console.warn(item);
         this.openRelationBox(item);
       } else if (type === 'delete') {
         this.editors.removeItem(item);
+      } else if (type.includes('lock')) {
+        const str = type.split('-')[1];
+        str === 'true'
+          ? this.editors.unLockItem(item)
+          : this.editors.lockItem(item);
+      } else if (type.includes('highlight')) {
+        const str = type.split('-')[1];
+        this.graph.setItemState(item, 'selected', !!str);
+      } else if (type.includes('emphasize')) {
+        const str = type.split('-')[1];
+        str === 'true'
+          ? this.editors.unEmphasizeItem(item)
+          : this.editors.emphasizeItem(item);
       }
     },
     // 需要加载的关系

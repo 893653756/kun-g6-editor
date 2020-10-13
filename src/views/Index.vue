@@ -1,23 +1,26 @@
 <template>
   <div class="pages">
-    <header-tools class="pages-tools"></header-tools>
+    <div class="pages-header">
+      <header-tools class="pages-header__tools"></header-tools>
+      <div class="pages-header__close" v-if="showClose">
+        <span class="kf-icon-close" @click="handleClosePage"></span>
+      </div>
+    </div>
     <div class="pages-body">
       <aside-tabs class="pages-body__aside"></aside-tabs>
       <graph-canvas
         class="pages-body__editors"
         @graph-editors="handleCreateGraph"
       ></graph-canvas>
-    </div>
-    <div class="pages-close" v-if="showClose">
-      <span class="kf-icon-close" @click="handleClosePage"></span>
+      <!-- <aside-right></aside-right> -->
     </div>
   </div>
 </template>
 <script>
 import HeaderTools from './header-tools/Index.vue';
 import AsideTabs from './aside-tabs/Index.vue';
-// import EditorsEntity from './editors-entitys/Index.vue';
 import GraphCanvas from './graph-canvas/Index.vue';
+import AsideRight from './aside-right/Index.vue';
 import * as MutationTypes from '@/store/mutation-types';
 import editors from '@/editors';
 import { getRelationByDxType } from '@/api/headerTools';
@@ -26,12 +29,12 @@ export default {
   components: {
     HeaderTools,
     AsideTabs,
-    // EditorsEntity,
     GraphCanvas,
+    AsideRight
   },
   data() {
     return {
-      showClose: false,
+      showClose: true,
     };
   },
   created() {
@@ -57,7 +60,9 @@ export default {
       if (!search) {
         return;
       }
-      const payloadArr = window.parent.frames["topPage"].contentWindow.vm.judgeParam;
+      this.showClose = true;
+      const payloadArr =
+        window.parent.frames['topPage'].contentWindow.vm.judgeParam;
       // const payloadArr = [
       //   {
       //     dxType: 'ry_ry',
@@ -101,14 +106,6 @@ export default {
         entities: Object.values(nodes),
         links: Object.values(edges),
       });
-      // if (data.code === 0) {
-      //   this.editors.importRelationData(data.content);
-      // } else {
-      //   this.$message({
-      //     type: 'warning',
-      //     message: data.msg,
-      //   });
-      // }
     },
   },
 };
@@ -120,9 +117,32 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  &-tools {
+  &-header {
     height: 82px;
+    display: flex;
+    &__tools {
+      flex: 1;
+    }
+    &__close {
+      width: 82px;
+      height: 82px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0px;
+      right: 0px;
+      span {
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.2);
+        transition: all linear 0.3;
+      }
+      span:hover {
+        color: rgba(0, 0, 0, 0.7);
+        transform: scale(1.1);
+      }
+    }
   }
+
   &-body {
     flex: 1;
     display: flex;
@@ -133,25 +153,6 @@ export default {
     &__editors {
       flex: 1;
       position: relative;
-    }
-  }
-  &-close {
-    position: absolute;
-    width: 82px;
-    height: 82px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0px;
-    right: 0px;
-    span {
-      font-size: 30px;
-      color: rgba(0, 0, 0, 0.2);
-      transition: all linear 0.3;
-    }
-    span:hover {
-      color: rgba(0, 0, 0, 0.7);
-      transform: scale(1.1);
     }
   }
 }

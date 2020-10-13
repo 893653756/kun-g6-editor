@@ -34,6 +34,7 @@
       title="创建实体"
       :visible.sync="dialogFormVisible"
       @closed="handleClose"
+      width="500px"
     >
       <el-form :model="entityProperty" :rules="rules" ref="form">
         <el-form-item
@@ -51,8 +52,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="handleClose">取 消</el-button>
-        <el-button type="primary" @click="handleSure">确 定</el-button>
+        <el-button size="small" @click="handleClose">取 消</el-button>
+        <el-button size="small" type="primary" @click="handleSure">确 定</el-button>
       </div>
     </el-dialog>
   </div>

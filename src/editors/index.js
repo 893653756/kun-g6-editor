@@ -230,6 +230,56 @@ class Editors {
     // console.warn('layput', cfg);
     flag && this.graph.layout();
   }
+  // 锁定
+  lockItem(item) {
+    if (!item.hasLocked()) {
+      const model = item.get('model');
+      model.lock = true;
+      item.lock();
+      this.graph.updateItem(item, model);
+    }
+  }
+  // 解锁
+  unLockItem(item) {
+    if (item.hasLocked()) {
+      const model = item.get('model');
+      model.lock = false;
+      item.unlock();
+      this.graph.updateItem(item, model);
+    }
+  }
+  // 强调
+  emphasizeItem(item) {
+    const model = item.get('model');
+    if (!model.emphasize) {
+      model.emphasize = true;
+      this.graph.updateItem(item, model);
+    }
+  }
+  // 取消强调
+  unEmphasizeItem(item) {
+    const model = item.get('model');
+    if (model.emphasize) {
+      model.emphasize = false;
+      this.editors.updateItem(item, model);
+    }
+  }
+  // 搜索实体
+  searchEntity(value) {
+    const nodes = this.graph.getNodes();
+    nodes.forEach(item => {
+      const model = item.getModel();
+      if (model.label.includes(value)) {
+        if (!item.hasState('selected')) {
+          this.graph.setItemState(item, 'selected', true);
+        }
+      } else {
+        if (item.hasState('selected')) {
+          this.graph.setItemState(item, 'selected', false);
+        }
+      }
+    });
+  }
 };
 
 export default new Editors();

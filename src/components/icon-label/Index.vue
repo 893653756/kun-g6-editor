@@ -1,10 +1,10 @@
 <template>
   <div class="icon-label">
     <span :class="icon" :style="{ color: color }"></span>
-    <span v-if="label">
-      {{ label }}
+    <div v-if="label">
+      <span>{{ label }}</span>
       <slot></slot>
-    </span>
+    </div>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
     font-size: 24px;
     line-height: 31px;
   }
-  & > span:last-child {
+  & > div {
     font-size: 14px;
     font-family: Microsoft YaHei;
     line-height: 19px;
