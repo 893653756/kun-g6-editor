@@ -123,7 +123,8 @@ class Editors {
     } else if (type === 'json') {
       // const data = this.graph.save();
       // console.warn('save', data);
-      // const str = JSON.stringify(data)
+      // // 特殊字符导致json被截取
+      // const str = JSON.stringify(data).replace(/\#/g, '');
       // const dataUrl = `data:,${str}`
       // const a = document.createElement('a')
       // a.download = `${Date.now()}.txt`;

@@ -12,7 +12,7 @@
         class="pages-body__editors"
         @graph-editors="handleCreateGraph"
       ></graph-canvas>
-      <!-- <aside-right></aside-right> -->
+      <aside-right></aside-right>
     </div>
   </div>
 </template>
@@ -147,6 +147,8 @@ export default {
     flex: 1;
     display: flex;
     border-top: 1px solid #d9d9d9;
+    overflow-y: auto;
+    overflow-x: hidden;
     // &__aside {
     //   width: 340px;
     // }

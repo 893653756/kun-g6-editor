@@ -5,7 +5,10 @@ import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
 
 export const bindEventListener = function (graph) {
-
+  // 移动节点
+  graph.on('node:dragend', (e) => {
+    graph._updateMinimap && graph._updateMinimap();
+  })
   // 鼠标进入现实锚点
   graph.on('node:mouseenter', (e) => {
     const item = e.item;

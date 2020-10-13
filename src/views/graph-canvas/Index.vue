@@ -92,6 +92,7 @@ export default {
       this.graph._addEdge = (model) => {
         this.getLinksBetweenEntity(model);
       };
+      window.graph = this.graph;
       // 调整大小
       this.graph._changeSize = () => {
         const { clientHeight, clientWidth } = this.$refs['graph-canvas'];
