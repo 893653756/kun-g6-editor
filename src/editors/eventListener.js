@@ -41,7 +41,7 @@ export const bindEventListener = function (graph) {
     // 单选
     if (selectModel === 'single') {
       const clickNodes = graph.findAllByState('node', 'click');
-      console.warn('clickNodes', clickNodes)
+      // console.warn('clickNodes', clickNodes)
       clickNodes.forEach(node => {
         graph.setItemState(node, 'click', false);
       });

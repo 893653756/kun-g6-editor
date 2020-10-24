@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     handleSelectionEntity(select) {
-      console.warn('1111', select)
+      // console.warn('1111', select)
       select = select.map((v) => v.id);
       this.editors.setItemBackground({
         selectType: 'node',
@@ -87,7 +87,7 @@ export default {
     },
   },
   beforeDestroy() {
-    console.warn('beforeDestroy')
+    // console.warn('beforeDestroy')
     const graph = this.editors.graph;
     graph.findAll('node', (node) => {
       graph.setItemState(node, 'selected', false);

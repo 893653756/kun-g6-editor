@@ -1,6 +1,6 @@
 import request from './request';
 
-const apiClues = process.env.NODE_ENV === 'development' ? '/api-clues' : '';
+const apiClues = process.env.NODE_ENV === 'development' ? '/api-elyp' : '';
 /**
  * 获取节点的有多少种关系
  */

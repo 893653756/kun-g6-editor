@@ -259,7 +259,6 @@ export default {
     },
   },
   beforeDestroy() {
-    console.warn('2222', 'beforeDestroy')
     const graph = this.editors.graph;
     graph.findAll('node', (node) => {
       graph.setItemState(node, 'selected', false);

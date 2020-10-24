@@ -12,7 +12,7 @@
         class="pages-body__editors"
         @graph-editors="handleCreateGraph"
       ></graph-canvas>
-      <aside-right></aside-right>
+      <!-- <aside-right></aside-right> -->
     </div>
   </div>
 </template>

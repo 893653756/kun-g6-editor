@@ -166,12 +166,12 @@ export default {
         className: 'right-menus',
         itemTypes: ['node', 'edge'],
         getContent(e) {
-          console.warn('右键菜单', e);
+          // console.warn('右键菜单', e);
           return getMenuList(e.item);
         },
         handleMenuClick(target, item) {
           const { type } = target.dataset;
-          console.warn('type:', type);
+          // console.warn('type:', type);
           self.handleMenuCB(type, item);
         },
       });

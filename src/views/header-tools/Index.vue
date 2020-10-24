@@ -416,7 +416,7 @@ export default {
         });
       }
       this.editors.searchEntity(key);
-      console.warn('handleSearchEntity');
+      // console.warn('handleSearchEntity');
     },
     // 加载关系 (测试用,)
     // async extendRelationship() {

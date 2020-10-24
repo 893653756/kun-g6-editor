@@ -7,11 +7,11 @@ export function getMenuList(item) {
   const emphasizeMenu = isEmphasize(item);
   // 扩展一层
   const extendMenu = `<div data-type="extend-relation" class="kf-icon-full-screen">
-                    <span>扩展一层</span>
+                    <span data-type="extend-relation">扩展一层</span>
                   </div>`;
   // 删除
   const deleteMenu = `<div data-type="delete" class="kf-icon-delete">
-                        <span>删除</span>
+                        <span data-type="delete">删除</span>
                       </div>`;
   return `<div class="right-menu__list">
     ${extendMenu}
@@ -30,7 +30,7 @@ export function getMenuList(item) {
 function isLock(item) {
   const lock = item.hasLocked();
   const str = `<div data-type="lock-${lock}" class="el-icon-lock">
-                <span>${lock ? '解锁' : '锁定'}</span>
+                <span data-type="lock-${lock}">${lock ? '解锁' : '锁定'}</span>
               </div>`;
   return str;
 };
@@ -41,7 +41,7 @@ function isLock(item) {
 function isHighlight(item) {
   const selected = item.hasState('selected');
   const str = `<div data-type="highlight-${selected}" class="el-icon-sunny">
-                <span>${selected ? '取消高亮' : '高亮'}</span>
+                <span data-type="highlight-${selected}">${selected ? '取消高亮' : '高亮'}</span>
               </div>`;
   return str;
 };
@@ -53,7 +53,7 @@ function isEmphasize(item) {
   const model = item.get('model');
   const emphasize = model.emphasize;
   const str = `<div data-type="emphasize-${emphasize}" class="kf-icon-info">
-                <span>${emphasize ? '取消强调' : '强调'}</span>
+                <span data-type="emphasize-${emphasize}">${emphasize ? '取消强调' : '强调'}</span>
               </div>`;
   return str;
 }
