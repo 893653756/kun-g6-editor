@@ -68,6 +68,7 @@ export default {
     const anchorPoints = cfg.anchorPoints || [
       [0.5, 0], [1, 0.5], [0.5, 1], [0, 0.5]
     ];
+    // 锚点
     anchorPoints.forEach((point, index) => {
       const x = 2 * r * point[0] - r;
       const y = 2 * r * point[1] - r;
@@ -88,6 +89,7 @@ export default {
     return keyShape;
   },
   afterDraw(cfg, group) {
+    console.warn('afterDraw', cfg);
     const shape = group.get("children")[0];
     // console.warn('afterDraw', cfg)
     let r = shape.attr('r');
@@ -129,6 +131,32 @@ export default {
           img: `${window.baseImagePath}/entityImages/lock.png`,
         },
         name: 'lock-image',
+      });
+    }
+    // 下一层节点数 nextEntitiesNumber
+    const { nextEntitiesNumber } = cfg.cellInfo;
+    if (nextEntitiesNumber > 0) {
+      group.addShape('circle', {
+        attrs: {
+          r: parseInt(r / 3),
+          x: r - 12,
+          y: -(r - 12),
+          fill: '#67C23A',
+        },
+        name: 'nextEntitiesNumber-circle'
+      })
+      group.addShape('text', {
+        attrs: {
+          x: r - 13,
+          y: -(r - 13),
+          id: 'nextEntitiesNumber' + cfg.id,
+          text: nextEntitiesNumber,
+          fontSize: 12,
+          textAlign: 'center',
+          textBaseline: 'middle',
+          fill: '#ffffff',
+        },
+        name: 'nextEntitiesNumber-text'
       });
     }
   },

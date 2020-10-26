@@ -84,6 +84,12 @@ export default {
       const { typenum, listnum } = target.dataset;
       const item = this.entitys[typenum].list[listnum];
       const { x, y } = this.editors.graph.getPointByClient(evt.x, evt.y);
+      if (x < 10) {
+        return this.$message({
+          type: 'info',
+          message: '请将节点拖入画布'
+        });
+      } 
       this.model = {
         x,
         y,
@@ -163,6 +169,9 @@ export default {
           this.model.cellInfo = {
             ...info,
             ...this.model.cellInfo,
+            nextEntitiesNumber: 0,
+            // 前端自定义的一个节点
+            custom: true,
           };
           this.editors.addNode(this.model);
         }

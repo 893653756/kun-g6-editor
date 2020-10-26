@@ -3,6 +3,7 @@
  */
 import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
+import { debounce } from '@/utils';
 
 export const bindEventListener = function (graph) {
   // 移动节点
@@ -63,6 +64,20 @@ export const bindEventListener = function (graph) {
       }
     );
   });
+  graph.on('edge:mouseenter', (e) => {
+    const item = e.item;
+    graph.setItemState(item, 'hove', true);
+  });
+  graph.on('edge:mouseleave', (e) => {
+    const item = e.item;
+    graph.setItemState(item, 'hove', false);
+  });
+  // 监听边
+  graph.on('edge:click', (e) => {
+    const item = e.item;
+    graph._showLinkDetail && graph._showLinkDetail(item);
+    // console.warn('edge', item);
+  })
   // 完成布局后触发
   graph.on('afterlayout', () => {
   });
@@ -133,18 +148,4 @@ export const bindEventListener = function (graph) {
   graph.render();
   // 窗口改变重新设置canvas大小
   window.onresize = debounce(graph._changeSize, 250);
-}
-
-/**
- * 防抖计算节点数量
- */
-// 防抖
-function debounce(fn, wait) {
-  let timeout = null;
-  return function () {
-    if (timeout !== null) {
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(fn, wait);
-  }
 }

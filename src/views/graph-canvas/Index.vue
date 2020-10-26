@@ -40,6 +40,7 @@
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column label="关系类型" prop="gxMc"></el-table-column>
         <el-table-column label="关系节点id" prop="zzYpdxId"></el-table-column>
+        <el-table-column label="方向" prop="xtzx" :formatter="formatterText"></el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleDialogClose">取 消</el-button>
@@ -47,6 +48,23 @@
           >确 定</el-button
         >
       </div>
+    </el-dialog>
+    <!-- 连接关系详情 -->
+    <el-dialog
+      title="关系详情"
+      :visible.sync="dialogLinkDetail"
+      @closed="handleDialogClose"
+      width="80%"
+    >
+      <el-table :data="linkDetail.values" stripe>
+        <el-table-column
+          v-for="(val, k) in linkDetail.columns"
+          :key="k"
+          :label="val"
+          :prop="k"
+          show-overflow-tooltip
+        ></el-table-column>
+      </el-table>
     </el-dialog>
   </div>
 </template>
@@ -60,6 +78,7 @@ import {
   fetchBetweenEntitiesLink,
   fetchCellRelationshipNode,
   getAllRelation,
+  fetchRelationDetail
 } from '@/api/editors';
 import { mapGetters } from 'vuex';
 export default {
@@ -67,10 +86,20 @@ export default {
     return {
       dialogLinkList: false, // 关系列表弹框
       dialogLinkType: false, // 节点关系弹窗
+      dialogLinkDetail: false, // 关系详情
+      linkDetail: [],
       linksBetweenEntity: [], // 可建立的关系列表
       cellRelationList: [], // 节点所有有关系
       radioLink: '',
     };
+  },
+  created() {
+    this.linkDirection = {
+      SX: '双向关系',
+      ZX: '正向关系',
+      FX: '反向关系'
+    };
+    this.selectRelations = [];
   },
   mounted() {
     this.initGraph();
@@ -89,15 +118,7 @@ export default {
         ...graphCfg,
         plugins: this.initPlugins(),
       });
-      this.graph._addEdge = (model) => {
-        this.getLinksBetweenEntity(model);
-      };
-      window.graph = this.graph;
-      // 调整大小
-      this.graph._changeSize = () => {
-        const { clientHeight, clientWidth } = this.$refs['graph-canvas'];
-        this.graph.changeSize(clientWidth, clientHeight);
-      };
+      // 初始化成功
       this.initGraphSuccess();
     },
     // 节点间可以创建的关系
@@ -153,6 +174,7 @@ export default {
       this.editors.addEdge(this.handleCreateEdge);
       this.handleDialogClose();
     },
+    // 初始化插件
     initPlugins() {
       const self = this;
       // 工具条
@@ -178,8 +200,48 @@ export default {
       return [grid, menu, toolbar];
     },
     initGraphSuccess() {
+      this.graph._addEdge = (model) => {
+        this.getLinksBetweenEntity(model);
+      };
+      window.graph = this.graph;
+      // 调整大小
+      this.graph._changeSize = () => {
+        const { clientHeight, clientWidth } = this.$refs['graph-canvas'];
+        this.graph.changeSize(clientWidth, clientHeight);
+      };
+      // 点击线条，显示关系详情
+      this.graph._showLinkDetail = (item) => {
+        console.warn('edge-click', item);
+        this.showLinkDetail(item);
+      };
       // 发射事件
       this.$emit('graph-editors', { graph: this.graph });
+    },
+    // 请求关系详情
+    async showLinkDetail(edge) {
+      const linkId = edge.get('model').cellInfo.id;
+      const source = edge.get('source');
+      const startIdMap = source.get('model').cellInfo.idMap;
+      const target = edge.get('target');
+      const endIdMap = target.get('model').cellInfo.idMap;
+      const payload = {
+        linkId,
+        params: {
+          startIdMap,
+          endIdMap,
+        },
+      };
+      const { data } = await fetchRelationDetail(payload);
+      if (data.code === 0) {
+        // const { columns, values } = data.content;
+        this.linkDetail = data.content;
+        this.dialogLinkDetail = true;
+      } else {
+        this.$message({
+          type: 'warning',
+          message: data.msg,
+        });
+      }
     },
     // 右键菜单回调
     handleMenuCB(type, item) {
@@ -205,6 +267,7 @@ export default {
     },
     // 需要加载的关系
     handleSelectionRela(selection) {
+      console.warn('selection', selection);
       this.selectRelations = selection;
     },
     // 打开节点关系框
@@ -217,12 +280,16 @@ export default {
           message: '该节点没有关系',
         });
       }
-
       if (cellInfo.gxId.includes(',')) {
         // 请求节点所有关系
         const { data } = await getCellRelationList(cellInfo.gxId);
         if (data.code === 0) {
-          this.cellRelationList = data.content;
+          this.cellRelationList = data.content.map(v => ({
+            gxMc: v.gxMc,
+            zzYpdxId: v.zzYpdxId,
+            xtzx: v.xtzx,
+            id: v.id
+          }));
           this.dialogLinkList = true;
         } else {
           this.$message({
@@ -242,7 +309,7 @@ export default {
           message: '请选择需要查询的关系',
         });
       }
-      const gxIds = this.selectRelations.map((v) => v.id).join(',');
+      const gxIds = this.selectRelations.map((v) => `${v.id}_${v.xtzx}`).join(',');
       this.extendRelationship(this.rightClickCellInfo, gxIds);
     },
     // 扩展关系
@@ -270,12 +337,18 @@ export default {
     handleDialogClose() {
       this.selectRelations = [];
       this.dialogLinkList = false;
-      this.linkDetail = [];
       this.linksBetweenEntity = [];
       this.handleCreateEdge = [];
       this.rightClickCellInfo = null;
       this.dialogLinkType = false;
+      // 节点关系详情
+      this.linkDetail = [];
+      this.dialogLinkDetail = false;
     },
+    // 格式化关系方向
+    formatterText(obj) {
+      return this.linkDirection[obj.xtzx];
+    }
   },
 };
 </script>

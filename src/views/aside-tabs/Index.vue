@@ -41,6 +41,7 @@ import EntityProperty from './components/EntityProperty.vue';
 import * as MutationTypes from '@/store/mutation-types';
 import { getEntityList } from '@/api/entityList';
 import { mapGetters } from 'vuex';
+import { debounce } from '@/utils';
 
 export default {
   components: {
@@ -82,12 +83,13 @@ export default {
     this.getEntityList();
     this.activeId = this.tabsList[0].id;
     this.comp = this.tabsList[0].comp;
+    this.animationCB = debounce(this.animationEnd, 500).bind(this);
   },
   mounted() {
     this.bindListener()
   },
   beforeDestroy() {
-    this.$refs['panel'].removeEventListener('webkitTransitionEnd');
+    this.$refs['panel'].removeEventListener('webkitTransitionEnd', this.animationCB);
   },
   computed: {
     ...mapGetters(['editors']),
@@ -95,12 +97,12 @@ export default {
   methods: {
     // 绑定动画结束事件
     bindListener() {
-      const self = this;
       console.warn('bindListener');
-      this.$refs['panel'].addEventListener('webkitTransitionEnd', () => {
-        self.editors && self.editors.graph._changeSize();
-        // console.warn('ransitionEnd');
-      });
+      this.$refs['panel'].addEventListener('webkitTransitionEnd', this.animationCB);
+    },
+    animationEnd() {
+      console.warn('end');
+      this.editors && this.editors.graph._changeSize();
     },
     handleChangeTab(item) {
       if (this.activeId === item.id) {

@@ -125,6 +125,10 @@ export const graphCfg = {
     selected: {
       stroke: '#FF764A',
       lineWidth: 3
+    },
+    hove: {
+      stroke: '#FF764A',
+      cursor: 'pointer'
     }
   }
 };

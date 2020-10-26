@@ -19,6 +19,10 @@ class Editors {
     model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
     model.label = label;
     model.id = cellInfo.id;
+    // if (cellInfo.custom) {
+    //   // 自定义的下一层节点数
+    //   cellInfo.nextCustomNodes = 0,
+    // }
     this.graph.add('node', model, true);
   }
   // 添加边
@@ -152,11 +156,12 @@ class Editors {
       }
     });
     const edges = links.map(item => {
-      const { sourceEntityId, targetEntityId, label } = item;
+      const { sourceEntityId, targetEntityId, label, properties } = item;
       const id = sourceEntityId + '-' + targetEntityId;
+      const text = properties ? `${label}\n${properties}` : label;
       return {
         id: id,
-        label: label,
+        label: text,
         cellInfo: item,
         source: sourceEntityId,
         target: targetEntityId,
@@ -196,16 +201,17 @@ class Editors {
     });
     // 关系
     links.forEach(item => {
-      const { sourceEntityId, targetEntityId, label } = item;
+      const { sourceEntityId, targetEntityId, label, properties } = item;
       const id = sourceEntityId + '-' + targetEntityId;
       const edge = this.graph.findById(id);
       if (edge) {
         return;
       }
+      const text = properties ? `${label}\n${properties}` : label;
       flag = true;
       const model = {
         id: id,
-        label: label,
+        label: text,
         cellInfo: item,
         source: sourceEntityId,
         target: targetEntityId,
@@ -228,7 +234,6 @@ class Editors {
     });
     // const layoutType = store.getters.layoutType;
     // const cfg = layoutCfg[layoutType];
-    // console.warn('layput', cfg);
     flag && this.graph.layout();
   }
   // 锁定
