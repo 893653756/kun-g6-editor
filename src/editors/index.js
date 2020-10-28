@@ -19,23 +19,55 @@ class Editors {
     model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
     model.label = label;
     model.id = cellInfo.id;
-    // if (cellInfo.custom) {
-    //   // 自定义的下一层节点数
-    //   cellInfo.nextCustomNodes = 0,
-    // }
+    if (cellInfo.custom) {
+      cellInfo.nextEntitiesNumber = 0;
+    };
+    // 自定义的下一层节点数
+    cellInfo.nextCustomNodes = 0;
     this.graph.add('node', model, true);
   }
   // 添加边
   addEdge(model) {
+    const { source } = model;
     const cellInfo = model.cellInfo;
     model.label = cellInfo.label;
     model.itemType = 'edge';
     this.graph.add('edge', model, true);
+    // 更新节点的下一层节点数量
+    const sourceModel = source.getModel();
+    if (sourceModel.cellInfo.nextCustomNodes) {
+      sourceModel.cellInfo.nextCustomNodes += 1;
+    } else {
+      sourceModel.cellInfo.nextCustomNodes = 1;
+    }
+    this.graph.updateItem(source, sourceModel);
   }
   // 删除节点
   removeItem(item) {
-    const node = this.graph.findById(item.get('id'));
+    const id = item.get('id');
+    const node = this.graph.findById(id);
+    // 是否是自定义节点
+    const nodeIsCustom = node.getModel().cellInfo.custom;
+    const edges = node.get('edges');
+    const sourceNodes = [];
+    edges.forEach(v => {
+      const source = v.get('source');
+      const target = v.get('target');
+      if (target.get('id') === id) {
+        sourceNodes.push(source);
+      }
+    });
     this.graph.removeItem(node, true);
+    sourceNodes.forEach(v => {
+      const model = v.getModel();
+      if (model.cellInfo.custom || nodeIsCustom) {
+        model.cellInfo.nextCustomNodes -= 1;
+        if (model.cellInfo.nextCustomNodes < 0) {
+          model.cellInfo.nextCustomNodes = 0;
+        }
+        this.graph.updateItem(v, model);
+      }
+    })
   }
   // 设置状态
   setItemState(item, type, value) {
@@ -207,6 +239,20 @@ class Editors {
       if (edge) {
         return;
       }
+      // 判断是否存在反向关系线
+      const reverseId = `${targetEntityId}-${sourceEntityId}`;
+      const reverseRelationEdge = this.graph.findById(reverseId);
+      if (reverseRelationEdge) {
+        let model = reverseRelationEdge.getModel();
+        if (model.cellInfo.id === item.id) {
+          this.graph.updateItem(reverseId, {
+            style: {
+              startArrow: true
+            }
+          });
+        }
+        return;
+      };
       const text = properties ? `${label}\n${properties}` : label;
       flag = true;
       const model = {
@@ -215,25 +261,22 @@ class Editors {
         cellInfo: item,
         source: sourceEntityId,
         target: targetEntityId,
-        type: '',
+        type: 'line',
         itemType: 'edge'
       };
-      const reverseId = `${targetEntityId}-${sourceEntityId}`;
-      const reverseRelationEdge = this.graph.findById(reverseId);
-      if (reverseRelationEdge) {
-        model.type = 'quadratic';
-      } else {
-        model.type = 'line';
-      }
       this.graph.add('edge', model, true);
-      if (model.type === 'quadratic') {
-        this.graph.updateItem(reverseId, {
-          type: 'quadratic',
-        });
-      }
+      // if (reverseRelationEdge) {
+      //   model.type = 'quadratic';
+      // } else {
+      //   model.type = 'line';
+      // }
+      // this.graph.add('edge', model, true);
+      // if (model.type === 'quadratic') {
+      //   this.graph.updateItem(reverseId, {
+      //     type: 'quadratic',
+      //   });
+      // }
     });
-    // const layoutType = store.getters.layoutType;
-    // const cfg = layoutCfg[layoutType];
     flag && this.graph.layout();
   }
   // 锁定

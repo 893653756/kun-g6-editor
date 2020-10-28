@@ -97,11 +97,9 @@ export default {
   methods: {
     // 绑定动画结束事件
     bindListener() {
-      console.warn('bindListener');
       this.$refs['panel'].addEventListener('webkitTransitionEnd', this.animationCB);
     },
     animationEnd() {
-      console.warn('end');
       this.editors && this.editors.graph._changeSize();
     },
     handleChangeTab(item) {

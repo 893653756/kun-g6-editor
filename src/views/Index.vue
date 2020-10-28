@@ -30,7 +30,7 @@ export default {
     HeaderTools,
     AsideTabs,
     GraphCanvas,
-    AsideRight
+    AsideRight,
   },
   data() {
     return {
@@ -61,8 +61,19 @@ export default {
         return;
       }
       this.showClose = true;
-      const payloadArr =
-        window.parent.frames['topPage'].contentWindow.vm.judgeParam;
+      // 获取参数
+      const frames = window.parent.document.getElementsByClassName('t_page') || [];
+      console.log('frames', frames);
+      let judgeParam = [];
+      for (let i = 0; i < frames.length; i++) {
+        const frame = frames[i];
+        const active = frame.dataset.active === 'true';
+        if (active) {
+          judgeParam = frame.contentWindow.vm.judgeParam;
+          console.log('judgeParam', judgeParam);
+        }
+      }
+      // const payloadArr = window.parent.frames['topPage'].contentWindow.vm.judgeParam;
       // const payloadArr = [
       //   {
       //     dxType: 'ry_ry',
@@ -76,11 +87,10 @@ export default {
       //   },
       // ];
       const arr = [];
-      payloadArr.forEach((payload) => {
+      judgeParam.forEach((payload) => {
         arr.push(getRelationByDxType(payload));
       });
       const result = await Promise.all(arr);
-      // console.warn('payloadArr', result);
       const nodes = {};
       const edges = {};
       result.forEach(({ data }) => {

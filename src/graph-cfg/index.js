@@ -93,7 +93,8 @@ export const graphCfg = {
             </div>
           `
         },
-      },],
+      }
+    ],
     addEdge: ['add-edge'],
   },
   defaultEdge: {

@@ -2,24 +2,29 @@
  * 一些辅助功能
  */
 export function getMenuList(item) {
+  // 扩展一层
+  const extendMenu = `<div data-type="extend-relation" class="kf-icon-full-screen">
+    <span data-type="extend-relation">扩展一层</span>
+  </div>`;
+  // 删除
+  const deleteMenu = `<div data-type="delete" class="kf-icon-delete">
+        <span data-type="delete">删除</span>
+      </div>`;
+  if (item.get('type') === 'edge') {
+    return `<div class="right-menu__list">
+    ${deleteMenu}
+  </div>`;
+  };
   const lockMenu = isLock(item);
   const highlightMenu = isHighlight(item);
   const emphasizeMenu = isEmphasize(item);
-  // 扩展一层
-  const extendMenu = `<div data-type="extend-relation" class="kf-icon-full-screen">
-                    <span data-type="extend-relation">扩展一层</span>
-                  </div>`;
-  // 删除
-  const deleteMenu = `<div data-type="delete" class="kf-icon-delete">
-                        <span data-type="delete">删除</span>
-                      </div>`;
   return `<div class="right-menu__list">
     ${extendMenu}
     ${lockMenu}
     ${highlightMenu}
     ${emphasizeMenu}
     ${deleteMenu}
-  </div>`
+  </div>`;
 };
 
 /**

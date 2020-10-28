@@ -178,7 +178,7 @@ export default {
     initPlugins() {
       const self = this;
       // 工具条
-      const toolbar = new G6.ToolBar();
+      // const toolbar = new G6.ToolBar();
       // 背景网格
       const grid = new G6.Grid();
       // 右键菜单
@@ -186,7 +186,7 @@ export default {
         offsetX: 6,
         offsetX: 10,
         className: 'right-menus',
-        itemTypes: ['node', 'edge'],
+        itemTypes: ['node'],
         getContent(e) {
           // console.warn('右键菜单', e);
           return getMenuList(e.item);
@@ -197,7 +197,8 @@ export default {
           self.handleMenuCB(type, item);
         },
       });
-      return [grid, menu, toolbar];
+      // return [grid, menu, toolbar];
+      return [grid, menu];
     },
     initGraphSuccess() {
       this.graph._addEdge = (model) => {
@@ -211,7 +212,7 @@ export default {
       };
       // 点击线条，显示关系详情
       this.graph._showLinkDetail = (item) => {
-        console.warn('edge-click', item);
+        // console.warn('edge-click', item);
         this.showLinkDetail(item);
       };
       // 发射事件
@@ -267,7 +268,6 @@ export default {
     },
     // 需要加载的关系
     handleSelectionRela(selection) {
-      console.warn('selection', selection);
       this.selectRelations = selection;
     },
     // 打开节点关系框

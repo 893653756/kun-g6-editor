@@ -89,7 +89,6 @@ export default {
     return keyShape;
   },
   afterDraw(cfg, group) {
-    console.warn('afterDraw', cfg);
     const shape = group.get("children")[0];
     // console.warn('afterDraw', cfg)
     let r = shape.attr('r');
@@ -134,8 +133,9 @@ export default {
       });
     }
     // 下一层节点数 nextEntitiesNumber
-    const { nextEntitiesNumber } = cfg.cellInfo;
-    if (nextEntitiesNumber > 0) {
+    const { nextEntitiesNumber = 0, nextCustomNodes = 0 } = cfg.cellInfo;
+    const total = nextEntitiesNumber + nextCustomNodes;
+    if (total > 0) {
       group.addShape('circle', {
         attrs: {
           r: parseInt(r / 3),
@@ -150,7 +150,7 @@ export default {
           x: r - 13,
           y: -(r - 13),
           id: 'nextEntitiesNumber' + cfg.id,
-          text: nextEntitiesNumber,
+          text: total,
           fontSize: 12,
           textAlign: 'center',
           textBaseline: 'middle',

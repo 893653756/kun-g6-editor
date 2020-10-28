@@ -127,11 +127,6 @@
         @click.native="handleSmallScreen"
         v-else
       ></icon-label>
-      <!-- <icon-label
-        icon="kf-icon-loading"
-        label="加载关系"
-        @click.native="extendRelationship"
-      ></icon-label> -->
     </div>
     <div class="header-tools__search">
       <el-input size="mini" placeholder="请搜索" v-model="searchValue">
@@ -418,27 +413,6 @@ export default {
       this.editors.searchEntity(key);
       // console.warn('handleSearchEntity');
     },
-    // 加载关系 (测试用,)
-    // async extendRelationship() {
-    //   const payload = {
-    //     tableName: 'ry_jcxx',
-    //     params: {
-    //       idMaps: [{
-    //         sfzhm: '321284198003196329',
-    //       }],
-    //     },
-    //   };
-    //   const { data } = await getAllRelation(payload);
-    //   if (data.code === 0) {
-    //     // console.warn('data.content', data.content);
-    //     this.editors.importRelationData(data.content);
-    //   } else {
-    //     this.$message({
-    //       type: 'warning',
-    //       message: data.msg,
-    //     });
-    //   }
-    // },
     handleSaveRelation(event) {
       const target = event.target;
       const { type } = target.dataset;
