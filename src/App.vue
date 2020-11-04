@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~element-ui/lib/theme-chalk/index.css';
+// @import '~element-ui/lib/theme-chalk/index.css';
 @import '~@kun/ued-components/lib/theme-blue/kf-icon.css';
 #app {
   width: 100vw;
@@ -23,7 +23,7 @@ export default {
   display: flex;
   /deep/ {
     .el-form-item {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       .el-form-item__error {
         padding-top: 0px;
       }

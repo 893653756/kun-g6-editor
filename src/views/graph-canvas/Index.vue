@@ -35,12 +35,19 @@
       <el-table
         :data="cellRelationList"
         stripe
+        height="370"
         @selection-change="handleSelectionRela"
+        ref="dataTable"
       >
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column label="关系类型" prop="gxMc"></el-table-column>
-        <el-table-column label="关系节点id" prop="zzYpdxId"></el-table-column>
-        <el-table-column label="方向" prop="xtzx" :formatter="formatterText"></el-table-column>
+        <el-table-column label="关系节点id" prop="id"></el-table-column>
+        <el-table-column
+          label="方向"
+          prop="xtzx"
+          :formatter="formatterText"
+        ></el-table-column>
+        <el-table-column label="数量" prop="count"></el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleDialogClose">取 消</el-button>
@@ -78,7 +85,7 @@ import {
   fetchBetweenEntitiesLink,
   fetchCellRelationshipNode,
   getAllRelation,
-  fetchRelationDetail
+  fetchRelationDetail,
 } from '@/api/editors';
 import { mapGetters } from 'vuex';
 export default {
@@ -97,7 +104,7 @@ export default {
     this.linkDirection = {
       SX: '双向关系',
       ZX: '正向关系',
-      FX: '反向关系'
+      FX: '反向关系',
     };
     this.selectRelations = [];
   },
@@ -264,7 +271,14 @@ export default {
         str === 'true'
           ? this.editors.unEmphasizeItem(item)
           : this.editors.emphasizeItem(item);
+      } else if (type === 'xqUrl') {
+        this.openWindow(item);
       }
+    },
+    // 打开连接窗口
+    openWindow(item) {
+      const cellInfo = item.get('model').cellInfo;
+      window.open(cellInfo.xqUrl, '_blank');
     },
     // 需要加载的关系
     handleSelectionRela(selection) {
@@ -284,13 +298,23 @@ export default {
         // 请求节点所有关系
         const { data } = await getCellRelationList(cellInfo.gxId);
         if (data.code === 0) {
-          this.cellRelationList = data.content.map(v => ({
-            gxMc: v.gxMc,
-            zzYpdxId: v.zzYpdxId,
-            xtzx: v.xtzx,
-            id: v.id
-          }));
+          const linkCount = cellInfo.linkCount || {};
+          this.cellRelationList = data.content
+            .map((v) => ({
+              gxMc: v.gxMc,
+              // zzYpdxId: v.zzYpdxId, // 终止对象id
+              xtzx: v.xtzx,
+              id: v.id,
+              count: linkCount[`${v.id}_${v.xtzx}`] || 0,
+              gx: `${v.id}_${v.xtzx}`,
+            }))
+            .sort((a, b) => {
+              return b.count - a.count;
+            });
           this.dialogLinkList = true;
+          this.$nextTick(() => {
+            this.selectSX();
+          })
         } else {
           this.$message({
             type: 'warning',
@@ -301,15 +325,37 @@ export default {
         this.extendRelationship(cellInfo);
       }
     },
+    // 默认选中双向关系
+    selectSX() {
+      const dataTable = this.$refs.dataTable;
+      if (!dataTable) {
+        return;
+      }
+      dataTable.clearSelection();
+      this.selectRelations = this.cellRelationList.filter((v) => {
+        if (v.xtzx === 'SX' && v.count > 0) {
+          return true;
+        }
+        return false;
+      });
+      this.$nextTick(() => {
+        this.selectRelations.forEach((row) => {
+          dataTable.toggleRowSelection(row);
+        });
+      });
+    },
     // 确认加载选择的关系
     handleSureSelect() {
+      this.selectRelations = this.selectRelations.filter(v => v.count !== 0);
       if (this.selectRelations.length === 0) {
         return this.$message({
           type: 'warning',
           message: '请选择需要查询的关系',
         });
       }
-      const gxIds = this.selectRelations.map((v) => `${v.id}_${v.xtzx}`).join(',');
+      const gxIds = this.selectRelations
+        .map((v) => v.gx)
+        .join(',');
       this.extendRelationship(this.rightClickCellInfo, gxIds);
     },
     // 扩展关系
@@ -348,7 +394,7 @@ export default {
     // 格式化关系方向
     formatterText(obj) {
       return this.linkDirection[obj.xtzx];
-    }
+    },
   },
 };
 </script>
@@ -356,6 +402,11 @@ export default {
 <style lang="scss" scoped>
 .graph-canvas {
   overflow: auto;
+  /deep/ {
+    .el-dialog {
+      margin: 0px auto 0px;
+    }
+  }
 }
 .link-input {
   display: flex;

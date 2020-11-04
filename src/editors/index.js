@@ -310,7 +310,7 @@ class Editors {
     const model = item.get('model');
     if (model.emphasize) {
       model.emphasize = false;
-      this.editors.updateItem(item, model);
+      this.graph.updateItem(item, model);
     }
   }
   // 搜索实体

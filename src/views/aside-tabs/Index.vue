@@ -44,14 +44,7 @@ import { mapGetters } from 'vuex';
 import { debounce } from '@/utils';
 
 export default {
-  components: {
-    Statistical,
-    EntityList,
-    SocialNetwork,
-    EntityProperty,
-    // HistoryFile,
-    // TacticsTask,
-  },
+  components: {},
   data() {
     return {
       tabsList: [

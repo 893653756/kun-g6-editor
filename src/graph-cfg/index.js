@@ -107,7 +107,8 @@ export const graphCfg = {
     labelCfg: {
       autoRotate: true,
       fill: '#000000',
-      fontSize: 12
+      fontSize: 12,
+      refY: 10,
     },
     color: '#b8c3ce',
     style: {

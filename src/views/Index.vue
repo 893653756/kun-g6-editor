@@ -20,7 +20,7 @@
 import HeaderTools from './header-tools/Index.vue';
 import AsideTabs from './aside-tabs/Index.vue';
 import GraphCanvas from './graph-canvas/Index.vue';
-import AsideRight from './aside-right/Index.vue';
+// import AsideRight from './aside-right/Index.vue';
 import * as MutationTypes from '@/store/mutation-types';
 import editors from '@/editors';
 import { getRelationByDxType } from '@/api/headerTools';
@@ -30,11 +30,11 @@ export default {
     HeaderTools,
     AsideTabs,
     GraphCanvas,
-    AsideRight,
+    // AsideRight,
   },
   data() {
     return {
-      showClose: true,
+      showClose: false,
     };
   },
   created() {
@@ -165,6 +165,7 @@ export default {
     &__editors {
       flex: 1;
       position: relative;
+      width: 0px;
     }
   }
 }

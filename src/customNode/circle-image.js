@@ -117,7 +117,8 @@ export default {
         easing: 'easeCubic',
         delay: 0 // 无延迟
       });
-    } else if (cfg.lock) {
+    }
+    if (cfg.lock) {
       // 锁
       const imgWidth = 2 * r - 4;
       const imgHeight = 2 * r - 4;

@@ -6,7 +6,7 @@
     </div>
     <el-menu
       class="entity-list"
-      :default-openeds="['1', '2']"
+      :default-openeds="defaultOpeneds"
       @dragend.native="handleDragEnd"
     >
       <el-submenu
@@ -77,6 +77,9 @@ export default {
   },
   computed: {
     ...mapGetters(['editors', 'entitys']),
+    defaultOpeneds() {
+      return this.entitys.map((_, i) => `${i + 1}`);
+    }
   },
   methods: {
     handleDragEnd(evt) {
@@ -243,13 +246,16 @@ export default {
       width: 100%;
       & > div {
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         flex-direction: column;
         align-items: center;
-        width: 76px;
-        height: 74px;
-        margin-right: 4px;
+        // width: 76px;
+        // height: 74px;
+        width: 65px;
+        height: 88px;
         cursor: move;
+        font-size: 12px;
+        text-align: center;
         &:hover {
           background: rgba(30, 152, 204, 0.15);
           border-radius: 4px;

@@ -18,12 +18,14 @@ export function getMenuList(item) {
   const lockMenu = isLock(item);
   const highlightMenu = isHighlight(item);
   const emphasizeMenu = isEmphasize(item);
+  const urlMenu = isHasUrl(item);
   return `<div class="right-menu__list">
     ${extendMenu}
     ${lockMenu}
     ${highlightMenu}
     ${emphasizeMenu}
     ${deleteMenu}
+    ${urlMenu}
   </div>`;
 };
 
@@ -61,4 +63,17 @@ function isEmphasize(item) {
                 <span data-type="emphasize-${emphasize}">${emphasize ? '取消强调' : '强调'}</span>
               </div>`;
   return str;
+};
+
+/**
+ * 是否有链接
+ */
+function isHasUrl(item) {
+  const cellInfo = item.get('model').cellInfo;
+  if (cellInfo.xqUrl) {
+    return `<div data-type="xqUrl" class="el-icon-s-promotion">
+              <span data-type="xqUrl">链接详情</span>
+            </div>`;
+  }
+  return '';
 }
