@@ -161,9 +161,9 @@
             v-model="saveCfg.description"
           ></el-input>
         </el-form-item>
-        <el-form-item label="保存人" label-width="120px" prop="account">
+        <!-- <el-form-item label="保存人" label-width="120px" prop="account">
           <el-input size="small" v-model="saveCfg.account"></el-input>
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
@@ -201,6 +201,11 @@
           label="关系图描述"
           show-overflow-tooltip
           prop="description"
+        ></el-table-column>
+        <el-table-column
+          label="保存人姓名"
+          show-overflow-tooltip
+          prop="account"
         ></el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer">
@@ -241,15 +246,13 @@ export default {
         dialog: false,
         label: '',
         description: '',
-        account: '',
+        // account: '',
       },
       rules: {
         label: [
           { required: true, message: '请输入关系图名称', trigger: 'blur' },
         ],
-        account: [
-          { required: true, message: '请输入保存人', trigger: 'blur' },
-        ],
+        // account: [{ required: true, message: '请输入保存人', trigger: 'blur' }],
       },
       // 导入
       relationList: {
@@ -420,23 +423,23 @@ export default {
       this.$refs.saveData.validate((valid) => {
         if (valid) {
           const label = this.saveCfg.label.trim();
-          const account = this.saveCfg.account.trim();
-          if (!label || !account) {
+          // const account = this.saveCfg.account.trim();
+          if (!label) {
             return this.$message({
               type: 'warning',
               message: '请输入关系图名称',
-              message: `${!label ? '请输入关系图名称' : '请输入保存人名称'}`,
+              message: '请输入关系图名称',
             });
           }
           const content = this.editors.graph.save();
-          content.nodes = content.nodes.map(v => ({
+          content.nodes = content.nodes.map((v) => ({
             ...v,
-            img: v.cellInfo.type
+            img: v.cellInfo.type,
           }));
           if (content.nodes.length === 0) {
             return this.$message({
               type: 'warning',
-              message: '当前没有数据可保存'
+              message: '当前没有数据可保存',
             });
           }
           this.saveRelation(content);
@@ -449,7 +452,7 @@ export default {
         label: this.saveCfg.label,
         description: this.saveCfg.description,
         content: JSON.stringify(content),
-        account: this.saveCfg.account
+        // account: this.saveCfg.account,
       };
       if (this.saveType === 'save' && this.graphId) {
         payload.id = this.graphId;
@@ -486,6 +489,7 @@ export default {
           description: v.description,
           createTime: v.createTime,
           updateTime: v.updateTime,
+          account: v.account
         }));
       } else {
         this.$message({
@@ -510,10 +514,29 @@ export default {
       const content = JSON.parse(data.content);
       // const content = data.content; // 本地调试用
       if (data.code === 0) {
-        content.nodes = content.nodes.map(v => ({
+        content.nodes = content.nodes.map((v) => ({
           ...v,
-          img: `${window.baseImagePath}/entityImages/${v.cellInfo.type}.png`
+          img: `${window.baseImagePath}/entityImages/${v.cellInfo.type}.png`,
         }));
+        content.edges = content.edges.map((v) => ({
+          ...v,
+          style: {
+            ...v.style,
+            lineWidth: 1,
+          },
+          labelCfg: {
+            autoRotate: true,
+            style: {
+              fontSize: 10,
+              background: {
+                fill: '#ffffff',
+                padding: [1, 1, 1, 1],
+                radius: 2,
+              },
+            },
+          },
+        }));
+        const len = content.nodes.length;
         this.editors.graph.read(content);
       } else {
         this.$message({

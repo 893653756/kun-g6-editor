@@ -5,6 +5,7 @@ export const layoutCfg = {
   // 随机布局
   random: {
     type: 'random',
+    preventOverlap: true,
     // workerEnabled: true,
     label: '随机'
   },
@@ -12,34 +13,46 @@ export const layoutCfg = {
   force: {
     type: 'force',
     preventOverlap: true, // 防止节点重叠
-    linkDistance: 220, // 节点间距
+    linkDistance: 250, // 边长
     nodeStrength: 30,
-    nodeSpacing: 40,
+    nodeSpacing: 50,
+    edgeStrength: 1,
     label: '力导向',
     // workerEnabled: true,
   },
   // 环形布局
-  circular: {
-    type: 'circular',
-    radius: 200,
-    // workerEnabled: true,
-    label: '环形'
+
+  // circular: {
+  //   type: 'circular',
+  //   radius: 200,
+  //   // workerEnabled: true,
+  //   label: '环形'
+  // },
+
+  // 同心圆
+  concentric: {
+    type: 'concentric',
+    label: '同心圆',
+    preventOverlap: true,
+    minNodeSpacing: 50,
+    // equidistant: true,
   },
   // 辐射布局
   radial: {
     type: 'radial',
-    linkDistance: 220,
-    nodeSpacing: 180,
+    unitRadius: 200,
+    nodeSpacing: 200,
+    linkDistance: 200,
     // workerEnabled: true,
     label: '辐射',
-    nodeSpacing: 50,
+
   },
   // 层次布局
   dagre: {
     type: 'dagre',
-    rankdir: 'LR',
-    nodesep: 50,
-    ranksep: 50,
+    rankdir: 'TB',
+    nodesep: 15,
+    ranksep: 30,
     // workerEnabled: true,
     label: '层次'
   },
@@ -56,9 +69,9 @@ export const layoutCfg = {
  * 编辑器初始化配置
  */
 export const graphCfg = {
-  minZoom: 0.5,
-  maxZoom: 2,
   animate: true,
+  minZoom: 0.2,
+  maxZoom: 2,
   layout: layoutCfg.force,
   // 设置为true，启用 redo & undo 栈功能
   enabledStack: true,
@@ -67,33 +80,8 @@ export const graphCfg = {
       'drag-canvas',
       'zoom-canvas',
       'drag-node',
-      {
-        type: 'edge-tooltip', // 边提示框
-        formatText(model) {
-          const source = this.graph.findById(model.source);
-          const target = this.graph.findById(model.target);
-          const sourceInfo = source.get('model').cellInfo;
-          const targetInfo = target.get('model').cellInfo;
-          // console.warn('model', model, source, target);
-          const sourceLabel = Object.entries(sourceInfo.properties)
-          .map((v) => `<span>${v[0]}: ${v[1]}</span>`);
-          const targetLabel = Object.entries(targetInfo.properties)
-          .map((v) => `<span>${v[0]}: ${v[1]}</span>`);
-          // 边提示框文本内容
-          return `
-            <div class='g6-tooltip__box'>
-              <div class='g6-tooltip__box-source'>
-                <h3>源实体</h3>
-                ${sourceLabel.join('')}
-              </div>
-              <div class='g6-tooltip__box-target'>
-                <h3>目标实体</h3>
-                ${targetLabel.join('')}
-              </div>
-            </div>
-          `
-        },
-      }
+      'drag-combo',
+      // 'collapse-expand-combo'
     ],
     addEdge: ['add-edge'],
   },
@@ -106,15 +94,20 @@ export const graphCfg = {
     ],
     labelCfg: {
       autoRotate: true,
-      fill: '#000000',
-      fontSize: 12,
-      refY: 10,
+      style: {
+        fontSize: 10,
+        fill: '#a3b1bf',
+        background: {
+          fill: '#ffffff',
+          padding: [2, 2, 2, 2],
+          radius: 2,
+        },
+      },
     },
-    color: '#b8c3ce',
     style: {
       stroke: '#a3b1bf',
       strokeOpacity: 0.9,
-      lineWidth: 2,
+      lineWidth: 1,
       lineAppendWidth: 8,
       endArrow: true,
       // endArrow: {
@@ -126,11 +119,12 @@ export const graphCfg = {
   edgeStateStyles: {
     selected: {
       stroke: '#FF764A',
-      lineWidth: 3
+      lineWidth: 2
     },
     hove: {
       stroke: '#FF764A',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      lineWidth: 2
     }
   }
 };

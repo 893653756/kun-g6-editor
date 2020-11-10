@@ -6,10 +6,28 @@ import * as MutationTypes from '@/store/mutation-types';
 import { debounce } from '@/utils';
 
 export const bindEventListener = function (graph) {
-  // 移动节点
+  graph.on('node:dragstart', (e) => {
+    const item = e.item;
+    const edges = item.get('edges');
+    const layout = graph.cfg.layout;
+    if (edges.length >= 2 && layout.type === 'force') {
+      graph.layout();
+    }
+    refreshDragedNodePosition(e);
+  });
+  graph.on('node:drag', (e) => {
+    refreshDragedNodePosition(e);
+  });
   graph.on('node:dragend', (e) => {
-    graph._updateMinimap && graph._updateMinimap();
-  })
+    e.item.get('model').fx = null;
+    e.item.get('model').fy = null;
+  });
+  // // 移动节点
+  // graph.on('node:dragend', (e) => {
+  //   graph._updateMinimap && graph._updateMinimap();
+  // })
+  // 滚轮
+  graph.on('wheelzoom', debounce(hiddenLabel, 300));
   // 鼠标进入现实锚点
   graph.on('node:mouseenter', (e) => {
     const item = e.item;
@@ -86,6 +104,8 @@ export const bindEventListener = function (graph) {
       e.model.type = 'circle-image';
     } else if (e.model.__type === 'edge') {
       e.model.itemType = 'edge';
+    } else if (e.model.__type === 'group-node') {
+      e.model.type = 'group-node';
     }
   });
   graph.on('afteradditem', (e) => {
@@ -148,4 +168,37 @@ export const bindEventListener = function (graph) {
   graph.render();
   // 窗口改变重新设置canvas大小
   window.onresize = debounce(graph._changeSize, 250);
+
+  // 隐藏文本节点
+  function hiddenLabel() {
+    const zoom = graph.getZoom();
+    graph.getNodes().forEach(node => {
+      const group = node.getContainer();
+      const label = group.find(ele => ele.get('name') === 'circle-text');
+      if (label) {
+        zoom < 0.8 ? label.hide() : label.show();
+      }
+    });
+    graph.getEdges().forEach(node => {
+      const group = node.getContainer();
+      const label = group.find(ele => ele.get('name') === 'text-shape');
+      // console.warn('label', label);
+      if (label) {
+        if (zoom < 0.6) {
+          label.hide();
+          label.attrs.background.fillOpacity = 0;
+        } else {
+          label.show();
+          label.attrs.background.fillOpacity = 1;
+        }
+      }
+    })
+  }
+};
+
+
+function refreshDragedNodePosition(e) {
+  const model = e.item.get('model');
+  model.fx = e.x;
+  model.fy = e.y;
 }

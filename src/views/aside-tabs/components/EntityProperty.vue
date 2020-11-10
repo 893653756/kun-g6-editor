@@ -102,7 +102,6 @@
     <el-dialog
       title="对象详情"
       :visible.sync="dialogBaseInfoDetail"
-      width="30%"
     >
       <el-table :data="baseInfoDetail" header-row-class-name="header-hidden">
         <el-table-column prop="field" label=""></el-table-column>

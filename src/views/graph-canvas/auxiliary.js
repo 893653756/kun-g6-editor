@@ -2,8 +2,10 @@
  * 一些辅助功能
  */
 export function getMenuList(item) {
+  const type = item.get('model').type;
+  // console.warn('item', item);
   // 扩展一层
-  const extendMenu = `<div data-type="extend-relation" class="kf-icon-full-screen">
+  let extendMenu = `<div data-type="extend-relation" class="kf-icon-full-screen">
     <span data-type="extend-relation">扩展一层</span>
   </div>`;
   // 删除
@@ -18,9 +20,21 @@ export function getMenuList(item) {
   const lockMenu = isLock(item);
   const highlightMenu = isHighlight(item);
   const emphasizeMenu = isEmphasize(item);
+  if (type === 'group-node') {
+    extendMenu = extendGroupNode(item);
+    return `<div class="right-menu__list">
+      ${extendMenu}
+      ${lockMenu}
+      ${highlightMenu}
+      ${emphasizeMenu}
+    </div>`;
+  }
   const urlMenu = isHasUrl(item);
+  // 展开 | 收缩
+  const leafNode = hasLeafNode(item);
   return `<div class="right-menu__list">
     ${extendMenu}
+    ${leafNode}
     ${lockMenu}
     ${highlightMenu}
     ${emphasizeMenu}
@@ -76,4 +90,70 @@ function isHasUrl(item) {
             </div>`;
   }
   return '';
-}
+};
+
+/**
+ * 收拢的叶子节点
+ */
+function hasLeafNode(item) {
+  const leafObj = {};
+  const id = item.get('id');
+  const edges = item.get('edges') || [];
+  edges.forEach(edge => {
+    const source = edge.getSource();
+    const target = edge.getTarget();
+    if (source.get('id') !== id) {
+      if (source.get('type') !== 'node') {
+        return;
+      }
+      if (source.get('edges').length === 1) {
+        const model = edge.get('model');
+        const cellInfo = model.cellInfo;
+        leafObj[cellInfo.id] ?
+          leafObj[cellInfo.id].leafNode.push(source.get('id')) : leafObj[cellInfo.id] = {
+            label: cellInfo.label,
+            leafNode: [source.get('id')],
+            gxId: cellInfo.id,
+            img: source.get('model').cellInfo.type,
+          };
+      }
+    } else {
+      if (target.get('type') !== 'node') {
+        return;
+      }
+      if (target.get('edges').length === 1) {
+        const model = edge.get('model');
+        const cellInfo = model.cellInfo;
+        leafObj[cellInfo.id] ?
+          leafObj[cellInfo.id].leafNode.push(target.get('id')) : leafObj[cellInfo.id] = {
+            label: cellInfo.label,
+            leafNode: [target.get('id')],
+            gxId: cellInfo.id,
+            img: target.get('model').cellInfo.type,
+          };
+      }
+    }
+  });
+  const nodeList = Object.values(leafObj).filter(v => v.leafNode.length > 1);
+  if (nodeList.length === 0) {
+    return '';
+  }
+  return `<div data-type="leaf-node" class="el-icon-plus">
+            <span data-type="leaf-node">收缩叶子节点</span>
+            <i data-type="leaf-node" class="el-icon-arrow-right" style="float:right"></i>
+            <div class="second-menu">
+              ${nodeList.map(v => {
+                return `<div data-type="leaf-node_${v.label}" data-value="${v.leafNode.join(',')}" data-gxid="${v.gxId}" data-img="${v.img}">${v.label}</div>`
+              }).join('')}
+            </div>
+          </div>`;
+};
+
+/**
+ * 展开集合节点
+ */
+function extendGroupNode(item) {
+  return `<div data-type="extend-group" class="el-icon-s-promotion">
+            <span data-type="extend-group">展开</span>
+          </div>`;
+};

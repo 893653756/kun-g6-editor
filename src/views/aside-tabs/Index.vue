@@ -5,7 +5,7 @@
         v-for="item of tabsList"
         :key="item.id"
         @click="handleChangeTab(item)"
-        :class="{activeItem: activeId == item.id}"
+        :class="{ activeItem: activeId == item.id }"
         :title="item.title"
       >
         <span :class="item.icon"></span>
@@ -48,10 +48,10 @@ export default {
   data() {
     return {
       tabsList: [
-        // 统计分析
-        { icon: 'kf-icon-workspace', id: 'workspace', comp: Statistical },
         // 实体创建
         { icon: 'kf-icon-data-sets', id: 'entity', comp: EntityList },
+        // 统计分析
+        { icon: 'kf-icon-workspace', id: 'workspace', comp: Statistical },
         // { icon: 'kf-icon-dic-standard', id: 'standard' },
         // 社会网络分析
         { icon: 'kf-icon-report', id: 'report', comp: SocialNetwork },
@@ -79,10 +79,13 @@ export default {
     this.animationCB = debounce(this.animationEnd, 500).bind(this);
   },
   mounted() {
-    this.bindListener()
+    this.bindListener();
   },
   beforeDestroy() {
-    this.$refs['panel'].removeEventListener('webkitTransitionEnd', this.animationCB);
+    this.$refs['panel'].removeEventListener(
+      'webkitTransitionEnd',
+      this.animationCB
+    );
   },
   computed: {
     ...mapGetters(['editors']),
@@ -90,7 +93,10 @@ export default {
   methods: {
     // 绑定动画结束事件
     bindListener() {
-      this.$refs['panel'].addEventListener('webkitTransitionEnd', this.animationCB);
+      this.$refs['panel'].addEventListener(
+        'webkitTransitionEnd',
+        this.animationCB
+      );
     },
     animationEnd() {
       this.editors && this.editors.graph._changeSize();
@@ -177,7 +183,7 @@ export default {
         width: 44px;
         height: 28px;
         position: absolute;
-        background: #67C23A;
+        background: #67c23a;
         left: 0px;
         top: -12px;
         transform: rotate(45deg);

@@ -179,6 +179,7 @@ export default {
       }
       this.handleCreateEdge.cellInfo = cellInfo;
       this.editors.addEdge(this.handleCreateEdge);
+      this.radioLink = '';
       this.handleDialogClose();
     },
     // 初始化插件
@@ -187,7 +188,7 @@ export default {
       // 工具条
       // const toolbar = new G6.ToolBar();
       // 背景网格
-      const grid = new G6.Grid();
+      // const grid = new G6.Grid();
       // 右键菜单
       const menu = new G6.Menu({
         offsetX: 6,
@@ -199,13 +200,18 @@ export default {
           return getMenuList(e.item);
         },
         handleMenuClick(target, item) {
-          const { type } = target.dataset;
+          const { type, value, gxid, img } = target.dataset;
+          const extendsObj = {
+            leafNodeIds: value,
+            gxid: gxid,
+            img,
+          };
           // console.warn('type:', type);
-          self.handleMenuCB(type, item);
+          self.handleMenuCB(type, item, extendsObj);
         },
       });
       // return [grid, menu, toolbar];
-      return [grid, menu];
+      return [menu];
     },
     initGraphSuccess() {
       this.graph._addEdge = (model) => {
@@ -252,28 +258,100 @@ export default {
       }
     },
     // 右键菜单回调
-    handleMenuCB(type, item) {
+    handleMenuCB(type, item, extendsObj) {
+      if (type === 'leaf-node') {
+        return;
+      }
       // 扩展一层
+      let str;
       if (type === 'extend-relation') {
         this.openRelationBox(item);
       } else if (type === 'delete') {
         this.editors.removeItem(item);
       } else if (type.includes('lock')) {
-        const str = type.split('-')[1];
+        str = type.split('-')[1];
         str === 'true'
           ? this.editors.unLockItem(item)
           : this.editors.lockItem(item);
       } else if (type.includes('highlight')) {
-        const str = type.split('-')[1];
-        this.graph.setItemState(item, 'selected', !!str);
+        str = type.split('-')[1];
+        str === 'true'
+          ? this.graph.setItemState(item, 'selected', false)
+          : this.graph.setItemState(item, 'selected', true);
       } else if (type.includes('emphasize')) {
-        const str = type.split('-')[1];
+        str = type.split('-')[1];
         str === 'true'
           ? this.editors.unEmphasizeItem(item)
           : this.editors.emphasizeItem(item);
       } else if (type === 'xqUrl') {
         this.openWindow(item);
+      } else if (type.includes('leaf-node')) {
+        this.collapseExpandLeafNode(type, item, extendsObj);
+      } else if (type === 'extend-group') {
+        // 展开组
+        this.extendGroupNode(item);
       }
+    },
+    // 展开组
+    extendGroupNode(item) {
+      const leafNodesInfo = item.get('model').leafNodesInfo;
+      this.graph.removeItem(item);
+      leafNodesInfo.forEach((v) => {
+        this.graph.add('node', v.nodeModel);
+        this.graph.add('edge', v.edgeModel);
+      });
+    },
+    // 收缩叶子节点
+    collapseExpandLeafNode(type, item, extendsObj) {
+      // 保存节点数据
+      let x;
+      let y;
+      const idList = extendsObj.leafNodeIds.split(',');
+      const leafNodesInfo = idList.map((v) => {
+        const item = this.graph.findById(v);
+        const nodeModel = item.get('model');
+        x = nodeModel.x;
+        y = nodeModel.y;
+        const edges = item.get('edges')[0];
+        const edgeModel = edges.get('model');
+        return {
+          nodeModel,
+          edgeModel
+        };
+      });
+      idList.forEach((v) => {
+        this.graph.removeItem(v);
+      });
+      const id = `${item.get('id')}_${extendsObj.gxid}`;
+      const label = type.split('_')[1];
+      const model = {
+        x,
+        y,
+        id: id,
+        type: 'group-node',
+        cellInfo: {
+          label: '',
+          type: extendsObj.img,
+          id: id,
+        },
+        leafNodesInfo,
+        img: `${window.baseImagePath}/entityImages/${extendsObj.img}.png`,
+        label: '',
+      };
+      this.graph.add('node', model, true);
+      // 添加线
+      const edgeModel = {
+        id: `${item.get('id')}_${extendsObj.gxid}-edge`,
+        label: `${label} (${idList.length})`,
+        source: item.get('id'),
+        target: `${item.get('id')}_${extendsObj.gxid}`,
+        cellInfo: {
+          id: extendsObj.gxid,
+        },
+        type: 'line',
+        itemType: 'edge',
+      };
+      this.graph.add('edge', edgeModel);
     },
     // 打开连接窗口
     openWindow(item) {
@@ -314,7 +392,7 @@ export default {
           this.dialogLinkList = true;
           this.$nextTick(() => {
             this.selectSX();
-          })
+          });
         } else {
           this.$message({
             type: 'warning',
@@ -322,7 +400,7 @@ export default {
           });
         }
       } else {
-        this.extendRelationship(cellInfo);
+        this.extendRelationship(cellInfo, cellInfo.gxId);
       }
     },
     // 默认选中双向关系
@@ -346,16 +424,14 @@ export default {
     },
     // 确认加载选择的关系
     handleSureSelect() {
-      this.selectRelations = this.selectRelations.filter(v => v.count !== 0);
+      this.selectRelations = this.selectRelations.filter((v) => v.count !== 0);
       if (this.selectRelations.length === 0) {
         return this.$message({
           type: 'warning',
           message: '请选择需要查询的关系',
         });
       }
-      const gxIds = this.selectRelations
-        .map((v) => v.gx)
-        .join(',');
+      const gxIds = this.selectRelations.map((v) => v.gx).join(',');
       this.extendRelationship(this.rightClickCellInfo, gxIds);
     },
     // 扩展关系

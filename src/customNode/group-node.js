@@ -54,7 +54,7 @@ export default {
       group.addShape('text', {
         attrs: {
           id: 'text' + cfg.id,
-          text: cfg.label,
+          text: cfg.label + '组',
           fontSize: 11,
           y: r + 1,
           textAlign: 'center',
@@ -65,28 +65,6 @@ export default {
         draggable: true,
       })
     }
-    // 添加锚点
-    const anchorPoints = cfg.anchorPoints || [
-      [0.5, 0], [1, 0.5], [0.5, 1], [0, 0.5]
-    ];
-    // 锚点
-    anchorPoints.forEach((point, index) => {
-      const x = 2 * r * point[0] - r;
-      const y = 2 * r * point[1] - r;
-      group.addShape('circle', {
-        attrs: {
-          id: `circle-${index}-${cfg.id}`,
-          r: 3,
-          x: x,
-          y: y,
-          isAnchor: true,
-          fill: "#eeeeee",
-          stroke: '#1890ff',
-          opacity: 0,
-          cursor: 'crosshair'
-        }
-      })
-    })
     return keyShape;
   },
   afterDraw(cfg, group) {
@@ -134,45 +112,10 @@ export default {
         name: 'lock-image',
       });
     }
-    // 下一层节点数 nextEntitiesNumber
-    const { nextEntitiesNumber = 0, nextCustomNodes = 0 } = cfg.cellInfo;
-    const total = nextEntitiesNumber + nextCustomNodes;
-    if (total > 0) {
-      group.addShape('circle', {
-        attrs: {
-          r: 8,
-          x: r - 12,
-          y: -(r - 12),
-          fill: '#67C23A',
-        },
-        name: 'nextEntitiesNumber-circle'
-      })
-      group.addShape('text', {
-        attrs: {
-          x: r - 13,
-          y: -(r - 13),
-          id: 'nextEntitiesNumber' + cfg.id,
-          text: total,
-          fontSize: 12,
-          textAlign: 'center',
-          textBaseline: 'middle',
-          fill: '#ffffff',
-        },
-        name: 'nextEntitiesNumber-text'
-      });
-    }
   },
   // 状态改变
   setState(name, value, item) {
     const group = item.getContainer();
-    const circles = group.findAll(c => c.attrs.isAnchor);
-    // 锚点显示隐藏
-    function circlesOpacity(value) {
-      const val = value ? 1 : 0;
-      circles.forEach(c => {
-        c.attr('opacity', val);
-      })
-    }
     // 选择变换背景色
     function selectedFill(value) {
       const shape = group.get("children")[0];
@@ -190,9 +133,7 @@ export default {
       const color = value ? '#FF764A' : '#ffffff';
       shape.attr('stroke', color);
     }
-    if (name === 'hover') {
-      circlesOpacity(value);
-    } else if (name === 'selected') {
+    if (name === 'selected') {
       selectedFill(value);
     } else if (name === 'click') {
       addStroke(value)

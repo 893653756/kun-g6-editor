@@ -7,6 +7,7 @@ const apiClues = process.env.NODE_ENV === 'development' ? '/api-elyp' : '';
 export function getCellRelationList(linkIds) {
   return request.get(`${apiClues}/entities/links/findLinks?linkIds=${linkIds}`);
 };
+
 /**
  * 查询关系 (暂时没用)
  * @param startDxId 起始节点对象id
@@ -25,7 +26,6 @@ export function fetchCellRelationshipNode({ startDxId, params = {} }) {
 export function getAllRelation({ tableName, params = {} }) {
   return request.post(`${apiClues}/entities/links/findByTabId/${tableName}`, params);
 };
-
 
 /**
  * 点击编显示关系详情

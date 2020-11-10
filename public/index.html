@@ -58,14 +58,41 @@
       flex-direction: column;
       cursor: pointer;
     }
+
     .right-menu__list div {
       padding: 8px 10px;
+      position: relative;
     }
+
     .right-menu__list div > span {
       margin-left: 10px;
     }
 
-    .right-menu__list div:hover {
+    .right-menu__list > div:hover {
+      color: #000;
+      background: rgba(0, 0, 0, .1);
+    }
+
+    .right-menu__list > div:hover .second-menu {
+      visibility: visible;
+    }
+
+    .right-menu__list .second-menu {
+      position: absolute;
+      left: 100%;
+      width: 100%;
+      top: 0px;
+      visibility: hidden;
+      border: 1px solid #e2e2e2;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #545454;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 4px 1px;
+      box-shadow: rgb(174, 174, 174) 0px 0px 10px;
+      min-width: 150px;
+    }
+    .second-menu > div:hover {
       color: #000;
       background: rgba(0, 0, 0, .1);
     }
@@ -86,7 +113,7 @@
       flex-direction: column;
     }
 
-    .g6-tooltip__box-source {
+    /* .g6-tooltip__box-source {
       display: flex;
       flex-direction: column;
     }
@@ -94,7 +121,7 @@
       margin-top: 16px;
       display: flex;
       flex-direction: column;
-    }
+    } */
   </style>
   <!-- 你们需要注释掉 -->
   <script src="./js/requestPath.js"></script>
