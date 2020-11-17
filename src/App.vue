@@ -29,13 +29,13 @@ export default {
       }
     }
     .el-dialog__header {
-      padding: 10px 10px 10px 10px;
+      padding: 20px 10px 10px 20px;
       .el-dialog__headerbtn {
         top: 6px;
       }
     }
     .el-dialog__body {
-      padding: 10px 10px 20px 10px;
+      padding: 20px 10px 20px 20px;
     }
     .el-table {
       td,

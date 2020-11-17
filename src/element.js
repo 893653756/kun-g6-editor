@@ -16,7 +16,8 @@ import {
   DropdownMenu,
   Select,
   Option,
-  Message
+  Message,
+  Loading,
 } from 'element-ui';
 
 const elementComp = [
@@ -41,5 +42,6 @@ const elementComp = [
 elementComp.forEach(v => {
   Vue.use(v);
 });
-
+Vue.use(Loading.directive);
 Vue.prototype.$message = Message;
+Vue.prototype.$loading = Loading.service;

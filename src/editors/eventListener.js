@@ -118,25 +118,27 @@ export const bindEventListener = function (graph) {
     // console.warn('afterremoveitem');
     countCB();
   });
+  // 显示隐藏节点调用
+  graph.on('afteritemvisibilitychange', () => {
+    countCB();
+  })
   // 计算节点数量
   function countNodeAddEdge() {
     const nodes = {};
     const edges = {};
     // 计算画布节点类型数量
-    graph.findAll('node', (n) => {
-      const item = n.get('model').cellInfo;
-      if (!item) {
-        return;
-      }
-      if (!nodes[item.dxId]) {
-        nodes[item.dxId] = {
-          label: item.label,
-          dxId: item.dxId,
+    const nodeList = graph.getNodes().filter(v => v.isVisible());
+    nodeList.forEach(item => {
+      const cellInfo = item.get('model').cellInfo;
+      if (!nodes[cellInfo.dxId]) {
+        nodes[cellInfo.dxId] = {
+          label: cellInfo.label,
+          dxId: cellInfo.dxId,
           count: 1,
-          icon: item.type,
+          icon: cellInfo.icon,
         };
       } else {
-        nodes[item.dxId].count += 1;
+        nodes[cellInfo.dxId].count += 1;
       }
     });
     store.commit(
@@ -144,19 +146,17 @@ export const bindEventListener = function (graph) {
       Object.values(nodes)
     );
     // 计算画布边类型数量
-    graph.findAll('edge', (n) => {
-      const item = n.get('model').cellInfo;
-      if (!item) {
-        return;
-      }
-      if (!edges[item.id]) {
-        edges[item.id] = {
-          label: item.label,
+    const edgesList = graph.getEdges().filter(v => v.isVisible());
+    edgesList.forEach(item => {
+      const cellInfo = item.get('model').cellInfo;
+      if (!edges[cellInfo.id]) {
+        edges[cellInfo.id] = {
+          label: cellInfo.label,
           count: 1,
-          linkId: item.id,
+          linkId: cellInfo.id,
         };
       } else {
-        edges[item.id].count += 1;
+        edges[cellInfo.id].count += 1;
       }
     });
     store.commit(
@@ -176,7 +176,7 @@ export const bindEventListener = function (graph) {
       const group = node.getContainer();
       const label = group.find(ele => ele.get('name') === 'circle-text');
       if (label) {
-        zoom < 0.8 ? label.hide() : label.show();
+        zoom < 0.85 ? label.hide() : label.show();
       }
     });
     graph.getEdges().forEach(node => {
@@ -184,7 +184,7 @@ export const bindEventListener = function (graph) {
       const label = group.find(ele => ele.get('name') === 'text-shape');
       // console.warn('label', label);
       if (label) {
-        if (zoom < 0.6) {
+        if (zoom < 0.65) {
           label.hide();
           label.attrs.background.fillOpacity = 0;
         } else {

@@ -80,7 +80,7 @@ export const graphCfg = {
       'drag-canvas',
       'zoom-canvas',
       'drag-node',
-      'drag-combo',
+      // 'drag-combo',
       // 'collapse-expand-combo'
     ],
     addEdge: ['add-edge'],
@@ -96,7 +96,7 @@ export const graphCfg = {
       autoRotate: true,
       style: {
         fontSize: 10,
-        fill: '#a3b1bf',
+        fill: '#000000',
         background: {
           fill: '#ffffff',
           padding: [2, 2, 2, 2],

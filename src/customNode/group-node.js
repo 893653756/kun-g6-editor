@@ -1,5 +1,5 @@
 /**
- * 图片, 文本, 锚点
+ * 图片, 文本
  */
 
 export default {
@@ -14,7 +14,6 @@ export default {
     }
   },
   draw(cfg, group) {
-    // console.warn('cfg', cfg);
     const r = this.getSize(cfg);
     cfg.itemType = 'node';
     cfg.__type = cfg.type;
@@ -49,22 +48,32 @@ export default {
       name: 'circle-image',
       draggable: true,
     });
+    // 添加组标签
+    group.addShape('circle', {
+      attrs: {
+        id: 'group-bg' + cfg.id,
+        r: 8,
+        x: -r / 2,
+        y: -r / 2,
+        fill: '#67C23A',//此处必须有fill 不然不能触发事件
+      },
+      name: 'group-bg',
+      draggable: true,
+    });
+    const rr = 10;
+    group.addShape('image', {
+      attrs: {
+        id: 'group-icon' + cfg.id,
+        x: -(r / 2 + rr / 2),
+        y: -(r / 2 + rr / 2),
+        width: rr,
+        height: rr,
+        img: `${window.baseImagePath}/entityImages/group-icon.png`,
+      },
+      name: 'group-icon',
+      draggable: true,
+    });
     // 添加文本
-    if (cfg.label) {
-      group.addShape('text', {
-        attrs: {
-          id: 'text' + cfg.id,
-          text: cfg.label + '组',
-          fontSize: 11,
-          y: r + 1,
-          textAlign: 'center',
-          fill: '#000000',
-          textBaseline: 'top'
-        },
-        name: 'circle-text',
-        draggable: true,
-      })
-    }
     return keyShape;
   },
   afterDraw(cfg, group) {

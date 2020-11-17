@@ -21,7 +21,11 @@
         @selection-change="handleSelectionEntity"
         row-key="id"
       >
-        <el-table-column type="selection" width="30" :reserve-selection="true"></el-table-column>
+        <el-table-column
+          type="selection"
+          width="30"
+          :reserve-selection="true"
+        ></el-table-column>
         <el-table-column label="对象名称" show-overflow-tooltip>
           <template slot-scope="{ row }">
             <div class="img-field">
@@ -57,13 +61,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(['hasEntitys', 'editors']),
+    ...mapGetters(['editors']),
     allEntitys() {
       const arr = [];
       if (!this.editors) {
         return arr;
       }
-      this.editors.graph.findAll('node', (node) => {
+      const nodeList = this.editors.graph
+        .getNodes()
+        .filter((v) => v.isVisible());
+      nodeList.forEach((node) => {
         const id = node.get('id');
         const item = node.get('model').cellInfo;
         arr.push({
@@ -82,7 +89,7 @@ export default {
       this.editors.setItemBackground({
         selectType: 'node',
         selectIds: select,
-        idType: 'id'
+        idType: 'id',
       });
     },
   },
@@ -92,7 +99,7 @@ export default {
     graph.findAll('node', (node) => {
       graph.setItemState(node, 'selected', false);
     });
-  }
+  },
 };
 </script>
 

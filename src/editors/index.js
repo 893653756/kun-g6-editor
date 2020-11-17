@@ -16,7 +16,7 @@ class Editors {
     const label = Object.entries(cellInfo.properties)
       .map((v) => `${v[1]}`)
       .join('\n');
-    model.img = `${window.baseImagePath}/entityImages/${cellInfo.type}.png`;
+    model.img = `${window.baseImagePath}/entityImages/${cellInfo.icon}.png`;
     model.label = label;
     model.id = cellInfo.id;
     if (cellInfo.custom) {
@@ -178,7 +178,7 @@ class Editors {
       const label = Object.entries(item.properties)
         .map((v) => `${v[1]}`)
         .join('\n');
-      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
+      const img = `${window.baseImagePath}/entityImages/${item.icon}.png`;
       return {
         id: item.id,
         label,
@@ -208,12 +208,16 @@ class Editors {
     this.graph.render();
   }
   // 扩展关系
-  extendRelation({ entities, links }) {
+  extendRelation(leafNodesInfo = [], { entities, links }) {
     let flag = false;
     // 节点
     entities.forEach(item => {
       // 查找时候已有该节点
-      const node = this.graph.findById(item.id);
+      let node = this.graph.findById(item.id);
+      if (node) {
+        return;
+      }
+      node = leafNodesInfo.find(v => item.id === v.nodeModel.id);
       if (node) {
         return;
       }
@@ -221,7 +225,7 @@ class Editors {
       const label = Object.entries(item.properties)
         .map((v) => `${v[1]}`)
         .join('\n');
-      const img = `${window.baseImagePath}/entityImages/${item.type}.png`;
+      const img = `${window.baseImagePath}/entityImages/${item.icon}.png`;
       const model = {
         id: item.id,
         label,
@@ -235,6 +239,11 @@ class Editors {
     links.forEach(item => {
       const { sourceEntityId, targetEntityId, label, properties } = item;
       const id = sourceEntityId + '-' + targetEntityId;
+      const source = this.graph.findById(sourceEntityId);
+      const target = this.graph.findById(targetEntityId);
+      if (!source || !target) {
+        return;
+      }
       const edge = this.graph.findById(id);
       if (edge) {
         return;

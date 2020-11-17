@@ -9,7 +9,7 @@
       <div class="entity-property__base-title">
         <div>基本信息</div>
         <div @click="handleClickBaseTitle">
-          <span class="kf-icon-edit" data-type="change-info"></span>
+          <!-- <span class="kf-icon-edit" data-type="change-info"></span> -->
           <!-- <span class="kf-icon-share"></span>
           <span class="kf-icon-steel-industry"></span>
           <span class="kf-icon-lock"></span>
@@ -77,27 +77,6 @@
       </el-submenu>
     </el-menu>
 
-    <!-- 发生次数关系 -->
-    <!-- <el-menu class="entity-property__count">
-      <el-submenu index="1">
-        <template slot="title">
-          <span class="entity-property__count-title">关系发生次数(5)</span>
-        </template>
-        <div style="margin-top: 8px">
-          <div class="entity-property__count-filter">
-            <el-input size="mini"></el-input>
-            <div>≤次数≤</div>
-            <el-input size="mini"></el-input>
-            <el-button size="mini" type="primary" icon="el-icon-search">查询</el-button>
-          </div>
-          <el-table :data="linkRelationship" stripe border header-cell-class-name="table-title">
-            <el-table-column type="selection" width="40"></el-table-column>
-            <el-table-column label="关系发生次数"></el-table-column>
-            <el-table-column label="计数"></el-table-column>
-          </el-table>
-        </div>
-      </el-submenu>
-    </el-menu> -->
     <!-- 详情弹框 -->
     <el-dialog
       title="对象详情"
@@ -178,7 +157,7 @@ export default {
       if (Object.values(this.selectNodeInfo).length === 0) {
         return [];
       }
-      const edges = this.selectNodeInfo.get('edges');
+      const edges = this.selectNodeInfo.get('edges').filter(v => v.isVisible());
       const obj = {};
       edges.forEach((v) => {
         const cellInfo = v.get('model').cellInfo;
@@ -280,13 +259,13 @@ export default {
   }
   &__links {
     border-right: none;
-    /deep/ {
-      .el-submenu__title {
-        line-height: 28px;
-        height: 28px;
-        padding: 0px !important;
-      }
-    }
+    // /deep/ {
+    //   .el-submenu__title {
+    //     line-height: 28px;
+    //     height: 28px;
+    //     padding: 0px !important;
+    //   }
+    // }
     margin-top: 6px;
     &-title {
       line-height: 28px;
@@ -300,52 +279,6 @@ export default {
       }
       margin-bottom: 6px;
     }
-    /deep/ {
-      .table-title {
-        background: #e1e1e1;
-        padding: 4px 0;
-      }
-    }
   }
-  // &__count {
-  //   border-right: none;
-  //   /deep/ {
-  //     .el-submenu__title {
-  //       line-height: 28px;
-  //       height: 28px;
-  //       padding: 0px !important;
-  //     }
-  //   }
-  //   margin-top: 6px;
-  //   &-title {
-  //     line-height: 28px;
-  //     background-color: #f7f7f7;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: space-between;
-  //     padding-left: 14px;
-  //     & span {
-  //       margin-right: 10px;
-  //     }
-  //     margin-bottom: 6px;
-  //   }
-  //   &-filter {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     & div {
-  //       flex: 1;
-  //       &:nth-child(2n -1) {
-  //         margin: 0 3px;
-  //       }
-  //     }
-  //     margin-bottom: 10px;
-  //   }
-  //   /deep/ {
-  //     .table-title {
-  //       background: #e1e1e1;
-  //     }
-  //   }
-  // }
 }
 </style>

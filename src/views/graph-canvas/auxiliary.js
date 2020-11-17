@@ -1,5 +1,7 @@
+import store from '@/store/index';
+import * as MutationTypes from '@/store/mutation-types';
 /**
- * 一些辅助功能
+ * 右键菜单
  */
 export function getMenuList(item) {
   const type = item.get('model').type;
@@ -20,10 +22,12 @@ export function getMenuList(item) {
   const lockMenu = isLock(item);
   const highlightMenu = isHighlight(item);
   const emphasizeMenu = isEmphasize(item);
+  const hiddenMenu = hiddenNode(item);
   if (type === 'group-node') {
     extendMenu = extendGroupNode(item);
     return `<div class="right-menu__list">
       ${extendMenu}
+      ${hiddenMenu}
       ${lockMenu}
       ${highlightMenu}
       ${emphasizeMenu}
@@ -31,10 +35,11 @@ export function getMenuList(item) {
   }
   const urlMenu = isHasUrl(item);
   // 展开 | 收缩
-  const leafNode = hasLeafNode(item);
+  const leafNodesMenu = hasLeafNode(item);
   return `<div class="right-menu__list">
     ${extendMenu}
-    ${leafNode}
+    ${leafNodesMenu}
+    ${hiddenMenu}
     ${lockMenu}
     ${highlightMenu}
     ${emphasizeMenu}
@@ -110,11 +115,11 @@ function hasLeafNode(item) {
         const model = edge.get('model');
         const cellInfo = model.cellInfo;
         leafObj[cellInfo.id] ?
-          leafObj[cellInfo.id].leafNode.push(source.get('id')) : leafObj[cellInfo.id] = {
+          leafObj[cellInfo.id].leafNodes.push(source.get('id')) : leafObj[cellInfo.id] = {
             label: cellInfo.label,
-            leafNode: [source.get('id')],
+            leafNodes: [source.get('id')],
             gxId: cellInfo.id,
-            img: source.get('model').cellInfo.type,
+            img: source.get('model').cellInfo.icon,
           };
       }
     } else {
@@ -125,25 +130,27 @@ function hasLeafNode(item) {
         const model = edge.get('model');
         const cellInfo = model.cellInfo;
         leafObj[cellInfo.id] ?
-          leafObj[cellInfo.id].leafNode.push(target.get('id')) : leafObj[cellInfo.id] = {
+          leafObj[cellInfo.id].leafNodes.push(target.get('id')) : leafObj[cellInfo.id] = {
             label: cellInfo.label,
-            leafNode: [target.get('id')],
+            leafNodes: [target.get('id')],
             gxId: cellInfo.id,
-            img: target.get('model').cellInfo.type,
+            img: target.get('model').cellInfo.icon,
           };
       }
     }
   });
-  const nodeList = Object.values(leafObj).filter(v => v.leafNode.length > 1);
+  const nodeList = Object.values(leafObj).filter(v => v.leafNodes.length > 1);
+  store.commit(MutationTypes.SET_LEAF_NODE, nodeList);
   if (nodeList.length === 0) {
     return '';
   }
-  return `<div data-type="leaf-node" class="el-icon-plus">
-            <span data-type="leaf-node">收缩叶子节点</span>
-            <i data-type="leaf-node" class="el-icon-arrow-right" style="float:right"></i>
+  return `<div data-type="sub-menu" class="el-icon-plus">
+            <span data-type="sub-menu">收缩叶子节点</span>
+            <i data-type="sub-menu" class="el-icon-arrow-right" style="float:right"></i>
             <div class="second-menu">
+              <div data-type="leaf-node_all" data-value="all">全部</div>
               ${nodeList.map(v => {
-                return `<div data-type="leaf-node_${v.label}" data-value="${v.leafNode.join(',')}" data-gxid="${v.gxId}" data-img="${v.img}">${v.label}</div>`
+                return `<div data-type="leaf-node_${v.label}" data-value="${v.gxId}">${v.label}</div>`
               }).join('')}
             </div>
           </div>`;
@@ -155,5 +162,20 @@ function hasLeafNode(item) {
 function extendGroupNode(item) {
   return `<div data-type="extend-group" class="el-icon-s-promotion">
             <span data-type="extend-group">展开</span>
+          </div>`;
+};
+
+/**
+ * 隐藏节点
+ */
+function hiddenNode() {
+  return `<div data-type="hidden-node-self" class="el-icon-s-promotion">
+            <span data-type="hidden-node-self">隐藏节点</span>
+          </div>
+          <div data-type="hidden-node-children" class="el-icon-s-promotion">
+            <span data-type="hidden-node-children">隐藏子节点</span>
+          </div>
+          <div data-type="show-node-children" class="el-icon-view">
+            <span data-type="show-node-children">显示子节点</span>
           </div>`;
 };

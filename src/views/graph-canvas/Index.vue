@@ -38,6 +38,7 @@
         height="370"
         @selection-change="handleSelectionRela"
         ref="dataTable"
+        v-loading="loading"
       >
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column label="关系类型" prop="gxMc"></el-table-column>
@@ -51,7 +52,11 @@
       </el-table>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleDialogClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="handleSureSelect"
+        <el-button
+          size="small"
+          :loading="btnLoading"
+          type="primary"
+          @click="handleSureSelect"
           >确 定</el-button
         >
       </div>
@@ -98,6 +103,8 @@ export default {
       linksBetweenEntity: [], // 可建立的关系列表
       cellRelationList: [], // 节点所有有关系
       radioLink: '',
+      loading: false,
+      btnLoading: false,
     };
   },
   created() {
@@ -112,7 +119,7 @@ export default {
     this.initGraph();
   },
   computed: {
-    ...mapGetters(['editors']),
+    ...mapGetters(['editors', 'leafNodeList']),
   },
   methods: {
     // 初始化编辑器容器
@@ -200,14 +207,8 @@ export default {
           return getMenuList(e.item);
         },
         handleMenuClick(target, item) {
-          const { type, value, gxid, img } = target.dataset;
-          const extendsObj = {
-            leafNodeIds: value,
-            gxid: gxid,
-            img,
-          };
-          // console.warn('type:', type);
-          self.handleMenuCB(type, item, extendsObj);
+          const { type, value } = target.dataset;
+          self.handleMenuCB(type, item, value);
         },
       });
       // return [grid, menu, toolbar];
@@ -258,11 +259,10 @@ export default {
       }
     },
     // 右键菜单回调
-    handleMenuCB(type, item, extendsObj) {
-      if (type === 'leaf-node') {
+    handleMenuCB(type, item, value) {
+      if (type === 'sub-menu') {
         return;
       }
-      // 扩展一层
       let str;
       if (type === 'extend-relation') {
         this.openRelationBox(item);
@@ -286,10 +286,41 @@ export default {
       } else if (type === 'xqUrl') {
         this.openWindow(item);
       } else if (type.includes('leaf-node')) {
-        this.collapseExpandLeafNode(type, item, extendsObj);
+        if (value === 'all') {
+          this.leafNodeList.forEach((v) => {
+            this.collapseExpandLeafNode(item, v);
+          });
+        } else {
+          const extendsObj = this.leafNodeList.find(
+            (item) => item.gxId === value
+          );
+          this.collapseExpandLeafNode(item, extendsObj);
+        }
       } else if (type === 'extend-group') {
         // 展开组
         this.extendGroupNode(item);
+      } else if (type.includes('hidden-node') || type.includes('show-node')) {
+        // 隐藏节点
+        this.handleShowHiddenNode(type, item);
+      }
+    },
+    // 隐藏显示节点
+    handleShowHiddenNode(type, item) {
+      if (type === 'hidden-node-self') {
+        this.graph.hideItem(item);
+      } else if (type === 'hidden-node-children') {
+        // 隐藏所有字节的
+        const edges = item.getOutEdges();
+        edges.forEach((e) => {
+          const target = e.getTarget();
+          this.graph.hideItem(target);
+        });
+      } else if (type === 'show-node-children') {
+        const edges = item.getOutEdges();
+        edges.forEach((e) => {
+          const target = e.getTarget();
+          this.graph.showItem(target);
+        });
       }
     },
     // 展开组
@@ -302,11 +333,12 @@ export default {
       });
     },
     // 收缩叶子节点
-    collapseExpandLeafNode(type, item, extendsObj) {
+    collapseExpandLeafNode(item, extendsObj) {
       // 保存节点数据
       let x;
       let y;
-      const idList = extendsObj.leafNodeIds.split(',');
+      // const idList = extendsObj.leafNodeIds.split(',');
+      const idList = extendsObj.leafNodes;
       const leafNodesInfo = idList.map((v) => {
         const item = this.graph.findById(v);
         const nodeModel = item.get('model');
@@ -316,14 +348,14 @@ export default {
         const edgeModel = edges.get('model');
         return {
           nodeModel,
-          edgeModel
+          edgeModel,
         };
       });
       idList.forEach((v) => {
         this.graph.removeItem(v);
       });
-      const id = `${item.get('id')}_${extendsObj.gxid}`;
-      const label = type.split('_')[1];
+      const id = `${item.get('id')}_${extendsObj.gxId}`;
+      const label = extendsObj.label;
       const model = {
         x,
         y,
@@ -341,12 +373,12 @@ export default {
       this.graph.add('node', model, true);
       // 添加线
       const edgeModel = {
-        id: `${item.get('id')}_${extendsObj.gxid}-edge`,
+        id: `${item.get('id')}_${extendsObj.gxId}-edge`,
         label: `${label} (${idList.length})`,
         source: item.get('id'),
-        target: `${item.get('id')}_${extendsObj.gxid}`,
+        target: `${item.get('id')}_${extendsObj.gxId}`,
         cellInfo: {
-          id: extendsObj.gxid,
+          id: extendsObj.gxId,
         },
         type: 'line',
         itemType: 'edge',
@@ -364,8 +396,22 @@ export default {
     },
     // 打开节点关系框
     async openRelationBox(node) {
-      const cellInfo = node.get('model').cellInfo;
-      this.rightClickCellInfo = cellInfo;
+      const { cellInfo } = node.get('model');
+      let leafNodesInfo = [];
+      const edges = node.get('edges');
+      edges.forEach((v) => {
+        const sm = v.getSource().get('model');
+        const tm = v.getTarget().get('model');
+        if (tm.type === 'group-node') {
+          leafNodesInfo.push(...tm.leafNodesInfo);
+        } else if (sm.type === 'group-node') {
+          leafNodesInfo.push(...sm.leafNodesInfo);
+        }
+      });
+      this.rightClickCell = {
+        cellInfo,
+        leafNodesInfo,
+      };
       if (!cellInfo.gxId) {
         return this.$message({
           type: 'warning',
@@ -373,8 +419,11 @@ export default {
         });
       }
       if (cellInfo.gxId.includes(',')) {
+        this.loading = true;
+        this.dialogLinkList = true;
         // 请求节点所有关系
         const { data } = await getCellRelationList(cellInfo.gxId);
+        this.loading = false;
         if (data.code === 0) {
           const linkCount = cellInfo.linkCount || {};
           this.cellRelationList = data.content
@@ -389,7 +438,6 @@ export default {
             .sort((a, b) => {
               return b.count - a.count;
             });
-          this.dialogLinkList = true;
           this.$nextTick(() => {
             this.selectSX();
           });
@@ -400,7 +448,7 @@ export default {
           });
         }
       } else {
-        this.extendRelationship(cellInfo, cellInfo.gxId);
+        this.extendRelationship(this.rightClickCell, cellInfo.gxId);
       }
     },
     // 默认选中双向关系
@@ -432,11 +480,11 @@ export default {
         });
       }
       const gxIds = this.selectRelations.map((v) => v.gx).join(',');
-      this.extendRelationship(this.rightClickCellInfo, gxIds);
+      this.extendRelationship(this.rightClickCell, gxIds);
     },
     // 扩展关系
-    async extendRelationship(cellInfo, gxIds) {
-      const { tab, idMap } = cellInfo;
+    async extendRelationship(rightClickCell, gxIds) {
+      const { tab, idMap } = rightClickCell.cellInfo;
       const payload = {
         tableName: tab,
         params: {
@@ -444,9 +492,11 @@ export default {
           gxIds,
         },
       };
+      this.btnLoading = true;
       const { data } = await getAllRelation(payload);
+      this.btnLoading = false;
       if (data.code === 0) {
-        this.editors.extendRelation(data.content);
+        this.editors.extendRelation(rightClickCell.leafNodesInfo, data.content);
       } else {
         this.$message({
           type: 'warning',
@@ -461,7 +511,7 @@ export default {
       this.dialogLinkList = false;
       this.linksBetweenEntity = [];
       this.handleCreateEdge = [];
-      this.rightClickCellInfo = null;
+      this.rightClickCell = null;
       this.dialogLinkType = false;
       // 节点关系详情
       this.linkDetail = [];

@@ -12,3 +12,5 @@ export const SET_NODE_TYPE = 'SET_NODE_TYPE';
 export const SET_SELECT_MODEL = 'SET_SELECT_MODEL';
 // 布局模式
 export const SET_LAYOUT_TYPE = 'SET_LAYOUT_TYPE';
+// 保存某节点的叶子节点信息
+export const SET_LEAF_NODE = 'SET_LEAF_NODE';

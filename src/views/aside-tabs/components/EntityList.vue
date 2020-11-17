@@ -18,9 +18,9 @@
           <span class="entity-list__title">{{ menu.yjlxmc }}</span>
         </template>
         <div class="entity-list__body">
-          <div v-for="(item, i) of menu.list" :key="item.id">
+          <div v-for="(item, i) of menu.list" :key="item.id + item.icon">
             <img
-              :src="`${$baseImagePath}/entityImages/${item.dxtbCode}.png`"
+              :src="`${$baseImagePath}/entityImages/${item.icon}.png`"
               :data-typenum="index"
               :data-listnum="i"
             />
@@ -48,12 +48,13 @@
             size="small"
             v-model="entityProperty[item.field]"
             :placeholder="item.placeholder"
+            :disabled="!!item.value"
           ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="handleSure">确 定</el-button>
+        <el-button size="small" type="primary" @click="handleSure" :loading="loading">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -70,6 +71,7 @@ export default {
       rules: {},
       labelList: [],
       formLabelWidth: '120px',
+      loading: false,
     };
   },
   created() {
@@ -92,7 +94,7 @@ export default {
           type: 'info',
           message: '请将节点拖入画布'
         });
-      } 
+      }
       this.model = {
         x,
         y,
@@ -100,7 +102,7 @@ export default {
         cellInfo: {
           dxId: item.id,
           label: item.ypdxMc,
-          type: item.dxtbCode,
+          icon: item.icon,
         },
       };
       this.initFormData(item);
@@ -113,8 +115,9 @@ export default {
           label: v.cxcsName,
           field: v.cxcsField,
           placeholder: `请输入${v.cxcsName}`,
+          value: v.cxcsValue
         });
-        this.$set(this.entityProperty, v.cxcsField, '');
+        this.$set(this.entityProperty, v.cxcsField, v.cxcsValue ? v.cxcsValue : '');
         const ruleArr = [];
         if (v.isRequired) {
           ruleArr.push({
@@ -149,7 +152,9 @@ export default {
         dxId,
         params,
       };
+      this.loading = true;
       const { data } = await fetchEntityIsExistence(payload);
+      this.loading = false;
       if (data.code === 0) {
         if (data.content) {
           // 直接添加节点

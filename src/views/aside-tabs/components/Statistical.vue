@@ -15,7 +15,6 @@
         >搜索</el-button
       >
     </div>
-
     <!-- 实体 -->
     <el-menu class="statistics__entity" :default-openeds="['1']">
       <el-submenu index="1">
@@ -53,36 +52,6 @@
         </div>
       </el-submenu>
     </el-menu>
-
-    <!-- 实体标签 -->
-    <!-- <el-menu class="statistics__entity">
-      <el-submenu index="1">
-        <template slot="title">
-          <span class="statistics__entity-title">实体标签</span>
-        </template>
-        <div style="margin-top: 8px">
-          <el-table :data="hasEntitys" stripe border header-cell-class-name="table-title">
-            <el-table-column type="selection" width="40"></el-table-column>
-            <el-table-column label="标签类型">
-              <template slot-scope="{row}">
-                <div class="img-field">
-                  <img :src="`/etlwidgetIcon/${row.icon}.png`" alt />
-                  <span>{{row.label}}</span>
-                </div>
-              </template>
-            </el-table-column>
-            <el-table-column
-              label="计数"
-              prop="count"
-              align="center"
-              header-align="center"
-              width="60"
-            ></el-table-column>
-          </el-table>
-        </div>
-      </el-submenu>
-    </el-menu>-->
-
     <!-- 连接关系 -->
     <el-menu class="statistics__entity" :default-openeds="['1']">
       <el-submenu index="1">
@@ -182,7 +151,7 @@ export default {
       if (!key) {
         return this.$message({
           type: 'warning',
-          message: '请输入搜索关键字'
+          message: '请输入搜索关键字',
         });
       }
       this.editors.searchEntity(key);
@@ -210,8 +179,11 @@ export default {
         return;
       }
       const obj = {};
-      this.editors.graph.findAll('node', (node) => {
-        const k = `${node.get('edges').length}`;
+      const nodeList = this.editors.graph
+        .getNodes()
+        .filter((v) => v.isVisible());
+      nodeList.forEach((node) => {
+        const k = `${node.get('edges').filter(v => v.isVisible()).length}`;
         const id = node.get('id');
         if (!this.isInRnage(k - 0)) {
           return;
@@ -227,6 +199,23 @@ export default {
           obj[k].ids.push(id);
         }
       });
+      // this.editors.graph.findAll('node', (node) => {
+      //   const k = `${node.get('edges').length}`;
+      //   const id = node.get('id');
+      //   if (!this.isInRnage(k - 0)) {
+      //     return;
+      //   }
+      //   if (!obj[k]) {
+      //     obj[k] = {
+      //       count: 1,
+      //       ids: [id],
+      //       links: k,
+      //     };
+      //   } else {
+      //     obj[k].count += 1;
+      //     obj[k].ids.push(id);
+      //   }
+      // });
       this.entityLinks = Object.values(obj);
     },
     // 选择的实体节点
@@ -383,7 +372,7 @@ export default {
   }
   /deep/ {
     .el-submenu [class^='el-icon-'] {
-      vertical-align: baseline;;
+      vertical-align: baseline;
       margin-right: 0px;
       width: 18px;
       text-align: center;

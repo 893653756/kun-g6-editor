@@ -65,6 +65,19 @@
         label="取消强调"
         @click.native="handleUnEmphasize"
       ></icon-label>
+      <!-- 隐藏 | 显示 -->
+      <icon-label
+        icon="el-icon-view"
+        label="隐藏"
+        color="#000000"
+        @click.native="handleHideNode"
+      ></icon-label>
+      <icon-label
+        icon="el-icon-view"
+        label="显示"
+        color="#409eff"
+        @click.native="handleShowNode"
+      ></icon-label>
     </div>
     <div class="header-tools__piece">
       <el-dropdown>
@@ -104,12 +117,6 @@
           >
         </el-dropdown-menu>
       </el-dropdown>
-      <!-- <icon-label
-        color="#67C23A"
-        icon="el-icon-s-data"
-        label="路径分析"
-        @click.native="shortestPath"
-      ></icon-label> -->
       <icon-label
         icon="kf-icon-setting"
         label="重置"
@@ -161,9 +168,6 @@
             v-model="saveCfg.description"
           ></el-input>
         </el-form-item>
-        <!-- <el-form-item label="保存人" label-width="120px" prop="account">
-          <el-input size="small" v-model="saveCfg.account"></el-input>
-        </el-form-item> -->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
@@ -215,6 +219,10 @@
         >
       </div>
     </el-dialog>
+    <!-- 显示当前的隐藏节点 -->
+    <el-dialog>
+      <el-table :data="hideNodeList"> </el-table>
+    </el-dialog>
   </div>
 </template>
 
@@ -233,6 +241,8 @@ import { getAllRelation } from '@/api/editors';
 export default {
   data() {
     return {
+      // 当前隐藏的节点列表
+      hideNodeList: [],
       layoutCfg,
       options: [
         { value: 1, label: 'AAAA' },
@@ -246,13 +256,11 @@ export default {
         dialog: false,
         label: '',
         description: '',
-        // account: '',
       },
       rules: {
         label: [
           { required: true, message: '请输入关系图名称', trigger: 'blur' },
         ],
-        // account: [{ required: true, message: '请输入保存人', trigger: 'blur' }],
       },
       // 导入
       relationList: {
@@ -323,6 +331,25 @@ export default {
           this.editors.unEmphasizeItem(item);
         });
       }
+    },
+    // 隐藏
+    handleHideNode() {
+      if (this.selectNodes.length > 0) {
+        this.selectNodes.forEach((id) => {
+          const item = this.editors.graph.findById(id);
+          this.editors.graph.hideItem(item);
+        });
+      }
+    },
+    // 显示
+    handleShowNode() {
+      const nodes = this.editors.graph.getNodes();
+      // nodes = nodes.map((item) => !item.isVisible());
+      nodes.forEach((item) => {
+        if (!item.isVisible()) {
+          this.editors.graph.showItem(item);
+        }
+      });
     },
     // 切换选择模式
     handelChangeSelectModel(event) {
@@ -434,7 +461,7 @@ export default {
           const content = this.editors.graph.save();
           content.nodes = content.nodes.map((v) => ({
             ...v,
-            img: v.cellInfo.type,
+            img: v.cellInfo.icon,
           }));
           if (content.nodes.length === 0) {
             return this.$message({
@@ -489,7 +516,7 @@ export default {
           description: v.description,
           createTime: v.createTime,
           updateTime: v.updateTime,
-          account: v.account
+          account: v.account,
         }));
       } else {
         this.$message({
@@ -516,7 +543,7 @@ export default {
       if (data.code === 0) {
         content.nodes = content.nodes.map((v) => ({
           ...v,
-          img: `${window.baseImagePath}/entityImages/${v.cellInfo.type}.png`,
+          img: `${window.baseImagePath}/entityImages/${v.cellInfo.icon}.png`,
         }));
         content.edges = content.edges.map((v) => ({
           ...v,
@@ -527,6 +554,7 @@ export default {
           labelCfg: {
             autoRotate: true,
             style: {
+              fill: '#000000',
               fontSize: 10,
               background: {
                 fill: '#ffffff',
@@ -561,7 +589,7 @@ export default {
     cursor: pointer;
     border-right: 1px solid #d9d9d9;
     & > div {
-      padding: 0 20px;
+      padding: 0 16px;
     }
   }
   &__small {

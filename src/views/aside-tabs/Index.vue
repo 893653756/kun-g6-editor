@@ -26,11 +26,11 @@
 
 <script>
 // 统计分析
-import Statistical from './components/Statistical.vue';
+// import Statistical from './components/Statistical.vue';
 // 实体列表
 import EntityList from './components/EntityList.vue';
 // 社会网络分析
-import SocialNetwork from './components/SocialNetwork.vue';
+// import SocialNetwork from './components/SocialNetwork.vue';
 // 实体属性
 import EntityProperty from './components/EntityProperty.vue';
 // 历史文件
@@ -51,10 +51,10 @@ export default {
         // 实体创建
         { icon: 'kf-icon-data-sets', id: 'entity', comp: EntityList },
         // 统计分析
-        { icon: 'kf-icon-workspace', id: 'workspace', comp: Statistical },
+        // { icon: 'kf-icon-workspace', id: 'workspace', comp: Statistical },
         // { icon: 'kf-icon-dic-standard', id: 'standard' },
         // 社会网络分析
-        { icon: 'kf-icon-report', id: 'report', comp: SocialNetwork },
+        // { icon: 'kf-icon-report', id: 'report', comp: SocialNetwork },
         // 实体属性
         {
           icon: 'kf-icon-process',
@@ -147,6 +147,8 @@ export default {
       align-items: center;
       justify-content: center;
       border-radius: 8px 0px 0px 8px;
+      color: #555555;
+      font-size: 25px;
     }
     & div.activeItem {
       background: #1f98cd;
