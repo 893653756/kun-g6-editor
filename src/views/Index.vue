@@ -11,6 +11,7 @@
       <graph-canvas
         class="pages-body__editors"
         @graph-editors="handleCreateGraph"
+        v-loading="loading"
       ></graph-canvas>
       <!-- <aside-right></aside-right> -->
     </div>
@@ -35,6 +36,7 @@ export default {
   data() {
     return {
       showClose: false,
+      loading: false,
     };
   },
   created() {
@@ -61,6 +63,7 @@ export default {
         return;
       }
       this.showClose = true;
+      this.loading = true;
       // 获取参数
       const frames = window.parent.document.getElementsByClassName('t_page') || [];
       console.log('frames', frames);
@@ -73,19 +76,6 @@ export default {
           console.log('judgeParam', judgeParam);
         }
       }
-      // const payloadArr = window.parent.frames['topPage'].contentWindow.vm.judgeParam;
-      // const payloadArr = [
-      //   {
-      //     dxType: 'ry_ry',
-      //     params: {
-      //       gxIds: '',
-      //       idMaps: [
-      //         { sfzhm: '321284199806296029' },
-      //         { sfzhm: '500109200407100220' },
-      //       ],
-      //     },
-      //   },
-      // ];
       const arr = [];
       judgeParam.forEach((payload) => {
         arr.push(getRelationByDxType(payload));
@@ -112,6 +102,7 @@ export default {
           });
         }
       });
+      this.loading = false;
       this.editors.importRelationData({
         entities: Object.values(nodes),
         links: Object.values(edges),

@@ -66,9 +66,9 @@
       title="关系详情"
       :visible.sync="dialogLinkDetail"
       @closed="handleDialogClose"
-      width="80%"
+      width="70%"
     >
-      <el-table :data="linkDetail.values" stripe>
+      <el-table :data="linkDetail.values" stripe v-loading="linkLoading">
         <el-table-column
           v-for="(val, k) in linkDetail.columns"
           :key="k"
@@ -99,12 +99,13 @@ export default {
       dialogLinkList: false, // 关系列表弹框
       dialogLinkType: false, // 节点关系弹窗
       dialogLinkDetail: false, // 关系详情
-      linkDetail: [],
+      linkDetail: {},
       linksBetweenEntity: [], // 可建立的关系列表
       cellRelationList: [], // 节点所有有关系
       radioLink: '',
       loading: false,
       btnLoading: false,
+      linkLoading: false,
     };
   },
   created() {
@@ -239,6 +240,12 @@ export default {
       const startIdMap = source.get('model').cellInfo.idMap;
       const target = edge.get('target');
       const endIdMap = target.get('model').cellInfo.idMap;
+      if (!startIdMap || !endIdMap) {
+        return this.$message({
+          type: 'warning',
+          message: '当前有集合节点, 请先展开'
+        });
+      }
       const payload = {
         linkId,
         params: {
@@ -246,11 +253,13 @@ export default {
           endIdMap,
         },
       };
+      this.dialogLinkDetail = true;
+      this.linkLoading = true;
       const { data } = await fetchRelationDetail(payload);
+      this.linkLoading = false;
       if (data.code === 0) {
         // const { columns, values } = data.content;
         this.linkDetail = data.content;
-        this.dialogLinkDetail = true;
       } else {
         this.$message({
           type: 'warning',
@@ -459,7 +468,8 @@ export default {
       }
       dataTable.clearSelection();
       this.selectRelations = this.cellRelationList.filter((v) => {
-        if (v.xtzx === 'SX' && v.count > 0) {
+        // v.xtzx === 'SX' 表示双向关系
+        if (v.count > 0) {
           return true;
         }
         return false;

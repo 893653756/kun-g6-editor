@@ -29,6 +29,8 @@
         </div>
       </el-submenu>
     </el-menu>
+    <!-- 加载条 -->
+    <div class="entity-loading" v-loading="true" v-if="entitys.length === 0"></div>
     <!-- 创建实体弹框录入 -->
     <el-dialog
       title="创建实体"
@@ -115,7 +117,8 @@ export default {
           label: v.cxcsName,
           field: v.cxcsField,
           placeholder: `请输入${v.cxcsName}`,
-          value: v.cxcsValue
+          value: v.cxcsValue,
+          isShow: v.isShow
         });
         this.$set(this.entityProperty, v.cxcsField, v.cxcsValue ? v.cxcsValue : '');
         const ruleArr = [];
@@ -169,7 +172,7 @@ export default {
           };
           const properties = {};
           this.labelList.forEach((v) => {
-            if (params[v.field]) {
+            if (params[v.field] && v.isShow) {
               properties[v.label] = params[v.field];
             }
           });
@@ -271,6 +274,12 @@ export default {
         }
       }
     }
+  }
+  &-loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 </style>

@@ -195,6 +195,7 @@ export default {
       height: 100%;
       width: 100%;
       overflow-y: auto;
+      position: relative;
     }
   }
   &__panel.zoom-in {

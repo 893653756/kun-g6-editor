@@ -123,8 +123,20 @@
       flex-direction: column;
     } */
   </style>
+
   <!-- 你们需要注释掉 -->
   <script src="./js/requestPath.js"></script>
+  <script>
+    var str = window.location.href.split('?')[1];
+    if (str && str.indexOf('access_token') !== -1) {
+      str.split('&').forEach(function(v) {
+        var arr = v.split('=');
+        if (arr[0] === 'access_token') {
+          window.access_token = arr[1];
+        }
+      })
+    }
+  </script>
   <!-- 这个需要放开 -->
   <!-- <script src="../lib/js/axios.min.js"></script>
   <script src="../js/sysConfig.js"></script>

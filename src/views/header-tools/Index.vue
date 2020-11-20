@@ -171,7 +171,11 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="handleSure"
+        <el-button
+          size="small"
+          type="primary"
+          @click="handleSure"
+          :loading="saveLoading"
           >确 定</el-button
         >
       </div>
@@ -185,6 +189,7 @@
         stripe
         height="280px"
         @row-click="getCurrentRow"
+        v-loading="linkLoading"
       >
         <el-table-column label="选择" width="50" center>
           <template slot-scope="{ row }">
@@ -214,7 +219,7 @@
       </el-table>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="getRelationDetail"
+        <el-button size="small" type="primary" @click="getRelationDetail" :loading="btnLoading"
           >确 定</el-button
         >
       </div>
@@ -257,6 +262,7 @@ export default {
         label: '',
         description: '',
       },
+      saveLoading: false,
       rules: {
         label: [
           { required: true, message: '请输入关系图名称', trigger: 'blur' },
@@ -268,6 +274,8 @@ export default {
         list: [],
         radio: '',
       },
+      linkLoading: false,
+      btnLoading: false,
       graphId: '', // 当前关系图id
       fullScreen: false,
     };
@@ -484,7 +492,9 @@ export default {
       if (this.saveType === 'save' && this.graphId) {
         payload.id = this.graphId;
       }
+      this.saveLoading = true;
       const { data } = await saveAddUpdateRelations(payload);
+      this.saveLoading = false;
       // console.warn('保存后', data);
       this.$message({
         type: data.code === 0 ? 'success' : 'warning',
@@ -507,8 +517,11 @@ export default {
     },
     // 打开关系列表弹出框
     async openRelationDialog() {
+      this.relationList.dialog = true;
+      this.linkLoading = true;
       // 请求关系列表
       const { data } = await getRelationsList();
+      this.linkLoading = false;
       if (data.code === 0) {
         this.relationList.list = data.content.map((v) => ({
           id: v.id,
@@ -524,8 +537,6 @@ export default {
           message: data.msg,
         });
       }
-      this.relationList.dialog = true;
-      // console.warn('关系列表', data);
     },
     // 获取关系数据
     async getRelationDetail() {
@@ -535,7 +546,9 @@ export default {
           message: '请选择需要导入的关系',
         });
       }
+      this.btnLoading = true;
       const { data } = await getRelationDetailById(this.relationList.radio);
+      this.btnLoading = false;
       // 保存当前关系图id
       this.graphId = this.relationList.radio;
       const content = JSON.parse(data.content);

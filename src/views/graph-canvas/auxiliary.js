@@ -160,7 +160,7 @@ function hasLeafNode(item) {
  * 展开集合节点
  */
 function extendGroupNode(item) {
-  return `<div data-type="extend-group" class="el-icon-s-promotion">
+  return `<div data-type="extend-group" class="el-icon-rank">
             <span data-type="extend-group">展开</span>
           </div>`;
 };

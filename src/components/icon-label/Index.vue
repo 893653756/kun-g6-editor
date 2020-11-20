@@ -1,8 +1,8 @@
 <template>
   <div class="icon-label">
-    <span :class="icon" :style="{ color: color }"></span>
+    <span class="icon" :class="icon" :style="{ color: color }"></span>
     <div v-if="label">
-      <span>{{ label }}</span>
+      <span class="label">{{ label }}</span>
       <slot></slot>
     </div>
   </div>
@@ -41,8 +41,13 @@ export default {
     font-family: Microsoft YaHei;
     line-height: 19px;
   }
-  &:hover > span:last-child {
-    color: #409eff;
+  &:hover {
+    .icon {
+      transform: scale(1.1);
+    }
+    .label {
+      color: #409eff;
+    }
   }
 }
 </style>
