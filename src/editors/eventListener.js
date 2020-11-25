@@ -108,14 +108,19 @@ export const bindEventListener = function (graph) {
       e.model.type = 'group-node';
     }
   });
-  graph.on('afteradditem', (e) => {
+  graph.on('afteradditem', ({ model }) => {
     // 重新计算
-    // console.warn('afteradditem');
+    if (model.type === 'dashed-line') {
+      // console.warn('afteradditem', model);
+      return;
+    }
     countCB();
   });
-  graph.on('afterremoveitem', () => {
+  graph.on('afterremoveitem', ({ item }) => {
     // 重新计算
-    // console.warn('afterremoveitem');
+    if (item.type === 'dashed-line') {
+      return;
+    }
     countCB();
   });
   // 显示隐藏节点调用
@@ -149,6 +154,9 @@ export const bindEventListener = function (graph) {
     const edgesList = graph.getEdges().filter(v => v.isVisible());
     edgesList.forEach(item => {
       const cellInfo = item.get('model').cellInfo;
+      if (!cellInfo) {
+        return;
+      }
       if (!edges[cellInfo.id]) {
         edges[cellInfo.id] = {
           label: cellInfo.label,

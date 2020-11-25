@@ -14,7 +14,8 @@ requestInterceptors.push(config => {
     headers,
     url,
   } = config;
-  const token = window.access_token || localStorage.getItem('token');
+  // const token = window.access_token || localStorage.getItem('token');
+  const token = '70303045-202e-4392-a355-729c4fe63dce';
   if (token) {
     config.headers = headers ? {
       ...headers,

@@ -33,7 +33,7 @@
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handleExportGraph">
           <el-dropdown-item data-type="image">导出图片</el-dropdown-item>
-          <!-- <el-dropdown-item data-type="json">导出JSON</el-dropdown-item> -->
+          <el-dropdown-item data-type="json">导出JSON</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <icon-label

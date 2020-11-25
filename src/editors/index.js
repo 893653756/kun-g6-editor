@@ -19,11 +19,6 @@ class Editors {
     model.img = `${window.baseImagePath}/entityImages/${cellInfo.icon}.png`;
     model.label = label;
     model.id = cellInfo.id;
-    if (cellInfo.custom) {
-      cellInfo.nextEntitiesNumber = 0;
-    };
-    // 自定义的下一层节点数
-    cellInfo.nextCustomNodes = 0;
     this.graph.add('node', model, true);
   }
   // 添加边
@@ -35,39 +30,13 @@ class Editors {
     this.graph.add('edge', model, true);
     // 更新节点的下一层节点数量
     const sourceModel = source.getModel();
-    if (sourceModel.cellInfo.nextCustomNodes) {
-      sourceModel.cellInfo.nextCustomNodes += 1;
-    } else {
-      sourceModel.cellInfo.nextCustomNodes = 1;
-    }
     this.graph.updateItem(source, sourceModel);
   }
   // 删除节点
   removeItem(item) {
     const id = item.get('id');
     const node = this.graph.findById(id);
-    // 是否是自定义节点
-    const nodeIsCustom = node.getModel().cellInfo.custom;
-    const edges = node.get('edges');
-    const sourceNodes = [];
-    edges.forEach(v => {
-      const source = v.get('source');
-      const target = v.get('target');
-      if (target.get('id') === id) {
-        sourceNodes.push(source);
-      }
-    });
     this.graph.removeItem(node, true);
-    sourceNodes.forEach(v => {
-      const model = v.getModel();
-      if (model.cellInfo.custom || nodeIsCustom) {
-        model.cellInfo.nextCustomNodes -= 1;
-        if (model.cellInfo.nextCustomNodes < 0) {
-          model.cellInfo.nextCustomNodes = 0;
-        }
-        this.graph.updateItem(v, model);
-      }
-    })
   }
   // 设置状态
   setItemState(item, type, value) {
@@ -157,17 +126,14 @@ class Editors {
     if (type === 'image') {
       this.graph.downloadImage(`${Date.now()}`, 'image/png');
     } else if (type === 'json') {
-      // const data = this.graph.save();
-      // console.warn('save', data);
-      // // 特殊字符导致json被截取
-      // const str = JSON.stringify(data).replace(/\#/g, '');
-      // const dataUrl = `data:,${str}`
-      // const a = document.createElement('a')
-      // a.download = `${Date.now()}.txt`;
-      // a.rel = 'noopener';
-      // a.href = dataUrl;
-      // // 触发模拟点击
-      // a.dispatchEvent(new MouseEvent('click'))
+      const data = this.graph.save();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const dataUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a')
+      a.download = `${Date.now()}.json`;
+      a.href = dataUrl;
+      // 触发模拟点击
+      a.dispatchEvent(new MouseEvent('click'))
     }
   }
   // 加载关系数据
@@ -189,10 +155,11 @@ class Editors {
     });
     const edges = links.map(item => {
       const { sourceEntityId, targetEntityId, label, properties } = item;
-      const id = sourceEntityId + '-' + targetEntityId;
+      // const id = sourceEntityId + '-' + targetEntityId;
+      const edgeId = `${sourceEntityId}-${targetEntityId}`;
       const text = properties ? `${label}\n${properties}` : label;
       return {
-        id: id,
+        id: edgeId,
         label: text,
         cellInfo: item,
         source: sourceEntityId,
@@ -222,9 +189,17 @@ class Editors {
         return;
       }
       flag = true;
-      const label = Object.entries(item.properties)
-        .map((v) => `${v[1]}`)
-        .join('\n');
+      let label = '';
+      if (item.notExist) {
+        // 可疑人员
+        label = Object.values(item.mxProperties)
+          .filter(v => v)
+          .join('\n');
+      } else {
+        label = Object.entries(item.properties)
+          .map((v) => `${v[1]}`)
+          .join('\n');
+      }
       const img = `${window.baseImagePath}/entityImages/${item.icon}.png`;
       const model = {
         id: item.id,
@@ -238,17 +213,41 @@ class Editors {
     // 关系
     links.forEach(item => {
       const { sourceEntityId, targetEntityId, label, properties } = item;
-      const id = sourceEntityId + '-' + targetEntityId;
+      let edgeId = `${sourceEntityId}-${targetEntityId}`;
       const source = this.graph.findById(sourceEntityId);
       const target = this.graph.findById(targetEntityId);
       if (!source || !target) {
         return;
       }
-      const edge = this.graph.findById(id);
+      const text = properties ? `${label}\n${properties}` : label;
+      const newModel = {
+        id: edgeId,
+        label: text,
+        cellInfo: item,
+        source: sourceEntityId,
+        target: targetEntityId,
+        type: 'line',
+        itemType: 'edge'
+      };
+      const edge = this.graph.findById(edgeId);
       if (edge) {
-        return;
+        /**
+         * 1. 判断连接关系是否一致
+         *    1. 一致则退出
+         *    2. 不一致则新增关系，并转换线条样式
+         */
+        if(edge.get('model').cellInfo.id === item.id) {
+          return;
+        } else {
+          flag = true;
+          edgeId = `${edgeId}-${item.id}`;
+          newModel.id = edgeId;
+          newModel.type = 'quadratic';
+          return this.nodeMoreEdges(edge, newModel);
+        }
       }
       // 判断是否存在反向关系线
+      // const reverseId = `${targetEntityId}-${sourceEntityId}`;
       const reverseId = `${targetEntityId}-${sourceEntityId}`;
       const reverseRelationEdge = this.graph.findById(reverseId);
       if (reverseRelationEdge) {
@@ -259,34 +258,28 @@ class Editors {
               startArrow: true
             }
           });
+        } else {
+          flag = true;
+          edgeId = `${edgeId}-${item.id}`;
+          newModel.id = edgeId;
+          newModel.type = 'quadratic';
+          return this.nodeMoreEdges(reverseRelationEdge, newModel);
         }
         return;
       };
-      const text = properties ? `${label}\n${properties}` : label;
-      flag = true;
-      const model = {
-        id: id,
-        label: text,
-        cellInfo: item,
-        source: sourceEntityId,
-        target: targetEntityId,
-        type: 'line',
-        itemType: 'edge'
-      };
-      this.graph.add('edge', model, true);
-      // if (reverseRelationEdge) {
-      //   model.type = 'quadratic';
-      // } else {
-      //   model.type = 'line';
-      // }
-      // this.graph.add('edge', model, true);
-      // if (model.type === 'quadratic') {
-      //   this.graph.updateItem(reverseId, {
-      //     type: 'quadratic',
-      //   });
-      // }
+      this.graph.add('edge', newModel, true);
     });
     flag && this.graph.layout();
+  }
+  // 两节点之间多遍情况
+  nodeMoreEdges(oldEdge, newModel) {
+      this.graph.add('edge', newModel, true);
+      if (oldEdge.get('model').type !== 'quadratic') {
+        this.graph.updateItem(oldEdge, {
+          type: 'quadratic',
+          curveOffset: 20,
+        });
+      }
   }
   // 锁定
   lockItem(item) {

@@ -49,6 +49,22 @@ export default {
       name: 'circle-image',
       draggable: true,
     });
+    // 可疑人员
+    if (cfg.cellInfo.notExist) {
+      group.addShape('image', {
+        attrs: {
+          id: 'image-mark' + cfg.id,
+          width: 16,
+          height: 16,
+          img: `${window.baseImagePath}/entityImages/question-mark.png`,
+          cursor: 'move',
+          x: r / 2,
+          y: - r / 2 - 8,
+        },
+        name: 'question-mark',
+        draggable: true,
+      });
+    }
     // 添加文本
     if (cfg.label) {
       group.addShape('text', {
@@ -134,33 +150,24 @@ export default {
         name: 'lock-image',
       });
     }
-    // 下一层节点数 nextEntitiesNumber
-    const { nextEntitiesNumber = 0, nextCustomNodes = 0 } = cfg.cellInfo;
-    const total = nextEntitiesNumber + nextCustomNodes;
-    if (total > 0) {
-      group.addShape('circle', {
-        attrs: {
-          r: 8,
-          x: r - 12,
-          y: -(r - 12),
-          fill: '#67C23A',
-        },
-        name: 'nextEntitiesNumber-circle'
-      })
-      group.addShape('text', {
-        attrs: {
-          x: r - 13,
-          y: -(r - 13),
-          id: 'nextEntitiesNumber' + cfg.id,
-          text: total,
-          fontSize: 12,
-          textAlign: 'center',
-          textBaseline: 'middle',
-          fill: '#ffffff',
-        },
-        name: 'nextEntitiesNumber-text'
-      });
+    // 下一层节点数 nextEntitiesNumber | nextCustomNodes
+    if (!cfg.cellInfo.custom) {
+      // 是否有子节点
+      const { nextEntitiesNumber = 0 } = cfg.cellInfo;
+      const total = nextEntitiesNumber;
+      if (total > 0) {
+        group.addShape('circle', {
+          attrs: {
+            r: 4,
+            x: r - 12,
+            y: -(r - 12),
+            fill: '#ff0000',
+          },
+          name: 'red-circle'
+        })
+      }
     }
+
   },
   // 状态改变
   setState(name, value, item) {

@@ -69,6 +69,7 @@
       width="70%"
     >
       <el-table :data="linkDetail.values" stripe v-loading="linkLoading">
+        <!-- <el-table-column label="xxx"></el-table-column> -->
         <el-table-column
           v-for="(val, k) in linkDetail.columns"
           :key="k"
@@ -99,7 +100,10 @@ export default {
       dialogLinkList: false, // 关系列表弹框
       dialogLinkType: false, // 节点关系弹窗
       dialogLinkDetail: false, // 关系详情
-      linkDetail: {},
+      linkDetail: {
+        values: [],
+        columns: {}
+      },
       linksBetweenEntity: [], // 可建立的关系列表
       cellRelationList: [], // 节点所有有关系
       radioLink: '',
@@ -482,14 +486,20 @@ export default {
     },
     // 确认加载选择的关系
     handleSureSelect() {
-      this.selectRelations = this.selectRelations.filter((v) => v.count !== 0);
+      const selectRelations = this.selectRelations.filter((v) => v.count !== 0);
       if (this.selectRelations.length === 0) {
         return this.$message({
           type: 'warning',
           message: '请选择需要查询的关系',
         });
       }
-      const gxIds = this.selectRelations.map((v) => v.gx).join(',');
+      if (selectRelations.length === 0) {
+        return this.$message({
+          type: 'warning',
+          message: '你选择的关系暂无数据',
+        });
+      }
+      const gxIds = selectRelations.map((v) => v.gx).join(',');
       this.extendRelationship(this.rightClickCell, gxIds);
     },
     // 扩展关系
@@ -524,7 +534,10 @@ export default {
       this.rightClickCell = null;
       this.dialogLinkType = false;
       // 节点关系详情
-      this.linkDetail = [];
+      this.linkDetail = {
+        values: [],
+        columns: {}
+      };
       this.dialogLinkDetail = false;
     },
     // 格式化关系方向

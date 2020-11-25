@@ -17,7 +17,7 @@
         <span class="el-icon-d-arrow-left"></span>
       </div>
       <!-- 面板 -->
-      <div class="aside-tabs__panel-detail">
+      <div class="aside-tabs__panel-detail" v-loading="listLoading">
         <component v-if="comp" :is="comp"></component>
       </div>
     </div>
@@ -70,6 +70,7 @@ export default {
       activeId: '',
       zoomIn: false,
       comp: '',
+      listLoading: false
     };
   },
   async created() {
@@ -114,7 +115,9 @@ export default {
     },
     // 获取实体列表
     async getEntityList() {
+      this.listLoading = true;
       const { data } = await getEntityList();
+      this.listLoading = false;
       if (data.code === 0) {
         this.$store.commit(MutationTypes.SET_ENTITYS, data.content);
       } else {

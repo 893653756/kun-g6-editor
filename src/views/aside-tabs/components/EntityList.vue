@@ -29,8 +29,6 @@
         </div>
       </el-submenu>
     </el-menu>
-    <!-- 加载条 -->
-    <div class="entity-loading" v-loading="true" v-if="entitys.length === 0"></div>
     <!-- 创建实体弹框录入 -->
     <el-dialog
       title="创建实体"
@@ -180,7 +178,6 @@ export default {
           this.model.cellInfo = {
             ...info,
             ...this.model.cellInfo,
-            nextEntitiesNumber: 0,
             // 前端自定义的一个节点
             custom: true,
           };
