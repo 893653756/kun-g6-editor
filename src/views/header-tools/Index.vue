@@ -558,7 +558,6 @@ export default {
       const content = JSON.parse(data.content);
       // const content = data.content; // 本地调试用
       if (data.code === 0) {
-        debugger
         this.saveItemId(content.nodes);
         content.nodes = content.nodes.map((v) => ({
           ...v,

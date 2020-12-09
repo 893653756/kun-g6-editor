@@ -6,22 +6,22 @@ import * as MutationTypes from '@/store/mutation-types';
 import { debounce } from '@/utils';
 
 export const bindEventListener = function (graph) {
-  graph.on('node:dragstart', (e) => {
-    const item = e.item;
-    const edges = item.get('edges');
-    const layout = graph.cfg.layout;
-    if (edges.length >= 2 && layout.type === 'force') {
-      graph.layout();
-    }
-    refreshDragedNodePosition(e);
-  });
-  graph.on('node:drag', (e) => {
-    refreshDragedNodePosition(e);
-  });
-  graph.on('node:dragend', (e) => {
-    e.item.get('model').fx = null;
-    e.item.get('model').fy = null;
-  });
+  // graph.on('node:dragstart', (e) => {
+  //   const item = e.item;
+  //   const edges = item.get('edges');
+  //   const layout = graph.cfg.layout;
+  //   if (edges.length >= 2 && layout.type === 'force') {
+  //     graph.layout();
+  //   }
+  //   refreshDragedNodePosition(e);
+  // });
+  // graph.on('node:drag', (e) => {
+  //   refreshDragedNodePosition(e);
+  // });
+  // graph.on('node:dragend', (e) => {
+  //   e.item.get('model').fx = null;
+  //   e.item.get('model').fy = null;
+  // });
   // // 移动节点
   // graph.on('node:dragend', (e) => {
   //   graph._updateMinimap && graph._updateMinimap();
@@ -108,13 +108,17 @@ export const bindEventListener = function (graph) {
       e.model.type = 'group-node';
     }
   });
-  graph.on('afteradditem', ({ model }) => {
+  graph.on('afteradditem', ({ model, item }) => {
+    console.warn('afteradditem', model);
     // 重新计算
     if (model.type === 'dashed-line') {
       // console.warn('afteradditem', model);
       return;
     }
     countCB();
+    if (item.get('type') !== 'edge') {
+      countNodeIdsCB();
+    }
   });
   graph.on('afterremoveitem', ({ item }) => {
     // 重新计算
@@ -122,6 +126,9 @@ export const bindEventListener = function (graph) {
       return;
     }
     countCB();
+    if (item.itemType !== 'edge') {
+      countNodeIdsCB();
+    }
   });
   // 显示隐藏节点调用
   graph.on('afteritemvisibilitychange', () => {
@@ -172,7 +179,26 @@ export const bindEventListener = function (graph) {
       Object.values(edges)
     );
   }
+  // 重新计算画布现有节点id
+  function countNodeIds() {
+    const nodes = graph.getNodes();
+    const nodeIdList = [];
+    nodes.forEach(item => {
+      const model = item.getModel();
+      if (model.type === 'circle-image') {
+        nodeIdList.push(model.id);
+      } else {
+        const leafNodesInfo = model.leafNodesInfo;
+        leafNodesInfo.forEach(v => {
+          const id = v.nodeModel.id;
+          nodeIdList.push(id);
+        });
+      }
+    });
+    store.commit(MutationTypes.SET_NODE_IDS, nodeIdList);
+  }
   const countCB = debounce(countNodeAddEdge, 200);
+  const countNodeIdsCB = debounce(countNodeIds, 200);
   graph.render();
   // 窗口改变重新设置canvas大小
   window.onresize = debounce(graph._changeSize, 250);

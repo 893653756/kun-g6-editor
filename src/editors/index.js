@@ -180,7 +180,8 @@ class Editors {
       const { sourceEntityId, targetEntityId, label, properties } = item;
       // const id = sourceEntityId + '-' + targetEntityId;
       let edgeId = `${sourceEntityId}-${targetEntityId}`;
-      const text = properties ? `${label}\n${properties}` : label;
+      let text = properties ? `${label}\n${properties}` : label;
+      text = `${text}(${item.number})`;
       const model = {
         id: edgeId,
         label: text,
@@ -236,7 +237,8 @@ class Editors {
       if (!source || !target) {
         return;
       }
-      const text = properties ? `${label}\n${properties}` : label;
+      let text = properties ? `${label}\n${properties}` : label;
+      text = `${text}(${item.number})`;
       const newModel = {
         id: edgeId,
         label: text,

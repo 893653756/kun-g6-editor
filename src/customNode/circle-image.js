@@ -150,38 +150,47 @@ export default {
         name: 'lock-image',
       });
     }
-    // 下一层节点数 nextEntitiesNumber | nextCustomNodes
+    // 还有多少节点可扩展
     if (!cfg.cellInfo.custom) {
-      // const { cellInfo, loadChildren = 0 } = cfg;
-      // const { nextEntities } = cellInfo;
-      // let total = 0;
-      // if (nextEntities) {
-      //   total = nextEntities.length - loadChildren;
-      // }
       const total = cfg.childrenCount || 0;
       if (total > 0) {
-        group.addShape('circle', {
+        const rectH = 8;
+        const rectW = 30;
+        const rectPad = 6;
+        const responseRect = group.addShape('rect', {
           attrs: {
-            r: 8,
-            x: r - 12,
-            y: -(r - 12),
+            width: rectW,
+            height: rectH,
+            x: r / 2,
+            y: - (rectH / 2 + r / 2) - 4,
             fill: '#67C23A',
+            radius: (rectH + rectPad) / 2
           },
-          name: 'nextEntitiesNumber-circle'
-        })
-        group.addShape('text', {
+          name: 'nextEntitiesNumber-rect',
+        });
+        const text = total > 99 ? '+99' : total;
+        const responseText = group.addShape('text', {
           attrs: {
-            x: r - 13,
-            y: -(r - 13),
+            x: 0,
+            y: 0,
             id: 'nextEntitiesNumber' + cfg.id,
-            text: total,
-            fontSize: 12,
+            text,
+            fontSize: 10,
             textAlign: 'center',
-            textBaseline: 'middle',
+            textBaseline: 'top',
             fill: '#ffffff',
           },
           name: 'nextEntitiesNumber-text'
         });
+        const textBBox = responseText.getBBox();
+        responseRect.attr({
+          width: textBBox.width + rectPad,
+          height: textBBox.height + rectPad,
+        });
+        responseText.attr({
+          x: (textBBox.width + r + rectPad) / 2,
+          y: -r / 2 - 4
+        })
       }
     }
 

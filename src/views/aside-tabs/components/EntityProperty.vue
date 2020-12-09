@@ -78,10 +78,7 @@
     </el-menu>
 
     <!-- 详情弹框 -->
-    <el-dialog
-      title="对象详情"
-      :visible.sync="dialogBaseInfoDetail"
-    >
+    <el-dialog title="对象详情" :visible.sync="dialogBaseInfoDetail">
       <el-table :data="baseInfoDetail" header-row-class-name="header-hidden">
         <el-table-column prop="field" label=""></el-table-column>
         <el-table-column prop="value" label=""></el-table-column>
@@ -148,16 +145,30 @@ export default {
       return { ...info };
     },
     baseInfo() {
-      return Object.entries(this.lbProperties).map((v) => ({
-        field: v[0],
-        value: v[1],
-      }));
+      const arr = [];
+      if (Object.values(this.selectNodeInfo).length === 0) {
+        return arr;
+      }
+      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
+      const lbProperties = cellInfo.lbProperties || {};
+      const propOrders = cellInfo.propOrders || [];
+      propOrders.forEach((key) => {
+        if (lbProperties.hasOwnProperty(key)) {
+          arr.push({
+            field: key,
+            value: lbProperties[key] || '空',
+          });
+        }
+      });
+      return arr;
     },
     entitysLinks() {
       if (Object.values(this.selectNodeInfo).length === 0) {
         return [];
       }
-      const edges = this.selectNodeInfo.get('edges').filter(v => v.isVisible());
+      const edges = this.selectNodeInfo
+        .get('edges')
+        .filter((v) => v.isVisible());
       const obj = {};
       edges.forEach((v) => {
         const cellInfo = v.get('model').cellInfo;
@@ -203,16 +214,18 @@ export default {
           message: '暂无详情',
         });
       }
-      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
       const arr = [];
-      if (cellInfo.mxProperties) {
-        Object.entries(cellInfo.mxProperties).forEach((v) => {
+      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
+      const mxProperties = cellInfo.mxProperties || {};
+      const propOrders = cellInfo.propOrders || [];
+      propOrders.forEach((key) => {
+        if (mxProperties.hasOwnProperty(key)) {
           arr.push({
-            field: v[0],
-            value: v[1],
+            field: key,
+            value: mxProperties[key] || '空',
           });
-        });
-      }
+        }
+      });
       this.baseInfoDetail = arr;
       this.dialogBaseInfoDetail = true;
     },
@@ -259,13 +272,13 @@ export default {
   }
   &__links {
     border-right: none;
-    // /deep/ {
-    //   .el-submenu__title {
-    //     line-height: 28px;
-    //     height: 28px;
-    //     padding: 0px !important;
-    //   }
-    // }
+    /deep/ {
+      .el-submenu__title {
+        line-height: 28px;
+        height: 28px;
+        padding: 0px !important;
+      }
+    }
     margin-top: 6px;
     &-title {
       line-height: 28px;

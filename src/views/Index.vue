@@ -57,31 +57,32 @@ export default {
     },
     // 更加url配置获取数据
     async getRelationByDxType() {
-      // 解析 url
-      const search = window.location.href.split('?')[1];
-      if (!search) {
-        return;
-      }
-      this.showClose = true;
-      this.loading = true;
-      // 获取参数
-      const frames = window.parent.document.getElementsByClassName('t_page') || [];
-      console.log('frames', frames);
-      let judgeParam = [];
-      for (let i = 0; i < frames.length; i++) {
-        const frame = frames[i];
-        const active = frame.dataset.active === 'true';
-        if (active) {
-          judgeParam = frame.contentWindow.vm.judgeParam;
-          console.log('judgeParam', judgeParam);
-        }
-      }
-      // const judgeParam = [
-      //   {
-      //     params: { idMaps: [{ sfzhm: '110105197307197114' }] },
-      //     dxType: 'ry_ry',
-      //   },
-      // ];
+      // // 解析 url
+      // const search = window.location.href.split('?')[1];
+      // if (!search) {
+      //   return;
+      // }
+      // this.showClose = true;
+      // this.loading = true;
+      // // 获取参数
+      // const frames = window.parent.document.getElementsByClassName('t_page') || [];
+      // console.log('frames', frames);
+      // let judgeParam = [];
+      // for (let i = 0; i < frames.length; i++) {
+      //   const frame = frames[i];
+      //   const active = frame.dataset.active === 'true';
+      //   if (active) {
+      //     judgeParam = frame.contentWindow.vm.judgeParam;
+      //     console.log('judgeParam', judgeParam);
+      //   }
+      // }
+      
+      const judgeParam = [
+        {
+          params: { idMaps: [{ sfzhm: '110105197307197114' }] },
+          dxType: 'ry_ry',
+        },
+      ];
       const arr = [];
       judgeParam.forEach((payload) => {
         arr.push(getRelationByDxType(payload));

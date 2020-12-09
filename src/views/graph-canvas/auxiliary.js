@@ -14,6 +14,10 @@ export function getMenuList(item) {
   const deleteMenu = `<div data-type="delete" class="kf-icon-delete">
         <span data-type="delete">删除</span>
       </div>`;
+  // 查看详情
+  const detailsMenu = `<div data-type="delete" class="kf-icon-delete">
+        <span data-type="delete">查看详情</span>
+      </div>`;
   if (item.get('type') === 'edge') {
     return `<div class="right-menu__list">
     ${deleteMenu}

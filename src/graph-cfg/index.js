@@ -3,12 +3,12 @@
  */
 export const layoutCfg = {
   // 随机布局
-  random: {
-    type: 'random',
-    preventOverlap: true,
-    // workerEnabled: true,
-    label: '随机'
-  },
+  // random: {
+  //   type: 'random',
+  //   preventOverlap: true,
+  //   // workerEnabled: true,
+  //   label: '随机'
+  // },
   // 力导向布局
   force: {
     type: 'force',
@@ -18,16 +18,17 @@ export const layoutCfg = {
     nodeSpacing: 50,
     edgeStrength: 1,
     label: '力导向',
+    // clustering: true
     // workerEnabled: true,
   },
-  // 环形布局
 
-  // circular: {
-  //   type: 'circular',
-  //   radius: 200,
-  //   // workerEnabled: true,
-  //   label: '环形'
-  // },
+  // 环形布局
+  circular: {
+    type: 'circular',
+    radius: 200,
+    // workerEnabled: true,
+    label: '环形'
+  },
 
   // 同心圆
   concentric: {
