@@ -77,13 +77,6 @@
       </el-submenu>
     </el-menu>
 
-    <!-- 详情弹框 -->
-    <el-dialog title="对象详情" :visible.sync="dialogBaseInfoDetail">
-      <el-table :data="baseInfoDetail" header-row-class-name="header-hidden">
-        <el-table-column prop="field" label=""></el-table-column>
-        <el-table-column prop="value" label=""></el-table-column>
-      </el-table>
-    </el-dialog>
     <!-- 编辑信息 -->
     <el-dialog
       title="编辑对象"
@@ -117,9 +110,7 @@ export default {
         { relationship: 'CCC', num: 3 },
         { relationship: 'DDD', num: 4 },
       ],
-      dialogBaseInfoDetail: false,
       dialogBaseInfoChange: false,
-      baseInfoDetail: [],
       baseInfoForm: {},
     };
   },
@@ -214,20 +205,8 @@ export default {
           message: '暂无详情',
         });
       }
-      const arr = [];
-      const cellInfo = this.selectNodeInfo.get('model').cellInfo;
-      const mxProperties = cellInfo.mxProperties || {};
-      const propOrders = cellInfo.propOrders || [];
-      propOrders.forEach((key) => {
-        if (mxProperties.hasOwnProperty(key)) {
-          arr.push({
-            field: key,
-            value: mxProperties[key] || '空',
-          });
-        }
-      });
-      this.baseInfoDetail = arr;
-      this.dialogBaseInfoDetail = true;
+      const model = this.selectNodeInfo.get('model');
+      this.$emit('look-node-detail', model);
     },
   },
 };

@@ -312,12 +312,14 @@ export default {
           );
           this.collapseExpandLeafNode(item, extendsObj);
         }
-      } else if (type === 'extend-group') {
-        // 展开组
-        this.extendGroupNode(item);
+      } else if (type.includes('unfold')) {
+        // 展开组 子节点展开自己 | 父节点展开子节点
+        this.extendGroupNode(item, value);
       } else if (type.includes('hidden-node') || type.includes('show-node')) {
         // 隐藏节点
         this.handleShowHiddenNode(type, item);
+      } else if (type === 'details') {
+        this.$emit('look-node-detail', item.getModel())
       }
     },
     // 隐藏显示节点
@@ -345,13 +347,18 @@ export default {
       });
     },
     // 展开组
-    extendGroupNode(item) {
-      const leafNodesInfo = item.get('model').leafNodesInfo;
-      this.graph.removeItem(item);
-      leafNodesInfo.forEach((v) => {
-        this.graph.add('node', v.nodeModel);
-        this.graph.add('edge', v.edgeModel);
+    extendGroupNode(item, value) {
+      const ids = value.split(',');
+      ids.forEach(id => {
+        const item = this.graph.findById(id);
+        const leafNodesInfo = item.get('model').leafNodesInfo;
+        this.graph.removeItem(item);
+        leafNodesInfo.forEach((v) => {
+          this.graph.add('node', v.nodeModel);
+          this.graph.add('edge', v.edgeModel);
+        });
       });
+      this.graph.layout();
     },
     // 收缩叶子节点
     collapseExpandLeafNode(item, extendsObj) {
@@ -395,7 +402,7 @@ export default {
       // 添加线
       const edgeModel = {
         id: `${item.get('id')}_${extendsObj.gxId}-edge`,
-        label: `${label} (${idList.length})`,
+        label: `${label} (${idList.length}个)`,
         source: item.get('id'),
         target: id,
         cellInfo: {
@@ -403,8 +410,10 @@ export default {
         },
         type: 'line',
         itemType: 'edge',
+        isGroupEdge: true
       };
       this.graph.add('edge', edgeModel);
+      this.$nextTick(() => this.graph.layout());
     },
     // 打开连接窗口
     openWindow(item) {

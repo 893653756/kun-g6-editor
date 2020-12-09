@@ -18,7 +18,7 @@
       </div>
       <!-- 面板 -->
       <div class="aside-tabs__panel-detail" v-loading="listLoading">
-        <component v-if="comp" :is="comp"></component>
+        <component v-if="comp" :is="comp" v-on="$listeners"></component>
       </div>
     </div>
   </div>

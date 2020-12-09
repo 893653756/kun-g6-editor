@@ -7,14 +7,22 @@
       </div>
     </div>
     <div class="pages-body">
-      <aside-tabs class="pages-body__aside"></aside-tabs>
+      <aside-tabs class="pages-body__aside" @look-node-detail="lookNodeDetail"></aside-tabs>
       <graph-canvas
         class="pages-body__editors"
         @graph-editors="handleCreateGraph"
         v-loading="loading"
+        @look-node-detail="lookNodeDetail"
       ></graph-canvas>
       <!-- <aside-right></aside-right> -->
     </div>
+    <!-- 节点详情 -->
+    <el-dialog title="对象详情" :visible.sync="dialogBaseInfoDetail">
+      <el-table :data="baseInfoDetail" header-row-class-name="header-hidden" height="400">
+        <el-table-column prop="field" label=""></el-table-column>
+        <el-table-column prop="value" label=""></el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -37,12 +45,30 @@ export default {
     return {
       showClose: false,
       loading: false,
+      dialogBaseInfoDetail: false,
+      baseInfoDetail: []
     };
   },
   created() {
     this.editors = editors;
   },
   methods: {
+    lookNodeDetail(model) {
+      const arr = [];
+      const cellInfo = model.cellInfo;
+      const mxProperties = cellInfo.mxProperties || {};
+      const propOrders = cellInfo.propOrders || [];
+      propOrders.forEach((key) => {
+        if (mxProperties.hasOwnProperty(key)) {
+          arr.push({
+            field: key,
+            value: mxProperties[key] || '空',
+          });
+        }
+      });
+      this.baseInfoDetail = arr;
+      this.dialogBaseInfoDetail = true;
+    },
     handleCreateGraph(graph) {
       this.editors.saveGraph(graph);
       // 保存到 store
@@ -76,7 +102,7 @@ export default {
       //     console.log('judgeParam', judgeParam);
       //   }
       // }
-      
+      this.loading = true;
       const judgeParam = [
         {
           params: { idMaps: [{ sfzhm: '110105197307197114' }] },

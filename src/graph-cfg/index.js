@@ -19,7 +19,7 @@ export const layoutCfg = {
     edgeStrength: 1,
     label: '力导向',
     // clustering: true
-    // workerEnabled: true,
+    workerEnabled: true,
   },
 
   // 环形布局
@@ -80,9 +80,10 @@ export const graphCfg = {
     default: [
       'drag-canvas',
       'zoom-canvas',
-      'drag-node',
-      // 'drag-combo',
-      // 'collapse-expand-combo'
+      {
+        type: 'drag-node',
+        enableDelegate: true,
+      }
     ],
     addEdge: ['add-edge'],
   },

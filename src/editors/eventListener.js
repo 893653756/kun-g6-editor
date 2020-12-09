@@ -109,10 +109,9 @@ export const bindEventListener = function (graph) {
     }
   });
   graph.on('afteradditem', ({ model, item }) => {
-    console.warn('afteradditem', model);
+    // console.warn('afteradditem', model);
     // 重新计算
     if (model.type === 'dashed-line') {
-      // console.warn('afteradditem', model);
       return;
     }
     countCB();
