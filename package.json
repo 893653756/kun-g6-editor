@@ -11,6 +11,7 @@
     "@babel/polyfill": "^7.12.1",
     "@kun/ued-components": "^3.2.14",
     "babel-plugin-component": "^1.1.1",
+    "compression-webpack-plugin": "^6.1.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "vue": "^2.6.11",

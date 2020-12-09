@@ -94,6 +94,8 @@ import {
   fetchRelationDetail,
 } from '@/api/editors';
 import { mapGetters } from 'vuex';
+import MyMixin from '@/mixin';
+
 export default {
   data() {
     return {
@@ -102,7 +104,7 @@ export default {
       dialogLinkDetail: false, // 关系详情
       linkDetail: {
         values: [],
-        columns: {}
+        columns: {},
       },
       linksBetweenEntity: [], // 可建立的关系列表
       cellRelationList: [], // 节点所有有关系
@@ -112,6 +114,7 @@ export default {
       linkLoading: false,
     };
   },
+  mixins: [MyMixin],
   created() {
     this.linkDirection = {
       SX: '双向关系',
@@ -247,7 +250,7 @@ export default {
       if (!startIdMap || !endIdMap) {
         return this.$message({
           type: 'warning',
-          message: '当前有集合节点, 请先展开'
+          message: '当前有集合节点, 请先展开',
         });
       }
       const payload = {
@@ -319,22 +322,27 @@ export default {
     },
     // 隐藏显示节点
     handleShowHiddenNode(type, item) {
+      const hideItems = [];
       if (type === 'hidden-node-self') {
         this.graph.hideItem(item);
       } else if (type === 'hidden-node-children') {
-        // 隐藏所有字节的
-        const edges = item.getOutEdges();
-        edges.forEach((e) => {
-          const target = e.getTarget();
-          this.graph.hideItem(target);
-        });
+        // 隐藏所有后代节点
+        this.findAllChildItems(item, hideItems);
+        hideItems.forEach((v) => this.graph.hideItem(v));
       } else if (type === 'show-node-children') {
-        const edges = item.getOutEdges();
-        edges.forEach((e) => {
-          const target = e.getTarget();
-          this.graph.showItem(target);
-        });
+        // 显示所有子节点
+        this.findAllChildItems(item, hideItems);
+        hideItems.forEach((v) => this.graph.showItem(v));
       }
+    },
+    // 查找所有子节点
+    findAllChildItems(item, result = []) {
+      const edges = item.getOutEdges();
+      edges.forEach((e) => {
+        const target = e.getTarget();
+        result.push(target);
+        this.findAllChildItems(target, result);
+      });
     },
     // 展开组
     extendGroupNode(item) {
@@ -367,7 +375,7 @@ export default {
       idList.forEach((v) => {
         this.graph.removeItem(v);
       });
-      const id = `${item.get('id')}_${extendsObj.gxId}`;
+      const id = `${item.get('id')}_group_${extendsObj.gxId}`;
       const label = extendsObj.label;
       const model = {
         x,
@@ -389,7 +397,7 @@ export default {
         id: `${item.get('id')}_${extendsObj.gxId}-edge`,
         label: `${label} (${idList.length})`,
         source: item.get('id'),
-        target: `${item.get('id')}_${extendsObj.gxId}`,
+        target: id,
         cellInfo: {
           id: extendsObj.gxId,
         },
@@ -411,14 +419,11 @@ export default {
     async openRelationBox(node) {
       const { cellInfo } = node.get('model');
       let leafNodesInfo = [];
-      const edges = node.get('edges');
+      const edges = node.getOutEdges();
       edges.forEach((v) => {
-        const sm = v.getSource().get('model');
         const tm = v.getTarget().get('model');
         if (tm.type === 'group-node') {
           leafNodesInfo.push(...tm.leafNodesInfo);
-        } else if (sm.type === 'group-node') {
-          leafNodesInfo.push(...sm.leafNodesInfo);
         }
       });
       this.rightClickCell = {
@@ -516,7 +521,9 @@ export default {
       const { data } = await getAllRelation(payload);
       this.btnLoading = false;
       if (data.code === 0) {
-        this.editors.extendRelation(rightClickCell.leafNodesInfo, data.content);
+        // 处理数据
+        data.content.entities = this.saveItemId(data.content.entities);
+        this.editors.extendRelation(rightClickCell.leafNodesInfo, data.content, this.rightClickCell.cellInfo.id);
       } else {
         this.$message({
           type: 'warning',
@@ -536,7 +543,7 @@ export default {
       // 节点关系详情
       this.linkDetail = {
         values: [],
-        columns: {}
+        columns: {},
       };
       this.dialogLinkDetail = false;
     },

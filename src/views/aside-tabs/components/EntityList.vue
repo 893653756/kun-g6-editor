@@ -63,6 +63,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { fetchEntityIsExistence } from '@/api/entityList';
+import MyMixin from '@/mixin';
 export default {
   data() {
     return {
@@ -77,6 +78,7 @@ export default {
   created() {
     this.model = null;
   },
+  mixins: [MyMixin],
   computed: {
     ...mapGetters(['editors', 'entitys']),
     defaultOpeneds() {
@@ -158,8 +160,9 @@ export default {
       this.loading = false;
       if (data.code === 0) {
         if (data.content) {
-          // 直接添加节点
-          this.model.cellInfo = data.content;
+          // 保存节点id, 
+          const cellInfo = this.saveItemId([data.content]);
+          this.model.cellInfo = cellInfo[0];
           this.editors.addNode(this.model);
         } else {
           const id = `circle-image-${Date.now()}`;

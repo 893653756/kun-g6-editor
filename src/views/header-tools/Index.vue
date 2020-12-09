@@ -242,6 +242,7 @@ import {
   getRelationDetailById,
 } from '@/api/headerTools';
 import { getAllRelation } from '@/api/editors';
+import MyMixin from '@/mixin';
 
 export default {
   data() {
@@ -283,6 +284,7 @@ export default {
   components: {
     IconLabel,
   },
+  mixins: [MyMixin],
   computed: {
     ...mapGetters(['editors', 'selectNodes', 'selectModel', 'layoutType']),
     selectName() {
@@ -399,7 +401,8 @@ export default {
     },
     // 全屏
     handleFullScreen() {
-      const element = document.documentElement;
+      const doc = window.top.document;
+      const element = doc.documentElement || doc.body;
       if (element.requestFullscreen) {
         element.requestFullscreen();
       } else if (element.msRequestFullscreen) {
@@ -551,33 +554,16 @@ export default {
       this.btnLoading = false;
       // 保存当前关系图id
       this.graphId = this.relationList.radio;
+      this.saveItemId(data.content.nodes);
       const content = JSON.parse(data.content);
       // const content = data.content; // 本地调试用
       if (data.code === 0) {
+        debugger
+        this.saveItemId(content.nodes);
         content.nodes = content.nodes.map((v) => ({
           ...v,
           img: `${window.baseImagePath}/entityImages/${v.cellInfo.icon}.png`,
         }));
-        content.edges = content.edges.map((v) => ({
-          ...v,
-          style: {
-            ...v.style,
-            lineWidth: 1,
-          },
-          labelCfg: {
-            autoRotate: true,
-            style: {
-              fill: '#000000',
-              fontSize: 10,
-              background: {
-                fill: '#ffffff',
-                padding: [1, 1, 1, 1],
-                radius: 2,
-              },
-            },
-          },
-        }));
-        const len = content.nodes.length;
         this.editors.graph.read(content);
       } else {
         this.$message({

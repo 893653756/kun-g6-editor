@@ -13,6 +13,17 @@ class Editors {
   // 添加节点
   addNode(model) {
     const cellInfo = model.cellInfo;
+    if (cellInfo && (!cellInfo.custom)) {
+      const nodeIdList = store.getters.nodeIdList || [];
+      const nextEntities = cellInfo.nextEntities || [];
+      let childrenCount = 0;
+      nextEntities.forEach(id => {
+        if (!nodeIdList.includes(id)) {
+          childrenCount++;
+        }
+      });
+      model.childrenCount = childrenCount;
+    }
     const label = Object.entries(cellInfo.properties)
       .map((v) => `${v[1]}`)
       .join('\n');
@@ -120,6 +131,7 @@ class Editors {
     );
     store.commit(MutationTypes.SET_NODE_TYPE, []);
     store.commit(MutationTypes.SET_EDGE_TYPE, []);
+    store.commit(MutationTypes.SET_NODE_IDS, []);
   }
   // 导出graph
   exportGraph(type) {
@@ -142,23 +154,34 @@ class Editors {
     const { entities, links } = content;
     const nodes = entities.map(item => {
       const label = Object.entries(item.properties)
-        .map((v) => `${v[1]}`)
-        .join('\n');
+      .map((v) => `${v[1]}`)
+      .join('\n');
       const img = `${window.baseImagePath}/entityImages/${item.icon}.png`;
+      const nodeIdList = store.getters.nodeIdList || [];
+      const nextEntities = item.nextEntities || [];
+      let childrenCount = 0;
+      nextEntities.forEach(id => {
+        if (!nodeIdList.includes(id)) {
+          childrenCount++;
+        }
+      });
       return {
         id: item.id,
         label,
         type: 'circle-image',
         img: img,
         cellInfo: item,
+        childrenCount
       }
     });
-    const edges = links.map(item => {
+    // let hasEdges = [];
+    const edges = [];
+    links.forEach(item => {
       const { sourceEntityId, targetEntityId, label, properties } = item;
       // const id = sourceEntityId + '-' + targetEntityId;
-      const edgeId = `${sourceEntityId}-${targetEntityId}`;
+      let edgeId = `${sourceEntityId}-${targetEntityId}`;
       const text = properties ? `${label}\n${properties}` : label;
-      return {
+      const model = {
         id: edgeId,
         label: text,
         cellInfo: item,
@@ -166,7 +189,16 @@ class Editors {
         target: targetEntityId,
         type: 'line',
         itemType: 'edge'
+      };
+      const hasEdge = edges.find(v => v.id === edgeId);
+      if (hasEdge) {
+        hasEdge.type = 'quadratic';
+        edgeId = `${edgeId}-${item.id}`;
+        model.id = edgeId;
+        model.type = 'quadratic';
+        model.curveOffset = 20;
       }
+      edges.push(model);
     });
     this.graph.data({
       nodes,
@@ -175,40 +207,25 @@ class Editors {
     this.graph.render();
   }
   // 扩展关系
-  extendRelation(leafNodesInfo = [], { entities, links }) {
+  extendRelation(leafNodesInfo = [], { entities, links }, sourceId) {
     let flag = false;
     // 节点
     entities.forEach(item => {
       // 查找时候已有该节点
-      let node = this.graph.findById(item.id);
-      if (node) {
-        return;
-      }
-      node = leafNodesInfo.find(v => item.id === v.nodeModel.id);
-      if (node) {
-        return;
-      }
+      // let node = this.graph.findById(item.id);
+      // if (node) {
+      //   return;
+      // }
+      // node = leafNodesInfo.find(v => item.id === v.nodeModel.id);
+      // if (node) {
+      //   return;
+      // }
       flag = true;
-      let label = '';
-      if (item.notExist) {
-        // 可疑人员
-        label = Object.values(item.mxProperties)
-          .filter(v => v)
-          .join('\n');
-      } else {
-        label = Object.entries(item.properties)
-          .map((v) => `${v[1]}`)
-          .join('\n');
-      }
-      const img = `${window.baseImagePath}/entityImages/${item.icon}.png`;
       const model = {
-        id: item.id,
-        label,
-        type: 'circle-image',
-        img: img,
         cellInfo: item,
+        type: 'circle-image',
       };
-      this.graph.add('node', model, true);
+      this.addNode(model);
     });
     // 关系
     links.forEach(item => {
@@ -236,7 +253,7 @@ class Editors {
          *    1. 一致则退出
          *    2. 不一致则新增关系，并转换线条样式
          */
-        if(edge.get('model').cellInfo.id === item.id) {
+        if (edge.get('model').cellInfo.id === item.id) {
           return;
         } else {
           flag = true;
@@ -269,17 +286,36 @@ class Editors {
       };
       this.graph.add('edge', newModel, true);
     });
+    // 更新子节点数量
+    this.updateNodesChildren(sourceId);
     flag && this.graph.layout();
+  }
+  // 更新节点显示
+  updateNodesChildren(sourceId) {
+    const item = this.graph.findById(sourceId);
+    const model = item.getModel();
+    const cellInfo = model.cellInfo;
+    const nodeIdList = store.getters.nodeIdList || [];
+    const nextEntities = cellInfo.nextEntities || [];
+    let childrenCount = 0;
+    nextEntities.forEach(id => {
+      if (!nodeIdList.includes(id)) {
+        childrenCount++;
+      }
+    });
+    this.graph.updateItem(item, {
+      childrenCount,
+    });
   }
   // 两节点之间多遍情况
   nodeMoreEdges(oldEdge, newModel) {
-      this.graph.add('edge', newModel, true);
-      if (oldEdge.get('model').type !== 'quadratic') {
-        this.graph.updateItem(oldEdge, {
-          type: 'quadratic',
-          curveOffset: 20,
-        });
-      }
+    this.graph.add('edge', newModel, true);
+    if (oldEdge.get('model').type !== 'quadratic') {
+      this.graph.updateItem(oldEdge, {
+        type: 'quadratic',
+        curveOffset: 20,
+      });
+    }
   }
   // 锁定
   lockItem(item) {

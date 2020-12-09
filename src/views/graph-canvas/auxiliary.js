@@ -91,7 +91,7 @@ function isHasUrl(item) {
   const cellInfo = item.get('model').cellInfo;
   if (cellInfo.xqUrl) {
     return `<div data-type="xqUrl" class="el-icon-s-promotion">
-              <span data-type="xqUrl">链接详情</span>
+              <span data-type="xqUrl">档案</span>
             </div>`;
   }
   return '';

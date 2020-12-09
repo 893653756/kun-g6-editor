@@ -76,6 +76,12 @@ export default {
           console.log('judgeParam', judgeParam);
         }
       }
+      // const judgeParam = [
+      //   {
+      //     params: { idMaps: [{ sfzhm: '110105197307197114' }] },
+      //     dxType: 'ry_ry',
+      //   },
+      // ];
       const arr = [];
       judgeParam.forEach((payload) => {
         arr.push(getRelationByDxType(payload));
@@ -83,6 +89,7 @@ export default {
       const result = await Promise.all(arr);
       const nodes = {};
       const edges = {};
+      const ids = [];
       result.forEach(({ data }) => {
         if (data.code === 0) {
           const content = data.content;
@@ -90,12 +97,14 @@ export default {
           content.entities.forEach((node) => {
             if (!nodes[node.id]) {
               nodes[node.id] = node;
+              ids.push(node.id);
             }
           });
+          this.$store.commit(MutationTypes.SET_NODE_IDS, ids);
           // 边
           content.links.forEach((edge) => {
             const { sourceEntityId, targetEntityId } = edge;
-            const id = `${sourceEntityId}-${targetEntityId}`;
+            const id = `${sourceEntityId}-${targetEntityId}-${edge.id}`;
             if (!edges[id]) {
               edges[id] = edge;
             }

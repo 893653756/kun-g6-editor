@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    // 画布里所有节点的id
+    nodeIdList: [],
     editors: null, // 编辑器实例,
     selectNodes: [], // 当前选择的节点
     entitys: [], // 实体列表
@@ -22,9 +24,14 @@ export default new Vuex.Store({
     hasEntitys: (state) => state.hasEntitys,
     selectModel: (state) => state.selectModel,
     layoutType: (state) => state.layoutType,
-    leafNodeList: (state) => state.leafNodeList
+    leafNodeList: (state) => state.leafNodeList,
+    nodeIdList: (state) => state.nodeIdList
   },
   mutations: {
+    // 更新画布节点id
+    [MutationTypes.SET_NODE_IDS](state, nodeIdList) {
+      state.nodeIdList = nodeIdList;
+    },
     // 叶子节点
     [MutationTypes.SET_LEAF_NODE](state, nodeList) {
       state.leafNodeList = nodeList;

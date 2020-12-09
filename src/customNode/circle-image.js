@@ -58,7 +58,7 @@ export default {
           height: 16,
           img: `${window.baseImagePath}/entityImages/question-mark.png`,
           cursor: 'move',
-          x: r / 2,
+          x: r / 2 - 4,
           y: - r / 2 - 8,
         },
         name: 'question-mark',
@@ -152,19 +152,36 @@ export default {
     }
     // 下一层节点数 nextEntitiesNumber | nextCustomNodes
     if (!cfg.cellInfo.custom) {
-      // 是否有子节点
-      const { nextEntitiesNumber = 0 } = cfg.cellInfo;
-      const total = nextEntitiesNumber;
+      // const { cellInfo, loadChildren = 0 } = cfg;
+      // const { nextEntities } = cellInfo;
+      // let total = 0;
+      // if (nextEntities) {
+      //   total = nextEntities.length - loadChildren;
+      // }
+      const total = cfg.childrenCount || 0;
       if (total > 0) {
         group.addShape('circle', {
           attrs: {
-            r: 4,
+            r: 8,
             x: r - 12,
             y: -(r - 12),
-            fill: '#ff0000',
+            fill: '#67C23A',
           },
-          name: 'red-circle'
+          name: 'nextEntitiesNumber-circle'
         })
+        group.addShape('text', {
+          attrs: {
+            x: r - 13,
+            y: -(r - 13),
+            id: 'nextEntitiesNumber' + cfg.id,
+            text: total,
+            fontSize: 12,
+            textAlign: 'center',
+            textBaseline: 'middle',
+            fill: '#ffffff',
+          },
+          name: 'nextEntitiesNumber-text'
+        });
       }
     }
 

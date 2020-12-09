@@ -14,3 +14,5 @@ export const SET_SELECT_MODEL = 'SET_SELECT_MODEL';
 export const SET_LAYOUT_TYPE = 'SET_LAYOUT_TYPE';
 // 保存某节点的叶子节点信息
 export const SET_LEAF_NODE = 'SET_LEAF_NODE';
+// 画布所有节点id
+export const SET_NODE_IDS = 'SET_NODE_IDS';
