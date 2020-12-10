@@ -1,0 +1,6610 @@
+{
+  "nodes": [
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "label": "黄志勇",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ry_ry_issd_isxd_iswf.png",
+      "cellInfo": {
+        "id": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "gxId": "202010240000002_SX,202010240000003_SX,202010240000004_SX,202010240000005_SX,202010260000001_SX,202010260000002_SX,202010260000003_SX,202010260000004_SX,202010260000005_SX,202010260000006_SX,202010260000007_SX,202010260000008_SX,202010260000009_SX,202010260000010_SX,202010260000011_SX,202011020000030_SX,202011050000033_SX,202011200000001_SX,202012020000001_SX,202012070000003_SX,202012070000004_SX",
+        "idMap": {
+          "sfzhm": "110105197307197114"
+        },
+        "label": "人员",
+        "type": "ry_ry",
+        "icon": "ry_ry_issd_isxd_iswf",
+        "dxId": "202010240000001",
+        "xqUrl": "/clues/xyr/xyrview.html?sfzhm=110105197307197114",
+        "properties": {
+          "姓名": "黄志勇"
+        },
+        "lbProperties": {
+          "姓名": "黄志勇",
+          "身份证号码": "110105197307197114"
+        },
+        "mxProperties": {
+          "职业": "工人",
+          "吸毒人员编号": "N4949540000000000221048",
+          "是否涉毒（1为是）": "1",
+          "文化程度": "中等专业学校",
+          "身份证号码": "110105197307197114",
+          "户号": "0001751056",
+          "姓名": "黄志勇",
+          "是否违法犯罪人员（1为是）": "1",
+          "涉毒人员编号": "R4949540000002016070014",
+          "民族": "汉族",
+          "与户主关系": "父亲",
+          "国籍": "其他",
+          "是否吸毒（1为是）": "1",
+          "婚姻状态": ""
+        },
+        "propOrders": [
+          "是否涉毒（1为是）",
+          "是否违法犯罪人员（1为是）",
+          "是否吸毒（1为是）",
+          "涉毒人员编号",
+          "吸毒人员编号",
+          "身份证号码",
+          "民族",
+          "职业",
+          "姓名",
+          "婚姻状态",
+          "国籍",
+          "文化程度",
+          "户号",
+          "与户主关系"
+        ],
+        "tab": "ry_jcxx",
+        "startOrEnd": "qs",
+        "nextEntitiesNumber": 46,
+        "nextEntities": [
+          "ac900053712866080cf801476cdb1ff3",
+          "5ec568b434f9ce00f71df2a5ec734359",
+          "e19f2f4d7492e0c76dbec65411b31e80",
+          "70ee7f0b8773c8d377dc7ea132843283",
+          "9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+          "56192ba45c52654f5a5fd5fb2f2e0c49",
+          "de377fd51b033a9d33d54a02f78db99a",
+          "f2159dcd286ea58df32c4d2e6383a345",
+          "ea6970e506d96d6583bd4376d55da635",
+          "06288a998897c25e9438701f29fc9562",
+          "3b53f5c5c59fb07e97d4e919c7642a4f",
+          "3892db6f64fc9b6ca42c2aa1cc370d0a",
+          "4bd6943e061375a56e1dcc97f7b3adf7",
+          "2da9631e289e87dea699f87932b10f74",
+          "00fbd62ad4924aeeb92f1061772f2d7d",
+          "5f0e4d77aafe5e0d622675f6c2082944",
+          "68396ab9be1793c63b1149a85fd65842",
+          "89b5f233e5fd84cdb3fab6b7fda6f7eb",
+          "1669015a7af4dc8448beab352f661ac1",
+          "805ce127632e7c5118b8d0b78ee7f353",
+          "530ae4549ba635f8d3bf22e71044a8db",
+          "b0b4c1090c9f1011ef73cab1b25c4c47",
+          "50bc72711b2913f121d8d62c983c6c2f",
+          "5676f49bb2d23cfcbc51dd4d629a9c44",
+          "a256dfd64be8d656fc0df6f27b3e923e",
+          "d289c12578e7146e13df648a21b43af2",
+          "362b4fd5c2ef3f297d4563302c561fe1",
+          "286d9cc073e342620195f1e8ccf4f88e",
+          "b909502ec2fb6f0c900e2f2b837a44fa",
+          "a1ee1b58156f87a98fd5c551d55cf9cd",
+          "990c4c9258fad33449aab0218bc8d05f",
+          "687357704ace4c7c6decdbf11805d2cd",
+          "44f184e8bef43044521aa536aeebd1ce",
+          "4f52c2113034f52780796fdecd9b40ed",
+          "3cca53c40a1e72c96266d5b6762ae3b4",
+          "d31546421e23301d63c96eb5eaf0624f",
+          "d6a12f3d261d3c7226cacc9f8d45763d",
+          "db217feba5e5ffc63414912e58521219",
+          "cf88ee6c8bdd811240b9b965550c3349",
+          "a5ee861952782e883377527f75b2fc03",
+          "b1efdff0d98dfff5258aaefa0ae13fa8",
+          "b16324d24fc271da1e97973433120b02",
+          "ce62bcf0200f5d1810561458b467893d",
+          "915f2aef304a9f19e76a30b17957a79e",
+          "4b1dd2a8c1156c1b5c7e9294430e4ede",
+          "a4a8c19dc470ab2e158b8c2dade8be41"
+        ],
+        "linkCount": null,
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 504.3205572576212,
+      "y": 299.0891807153879
+    },
+    {
+      "id": "362b4fd5c2ef3f297d4563302c561fe1",
+      "label": "流程2",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "362b4fd5c2ef3f297d4563302c561fe1",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "流程2",
+          "xsbh": "X0362020113000031"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "流程2"
+        },
+        "lbProperties": {
+          "线索名称": "流程2"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": "流程2",
+          "线索级别": "2",
+          "线索编号": "X0362020113000031",
+          "线索名称": "流程2",
+          "线索来源类型": "clues_source3",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 364.6849346758478,
+      "y": -17.694375777765284
+    },
+    {
+      "id": "ac900053712866080cf801476cdb1ff3",
+      "label": "总队线索流程测试1202-003",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "ac900053712866080cf801476cdb1ff3",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1202-003",
+          "xsbh": "X131100002600062020120200061"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1202-003"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1202-003"
+        },
+        "mxProperties": {
+          "线索内容描述": "电话是不是不要指定11位长度",
+          "线索来源信息": "大兴分局内生情报",
+          "线索级别": "1",
+          "线索编号": "X131100002600062020120200061",
+          "线索名称": "总队线索流程测试1202-003",
+          "线索来源类型": "clues_source12",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 208.81179740092065,
+      "y": 88.03974811265284
+    },
+    {
+      "id": "44f184e8bef43044521aa536aeebd1ce",
+      "label": "总队线索流程测试1130-011",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "44f184e8bef43044521aa536aeebd1ce",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1130-011",
+          "xsbh": "X1362020113000026"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1130-011"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1130-011"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "3",
+          "线索编号": "X1362020113000026",
+          "线索名称": "总队线索流程测试1130-011",
+          "线索来源类型": "clues_source12",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 447.23667979858993,
+      "y": 83.14884111194651
+    },
+    {
+      "id": "a1ee1b58156f87a98fd5c551d55cf9cd",
+      "label": "总队线索流程测试1201-005",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "a1ee1b58156f87a98fd5c551d55cf9cd",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1201-005",
+          "xsbh": "X0862020120100048"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1201-005"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1201-005"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "1",
+          "线索编号": "X0862020120100048",
+          "线索名称": "总队线索流程测试1201-005",
+          "线索来源类型": "clues_source8",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "168c8200d48025c05588fbbe78d17fa3",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 328.24144002970826,
+      "y": 96.39420704289515
+    },
+    {
+      "id": "70ee7f0b8773c8d377dc7ea132843283",
+      "label": "总队线索流程测试1201-004",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "70ee7f0b8773c8d377dc7ea132843283",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1201-004",
+          "xsbh": "X01062020120100039"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1201-004"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1201-004"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索内容描述",
+          "线索来源信息": "阿里支持",
+          "线索级别": "2",
+          "线索编号": "X01062020120100039",
+          "线索名称": "总队线索流程测试1201-004",
+          "线索来源类型": "clues_source9",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "2854b59f8ffa0425af7729adbfd480b5"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 483.8229914551276,
+      "y": -30.92442128374202
+    },
+    {
+      "id": "b909502ec2fb6f0c900e2f2b837a44fa",
+      "label": "BUG-7518测试",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "b909502ec2fb6f0c900e2f2b837a44fa",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "BUG-7518测试",
+          "xsbh": "X0862020120100040"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "BUG-7518测试"
+        },
+        "lbProperties": {
+          "线索名称": "BUG-7518测试"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "1",
+          "线索编号": "X0862020120100040",
+          "线索名称": "BUG-7518测试",
+          "线索来源类型": "clues_source8",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "bc9a31e40306f3ad16b5f29802704350",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 601.1024712229171,
+      "y": -56.131530924006064
+    },
+    {
+      "id": "d6a12f3d261d3c7226cacc9f8d45763d",
+      "label": "总队线索流程测试1202-001",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "d6a12f3d261d3c7226cacc9f8d45763d",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1202-001",
+          "xsbh": "X0562020120200059"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1202-001"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1202-001"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索内容描述",
+          "线索来源信息": "北京战支三部来源",
+          "线索级别": "1",
+          "线索编号": "X0562020120200059",
+          "线索名称": "总队线索流程测试1202-001",
+          "线索来源类型": "clues_source5",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 741.2780496959382,
+      "y": 269.21646079695586
+    },
+    {
+      "id": "de377fd51b033a9d33d54a02f78db99a",
+      "label": "分局线索流程测试1203-002",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "de377fd51b033a9d33d54a02f78db99a",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "分局线索流程测试1203-002",
+          "xsbh": "X031102280300002020120300068"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "分局线索流程测试1203-002"
+        },
+        "lbProperties": {
+          "线索名称": "分局线索流程测试1203-002"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": "群众举报",
+          "线索级别": "1",
+          "线索编号": "X031102280300002020120300068",
+          "线索名称": "分局线索流程测试1203-002",
+          "线索来源类型": "clues_source3",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 720.977978483827,
+      "y": -51.33285862739201
+    },
+    {
+      "id": "cf88ee6c8bdd811240b9b965550c3349",
+      "label": "信息跟踪测试",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "cf88ee6c8bdd811240b9b965550c3349",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "信息跟踪测试",
+          "xsbh": "X0162020120100050"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "信息跟踪测试"
+        },
+        "lbProperties": {
+          "线索名称": "信息跟踪测试"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": "信息跟踪测试",
+          "线索级别": null,
+          "线索编号": "X0162020120100050",
+          "线索名称": "信息跟踪测试",
+          "线索来源类型": "clues_source1",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 10,
+        "nextEntities": [
+          "168c8200d48025c05588fbbe78d17fa3",
+          "17748b1b3d88405c088d198e316c77de",
+          "bc9a31e40306f3ad16b5f29802704350",
+          "c71023dfdb26f4ae1e08804e5613a85f",
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "65e37b4436bba93de11c02a49688fd51",
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "961d80fc7020fe98bbb5e3d65f0237b8",
+          "92af681bf333a3b3e39c5e0efec34e0e",
+          "2854b59f8ffa0425af7729adbfd480b5"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 10
+        },
+        "notExist": false
+      },
+      "childrenCount": 9,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 527.5772443227804,
+      "y": 172.0300062695848
+    },
+    {
+      "id": "4bd6943e061375a56e1dcc97f7b3adf7",
+      "label": "总队线索流程测试1130-006",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "4bd6943e061375a56e1dcc97f7b3adf7",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1130-006",
+          "xsbh": "X0462020113000018"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1130-006"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1130-006"
+        },
+        "mxProperties": {
+          "线索内容描述": "提取后，从第二行开始展示？",
+          "线索来源信息": null,
+          "线索级别": null,
+          "线索编号": "X0462020113000018",
+          "线索名称": "总队线索流程测试1130-006",
+          "线索来源类型": "clues_source4",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 801.438734218737,
+      "y": 37.734750349956954
+    },
+    {
+      "id": "3b53f5c5c59fb07e97d4e919c7642a4f",
+      "label": "分局线索流程测试1203-004",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "3b53f5c5c59fb07e97d4e919c7642a4f",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "分局线索流程测试1203-004",
+          "xsbh": "X111102280300002020120300070"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "分局线索流程测试1203-004"
+        },
+        "lbProperties": {
+          "线索名称": "分局线索流程测试1203-004"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "1",
+          "线索编号": "X111102280300002020120300070",
+          "线索名称": "分局线索流程测试1203-004",
+          "线索来源类型": "clues_source10",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 141.77142382639272,
+      "y": 187.3947045227542
+    },
+    {
+      "id": "2da9631e289e87dea699f87932b10f74",
+      "label": "撞线测试",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "2da9631e289e87dea699f87932b10f74",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "撞线测试",
+          "xsbh": "X011101010300002020112600014"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "撞线测试"
+        },
+        "lbProperties": {
+          "线索名称": "撞线测试"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": "撞线测试",
+          "线索级别": "1",
+          "线索编号": "X011101010300002020112600014",
+          "线索名称": "撞线测试",
+          "线索来源类型": "clues_source1",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 10,
+        "nextEntities": [
+          "168c8200d48025c05588fbbe78d17fa3",
+          "17748b1b3d88405c088d198e316c77de",
+          "bc9a31e40306f3ad16b5f29802704350",
+          "c71023dfdb26f4ae1e08804e5613a85f",
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "65e37b4436bba93de11c02a49688fd51",
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "961d80fc7020fe98bbb5e3d65f0237b8",
+          "92af681bf333a3b3e39c5e0efec34e0e",
+          "2854b59f8ffa0425af7729adbfd480b5"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 10
+        },
+        "notExist": false
+      },
+      "childrenCount": 9,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 261.4010919489912,
+      "y": 195.89606151179095
+    },
+    {
+      "id": "ce62bcf0200f5d1810561458b467893d",
+      "label": "总队线索流程测试1201-002",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "ce62bcf0200f5d1810561458b467893d",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1201-002",
+          "xsbh": "X0662020120100036"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1201-002"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1201-002"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索内容描述",
+          "线索来源信息": null,
+          "线索级别": "3",
+          "线索编号": "X0662020120100036",
+          "线索名称": "总队线索流程测试1201-002",
+          "线索来源类型": "clues_source6",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "bc9a31e40306f3ad16b5f29802704350",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 348.7062056498334,
+      "y": 418.4493272146464
+    },
+    {
+      "id": "b16324d24fc271da1e97973433120b02",
+      "label": "总队线索流程测试1202-005",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "b16324d24fc271da1e97973433120b02",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1202-005",
+          "xsbh": "X051100002600062020120200063"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1202-005"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1202-005"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索内容描述",
+          "线索来源信息": null,
+          "线索级别": "3",
+          "线索编号": "X051100002600062020120200063",
+          "线索名称": "总队线索流程测试1202-005",
+          "线索来源类型": "clues_source5",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 624.177939385418,
+      "y": 293.7519111077098
+    },
+    {
+      "id": "89b5f233e5fd84cdb3fab6b7fda6f7eb",
+      "label": "分局线索流程测试1127-002",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "89b5f233e5fd84cdb3fab6b7fda6f7eb",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "分局线索流程测试1127-002",
+          "xsbh": "X031101050300002020112700019"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "分局线索流程测试1127-002"
+        },
+        "lbProperties": {
+          "线索名称": "分局线索流程测试1127-002"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索内容描述",
+          "线索来源信息": "总队指挥室",
+          "线索级别": "3",
+          "线索编号": "X031101050300002020112700019",
+          "线索名称": "分局线索流程测试1127-002",
+          "线索来源类型": "clues_source3",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "2854b59f8ffa0425af7729adbfd480b5"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 398.8756427425174,
+      "y": 193.32054739337218
+    },
+    {
+      "id": "68396ab9be1793c63b1149a85fd65842",
+      "label": "测试会商流程",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "68396ab9be1793c63b1149a85fd65842",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "测试会商流程",
+          "xsbh": "X011101010300002020112400005"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "测试会商流程"
+        },
+        "lbProperties": {
+          "线索名称": "测试会商流程"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "1",
+          "线索编号": "X011101010300002020112400005",
+          "线索名称": "测试会商流程",
+          "线索来源类型": "clues_source1",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "bc9a31e40306f3ad16b5f29802704350",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 728.1668126467634,
+      "y": 600.4461934384623
+    },
+    {
+      "id": "4b1dd2a8c1156c1b5c7e9294430e4ede",
+      "label": "总队线索流程测试1130-002",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "4b1dd2a8c1156c1b5c7e9294430e4ede",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "总队线索流程测试1130-002",
+          "xsbh": "X0262020113000015"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "总队线索流程测试1130-002"
+        },
+        "lbProperties": {
+          "线索名称": "总队线索流程测试1130-002"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": "20201130新版测试",
+          "线索级别": "2",
+          "线索编号": "X0262020113000015",
+          "线索名称": "总队线索流程测试1130-002",
+          "线索来源类型": "clues_source2",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 564.3492723588806,
+      "y": 57.93005708516176
+    },
+    {
+      "id": "805ce127632e7c5118b8d0b78ee7f353",
+      "label": "线索测试20201123",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "805ce127632e7c5118b8d0b78ee7f353",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "线索测试20201123",
+          "xsbh": "X011101010300002020112300017"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "线索测试20201123"
+        },
+        "lbProperties": {
+          "线索名称": "线索测试20201123"
+        },
+        "mxProperties": {
+          "线索内容描述": null,
+          "线索来源信息": null,
+          "线索级别": "1",
+          "线索编号": "X011101010300002020112300017",
+          "线索名称": "线索测试20201123",
+          "线索来源类型": "clues_source1",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 3,
+        "nextEntities": [
+          "17748b1b3d88405c088d198e316c77de",
+          "2958d0086a6ed0039ee048154aadf1bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 3
+        },
+        "notExist": false
+      },
+      "childrenCount": 2,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 684.2814272685589,
+      "y": 62.518833656226654
+    },
+    {
+      "id": "1669015a7af4dc8448beab352f661ac1",
+      "label": "分局线索流程测试1201-005",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xs.png",
+      "cellInfo": {
+        "id": "1669015a7af4dc8448beab352f661ac1",
+        "gxId": "202011020000030_FX",
+        "idMap": {
+          "xsmc": "分局线索流程测试1201-005",
+          "xsbh": "X0702020120100047"
+        },
+        "label": "线索",
+        "type": "ajxs_xs",
+        "icon": "ajxs_xs",
+        "dxId": "202010260000010",
+        "xqUrl": null,
+        "properties": {
+          "线索名称": "分局线索流程测试1201-005"
+        },
+        "lbProperties": {
+          "线索名称": "分局线索流程测试1201-005"
+        },
+        "mxProperties": {
+          "线索内容描述": "线索流程测试",
+          "线索来源信息": "北京市法制总队",
+          "线索级别": null,
+          "线索编号": "X0702020120100047",
+          "线索名称": "分局线索流程测试1201-005",
+          "线索来源类型": "clues_source7",
+          "线索录入来源（0:单一、1:群体、2:挖掘）": "0"
+        },
+        "propOrders": [
+          "线索编号",
+          "线索名称",
+          "线索来源类型",
+          "线索来源信息",
+          "线索内容描述",
+          "线索级别",
+          "线索录入来源（0:单一、1:群体、2:挖掘）"
+        ],
+        "tab": "view_ry_xsxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011020000030_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 764.5408259130686,
+      "y": 151.88507465319117
+    },
+    {
+      "id": "3cca53c40a1e72c96266d5b6762ae3b4",
+      "label": "1172471557@qq.com",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_yx.png",
+      "cellInfo": {
+        "id": "3cca53c40a1e72c96266d5b6762ae3b4",
+        "gxId": "202010260000008_FX",
+        "idMap": {
+          "xnzh": "1172471557@qq.com"
+        },
+        "label": "邮箱",
+        "type": "xnsf_yx",
+        "icon": "xnsf_yx",
+        "dxId": "202010260000006",
+        "xqUrl": null,
+        "properties": {
+          "账号": "1172471557@qq.com"
+        },
+        "lbProperties": {
+          "账号": "1172471557@qq.com"
+        },
+        "mxProperties": {
+          "账号": "1172471557@qq.com",
+          "账号类型": "邮箱",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000008_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 881.7512172540062,
+      "y": 127.22934793631015
+    },
+    {
+      "id": "5676f49bb2d23cfcbc51dd4d629a9c44",
+      "label": "1023797407@qq.com",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_yx.png",
+      "cellInfo": {
+        "id": "5676f49bb2d23cfcbc51dd4d629a9c44",
+        "gxId": "202010260000008_FX",
+        "idMap": {
+          "xnzh": "1023797407@qq.com"
+        },
+        "label": "邮箱",
+        "type": "xnsf_yx",
+        "icon": "xnsf_yx",
+        "dxId": "202010260000006",
+        "xqUrl": null,
+        "properties": {
+          "账号": "1023797407@qq.com"
+        },
+        "lbProperties": {
+          "账号": "1023797407@qq.com"
+        },
+        "mxProperties": {
+          "账号": "1023797407@qq.com",
+          "账号类型": "邮箱",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000008_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 938.3471027494338,
+      "y": 334.4075699761521
+    },
+    {
+      "id": "5ec568b434f9ce00f71df2a5ec734359",
+      "label": "775207963",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_qq.png",
+      "cellInfo": {
+        "id": "5ec568b434f9ce00f71df2a5ec734359",
+        "gxId": "202010260000006_FX,202010260000013_SX",
+        "idMap": {
+          "xnzh": "775207963"
+        },
+        "label": "QQ",
+        "type": "xnsf_qq",
+        "icon": "xnsf_qq",
+        "dxId": "202010260000005",
+        "xqUrl": null,
+        "properties": {
+          "账号": "775207963"
+        },
+        "lbProperties": {
+          "账号": "775207963"
+        },
+        "mxProperties": {
+          "账号": "775207963",
+          "账号类型": "QQ",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000006_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 194.13946754095434,
+      "y": 295.1761576233723
+    },
+    {
+      "id": "990c4c9258fad33449aab0218bc8d05f",
+      "label": "1023797407",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_qq.png",
+      "cellInfo": {
+        "id": "990c4c9258fad33449aab0218bc8d05f",
+        "gxId": "202010260000006_FX,202010260000013_SX",
+        "idMap": {
+          "xnzh": "1023797407"
+        },
+        "label": "QQ",
+        "type": "xnsf_qq",
+        "icon": "xnsf_qq",
+        "dxId": "202010260000005",
+        "xqUrl": null,
+        "properties": {
+          "账号": "1023797407"
+        },
+        "lbProperties": {
+          "账号": "1023797407"
+        },
+        "mxProperties": {
+          "账号": "1023797407",
+          "账号类型": "QQ",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000006_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 112.71375314707633,
+      "y": 383.36716106868363
+    },
+    {
+      "id": "b1efdff0d98dfff5258aaefa0ae13fa8",
+      "label": "2108335600",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_qq.png",
+      "cellInfo": {
+        "id": "b1efdff0d98dfff5258aaefa0ae13fa8",
+        "gxId": "202010260000006_FX,202010260000013_SX",
+        "idMap": {
+          "xnzh": "2108335600"
+        },
+        "label": "QQ",
+        "type": "xnsf_qq",
+        "icon": "xnsf_qq",
+        "dxId": "202010260000005",
+        "xqUrl": null,
+        "properties": {
+          "账号": "2108335600"
+        },
+        "lbProperties": {
+          "账号": "2108335600"
+        },
+        "mxProperties": {
+          "账号": "2108335600",
+          "账号类型": "QQ",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000006_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 313.7340901831388,
+      "y": 303.79292588399164
+    },
+    {
+      "id": "a4a8c19dc470ab2e158b8c2dade8be41",
+      "label": "1172471557",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_qq.png",
+      "cellInfo": {
+        "id": "a4a8c19dc470ab2e158b8c2dade8be41",
+        "gxId": "202010260000006_FX,202010260000013_SX",
+        "idMap": {
+          "xnzh": "1172471557"
+        },
+        "label": "QQ",
+        "type": "xnsf_qq",
+        "icon": "xnsf_qq",
+        "dxId": "202010260000005",
+        "xqUrl": null,
+        "properties": {
+          "账号": "1172471557"
+        },
+        "lbProperties": {
+          "账号": "1172471557"
+        },
+        "mxProperties": {
+          "账号": "1172471557",
+          "账号类型": "QQ",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000006_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 293.641799578566,
+      "y": 524.6014263325684
+    },
+    {
+      "id": "286d9cc073e342620195f1e8ccf4f88e",
+      "label": "6222080200017338321",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/zj_yhk.png",
+      "cellInfo": {
+        "id": "286d9cc073e342620195f1e8ccf4f88e",
+        "gxId": "202010260000009_FX,202010260000017_SX",
+        "idMap": {
+          "zjzh": "6222080200017338321"
+        },
+        "label": "银行卡",
+        "type": "zj_yhk",
+        "icon": "zj_yhk",
+        "dxId": "202010260000007",
+        "xqUrl": null,
+        "properties": {
+          "资金账户": "6222080200017338321"
+        },
+        "lbProperties": {
+          "资金账户": "6222080200017338321"
+        },
+        "mxProperties": {
+          "资金账户": "6222080200017338321",
+          "联系电话": null,
+          "资金类型": "银行卡",
+          "身份证号": "110105197307197114"
+        },
+        "propOrders": [
+          "资金类型",
+          "资金账户",
+          "身份证号",
+          "联系电话"
+        ],
+        "tab": "ry_zjxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000009_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 467.68852510956924,
+      "y": 413.30328841191056
+    },
+    {
+      "id": "4f52c2113034f52780796fdecd9b40ed",
+      "label": "6221881000110714326",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/zj_yhk.png",
+      "cellInfo": {
+        "id": "4f52c2113034f52780796fdecd9b40ed",
+        "gxId": "202010260000009_FX,202010260000017_SX",
+        "idMap": {
+          "zjzh": "6221881000110714326"
+        },
+        "label": "银行卡",
+        "type": "zj_yhk",
+        "icon": "zj_yhk",
+        "dxId": "202010260000007",
+        "xqUrl": null,
+        "properties": {
+          "资金账户": "6221881000110714326"
+        },
+        "lbProperties": {
+          "资金账户": "6221881000110714326"
+        },
+        "mxProperties": {
+          "资金账户": "6221881000110714326",
+          "联系电话": null,
+          "资金类型": "银行卡",
+          "身份证号": "110105197307197114"
+        },
+        "propOrders": [
+          "资金类型",
+          "资金账户",
+          "身份证号",
+          "联系电话"
+        ],
+        "tab": "ry_zjxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000009_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 647.3712186050101,
+      "y": 176.6906908816792
+    },
+    {
+      "id": "a5ee861952782e883377527f75b2fc03",
+      "label": "hc_hs_hzy520",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/xnsf_wx.png",
+      "cellInfo": {
+        "id": "a5ee861952782e883377527f75b2fc03",
+        "gxId": "202010260000007_FX,202010260000014_ZX",
+        "idMap": {
+          "xnzh": "hc_hs_hzy520"
+        },
+        "label": "微信",
+        "type": "xnsf_wx",
+        "icon": "xnsf_wx",
+        "dxId": "202010260000004",
+        "xqUrl": null,
+        "properties": {
+          "账号": "hc_hs_hzy520"
+        },
+        "lbProperties": {
+          "账号": "hc_hs_hzy520"
+        },
+        "mxProperties": {
+          "账号": "hc_hs_hzy520",
+          "账号类型": "微信",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "身份证号码",
+          "账号",
+          "账号类型"
+        ],
+        "tab": "ry_xnzhxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000007_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 413.1628127347865,
+      "y": 519.6741101787946
+    },
+    {
+      "id": "50bc72711b2913f121d8d62c983c6c2f",
+      "label": "京A39527",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/jtfs_cl.png",
+      "cellInfo": {
+        "id": "50bc72711b2913f121d8d62c983c6c2f",
+        "gxId": "202010260000005_FX,202011200000001_FX",
+        "idMap": {
+          "cp_bh": "京A39527"
+        },
+        "label": "车辆",
+        "type": "jtfs_cl",
+        "icon": "jtfs_cl",
+        "dxId": "202010260000002",
+        "xqUrl": null,
+        "properties": {
+          "车牌号": "京A39527"
+        },
+        "lbProperties": {
+          "车牌号": "京A39527"
+        },
+        "mxProperties": {
+          "证件号码": null,
+          "手机号码": null,
+          "车牌号": "京A39527",
+          "车辆类型": null,
+          "证件类型": null
+        },
+        "propOrders": [
+          "车牌号",
+          "车辆类型",
+          "证件类型",
+          "证件号码",
+          "手机号码"
+        ],
+        "tab": "ry_clxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010260000005_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 858.4577509412819,
+      "y": 244.81421887640408
+    },
+    {
+      "id": "a256dfd64be8d656fc0df6f27b3e923e",
+      "label": "13041113078",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/txgj_sj.png",
+      "cellInfo": {
+        "id": "a256dfd64be8d656fc0df6f27b3e923e",
+        "gxId": "202010240000003_FX,202010240000007_SX,202010260000012_SX,202010260000018_SX,202010260000019_SX,202010260000020_SX,202010290000029_SX,202011060000037_FX,202011060000038_FX,202011200000002_FX,202011200000003_FX,202012020000002_SX",
+        "idMap": {
+          "sjhm": "13041113078"
+        },
+        "label": "手机",
+        "type": "txgj_sj",
+        "icon": "txgj_sj",
+        "dxId": "202010240000002",
+        "xqUrl": null,
+        "properties": {
+          "手机号": "13041113078"
+        },
+        "lbProperties": {
+          "手机号": "13041113078"
+        },
+        "mxProperties": {
+          "手机号": "13041113078",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "手机号",
+          "身份证号码"
+        ],
+        "tab": "ry_sjhm",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 3,
+        "nextEntities": [
+          "403e1beecfc3d209d9d37cbadb54684d",
+          "a22da235d4a5c287f1e930d5577fe0bf",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010290000029_SX": 2,
+          "202010240000003_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 2,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 704.1433073618936,
+      "y": 382.98282258609277
+    },
+    {
+      "id": "d289c12578e7146e13df648a21b43af2",
+      "label": "18910900660",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/txgj_sj.png",
+      "cellInfo": {
+        "id": "d289c12578e7146e13df648a21b43af2",
+        "gxId": "202010240000003_FX,202010240000007_SX,202010260000012_SX,202010260000018_SX,202010260000019_SX,202010260000020_SX,202010290000029_SX,202011060000037_FX,202011060000038_FX,202011200000002_FX,202011200000003_FX,202012020000002_SX",
+        "idMap": {
+          "sjhm": "18910900660"
+        },
+        "label": "手机",
+        "type": "txgj_sj",
+        "icon": "txgj_sj",
+        "dxId": "202010240000002",
+        "xqUrl": null,
+        "properties": {
+          "手机号": "18910900660"
+        },
+        "lbProperties": {
+          "手机号": "18910900660"
+        },
+        "mxProperties": {
+          "手机号": "18910900660",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "手机号",
+          "身份证号码"
+        ],
+        "tab": "ry_sjhm",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010240000003_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 821.1422790879492,
+      "y": 358.61492665254775
+    },
+    {
+      "id": "d31546421e23301d63c96eb5eaf0624f",
+      "label": "18555551973",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/txgj_sj.png",
+      "cellInfo": {
+        "id": "d31546421e23301d63c96eb5eaf0624f",
+        "gxId": "202010240000003_FX,202010240000007_SX,202010260000012_SX,202010260000018_SX,202010260000019_SX,202010260000020_SX,202010290000029_SX,202011060000037_FX,202011060000038_FX,202011200000002_FX,202011200000003_FX,202012020000002_SX",
+        "idMap": {
+          "sjhm": "18555551973"
+        },
+        "label": "手机",
+        "type": "txgj_sj",
+        "icon": "txgj_sj",
+        "dxId": "202010240000002",
+        "xqUrl": null,
+        "properties": {
+          "手机号": "18555551973"
+        },
+        "lbProperties": {
+          "手机号": "18555551973"
+        },
+        "mxProperties": {
+          "手机号": "18555551973",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "手机号",
+          "身份证号码"
+        ],
+        "tab": "ry_sjhm",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010240000003_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 896.4009652311693,
+      "y": 452.03015120005733
+    },
+    {
+      "id": "3892db6f64fc9b6ca42c2aa1cc370d0a",
+      "label": "15600898030",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/txgj_sj.png",
+      "cellInfo": {
+        "id": "3892db6f64fc9b6ca42c2aa1cc370d0a",
+        "gxId": "202010240000003_FX,202010240000007_SX,202010260000012_SX,202010260000018_SX,202010260000019_SX,202010260000020_SX,202010290000029_SX,202011060000037_FX,202011060000038_FX,202011200000002_FX,202011200000003_FX,202012020000002_SX",
+        "idMap": {
+          "sjhm": "15600898030"
+        },
+        "label": "手机",
+        "type": "txgj_sj",
+        "icon": "txgj_sj",
+        "dxId": "202010240000002",
+        "xqUrl": null,
+        "properties": {
+          "手机号": "15600898030"
+        },
+        "lbProperties": {
+          "手机号": "15600898030"
+        },
+        "mxProperties": {
+          "手机号": "15600898030",
+          "身份证号码": "110105197307197114"
+        },
+        "propOrders": [
+          "手机号",
+          "身份证号码"
+        ],
+        "tab": "ry_sjhm",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202010240000003_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 174.0517966047016,
+      "y": 516.0113797102831
+    },
+    {
+      "id": "e19f2f4d7492e0c76dbec65411b31e80",
+      "label": "2016-07-06海淀分局-黄志勇贩卖毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_dpaj.png",
+      "cellInfo": {
+        "id": "e19f2f4d7492e0c76dbec65411b31e80",
+        "gxId": "202011050000033_FX,202011060000037_SX,202011060000038_SX,202011200000002_SX,202011200000003_SX",
+        "idMap": {
+          "AJMC": "2016-07-06海淀分局-黄志勇贩卖毒品案",
+          "AJBH": "A4949540000002016070018"
+        },
+        "label": "毒品案件",
+        "type": "ajxs_dpaj",
+        "icon": "ajxs_dpaj",
+        "dxId": "202010290000019",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "2016-07-06海淀分局-黄志勇贩卖毒品案"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "案件类别": "贩卖毒品案",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空": null,
+          "发现时间": "2016-07-06 00:00",
+          "案件类型 ": null,
+          "发案地点详址": "北京朝阳区8厘岛小区22号楼南侧路边",
+          "作案团伙/集团名称": null,
+          "案件名称": "2016-07-06海淀分局-黄志勇贩卖毒品案",
+          "查结日期": "2016-07-05 00:00",
+          "藏毒方式": "藏匿于成年人身上",
+          "撤案日期": null,
+          "贩运方式": "陆路(大巴等公共交通工具)",
+          "涉毒洗钱方式": null,
+          "案情": "2016年7月6日8时许，犯罪嫌疑人黄志勇在北京市朝阳区8厘岛小区22号楼南侧路边，向举报人齐放贩卖毒品，被海淀分局民警抓获，起获毒品冰毒3.18克。经审查：黄志勇对其贩卖毒品的犯罪事实供认不讳，现该人已被刑事拘留。",
+          "破案单位名称": "海淀分局",
+          "互联网案件类型": null,
+          "案件性质": null,
+          "禁种铲毒案件类型": null,
+          "立案编号": "A4949540000002016070018",
+          "破案日期": "2016-07-06 00:00",
+          "缴毒总量（克）": "3.180",
+          "查结情况": "黄志勇于2016-07-05有期徒刑6个月",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所": null,
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空": null
+        },
+        "propOrders": [
+          "立案编号",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空",
+          "案件类别",
+          "案件类型 ",
+          "案件名称",
+          "案件性质",
+          "藏毒方式",
+          "查结情况",
+          "查结日期",
+          "撤案日期",
+          "发案地点详址",
+          "发现时间",
+          "贩运方式",
+          "作案团伙/集团名称",
+          "互联网案件类型",
+          "缴毒总量（克）",
+          "案情",
+          "禁种铲毒案件类型",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所",
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空",
+          "破案单位名称",
+          "破案日期",
+          "涉毒洗钱方式"
+        ],
+        "tab": "tb_dpaj_jbxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 3,
+        "nextEntities": [
+          "ae3858c0b3f2785d25fd71c91a2f0c60",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011050000033_FX": 1,
+          "202011200000002_SX": 1,
+          "202011200000003_SX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 229.69905807445016,
+      "y": 409.7970476987847
+    },
+    {
+      "id": "5f0e4d77aafe5e0d622675f6c2082944",
+      "label": "20180604北京市公安局朝阳分局黄志勇贩卖毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_dpaj.png",
+      "cellInfo": {
+        "id": "5f0e4d77aafe5e0d622675f6c2082944",
+        "gxId": "202011050000033_FX,202011060000037_SX,202011060000038_SX,202011200000002_SX,202011200000003_SX",
+        "idMap": {
+          "AJMC": "20180604北京市公安局朝阳分局黄志勇贩卖毒品案",
+          "AJBH": "A1101050000002018060007"
+        },
+        "label": "毒品案件",
+        "type": "ajxs_dpaj",
+        "icon": "ajxs_dpaj",
+        "dxId": "202010290000019",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "20180604北京市公安局朝阳分局黄志勇贩卖毒品案"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "案件类别": "贩卖毒品案",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空": null,
+          "发现时间": "2018-06-04 00:00",
+          "案件类型 ": null,
+          "发案地点详址": "北京通州区万达广场华为手机店门前路边",
+          "作案团伙/集团名称": null,
+          "案件名称": "20180604北京市公安局朝阳分局黄志勇贩卖毒品案",
+          "查结日期": "2018-06-04 00:00",
+          "藏毒方式": "夹带于随身物品中",
+          "撤案日期": null,
+          "贩运方式": "陆路(其它)",
+          "涉毒洗钱方式": null,
+          "案情": "经梳理网络信息发现，黄志勇涉嫌贩卖毒品，经工作，2018年6月4日，禁毒大队会同将台派出所民警，在北京市通州区万达广场华为手机店门前路边将黄志勇抓获，当场起获可疑物2包，净重3.84克，经鉴定为毒品冰毒，该人对其贩卖毒品供认不讳，于2018年6月4日被刑事拘留，通过群众举报获得线索。",
+          "破案单位名称": "北京市公安局朝阳分局",
+          "互联网案件类型": "网上贩卖毒品",
+          "案件性质": null,
+          "禁种铲毒案件类型": null,
+          "立案编号": "A1101050000002018060007",
+          "破案日期": "2018-06-04 00:00",
+          "缴毒总量（克）": "3.840",
+          "查结情况": "黄志勇于20180604有期徒刑1年;",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所": null,
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空": null
+        },
+        "propOrders": [
+          "立案编号",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空",
+          "案件类别",
+          "案件类型 ",
+          "案件名称",
+          "案件性质",
+          "藏毒方式",
+          "查结情况",
+          "查结日期",
+          "撤案日期",
+          "发案地点详址",
+          "发现时间",
+          "贩运方式",
+          "作案团伙/集团名称",
+          "互联网案件类型",
+          "缴毒总量（克）",
+          "案情",
+          "禁种铲毒案件类型",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所",
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空",
+          "破案单位名称",
+          "破案日期",
+          "涉毒洗钱方式"
+        ],
+        "tab": "tb_dpaj_jbxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 3,
+        "nextEntities": [
+          "ae3858c0b3f2785d25fd71c91a2f0c60",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011050000033_FX": 1,
+          "202011200000002_SX": 1,
+          "202011200000003_SX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 358.5810587066902,
+      "y": 626.3536630453968
+    },
+    {
+      "id": "915f2aef304a9f19e76a30b17957a79e",
+      "label": "20170713丰台分局丰台镇派出所黄志勇非法持有毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_dpaj.png",
+      "cellInfo": {
+        "id": "915f2aef304a9f19e76a30b17957a79e",
+        "gxId": "202011050000033_FX,202011060000037_SX,202011060000038_SX,202011200000002_SX,202011200000003_SX",
+        "idMap": {
+          "AJMC": "20170713丰台分局丰台镇派出所黄志勇非法持有毒品案",
+          "AJBH": "A4949550000002017070063"
+        },
+        "label": "毒品案件",
+        "type": "ajxs_dpaj",
+        "icon": "ajxs_dpaj",
+        "dxId": "202010290000019",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "20170713丰台分局丰台镇派出所黄志勇非法持有毒品案"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "案件类别": "非法持有毒品案",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空": null,
+          "发现时间": "2017-07-13 00:00",
+          "案件类型 ": null,
+          "发案地点详址": "北京通州区八里桥收费站附近路边",
+          "作案团伙/集团名称": null,
+          "案件名称": "20170713丰台分局丰台镇派出所黄志勇非法持有毒品案",
+          "查结日期": "2017-07-13 00:00",
+          "藏毒方式": "车体藏毒",
+          "撤案日期": null,
+          "贩运方式": "陆路(其它)",
+          "涉毒洗钱方式": null,
+          "案情": "2017年7月13日，民警在本市通州区八里桥收费站附近路边将涉嫌非法持有毒品的犯罪嫌疑人黄志勇查获，当场从其车辆后备厢中起获可疑白色晶体两小包（后经北京市公安局司法鉴定中心鉴定为冰毒14.65克）。经审查，黄志勇对其非法持有毒品的犯罪事实供认不讳，现已被分局刑事拘留。",
+          "破案单位名称": "丰台分局丰台镇派出所",
+          "互联网案件类型": "网上贩卖毒品",
+          "案件性质": null,
+          "禁种铲毒案件类型": null,
+          "立案编号": "A4949550000002017070063",
+          "破案日期": "2017-07-13 00:00",
+          "缴毒总量（克）": "14.650",
+          "查结情况": "黄志勇于2017-07-13有期徒刑10个月;",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所": null,
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空": null
+        },
+        "propOrders": [
+          "立案编号",
+          "目标案件操作类别：  0申请目标案件。 1申请降级。2申请破案。3申请撤销。4已确立 。默认为空",
+          "案件类别",
+          "案件类型 ",
+          "案件名称",
+          "案件性质",
+          "藏毒方式",
+          "查结情况",
+          "查结日期",
+          "撤案日期",
+          "发案地点详址",
+          "发现时间",
+          "贩运方式",
+          "作案团伙/集团名称",
+          "互联网案件类型",
+          "缴毒总量（克）",
+          "案情",
+          "禁种铲毒案件类型",
+          "目标案件录入单位级别  0 部级  1省级  2市级  3县级   4派出所",
+          "目标案件操作级别： 1县建议。2县审核。3市建议。4市审核。5省建议。6省审核。7部建议。8部审核。默认为空",
+          "破案单位名称",
+          "破案日期",
+          "涉毒洗钱方式"
+        ],
+        "tab": "tb_dpaj_jbxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202011050000033_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 478.2646597847399,
+      "y": 620.5275107382728
+    },
+    {
+      "id": "00fbd62ad4924aeeb92f1061772f2d7d",
+      "label": "2016-07-06 00:00",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_ch.png",
+      "cellInfo": {
+        "id": "00fbd62ad4924aeeb92f1061772f2d7d",
+        "gxId": "202012020000001_FX",
+        "idMap": {
+          "CHXH": "49495400000000000952090"
+        },
+        "label": "吸毒人员查获",
+        "type": "ajxs_ch",
+        "icon": "ajxs_ch",
+        "dxId": "202012020000001",
+        "xqUrl": null,
+        "properties": {
+          "查获日期": "2016-07-06 00:00"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "嫌疑人类别": null,
+          "吞食异物描述": null,
+          "本次查获之前的管控现状": null,
+          "对应的所有处置情况": "/0213/0214/",
+          "吸毒场所": "其它",
+          "违法事实_简要案情": "2016年7月6日8时许，犯罪嫌疑人黄志勇在北京市朝阳区8厘岛小区22号楼南侧路边，向举报人齐放贩卖毒品，被海淀分局禁毒中队民警抓获，起获毒品冰毒1克。经审查：黄志勇对其贩卖毒品的犯罪事实供认不讳，经依法鉴定：黄志勇尿检苯丙胺类呈阳性，现该人已被刑事拘留。",
+          "尿检结果": "阳性",
+          "查获时年龄": "42",
+          "娱乐场所名称": "value=",
+          "查获单位_单位名称": "海淀分局禁毒中队",
+          "毒品来源": "他人提供",
+          "疾病类型": null,
+          "查获日期": "2016-07-06 00:00",
+          "本次滥用毒品种类": "甲基苯丙胺（俗称“冰毒”）(克)",
+          "特殊人群种类": null,
+          "查获单位_区划内详细地址": "北京市朝阳区8厘岛小区22号楼南侧路边"
+        },
+        "propOrders": [
+          "违法事实_简要案情",
+          "查获日期",
+          "嫌疑人类别",
+          "查获时年龄",
+          "尿检结果",
+          "吸毒场所",
+          "查获单位_单位名称",
+          "娱乐场所名称",
+          "查获单位_区划内详细地址",
+          "对应的所有处置情况",
+          "疾病类型",
+          "本次滥用毒品种类",
+          "特殊人群种类",
+          "本次查获之前的管控现状",
+          "毒品来源",
+          "吞食异物描述"
+        ],
+        "tab": "tb_xdry_chxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012020000001_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 532.872965323054,
+      "y": 514.2985485303813
+    },
+    {
+      "id": "b0b4c1090c9f1011ef73cab1b25c4c47",
+      "label": "2017-07-12 00:00",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_ch.png",
+      "cellInfo": {
+        "id": "b0b4c1090c9f1011ef73cab1b25c4c47",
+        "gxId": "202012020000001_FX",
+        "idMap": {
+          "CHXH": "49495501000000001273195"
+        },
+        "label": "吸毒人员查获",
+        "type": "ajxs_ch",
+        "icon": "ajxs_ch",
+        "dxId": "202012020000001",
+        "xqUrl": null,
+        "properties": {
+          "查获日期": "2017-07-12 00:00"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "嫌疑人类别": null,
+          "吞食异物描述": null,
+          "本次查获之前的管控现状": null,
+          "对应的所有处置情况": "/0214/0212/",
+          "吸毒场所": "其它",
+          "违法事实_简要案情": "情 2017年07月11日16时许，黄志勇在本市通州区八里桥收费站附近非法持有毒品冰毒2包，共计14.65克，后被民警查获，经对其尿液进行检测，结果呈苯丙胺类阳性。现该人被分局刑事拘留。 ",
+          "尿检结果": "阳性",
+          "查获时年龄": "43",
+          "娱乐场所名称": "value=",
+          "查获单位_单位名称": "丰台分局丰台镇派出所",
+          "毒品来源": "其它",
+          "疾病类型": null,
+          "查获日期": "2017-07-12 00:00",
+          "本次滥用毒品种类": "甲基苯丙胺（俗称“冰毒”）(克)",
+          "特殊人群种类": null,
+          "查获单位_区划内详细地址": "通州区八里桥收费站附近"
+        },
+        "propOrders": [
+          "违法事实_简要案情",
+          "查获日期",
+          "嫌疑人类别",
+          "查获时年龄",
+          "尿检结果",
+          "吸毒场所",
+          "查获单位_单位名称",
+          "娱乐场所名称",
+          "查获单位_区划内详细地址",
+          "对应的所有处置情况",
+          "疾病类型",
+          "本次滥用毒品种类",
+          "特殊人群种类",
+          "本次查获之前的管控现状",
+          "毒品来源",
+          "吞食异物描述"
+        ],
+        "tab": "tb_xdry_chxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012020000001_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 587.125441938508,
+      "y": 407.2371776135974
+    },
+    {
+      "id": "530ae4549ba635f8d3bf22e71044a8db",
+      "label": "2014-12-17 00:00",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_ch.png",
+      "cellInfo": {
+        "id": "530ae4549ba635f8d3bf22e71044a8db",
+        "gxId": "202012020000001_FX",
+        "idMap": {
+          "CHXH": "49495400000000000671032"
+        },
+        "label": "吸毒人员查获",
+        "type": "ajxs_ch",
+        "icon": "ajxs_ch",
+        "dxId": "202012020000001",
+        "xqUrl": null,
+        "properties": {
+          "查获日期": "2014-12-17 00:00"
+        },
+        "lbProperties": {},
+        "mxProperties": {
+          "嫌疑人类别": null,
+          "吞食异物描述": null,
+          "本次查获之前的管控现状": null,
+          "对应的所有处置情况": "/0205/",
+          "吸毒场所": "其它",
+          "违法事实_简要案情": "2014年12月17日2时许吗，违法行为人黄志勇在北京市通州区物资学院内后院20号楼下被海淀分局双榆树派出所民警抓获，经依法鉴定：苯丙胺类呈阳性，经审讯：黄志勇对吸食毒品的违法事实供认不讳。\n\n",
+          "尿检结果": "阳性",
+          "查获时年龄": "41",
+          "娱乐场所名称": null,
+          "查获单位_单位名称": "海淀分局双榆树派出所",
+          "毒品来源": "他人提供",
+          "疾病类型": null,
+          "查获日期": "2014-12-17 00:00",
+          "本次滥用毒品种类": "甲基苯丙胺（俗称“冰毒”）(克)",
+          "特殊人群种类": null,
+          "查获单位_区划内详细地址": "北京市通州区物资学院内后院20号楼"
+        },
+        "propOrders": [
+          "违法事实_简要案情",
+          "查获日期",
+          "嫌疑人类别",
+          "查获时年龄",
+          "尿检结果",
+          "吸毒场所",
+          "查获单位_单位名称",
+          "娱乐场所名称",
+          "查获单位_区划内详细地址",
+          "对应的所有处置情况",
+          "疾病类型",
+          "本次滥用毒品种类",
+          "特殊人群种类",
+          "本次查获之前的管控现状",
+          "毒品来源",
+          "吞食异物描述"
+        ],
+        "tab": "tb_xdry_chxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012020000001_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 661.7964950515511,
+      "y": 500.86853417470996
+    },
+    {
+      "id": "687357704ace4c7c6decdbf11805d2cd",
+      "label": "黄志勇贩卖毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xsaj.png",
+      "cellInfo": {
+        "id": "687357704ace4c7c6decdbf11805d2cd",
+        "gxId": "202012070000003_FX",
+        "idMap": {
+          "AJMC": "黄志勇贩卖毒品案",
+          "AJBH": "A1101081406002016070001"
+        },
+        "label": "刑事案件",
+        "type": "ajxs_xsaj",
+        "icon": "ajxs_xsaj",
+        "dxId": "202010290000011",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "黄志勇贩卖毒品案"
+        },
+        "lbProperties": {
+          "案件编号": "A1101081406002016070001",
+          "案件名称": "黄志勇贩卖毒品案"
+        },
+        "mxProperties": {
+          "案件类型": "刑事（禁毒）",
+          "是否黑社会": "2",
+          "发现时间": "2016-07-05 11:50",
+          "发案地点详址": "8厘岛小区22号楼南侧路边",
+          "案件名称": "黄志勇贩卖毒品案",
+          "简要案情": "2016年7月5日16时许，我队民警在朝阳区8厘岛小区22号楼南侧路边将贩毒嫌疑人黄志勇抓获，当场从黄志勇左侧裤兜内起获毒资1200元，交易的白色晶体状物品四包。",
+          "主案别": "贩卖毒品案",
+          "藏毒方式": null,
+          "贩运方式": "陆路（其他）",
+          "案件编号": "A1101081406002016070001",
+          "发案开始时间": "2016-07-05 11:22",
+          "案件性质": null,
+          "是否集团作案": null,
+          "涉嫌人特征描述": null,
+          "禁毒总量": "1.00",
+          "发案结束时间": "2016-07-05 11:40",
+          "补充案别": null
+        },
+        "propOrders": [
+          "案件编号",
+          "案件名称",
+          "主案别",
+          "补充案别",
+          "案件类型",
+          "发案地点详址",
+          "发案开始时间",
+          "发案结束时间",
+          "发现时间",
+          "简要案情",
+          "是否集团作案",
+          "涉嫌人特征描述",
+          "案件性质",
+          "禁毒总量",
+          "是否黑社会",
+          "藏毒方式",
+          "贩运方式"
+        ],
+        "tab": "t_aj_xsajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "fc93583bae32b33e0c3f3bb892c9edf4"
+        ],
+        "linkCount": {
+          "202012070000003_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 674.167773463051,
+      "y": 707.4783910300243
+    },
+    {
+      "id": "db217feba5e5ffc63414912e58521219",
+      "label": "黄志勇非法持有毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xsaj.png",
+      "cellInfo": {
+        "id": "db217feba5e5ffc63414912e58521219",
+        "gxId": "202012070000003_FX",
+        "idMap": {
+          "AJMC": "黄志勇非法持有毒品案",
+          "AJBH": "A1101064700002017070023"
+        },
+        "label": "刑事案件",
+        "type": "ajxs_xsaj",
+        "icon": "ajxs_xsaj",
+        "dxId": "202010290000011",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "黄志勇非法持有毒品案"
+        },
+        "lbProperties": {
+          "案件编号": "A1101064700002017070023",
+          "案件名称": "黄志勇非法持有毒品案"
+        },
+        "mxProperties": {
+          "案件类型": "刑事（禁毒）",
+          "是否黑社会": "2",
+          "发现时间": "2017-07-12 00:00",
+          "发案地点详址": "八里桥收费站附近",
+          "案件名称": "黄志勇非法持有毒品案",
+          "简要案情": "   2017年07月11日16时许，黄志勇在本市通州区八里桥收费站附近非法持有毒品冰毒2包，共计14.65克，后被民警查获，经对其尿液进行检测，结果呈苯丙胺类阳性。",
+          "主案别": "非法持有毒品案",
+          "藏毒方式": null,
+          "贩运方式": null,
+          "案件编号": "A1101064700002017070023",
+          "发案开始时间": "2017-07-11 16:00",
+          "案件性质": null,
+          "是否集团作案": null,
+          "涉嫌人特征描述": null,
+          "禁毒总量": "14.65",
+          "发案结束时间": null,
+          "补充案别": null
+        },
+        "propOrders": [
+          "案件编号",
+          "案件名称",
+          "主案别",
+          "补充案别",
+          "案件类型",
+          "发案地点详址",
+          "发案开始时间",
+          "发案结束时间",
+          "发现时间",
+          "简要案情",
+          "是否集团作案",
+          "涉嫌人特征描述",
+          "案件性质",
+          "禁毒总量",
+          "是否黑社会",
+          "藏毒方式",
+          "贩运方式"
+        ],
+        "tab": "t_aj_xsajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012070000003_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 607.7064881812969,
+      "y": 607.645889949829
+    },
+    {
+      "id": "f2159dcd286ea58df32c4d2e6383a345",
+      "label": "温秀丽涉嫌介绍卖淫",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xsaj.png",
+      "cellInfo": {
+        "id": "f2159dcd286ea58df32c4d2e6383a345",
+        "gxId": "202012070000003_FX",
+        "idMap": {
+          "AJMC": "温秀丽涉嫌介绍卖淫",
+          "AJBH": "A1101056800002012080035"
+        },
+        "label": "刑事案件",
+        "type": "ajxs_xsaj",
+        "icon": "ajxs_xsaj",
+        "dxId": "202010290000011",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "温秀丽涉嫌介绍卖淫"
+        },
+        "lbProperties": {
+          "案件编号": "A1101056800002012080035",
+          "案件名称": "温秀丽涉嫌介绍卖淫"
+        },
+        "mxProperties": {
+          "案件类型": "刑事（治安）",
+          "是否黑社会": null,
+          "发现时间": "2012-08-15 17:00",
+          "发案地点详址": "高碑店乡半壁店村一无名门脸房内",
+          "案件名称": "温秀丽涉嫌介绍卖淫",
+          "简要案情": "2012年8月15日19时许，温秀丽在北京市朝阳区高碑店乡半壁店村一无名门脸房内，以100元人民币的价格，先后介绍金英向戴熙武、黄志勇进行卖淫活动；介绍温秀杰向蔡广友进行卖淫活动。",
+          "主案别": "介绍卖淫案",
+          "藏毒方式": null,
+          "贩运方式": null,
+          "案件编号": "A1101056800002012080035",
+          "发案开始时间": "2012-08-15 16:50",
+          "案件性质": null,
+          "是否集团作案": null,
+          "涉嫌人特征描述": null,
+          "禁毒总量": null,
+          "发案结束时间": "2012-08-15 19:00",
+          "补充案别": null
+        },
+        "propOrders": [
+          "案件编号",
+          "案件名称",
+          "主案别",
+          "补充案别",
+          "案件类型",
+          "发案地点详址",
+          "发案开始时间",
+          "发案结束时间",
+          "发现时间",
+          "简要案情",
+          "是否集团作案",
+          "涉嫌人特征描述",
+          "案件性质",
+          "禁毒总量",
+          "是否黑社会",
+          "藏毒方式",
+          "贩运方式"
+        ],
+        "tab": "t_aj_xsajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 8,
+        "nextEntities": [
+          "6075d4d762efe1e93fbb751944af76fb",
+          "d5d0817ab2967e9950d9d23360192cab",
+          "eb0a5f08e1728f341ab3fdf564a4f346",
+          "0da54013cfe30b36880d5c6ed3d2d7a4",
+          "abc8db6257d46439f1fd8ed8fd9601ae",
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "92f59e42328efe21d1e5d2ee6aa31f0e",
+          "7d1a478abe0228bdbd889a461791028f"
+        ],
+        "linkCount": {
+          "202012070000003_FX": 8
+        },
+        "notExist": false
+      },
+      "childrenCount": 7,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 845.5557394231063,
+      "y": 576.0822812327873
+    },
+    {
+      "id": "9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+      "label": "黄志勇贩卖毒品案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xsaj.png",
+      "cellInfo": {
+        "id": "9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+        "gxId": "202012070000003_FX",
+        "idMap": {
+          "AJMC": "黄志勇贩卖毒品案",
+          "AJBH": "A1101056000002018060013"
+        },
+        "label": "刑事案件",
+        "type": "ajxs_xsaj",
+        "icon": "ajxs_xsaj",
+        "dxId": "202010290000011",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "黄志勇贩卖毒品案"
+        },
+        "lbProperties": {
+          "案件编号": "A1101056000002018060013",
+          "案件名称": "黄志勇贩卖毒品案"
+        },
+        "mxProperties": {
+          "案件类型": "刑事（禁毒）",
+          "是否黑社会": "2",
+          "发现时间": "2018-06-04 17:13",
+          "发案地点详址": "万达广场华为手机店门前",
+          "案件名称": "黄志勇贩卖毒品案",
+          "简要案情": "2018年6月4日 15 时许，犯罪嫌疑人黄志勇在北京市通州区万达广场华为手机店门前，欲以350一克的价格向他人贩卖毒品冰毒五克，后被民警查获。",
+          "主案别": "贩卖毒品案",
+          "藏毒方式": "夹带于随身物品中",
+          "贩运方式": "陆路（自驾车）",
+          "案件编号": "A1101056000002018060013",
+          "发案开始时间": "2018-06-04 14:55",
+          "案件性质": null,
+          "是否集团作案": null,
+          "涉嫌人特征描述": null,
+          "禁毒总量": "5.00",
+          "发案结束时间": "2018-06-04 15:00",
+          "补充案别": null
+        },
+        "propOrders": [
+          "案件编号",
+          "案件名称",
+          "主案别",
+          "补充案别",
+          "案件类型",
+          "发案地点详址",
+          "发案开始时间",
+          "发案结束时间",
+          "发现时间",
+          "简要案情",
+          "是否集团作案",
+          "涉嫌人特征描述",
+          "案件性质",
+          "禁毒总量",
+          "是否黑社会",
+          "藏毒方式",
+          "贩运方式"
+        ],
+        "tab": "t_aj_xsajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "2394def6f5bb2c365e82a4dfcfda6f33",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012070000003_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 779.0602641191363,
+      "y": 476.32252604802926
+    },
+    {
+      "id": "56192ba45c52654f5a5fd5fb2f2e0c49",
+      "label": "温秀丽介绍卖淫",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xzaj.png",
+      "cellInfo": {
+        "id": "56192ba45c52654f5a5fd5fb2f2e0c49",
+        "gxId": "202012070000004_FX",
+        "idMap": {
+          "AJMC": "温秀丽介绍卖淫",
+          "AJBH": "A1101056800002012080035"
+        },
+        "label": "行政案件",
+        "type": "ajxs_xzaj",
+        "icon": "ajxs_xzaj",
+        "dxId": "202010290000012",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "温秀丽介绍卖淫"
+        },
+        "lbProperties": {
+          "案件编号": "A1101056800002012080035",
+          "案件名称": "温秀丽介绍卖淫"
+        },
+        "mxProperties": {
+          "案件编号": "A1101056800002012080035",
+          "发案开始时间": "2012-08-15 16:50",
+          "案件类型": "行政（一般案件）",
+          "案件性质": "介绍卖淫",
+          "发现时间": "2012-08-15 17:00",
+          "缴获总价值(元)": "200.000000",
+          "发案地点详址": "高碑店乡半壁店村一无名门脸房内",
+          "送案状态": "01",
+          "案件名称": "温秀丽介绍卖淫",
+          "简要案情": "2012年8月15日19时许，温秀丽在北京市朝阳区高碑店乡半壁店村一无名门脸房内，以100元人民币的价格，先后介绍金英向戴熙武、黄志勇进行卖淫活动；介绍温秀杰向蔡广友进行卖淫活动。",
+          "主案别": null,
+          "案件环节": "3200"
+        },
+        "propOrders": [
+          "案件编号",
+          "主案别",
+          "案件类型",
+          "案件名称",
+          "案件性质",
+          "发案地点详址",
+          "发案开始时间",
+          "简要案情",
+          "发现时间",
+          "案件环节",
+          "送案状态",
+          "缴获总价值(元)"
+        ],
+        "tab": "t_aj_xzajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 8,
+        "nextEntities": [
+          "6075d4d762efe1e93fbb751944af76fb",
+          "d5d0817ab2967e9950d9d23360192cab",
+          "eb0a5f08e1728f341ab3fdf564a4f346",
+          "0da54013cfe30b36880d5c6ed3d2d7a4",
+          "abc8db6257d46439f1fd8ed8fd9601ae",
+          "97ddd3e5fcefd91e64916b63f2a3794e",
+          "92f59e42328efe21d1e5d2ee6aa31f0e",
+          "7d1a478abe0228bdbd889a461791028f"
+        ],
+        "linkCount": {
+          "202012070000004_FX": 8
+        },
+        "notExist": false
+      },
+      "childrenCount": 7,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 238.80388473665877,
+      "y": 631.2044220614561
+    },
+    {
+      "id": "ea6970e506d96d6583bd4376d55da635",
+      "label": "黄志勇吸毒案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xzaj.png",
+      "cellInfo": {
+        "id": "ea6970e506d96d6583bd4376d55da635",
+        "gxId": "202012070000004_FX",
+        "idMap": {
+          "AJMC": "黄志勇吸毒案",
+          "AJBH": "A1101064700002017070023"
+        },
+        "label": "行政案件",
+        "type": "ajxs_xzaj",
+        "icon": "ajxs_xzaj",
+        "dxId": "202010290000012",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "黄志勇吸毒案"
+        },
+        "lbProperties": {
+          "案件编号": "A1101064700002017070023",
+          "案件名称": "黄志勇吸毒案"
+        },
+        "mxProperties": {
+          "案件编号": "A1101064700002017070023",
+          "发案开始时间": "2017-07-11 16:00",
+          "案件类型": "行政（一般案件）",
+          "案件性质": "吸毒",
+          "发现时间": "2017-07-12 00:00",
+          "缴获总价值(元)": "0.000000",
+          "发案地点详址": "八里桥收费站附近",
+          "送案状态": "01",
+          "案件名称": "黄志勇吸毒案",
+          "简要案情": "   2017年07月11日16时许，我所民警接匿名群众举报称在通州区八里桥附近有一男子有吸毒情况，随后民警迅速赶到现场，发现该人有吸毒的嫌疑，2017年7月12日1时,民警表明身份出示证件，根据《中华人民共和国治安管理处罚法》第八十二条第一款之规定，将涉嫌扰吸毒的嫌疑人黄志勇口头传唤至派出所进行询问。",
+          "主案别": null,
+          "案件环节": "3200"
+        },
+        "propOrders": [
+          "案件编号",
+          "主案别",
+          "案件类型",
+          "案件名称",
+          "案件性质",
+          "发案地点详址",
+          "发案开始时间",
+          "简要案情",
+          "发现时间",
+          "案件环节",
+          "送案状态",
+          "缴获总价值(元)"
+        ],
+        "tab": "t_aj_xzajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 1,
+        "nextEntities": [
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012070000004_FX": 1
+        },
+        "notExist": false
+      },
+      "childrenCount": 0,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 423.80148109126264,
+      "y": 727.0819467097562
+    },
+    {
+      "id": "06288a998897c25e9438701f29fc9562",
+      "label": "黄志勇吸毒案",
+      "type": "circle-image",
+      "img": "http://14.17.48.4/clues/yijianyanpan/entityImages/ajxs_xzaj.png",
+      "cellInfo": {
+        "id": "06288a998897c25e9438701f29fc9562",
+        "gxId": "202012070000004_FX",
+        "idMap": {
+          "AJMC": "黄志勇吸毒案",
+          "AJBH": "A1101085100002014120055"
+        },
+        "label": "行政案件",
+        "type": "ajxs_xzaj",
+        "icon": "ajxs_xzaj",
+        "dxId": "202010290000012",
+        "xqUrl": null,
+        "properties": {
+          "案件名称": "黄志勇吸毒案"
+        },
+        "lbProperties": {
+          "案件编号": "A1101085100002014120055",
+          "案件名称": "黄志勇吸毒案"
+        },
+        "mxProperties": {
+          "案件编号": "A1101085100002014120055",
+          "发案开始时间": "2014-12-15 11:00",
+          "案件类型": "行政（一般案件）",
+          "案件性质": "吸毒",
+          "发现时间": "2014-12-17 01:00",
+          "缴获总价值(元)": null,
+          "发案地点详址": "双榆树派出所",
+          "送案状态": "03",
+          "案件名称": "黄志勇吸毒案",
+          "简要案情": "2014年12月15日11时群众王阳来所举报称：一名叫黄志勇的男子有吸毒的嫌疑，并愿意配合公安机关将该人抓获，后王阳于2014年12月17日2时许带领民警到违法行为人黄志勇在北京市通州区物资学院内后院20号楼下将该人抓获，经尿检检测该人为苯丙胺类阳性。",
+          "主案别": "吸毒",
+          "案件环节": "3200"
+        },
+        "propOrders": [
+          "案件编号",
+          "主案别",
+          "案件类型",
+          "案件名称",
+          "案件性质",
+          "发案地点详址",
+          "发案开始时间",
+          "简要案情",
+          "发现时间",
+          "案件环节",
+          "送案状态",
+          "缴获总价值(元)"
+        ],
+        "tab": "t_aj_xzajfaxx",
+        "startOrEnd": "zz",
+        "nextEntitiesNumber": 2,
+        "nextEntities": [
+          "d0f082d45e8186701275d3c1ee8367fe",
+          "97ddd3e5fcefd91e64916b63f2a3794e"
+        ],
+        "linkCount": {
+          "202012070000004_FX": 2
+        },
+        "notExist": false
+      },
+      "childrenCount": 1,
+      "style": {},
+      "itemType": "node",
+      "__type": "circle-image",
+      "x": 552.9609457707419,
+      "y": 714.3332366939385
+    }
+  ],
+  "edges": [
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-805ce127632e7c5118b8d0b78ee7f353",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "805ce127632e7c5118b8d0b78ee7f353",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "805ce127632e7c5118b8d0b78ee7f353",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 518.7740023859437,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 669.8279821402364,
+        "y": 81.51883365622666
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-68396ab9be1793c63b1149a85fd65842",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "68396ab9be1793c63b1149a85fd65842",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "68396ab9be1793c63b1149a85fd65842",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 518.4336479534796,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 714.053721950905,
+        "y": 581.4461934384623
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-2da9631e289e87dea699f87932b10f74",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "2da9631e289e87dea699f87932b10f74",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "2da9631e289e87dea699f87932b10f74",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 291.0179079485995
+      },
+      "endPoint": {
+        "x": 280.4010919489912,
+        "y": 203.96733427857933
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-89b5f233e5fd84cdb3fab6b7fda6f7eb",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "89b5f233e5fd84cdb3fab6b7fda6f7eb",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "89b5f233e5fd84cdb3fab6b7fda6f7eb",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.37870925541245,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 417.8174907447262,
+        "y": 212.32054739337218
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-4b1dd2a8c1156c1b5c7e9294430e4ede",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "4b1dd2a8c1156c1b5c7e9294430e4ede",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "4b1dd2a8c1156c1b5c7e9294430e4ede",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 509.04998888664284,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 559.619840729859,
+        "y": 76.93005708516176
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-4bd6943e061375a56e1dcc97f7b3adf7",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "4bd6943e061375a56e1dcc97f7b3adf7",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "4bd6943e061375a56e1dcc97f7b3adf7",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 282.37618715931524
+      },
+      "endPoint": {
+        "x": 782.438734218737,
+        "y": 54.44774390602963
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-44f184e8bef43044521aa536aeebd1ce",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "44f184e8bef43044521aa536aeebd1ce",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "44f184e8bef43044521aa536aeebd1ce",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 499.29790297397335,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 452.2593340822378,
+        "y": 102.14884111194651
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-362b4fd5c2ef3f297d4563302c561fe1",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "362b4fd5c2ef3f297d4563302c561fe1",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "362b4fd5c2ef3f297d4563302c561fe1",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 495.945511347967,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 373.059980585502,
+        "y": 1.3056242222347123
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-ce62bcf0200f5d1810561458b467893d",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "ce62bcf0200f5d1810561458b467893d",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "ce62bcf0200f5d1810561458b467893d",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 313.66266163186407
+      },
+      "endPoint": {
+        "x": 367.7062056498334,
+        "y": 403.87584629817025
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-70ee7f0b8773c8d377dc7ea132843283",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "70ee7f0b8773c8d377dc7ea132843283",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "70ee7f0b8773c8d377dc7ea132843283",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 503.14044302024377,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 485.003105692505,
+        "y": -11.92442128374202
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-b909502ec2fb6f0c900e2f2b837a44fa",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "b909502ec2fb6f0c900e2f2b837a44fa",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "b909502ec2fb6f0c900e2f2b837a44fa",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 509.49721589572266,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 595.9258125848156,
+        "y": -37.131530924006064
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-1669015a7af4dc8448beab352f661ac1",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "1669015a7af4dc8448beab352f661ac1",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "1669015a7af4dc8448beab352f661ac1",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 288.3410632469326
+      },
+      "endPoint": {
+        "x": 745.5408259130686,
+        "y": 162.63319212164643
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-a1ee1b58156f87a98fd5c551d55cf9cd",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "a1ee1b58156f87a98fd5c551d55cf9cd",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "a1ee1b58156f87a98fd5c551d55cf9cd",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 487.81544533148195,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 344.7465519558475,
+        "y": 115.39420704289515
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-cf88ee6c8bdd811240b9b965550c3349",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "cf88ee6c8bdd811240b9b965550c3349",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "cf88ee6c8bdd811240b9b965550c3349",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 507.79828372771175,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 524.0995178526898,
+        "y": 191.0300062695848
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-d6a12f3d261d3c7226cacc9f8d45763d",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "d6a12f3d261d3c7226cacc9f8d45763d",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "d6a12f3d261d3c7226cacc9f8d45763d",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 296.6938917012709
+      },
+      "endPoint": {
+        "x": 722.2780496959382,
+        "y": 271.61174981107285
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-ac900053712866080cf801476cdb1ff3",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "ac900053712866080cf801476cdb1ff3",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "ac900053712866080cf801476cdb1ff3",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 285.51956869645323
+      },
+      "endPoint": {
+        "x": 227.81179740092065,
+        "y": 101.60936013158752
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-b16324d24fc271da1e97973433120b02",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "b16324d24fc271da1e97973433120b02",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "b16324d24fc271da1e97973433120b02",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 298.24310748447283
+      },
+      "endPoint": {
+        "x": 605.177939385418,
+        "y": 294.5979843386249
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-de377fd51b033a9d33d54a02f78db99a",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "de377fd51b033a9d33d54a02f78db99a",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "de377fd51b033a9d33d54a02f78db99a",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 516.0677949913506,
+        "y": 280.0891807153879
+      },
+      "endPoint": {
+        "x": 709.2307407500975,
+        "y": -32.33285862739201
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-3b53f5c5c59fb07e97d4e919c7642a4f",
+      "label": "涉及线索(1)",
+      "cellInfo": {
+        "id": "202011020000030",
+        "label": "涉及线索",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "3b53f5c5c59fb07e97d4e919c7642a4f",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "3b53f5c5c59fb07e97d4e919c7642a4f",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 293.23564294086555
+      },
+      "endPoint": {
+        "x": 160.77142382639272,
+        "y": 193.24824229727656
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-50bc72711b2913f121d8d62c983c6c2f",
+      "label": "拥有车辆(1)",
+      "cellInfo": {
+        "id": "202010260000005",
+        "label": "拥有车辆",
+        "type": "ypgx_wpgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "50bc72711b2913f121d8d62c983c6c2f",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "50bc72711b2913f121d8d62c983c6c2f",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 296.17724632009293
+      },
+      "endPoint": {
+        "x": 839.4577509412819,
+        "y": 247.72615327169908
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-530ae4549ba635f8d3bf22e71044a8db",
+      "label": "吸毒人员查获(1)",
+      "cellInfo": {
+        "id": "202012020000001",
+        "label": "吸毒人员查获",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "530ae4549ba635f8d3bf22e71044a8db",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "530ae4549ba635f8d3bf22e71044a8db",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 519.1488475003484,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 646.9682048088239,
+        "y": 481.86853417470996
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-00fbd62ad4924aeeb92f1061772f2d7d",
+      "label": "吸毒人员查获(1)",
+      "cellInfo": {
+        "id": "202012020000001",
+        "label": "吸毒人员查获",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "00fbd62ad4924aeeb92f1061772f2d7d",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "00fbd62ad4924aeeb92f1061772f2d7d",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 506.8413385728174,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 530.3521840078578,
+        "y": 495.29854853038125
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-b0b4c1090c9f1011ef73cab1b25c4c47",
+      "label": "吸毒人员查获(1)",
+      "cellInfo": {
+        "id": "202012020000001",
+        "label": "吸毒人员查获",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "b0b4c1090c9f1011ef73cab1b25c4c47",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "b0b4c1090c9f1011ef73cab1b25c4c47",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 518.8681480966605,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 572.5778510994686,
+        "y": 388.2371776135974
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-5f0e4d77aafe5e0d622675f6c2082944",
+      "label": "涉及毒品案件(1)",
+      "cellInfo": {
+        "id": "202011050000033",
+        "label": "涉及毒品案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "5f0e4d77aafe5e0d622675f6c2082944",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "5f0e4d77aafe5e0d622675f6c2082944",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 495.85935654084005,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 367.04225942347136,
+        "y": 607.3536630453968
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-e19f2f4d7492e0c76dbec65411b31e80",
+      "label": "涉及毒品案件(1)",
+      "cellInfo": {
+        "id": "202011050000033",
+        "label": "涉及毒品案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "e19f2f4d7492e0c76dbec65411b31e80",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "e19f2f4d7492e0c76dbec65411b31e80",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 306.7486300991433
+      },
+      "endPoint": {
+        "x": 248.69905807445016,
+        "y": 402.13759831502927
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-915f2aef304a9f19e76a30b17957a79e",
+      "label": "涉及毒品案件(1)",
+      "cellInfo": {
+        "id": "202011050000033",
+        "label": "涉及毒品案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "915f2aef304a9f19e76a30b17957a79e",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "915f2aef304a9f19e76a30b17957a79e",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 502.7804109659531,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 479.804806076408,
+        "y": 601.5275107382728
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-4f52c2113034f52780796fdecd9b40ed",
+      "label": "拥有银行卡(1)",
+      "cellInfo": {
+        "id": "202010260000009",
+        "label": "拥有银行卡",
+        "type": "ypgx_zjgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "4f52c2113034f52780796fdecd9b40ed",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "4f52c2113034f52780796fdecd9b40ed",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 282.83220374697686
+      },
+      "endPoint": {
+        "x": 628.3712186050101,
+        "y": 192.9476678500902
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-286d9cc073e342620195f1e8ccf4f88e",
+      "label": "拥有银行卡(1)",
+      "cellInfo": {
+        "id": "202010260000009",
+        "label": "拥有银行卡",
+        "type": "ypgx_zjgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "286d9cc073e342620195f1e8ccf4f88e",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "286d9cc073e342620195f1e8ccf4f88e",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 498.2266637373711,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 473.78241862981935,
+        "y": 394.30328841191056
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-5676f49bb2d23cfcbc51dd4d629a9c44",
+      "label": "拥有邮箱(1)",
+      "cellInfo": {
+        "id": "202010260000008",
+        "label": "拥有邮箱",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "5676f49bb2d23cfcbc51dd4d629a9c44",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "5676f49bb2d23cfcbc51dd4d629a9c44",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 300.6352829133402
+      },
+      "endPoint": {
+        "x": 919.3471027494338,
+        "y": 332.8614677781998
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-3cca53c40a1e72c96266d5b6762ae3b4",
+      "label": "拥有邮箱(1)",
+      "cellInfo": {
+        "id": "202010260000008",
+        "label": "拥有邮箱",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "3cca53c40a1e72c96266d5b6762ae3b4",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "3cca53c40a1e72c96266d5b6762ae3b4",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 290.4376927233055
+      },
+      "endPoint": {
+        "x": 862.7512172540062,
+        "y": 135.8808359283926
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-a5ee861952782e883377527f75b2fc03",
+      "label": "拥有微信(1)",
+      "cellInfo": {
+        "id": "202010260000007",
+        "label": "拥有微信",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "a5ee861952782e883377527f75b2fc03",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "a5ee861952782e883377527f75b2fc03",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 496.46871919167944,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 421.01465080072825,
+        "y": 500.67411017879465
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-a256dfd64be8d656fc0df6f27b3e923e",
+      "label": "拥有手机(1)",
+      "cellInfo": {
+        "id": "202010240000003",
+        "label": "拥有手机",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "a256dfd64be8d656fc0df6f27b3e923e",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "a256dfd64be8d656fc0df6f27b3e923e",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 307.06614627467286
+      },
+      "endPoint": {
+        "x": 685.1433073618936,
+        "y": 375.0058570268078
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-d289c12578e7146e13df648a21b43af2",
+      "label": "拥有手机(1)",
+      "cellInfo": {
+        "id": "202010240000003",
+        "label": "拥有手机",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "d289c12578e7146e13df648a21b43af2",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "d289c12578e7146e13df648a21b43af2",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 302.6589775281574
+      },
+      "endPoint": {
+        "x": 802.1422790879492,
+        "y": 355.04512983977827
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-d31546421e23301d63c96eb5eaf0624f",
+      "label": "拥有手机(1)",
+      "cellInfo": {
+        "id": "202010240000003",
+        "label": "拥有手机",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "d31546421e23301d63c96eb5eaf0624f",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "d31546421e23301d63c96eb5eaf0624f",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 306.5006156662635
+      },
+      "endPoint": {
+        "x": 877.4009652311693,
+        "y": 444.6187162491817
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-3892db6f64fc9b6ca42c2aa1cc370d0a",
+      "label": "拥有手机(1)",
+      "cellInfo": {
+        "id": "202010240000003",
+        "label": "拥有手机",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "3892db6f64fc9b6ca42c2aa1cc370d0a",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "3892db6f64fc9b6ca42c2aa1cc370d0a",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 311.56847719124903
+      },
+      "endPoint": {
+        "x": 193.0517966047016,
+        "y": 503.532083234422
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-990c4c9258fad33449aab0218bc8d05f",
+      "label": "拥有QQ(1)",
+      "cellInfo": {
+        "id": "202010260000006",
+        "label": "拥有QQ",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "990c4c9258fad33449aab0218bc8d05f",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "990c4c9258fad33449aab0218bc8d05f",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 303.17818430241596
+      },
+      "endPoint": {
+        "x": 131.71375314707632,
+        "y": 379.27815748165557
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-a4a8c19dc470ab2e158b8c2dade8be41",
+      "label": "拥有QQ(1)",
+      "cellInfo": {
+        "id": "202010260000006",
+        "label": "拥有QQ",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "a4a8c19dc470ab2e158b8c2dade8be41",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "a4a8c19dc470ab2e158b8c2dade8be41",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 486.57031764226485,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 311.39203919392236,
+        "y": 505.6014263325684
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-b1efdff0d98dfff5258aaefa0ae13fa8",
+      "label": "拥有QQ(1)",
+      "cellInfo": {
+        "id": "202010260000006",
+        "label": "拥有QQ",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "b1efdff0d98dfff5258aaefa0ae13fa8",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "b1efdff0d98dfff5258aaefa0ae13fa8",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 299.55810780961093
+      },
+      "endPoint": {
+        "x": 332.7340901831388,
+        "y": 303.3239987897686
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-5ec568b434f9ce00f71df2a5ec734359",
+      "label": "拥有QQ(1)",
+      "cellInfo": {
+        "id": "202010260000006",
+        "label": "拥有QQ",
+        "type": "ypgx_txgx",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "5ec568b434f9ce00f71df2a5ec734359",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "5ec568b434f9ce00f71df2a5ec734359",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 485.3205572576212,
+        "y": 298.8494902854645
+      },
+      "endPoint": {
+        "x": 213.13946754095434,
+        "y": 295.4158480532957
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-f2159dcd286ea58df32c4d2e6383a345",
+      "label": "涉及刑事案件(1)",
+      "cellInfo": {
+        "id": "202012070000003",
+        "label": "涉及刑事案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "f2159dcd286ea58df32c4d2e6383a345",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "f2159dcd286ea58df32c4d2e6383a345",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 314.51217689190264
+      },
+      "endPoint": {
+        "x": 826.5557394231063,
+        "y": 560.6592850562726
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-687357704ace4c7c6decdbf11805d2cd",
+      "label": "涉及刑事案件(1)",
+      "cellInfo": {
+        "id": "202012070000003",
+        "label": "涉及刑事案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "687357704ace4c7c6decdbf11805d2cd",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "687357704ace4c7c6decdbf11805d2cd",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 512.2225708916664,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 666.2657598290059,
+        "y": 688.4783910300243
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-db217feba5e5ffc63414912e58521219",
+      "label": "涉及刑事案件(1)",
+      "cellInfo": {
+        "id": "202012070000003",
+        "label": "涉及刑事案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "db217feba5e5ffc63414912e58521219",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "db217feba5e5ffc63414912e58521219",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 510.6867539040125,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 601.3402915349055,
+        "y": 588.645889949829
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+      "label": "涉及刑事案件(1)",
+      "cellInfo": {
+        "id": "202012070000003",
+        "label": "涉及刑事案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "9e2fa1577f7cd3c171f58c7b9cdfc9a6",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 523.3205572576212,
+        "y": 311.3459949916642
+      },
+      "endPoint": {
+        "x": 760.0602641191363,
+        "y": 464.06571177175294
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-56192ba45c52654f5a5fd5fb2f2e0c49",
+      "label": "涉及行政案件(1)",
+      "cellInfo": {
+        "id": "202012070000004",
+        "label": "涉及行政案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "56192ba45c52654f5a5fd5fb2f2e0c49",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "56192ba45c52654f5a5fd5fb2f2e0c49",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 489.130598623228,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 253.99384337105198,
+        "y": 612.2044220614561
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-ea6970e506d96d6583bd4376d55da635",
+      "label": "涉及行政案件(1)",
+      "cellInfo": {
+        "id": "202012070000004",
+        "label": "涉及行政案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "ea6970e506d96d6583bd4376d55da635",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "ea6970e506d96d6583bd4376d55da635",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 500.74605187174996,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 427.3759864771339,
+        "y": 708.0819467097562
+      }
+    },
+    {
+      "id": "97ddd3e5fcefd91e64916b63f2a3794e-06288a998897c25e9438701f29fc9562",
+      "label": "涉及行政案件(1)",
+      "cellInfo": {
+        "id": "202012070000004",
+        "label": "涉及行政案件",
+        "type": "ypgx_qkbj",
+        "direction": null,
+        "sourceEntityId": "97ddd3e5fcefd91e64916b63f2a3794e",
+        "targetEntityId": "06288a998897c25e9438701f29fc9562",
+        "properties": "",
+        "notExist": null,
+        "number": 1
+      },
+      "source": "97ddd3e5fcefd91e64916b63f2a3794e",
+      "target": "06288a998897c25e9438701f29fc9562",
+      "type": "line",
+      "itemType": "edge",
+      "anchorPoints": [
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "labelCfg": {
+        "autoRotate": true,
+        "style": {
+          "fontSize": 10,
+          "fill": "#000000",
+          "background": {
+            "fill": "#ffffff",
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "radius": 2
+          }
+        }
+      },
+      "style": {
+        "selected": {
+          "stroke": "#FF764A",
+          "lineWidth": 2
+        },
+        "hove": {
+          "stroke": "#FF764A",
+          "cursor": "pointer",
+          "lineWidth": 2
+        },
+        "stroke": "#a3b1bf",
+        "strokeOpacity": 0.9,
+        "lineWidth": 1,
+        "lineAppendWidth": 8,
+        "endArrow": true
+      },
+      "startPoint": {
+        "x": 506.5461577651864,
+        "y": 318.0891807153879
+      },
+      "endPoint": {
+        "x": 550.7353452631767,
+        "y": 695.3332366939385
+      }
+    }
+  ],
+  "combos": [],
+  "groups": []
+}

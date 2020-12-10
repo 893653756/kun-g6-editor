@@ -15,6 +15,7 @@ export default new Vuex.Store({
     selectModel: 'single', // 选取模式  single(单) | multiple(多)
     layoutType: 'force',
     leafNodeList: [], // 某节点的叶子节点
+    enterByJudgment: false, // 是否从一件研判入口进来
   },
   getters: {
     editors: (state) => state.editors,
@@ -25,16 +26,21 @@ export default new Vuex.Store({
     selectModel: (state) => state.selectModel,
     layoutType: (state) => state.layoutType,
     leafNodeList: (state) => state.leafNodeList,
-    nodeIdList: (state) => state.nodeIdList
+    nodeIdList: (state) => state.nodeIdList,
+    enterByJudgment: (state) => state.enterByJudgment
   },
   mutations: {
+    // 研判入口阀值
+    [MutationTypes.ENTER_BY_JUDGMENT](state, enterByJudgment) {
+      state.enterByJudgment = enterByJudgment;
+    },
     // 更新画布节点id
     [MutationTypes.SET_NODE_IDS](state, nodeIdList) {
       state.nodeIdList = nodeIdList;
     },
     // 叶子节点
-    [MutationTypes.SET_LEAF_NODE](state, nodeList) {
-      state.leafNodeList = nodeList;
+    [MutationTypes.SET_LEAF_NODE](state, leafNodeList) {
+      state.leafNodeList = leafNodeList;
     },
     [MutationTypes.SET_LAYOUT_TYPE](state, layoutType) {
       state.layoutType = layoutType;

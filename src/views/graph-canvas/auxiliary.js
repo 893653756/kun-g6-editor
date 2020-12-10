@@ -1,5 +1,6 @@
 import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
+import { countLeafNode } from '@/utils/index';
 /**
  * 右键菜单
  */
@@ -108,70 +109,9 @@ function isHasUrl(item) {
  * 收拢的叶子节点
  */
 function hasLeafNode(item) {
-  const leafObj = {};
-  const sourceId = item.get('id');
-  const outEdges = item.getOutEdges() || [];
-  outEdges.forEach(line => {
-    const target = line.getTarget();
-    const edges = target.get('edges');
-    if (edges.length === 1) {
-      const targetModel = target.getModel();
-      const { id: targetId, type: targetType } = targetModel;
-      if (targetId !== sourceId && targetType === 'circle-image') {
-        const lineModel = line.get('model');
-        const cellInfo = lineModel.cellInfo;
-        leafObj[cellInfo.id] ?
-          leafObj[cellInfo.id].leafNodes.push(targetId) : leafObj[cellInfo.id] = {
-            label: cellInfo.label,
-            leafNodes: [targetId],
-            gxId: cellInfo.id,
-            img: targetModel.cellInfo.icon,
-          };
-      }
-    }
-  });
-
-  // const leafObj = {};
-  // const id = item.get('id');
-  // const edges = item.get('edges') || [];
-  // edges.forEach(edge => {
-  //   const source = edge.getSource();
-  //   const target = edge.getTarget();
-  //   if (source.get('id') !== id) {
-  //     if (source.get('type') !== 'node') {
-  //       return;
-  //     }
-  //     if (source.get('edges').length === 1) {
-  //       const model = edge.get('model');
-  //       const cellInfo = model.cellInfo;
-  //       leafObj[cellInfo.id] ?
-  //         leafObj[cellInfo.id].leafNodes.push(source.get('id')) : leafObj[cellInfo.id] = {
-  //           label: cellInfo.label,
-  //           leafNodes: [source.get('id')],
-  //           gxId: cellInfo.id,
-  //           img: source.get('model').cellInfo.icon,
-  //         };
-  //     }
-  //   } else {
-  //     if (target.get('type') !== 'node') {
-  //       return;
-  //     }
-  //     if (target.get('edges').length === 1) {
-  //       const model = edge.get('model');
-  //       const cellInfo = model.cellInfo;
-  //       leafObj[cellInfo.id] ?
-  //         leafObj[cellInfo.id].leafNodes.push(target.get('id')) : leafObj[cellInfo.id] = {
-  //           label: cellInfo.label,
-  //           leafNodes: [target.get('id')],
-  //           gxId: cellInfo.id,
-  //           img: target.get('model').cellInfo.icon,
-  //         };
-  //     }
-  //   }
-  // });
-  const nodeList = Object.values(leafObj).filter(v => v.leafNodes.length > 1);
-  store.commit(MutationTypes.SET_LEAF_NODE, nodeList);
-  if (nodeList.length === 0) {
+  const leafNodeList = countLeafNode(item);
+  store.commit(MutationTypes.SET_LEAF_NODE, leafNodeList);
+  if (leafNodeList.length === 0) {
     return '';
   }
   return `<div data-type="sub-menu" class="el-icon-plus">
@@ -179,7 +119,7 @@ function hasLeafNode(item) {
             <i data-type="sub-menu" class="el-icon-arrow-right" style="float:right"></i>
             <div class="second-menu">
               <div data-type="leaf-node_all" data-value="all">全部</div>
-              ${nodeList.map(v => {
+              ${leafNodeList.map(v => {
                 return `<div data-type="leaf-node_${v.label}" data-value="${v.gxId}">${v.label}</div>`
               }).join('')}
             </div>
@@ -204,7 +144,7 @@ function unfoldGroupNodeByParents(item) {
   });
   ids = ids.join(',');
   return `<div data-type="sub-menu" class="el-icon-rank">
-  <span data-type="sub-menu">展开子节点</span>
+  <span data-type="sub-menu">展开叶子节点</span>
   <i data-type="sub-menu" class="el-icon-arrow-right" style="float:right"></i>
   <div class="second-menu">
     <div data-type="unfold-node" data-value="${ids}">全部</div>
@@ -220,7 +160,7 @@ function unfoldGroupNodeByParents(item) {
  */
 function unfoldGroupNodeBySelf(item) {
   const id = item.get('id');
-  return `<div data-type="unfold-node" class="el-icon-rank">
+  return `<div data-type="unfold-node" data-value="${id}" class="el-icon-rank">
             <span data-type="unfold-node" data-value="${id}">展开</span>
           </div>`;
 };

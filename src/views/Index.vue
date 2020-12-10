@@ -113,6 +113,8 @@ export default {
       judgeParam.forEach((payload) => {
         arr.push(getRelationByDxType(payload));
       });
+      // 记录是从一件研判进来
+      this.$store.commit(MutationTypes.ENTER_BY_JUDGMENT, true);
       const result = await Promise.all(arr);
       const nodes = {};
       const edges = {};

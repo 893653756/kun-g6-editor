@@ -16,6 +16,7 @@ export default {
   draw(cfg, group) {
     const r = this.getSize(cfg);
     cfg.itemType = 'node';
+    cfg.hoveTitle = '集合节点, 右键展开';
     cfg.__type = cfg.type;
     group.addShape('circle', {
       zIndex: 1,

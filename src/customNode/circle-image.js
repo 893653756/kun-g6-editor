@@ -51,13 +51,13 @@ export default {
     });
     // 可疑人员
     if (cfg.cellInfo.notExist) {
+      cfg.hoveTitle = '可疑';
       group.addShape('image', {
         attrs: {
           id: 'image-mark' + cfg.id,
           width: 16,
           height: 16,
           img: `${window.baseImagePath}/entityImages/question-mark.png`,
-          cursor: 'move',
           x: r / 2 - 4,
           y: - r / 2 - 8,
         },
@@ -154,6 +154,7 @@ export default {
     if (!cfg.cellInfo.custom) {
       const total = cfg.childrenCount || 0;
       if (total > 0) {
+        cfg.hoveTitle = '剩余子节点数量';
         const rectH = 8;
         const rectW = 30;
         const rectPad = 6;
@@ -166,25 +167,24 @@ export default {
             fill: '#67C23A',
             radius: (rectH + rectPad) / 2
           },
-          name: 'nextEntitiesNumber-rect',
+          name: 'number-rect',
         });
         const text = total > 99 ? '+99' : total;
         const responseText = group.addShape('text', {
           attrs: {
             x: 0,
             y: 0,
-            id: 'nextEntitiesNumber' + cfg.id,
             text,
             fontSize: 10,
             textAlign: 'center',
             textBaseline: 'top',
             fill: '#ffffff',
           },
-          name: 'nextEntitiesNumber-text'
+          name: 'number-text'
         });
         const textBBox = responseText.getBBox();
         responseRect.attr({
-          width: textBBox.width + rectPad,
+          width: (textBBox.width + rectPad >= rectH + rectPad) ? (textBBox.width + rectPad) : (rectH + rectPad),
           height: textBBox.height + rectPad,
         });
         responseText.attr({

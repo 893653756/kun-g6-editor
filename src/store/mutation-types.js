@@ -16,3 +16,5 @@ export const SET_LAYOUT_TYPE = 'SET_LAYOUT_TYPE';
 export const SET_LEAF_NODE = 'SET_LEAF_NODE';
 // 画布所有节点id
 export const SET_NODE_IDS = 'SET_NODE_IDS';
+// 入口为一件研判
+export const ENTER_BY_JUDGMENT = 'ENTER_BY_JUDGMENT';

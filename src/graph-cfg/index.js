@@ -69,6 +69,7 @@ export const layoutCfg = {
 /**
  * 编辑器初始化配置
  */
+let hoveTitle = '';
 export const graphCfg = {
   animate: true,
   minZoom: 0.2,
@@ -83,7 +84,22 @@ export const graphCfg = {
       {
         type: 'drag-node',
         enableDelegate: true,
-      }
+      },
+      {
+        type: 'tooltip',
+        formatText(model) {
+          return model.hoveTitle;
+        },
+        shouldBegin(e) {
+          const target = e.target;
+          const name = target.cfg.name;
+          if (name === 'group-icon' || name === 'question-mark' || name === 'number-rect' || name === 'number-text') {
+            return true;
+          }
+          return false;
+        },
+        offset: 10,
+      },
     ],
     addEdge: ['add-edge'],
   },

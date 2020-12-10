@@ -4,6 +4,7 @@
 import store from '@/store/index';
 import * as MutationTypes from '@/store/mutation-types';
 import { debounce } from '@/utils';
+import { countLeafNode } from '@/utils/index';
 
 export const bindEventListener = function (graph) {
   // graph.on('node:dragstart', (e) => {
@@ -98,6 +99,37 @@ export const bindEventListener = function (graph) {
   })
   // 完成布局后触发
   graph.on('afterlayout', () => {
+    console.warn('afterlayout');
+    const nodes = graph.getNodes();
+    if (nodes.length === 0) {
+      return;
+    }
+    const enterByJudgment = store.getters.enterByJudgment;
+    if (enterByJudgment) {
+      store.commit(MutationTypes.ENTER_BY_JUDGMENT, false);
+      // 合并子节点
+      const obj = {};
+      const edges = graph.getEdges();
+      edges.forEach(e => {
+        const source = e.getSource();
+        const id = source.get('id');
+        if (obj[id]) {
+          obj[id].count++;
+        } else {
+          obj[id] = {
+            item: source,
+            count: 1
+          }
+        }
+      });
+      Object.values(obj).filter(v => v.count >= 10).forEach(v => {
+        const leafNodeList = countLeafNode(v.item);
+        leafNodeList.forEach((left) => {
+          graph._collapseExpandLeafNode(v.item, left);
+        });
+      });
+      graph.layout();
+    }
   });
   graph.on('beforeadditem', (e) => {
     if (e.model.__type === 'circle-image') {

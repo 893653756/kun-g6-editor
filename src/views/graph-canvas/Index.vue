@@ -237,6 +237,10 @@ export default {
         // console.warn('edge-click', item);
         this.showLinkDetail(item);
       };
+      // 收缩叶子节点
+      this.graph._collapseExpandLeafNode = (item, v) => {
+        this.collapseExpandLeafNode(item, v)
+      }
       // 发射事件
       this.$emit('graph-editors', { graph: this.graph });
     },
@@ -304,22 +308,26 @@ export default {
       } else if (type.includes('leaf-node')) {
         if (value === 'all') {
           this.leafNodeList.forEach((v) => {
-            this.collapseExpandLeafNode(item, v);
+            this.collapseExpandLeafNode(item, v, () => {
+              this.graph.layout();
+            });
           });
         } else {
           const extendsObj = this.leafNodeList.find(
             (item) => item.gxId === value
           );
-          this.collapseExpandLeafNode(item, extendsObj);
+          this.collapseExpandLeafNode(item, extendsObj, () => {
+            this.graph.layout();
+          });
         }
       } else if (type.includes('unfold')) {
         // 展开组 子节点展开自己 | 父节点展开子节点
-        this.extendGroupNode(item, value);
+        this.unfoldGroupNode(item, value);
       } else if (type.includes('hidden-node') || type.includes('show-node')) {
         // 隐藏节点
         this.handleShowHiddenNode(type, item);
       } else if (type === 'details') {
-        this.$emit('look-node-detail', item.getModel())
+        this.$emit('look-node-detail', item.getModel());
       }
     },
     // 隐藏显示节点
@@ -347,9 +355,9 @@ export default {
       });
     },
     // 展开组
-    extendGroupNode(item, value) {
+    unfoldGroupNode(item, value) {
       const ids = value.split(',');
-      ids.forEach(id => {
+      ids.forEach((id) => {
         const item = this.graph.findById(id);
         const leafNodesInfo = item.get('model').leafNodesInfo;
         this.graph.removeItem(item);
@@ -361,7 +369,7 @@ export default {
       this.graph.layout();
     },
     // 收缩叶子节点
-    collapseExpandLeafNode(item, extendsObj) {
+    collapseExpandLeafNode(item, extendsObj, cb) {
       // 保存节点数据
       let x;
       let y;
@@ -410,10 +418,10 @@ export default {
         },
         type: 'line',
         itemType: 'edge',
-        isGroupEdge: true
+        isGroupEdge: true,
       };
       this.graph.add('edge', edgeModel);
-      this.$nextTick(() => this.graph.layout());
+      cb && this.$nextTick(() => cb());
     },
     // 打开连接窗口
     openWindow(item) {
@@ -532,7 +540,11 @@ export default {
       if (data.code === 0) {
         // 处理数据
         data.content.entities = this.saveItemId(data.content.entities);
-        this.editors.extendRelation(rightClickCell.leafNodesInfo, data.content, this.rightClickCell.cellInfo.id);
+        this.editors.extendRelation(
+          rightClickCell.leafNodesInfo,
+          data.content,
+          this.rightClickCell.cellInfo.id
+        );
       } else {
         this.$message({
           type: 'warning',
