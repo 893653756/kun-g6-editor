@@ -1,5 +1,5 @@
 /**
- * 自定义节点
+ * 自定义连线
  */
 import G6 from '@antv/g6';
 import dashedLine from './dashed-line';

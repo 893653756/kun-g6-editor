@@ -23,12 +23,12 @@ export function fetchCellRelationshipNode({ startDxId, params = {} }) {
  * 节点所有关系
  * @param tableName 表名
  */
-export function getAllRelation({ tableName, params = {} }) {
-  return request.post(`${apiClues}/entities/links/findByTabId/${tableName}`, params);
+export function getAllRelation({ tableName, params = {}, wsType }) {
+  return request.post(`${apiClues}/entities/links/findByTabId/${tableName}/${wsType}`, params);
 };
 
 /**
- * 点击编显示关系详情
+ * 点击边显示关系详情
  */
 export function fetchRelationDetail({ linkId, params = {} }) {
   return request.post(`${apiClues}/entities/links/findLinkDetail/${linkId}`, params);

@@ -1,0 +1,177 @@
+{
+  "id": "2292308",
+  "name": "北京禁毒-一键研判",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11976280",
+      "name": "居中",
+      "font_class": "juzhong",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "587364",
+      "name": "展开",
+      "font_class": "zhankai1",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "680980",
+      "name": "类目",
+      "font_class": "leimu",
+      "unicode": "e720",
+      "unicode_decimal": 59168
+    },
+    {
+      "icon_id": "15488963",
+      "name": "统计分析",
+      "font_class": "tongjifenxi",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "4329214",
+      "name": "清除",
+      "font_class": "qingchu1",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "1330916",
+      "name": "叹号",
+      "font_class": "tanhao",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "12670565",
+      "name": "锁定",
+      "font_class": "suoding",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "12670570",
+      "name": "解锁",
+      "font_class": "jiesuo",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "823176",
+      "name": "隐藏",
+      "font_class": "yincang",
+      "unicode": "e6b1",
+      "unicode_decimal": 59057
+    },
+    {
+      "icon_id": "4840853",
+      "name": "智库-高亮",
+      "font_class": "zhiku-gaoliang",
+      "unicode": "e6d9",
+      "unicode_decimal": 59097
+    },
+    {
+      "icon_id": "7587968",
+      "name": "显示",
+      "font_class": "xianshi",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "421112",
+      "name": "实体分组",
+      "font_class": "shitifenzu",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "1396217",
+      "name": "查看详情",
+      "font_class": "icon-chakanxq",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "3754591",
+      "name": "分析",
+      "font_class": "fenxi",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "4294091",
+      "name": "布局",
+      "font_class": "buju",
+      "unicode": "e78f",
+      "unicode_decimal": 59279
+    },
+    {
+      "icon_id": "7761519",
+      "name": "删 除 ",
+      "font_class": "shanchu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "8222354",
+      "name": "档案",
+      "font_class": "dangan",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "8550920",
+      "name": "导入",
+      "font_class": "daoru",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "8551032",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "9287598",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "12729178",
+      "name": "收拢",
+      "font_class": "shoulong",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "12796880",
+      "name": "属性管理",
+      "font_class": "shuxingguanli",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "15342901",
+      "name": "保存",
+      "font_class": "baocun",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "16514483",
+      "name": "扩展",
+      "font_class": "kuozhan",
+      "unicode": "e704",
+      "unicode_decimal": 59140
+    }
+  ]
+}

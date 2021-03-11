@@ -1,14 +1,8 @@
+import G6 from '@antv/g6';
 /**
  * 布局配置
  */
 export const layoutCfg = {
-  // 随机布局
-  // random: {
-  //   type: 'random',
-  //   preventOverlap: true,
-  //   // workerEnabled: true,
-  //   label: '随机'
-  // },
   // 力导向布局
   force: {
     type: 'force',
@@ -17,9 +11,21 @@ export const layoutCfg = {
     nodeStrength: 30,
     nodeSpacing: 50,
     edgeStrength: 1,
-    label: '力导向',
-    // clustering: true
+    label: '网络',
+    // clustering: true,
     workerEnabled: true,
+
+    // type: 'force',
+    // label: '力导向',
+    // clustering: true,
+    // linkDistance: 250, // 边长
+    // clusterNodeStrength: 0,
+    // clusterEdgeDistance: 250,
+    // clusterNodeSize: 48,
+    // clusterFociStrength: 1.2,
+    // nodeSpacing: 20,
+    // preventOverlap: true,
+    // workerEnabled: true,
   },
 
   // 环形布局
@@ -36,24 +42,25 @@ export const layoutCfg = {
     label: '同心圆',
     preventOverlap: true,
     minNodeSpacing: 50,
-    // equidistant: true,
+    equidistant: true,
   },
   // 辐射布局
   radial: {
     type: 'radial',
-    unitRadius: 200,
-    nodeSpacing: 200,
-    linkDistance: 200,
+    unitRadius: 220,
+    nodeSpacing: 70,
+    linkDistance: 220,
+    strictRadial: true,
+    preventOverlap: true,
     // workerEnabled: true,
     label: '辐射',
-
   },
   // 层次布局
   dagre: {
     type: 'dagre',
     rankdir: 'TB',
     nodesep: 15,
-    ranksep: 30,
+    ranksep: 50,
     // workerEnabled: true,
     label: '层次'
   },
@@ -65,21 +72,53 @@ export const layoutCfg = {
     // workerEnabled: true,
     label: '网格'
   }
+};
+
+export const hoveTitleCfg = {
+  'group-icon': '集合节点, 右键展开',
+  'question-mark': '可疑',
+  'number-rect': '可查询子节点数量',
+  'number-text': '可查询子节点数量',
+  'add-icon': '可右键显示收拢的子节点',
 }
+
 /**
  * 编辑器初始化配置
  */
-let hoveTitle = '';
+
+export const defaultEdgeStyle = {
+  stroke: '#a3b1bf',
+  // strokeOpacity: 0.9,
+  lineWidth: 1,
+  lineAppendWidth: 8,
+  // endArrow: true,
+  endArrow: {
+    path: G6.Arrow.triangle(5, 10, 25),
+    d: 25,
+    lineDash: []
+  },
+  startArrow: {
+    path: G6.Arrow.triangle(0, 0, 25),
+    d: 25,
+    lineDash: []
+  },
+  // lineDash: [8, 4]
+}
+
 export const graphCfg = {
   animate: true,
   minZoom: 0.2,
   maxZoom: 2,
-  layout: layoutCfg.force,
+  layout: layoutCfg.dagre,
+  linkCenter: true,
   // 设置为true，启用 redo & undo 栈功能
-  enabledStack: true,
+  // enabledStack: true,
   modes: {
     default: [
-      'drag-canvas',
+      {
+        type: 'drag-canvas',
+        // enableOptimize: true,
+      },
       'zoom-canvas',
       {
         type: 'drag-node',
@@ -88,12 +127,12 @@ export const graphCfg = {
       {
         type: 'tooltip',
         formatText(model) {
-          return model.hoveTitle;
+          return '提示...';
         },
         shouldBegin(e) {
           const target = e.target;
           const name = target.cfg.name;
-          if (name === 'group-icon' || name === 'question-mark' || name === 'number-rect' || name === 'number-text') {
+          if (hoveTitleCfg[name]) {
             return true;
           }
           return false;
@@ -102,8 +141,19 @@ export const graphCfg = {
       },
     ],
     addEdge: ['add-edge'],
+    // 多选节点
+    ctrlSelect: [{
+      type: 'click-select',
+      trigger: 'ctrl'
+    }],
+    // 框选
+    shiftSelect: [{
+      type: 'brush-select',
+      trigger: 'drag'
+    }, 'drag-node']
   },
   defaultEdge: {
+    type: 'quadratic',
     anchorPoints: [
       [0.5, 0],
       [1, 0.5],
@@ -115,34 +165,31 @@ export const graphCfg = {
       style: {
         fontSize: 10,
         fill: '#000000',
-        background: {
-          fill: '#ffffff',
-          padding: [2, 2, 2, 2],
-          radius: 2,
-        },
+        // background: {
+        //   fill: '#ffffff',
+        //   padding: [2, 2, 2, 2],
+        //   radius: 2,
+        // },
       },
     },
     style: {
-      stroke: '#a3b1bf',
-      strokeOpacity: 0.9,
-      lineWidth: 1,
-      lineAppendWidth: 8,
-      endArrow: true,
-      // endArrow: {
-      //   path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
-      //   fill: '#a3b1bf',
-      // },
+      ...defaultEdgeStyle
     },
   },
   edgeStateStyles: {
+    highlight: {
+      lineWidth: 2,
+      stroke: '#ffa500',
+    },
+    hover: {
+      cursor: 'pointer',
+      stroke: 'rgba(255, 118, 74, 0.7)',
+      lineWidth: 2,
+    },
     selected: {
       stroke: '#FF764A',
-      lineWidth: 2
-    },
-    hove: {
-      stroke: '#FF764A',
-      cursor: 'pointer',
-      lineWidth: 2
+      lineWidth: 3,
+
     }
   }
 };

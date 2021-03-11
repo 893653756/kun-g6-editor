@@ -4,10 +4,8 @@ import './behavior';
 import './customEdge';
 import './customNode';
 import App from './App.vue';
-
-// import ElementUI from 'element-ui';
 import store from '@/store/index';
-// Vue.use(ElementUI);
+
 
 Vue.config.productionTip = false
 // public/js/request.js 里配置

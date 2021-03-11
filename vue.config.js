@@ -14,10 +14,11 @@ module.exports = {
   //     }
   //   }
   // },
-  transpileDependencies: ['@antv/g6'],
+  // transpileDependencies: ['@antv/g6'],
   // productionSourceMap: process.env.NODE_ENV === 'development',
   productionSourceMap: true,
   devServer: {
+    port: 3000,
     host: '0.0.0.0',
     open: true,
     overlay: {

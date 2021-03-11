@@ -1,6 +1,6 @@
 {
-  "name": "g6-editors",
-  "version": "0.1.0",
+  "name": "jd-editor-web",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +9,7 @@
   "dependencies": {
     "@antv/g6": "^3.7.2",
     "@babel/polyfill": "^7.12.1",
-    "@kun/ued-components": "^3.2.14",
+    "axios": "^0.21.1",
     "babel-plugin-component": "^1.1.1",
     "compression-webpack-plugin": "^6.1.1",
     "core-js": "^3.6.5",

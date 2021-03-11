@@ -4,10 +4,16 @@
     <div class="entity-title">
       <span>创建实体</span>
     </div>
+    <div
+      v-if="listLoading"
+      v-loading="listLoading"
+      class="entity-loading"
+    ></div>
     <el-menu
       class="entity-list"
       :default-openeds="defaultOpeneds"
       @dragend.native="handleDragEnd"
+      v-else
     >
       <el-submenu
         v-for="(menu, index) of entitys"
@@ -17,12 +23,13 @@
         <template slot="title">
           <span class="entity-list__title">{{ menu.yjlxmc }}</span>
         </template>
-        <div class="entity-list__body">
+        <div :class="['entity-list__body', menu.yjlx]">
           <div v-for="(item, i) of menu.list" :key="item.id + item.icon">
             <img
               :src="`${$baseImagePath}/entityImages/${item.icon}.png`"
               :data-typenum="index"
               :data-listnum="i"
+              :draggable="item.draggable"
             />
             <span>{{ item.ypdxMc }}</span>
           </div>
@@ -33,6 +40,7 @@
     <el-dialog
       title="创建实体"
       :visible.sync="dialogFormVisible"
+      :modal-append-to-body="false"
       @closed="handleClose"
       width="500px"
     >
@@ -54,16 +62,22 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="handleSure" :loading="loading">确 定</el-button>
+        <el-button
+          size="small"
+          type="primary"
+          @click="handleSure"
+          :loading="loading"
+          >确 定</el-button
+        >
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { fetchEntityIsExistence } from '@/api/entityList';
-import MyMixin from '@/mixin';
+import { mapGetters } from "vuex";
+import { fetchEntityIsExistence } from "@/api/entityList";
+import MyMixin from "@/mixin";
 export default {
   data() {
     return {
@@ -71,7 +85,7 @@ export default {
       entityProperty: {},
       rules: {},
       labelList: [],
-      formLabelWidth: '120px',
+      formLabelWidth: "120px",
       loading: false,
     };
   },
@@ -80,10 +94,17 @@ export default {
   },
   mixins: [MyMixin],
   computed: {
-    ...mapGetters(['editors', 'entitys']),
+    ...mapGetters(["editors", "entitys", 'otherInfo']),
     defaultOpeneds() {
       return this.entitys.map((_, i) => `${i + 1}`);
-    }
+    },
+    listLoading() {
+      return this.entitys.length === 0;
+      // return true;
+    },
+    // dragDisabled() {
+    //   return !this.otherInfo.type;
+    // }
   },
   methods: {
     handleDragEnd(evt) {
@@ -91,20 +112,21 @@ export default {
       const { typenum, listnum } = target.dataset;
       const item = this.entitys[typenum].list[listnum];
       const { x, y } = this.editors.graph.getPointByClient(evt.x, evt.y);
-      if (x < 10) {
+      if (evt.x < 360) {
         return this.$message({
-          type: 'info',
-          message: '请将节点拖入画布'
+          type: "info",
+          message: "请将节点拖入画布",
         });
       }
       this.model = {
         x,
         y,
-        type: 'circle-image',
+        type: "circle-image",
         cellInfo: {
           dxId: item.id,
           label: item.ypdxMc,
           icon: item.icon,
+          type: item.icon,
         },
       };
       this.initFormData(item);
@@ -118,15 +140,19 @@ export default {
           field: v.cxcsField,
           placeholder: `请输入${v.cxcsName}`,
           value: v.cxcsValue,
-          isShow: v.isShow
+          isShow: v.isShow,
         });
-        this.$set(this.entityProperty, v.cxcsField, v.cxcsValue ? v.cxcsValue : '');
+        this.$set(
+          this.entityProperty,
+          v.cxcsField,
+          v.cxcsValue ? v.cxcsValue : ""
+        );
         const ruleArr = [];
         if (v.isRequired) {
           ruleArr.push({
             required: true,
             message: `请输入${v.cxcsName}`,
-            trigger: 'blur',
+            trigger: "blur",
           });
         }
         this.$set(this.rules, v.cxcsField, ruleArr);
@@ -159,13 +185,20 @@ export default {
       const { data } = await fetchEntityIsExistence(payload);
       this.loading = false;
       if (data.code === 0) {
-        if (data.content) {
-          // 保存节点id, 
+        // 判断是否已有改节点
+        if (this.editors.graph.findById(data.content.id)) {
+          return this.$message({
+            type: 'info',
+            message: '节点已存在'
+          });
+        }
+        if (!data.content.notExist) {
+          // 保存节点id,
           const cellInfo = this.saveItemId([data.content]);
-          this.model.cellInfo = cellInfo[0];
+          this.model.cellInfo = data.content;
           this.editors.addNode(this.model);
         } else {
-          const id = `circle-image-${Date.now()}`;
+          const id = data.content.id;
           const info = {
             idMap: params,
             lbProperties: {},
@@ -184,11 +217,12 @@ export default {
             // 前端自定义的一个节点
             custom: true,
           };
+          this.model.replace = true;
           this.editors.addNode(this.model);
         }
       } else {
         this.$message({
-          type: 'warning',
+          type: "warning",
           message: data.msg,
         });
       }
@@ -204,6 +238,7 @@ export default {
       this.rules = {};
       this.labelList = [];
       this.dialogFormVisible = false;
+      this.loading = false;
     },
   },
 };
@@ -212,9 +247,10 @@ export default {
 <style lang="scss" scoped>
 .entity {
   flex: 1;
-  height: 0;
+  // height: 0;
   padding: 0px 6px;
   font-size: 14px;
+  // position: relative;
   &-title {
     margin-left: 8px;
     span {
@@ -254,24 +290,32 @@ export default {
       width: 100%;
       & > div {
         display: flex;
-        // justify-content: center;
         flex-direction: column;
         align-items: center;
-        // width: 76px;
-        // height: 74px;
         width: 65px;
         height: 88px;
-        cursor: move;
         font-size: 12px;
         text-align: center;
-        &:hover {
-          background: rgba(30, 152, 204, 0.15);
-          border-radius: 4px;
-        }
+        // &:hover {
+        //   background: rgba(30, 152, 204, 0.15);
+        //   border-radius: 4px;
+        // }
         & img {
+          cursor: move;
           width: 50px;
           border: 1px dashed #eeeeee;
+          &:hover {
+            background: rgba(30, 152, 204, 0.15);
+            border-radius: 2px;
+          }
         }
+      }
+    }
+    &__body.ypdx_ry > div {
+      &:nth-child(n + 2) img:hover {
+        background: rgba(30, 152, 204, 0);
+        border-radius: 0px;
+        cursor: no-drop;
       }
     }
   }

@@ -14,8 +14,9 @@ export default {
         id: cfg.id,
         path: path,
         stroke: '#1890ff',
-        lineDash: [5, 5],
-        strokeOpacity: 0.7
+        lineDash: [6, 5],
+        strokeOpacity: 1,
+        strokeWidth: 2
       }
     })
     return keyShape;

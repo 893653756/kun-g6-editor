@@ -50,21 +50,21 @@ export default {
       draggable: true,
     });
     // 可疑人员
-    if (cfg.cellInfo.notExist) {
-      cfg.hoveTitle = '可疑';
-      group.addShape('image', {
-        attrs: {
-          id: 'image-mark' + cfg.id,
-          width: 16,
-          height: 16,
-          img: `${window.baseImagePath}/entityImages/question-mark.png`,
-          x: r / 2 - 4,
-          y: - r / 2 - 8,
-        },
-        name: 'question-mark',
-        draggable: true,
-      });
-    }
+    // const { notExist, dxId } = cfg.cellInfo;
+    // if (notExist || (dxId === '202012280000007')) {
+    //   group.addShape('image', {
+    //     attrs: {
+    //       id: 'image-mark' + cfg.id,
+    //       width: 16,
+    //       height: 16,
+    //       img: `${window.baseImagePath}/entityImages/question-mark.png`,
+    //       x: r / 2 - 4,
+    //       y: - r / 2 - 8,
+    //     },
+    //     name: 'question-mark',
+    //     draggable: true,
+    //   });
+    // }
     // 添加文本
     if (cfg.label) {
       group.addShape('text', {
@@ -92,14 +92,14 @@ export default {
       group.addShape('circle', {
         attrs: {
           id: `circle-${index}-${cfg.id}`,
-          r: 3,
+          r: 4,
           x: x,
           y: y,
           isAnchor: true,
           fill: "#eeeeee",
           stroke: '#1890ff',
           opacity: 0,
-          cursor: 'crosshair'
+          // cursor: 'crosshair'
         }
       })
     })
@@ -154,7 +154,6 @@ export default {
     if (!cfg.cellInfo.custom) {
       const total = cfg.childrenCount || 0;
       if (total > 0) {
-        cfg.hoveTitle = '剩余子节点数量';
         const rectH = 8;
         const rectW = 30;
         const rectPad = 6;
@@ -193,7 +192,21 @@ export default {
         })
       }
     }
-
+    if (cfg.shrink) {
+      const rr = 10;
+      group.addShape('image', {
+        attrs: {
+          id: 'shrink' + cfg.id,
+          width: 18,
+          height: 18,
+          x: -r,
+          y: r / 4,
+          img: `${window.baseImagePath}/entityImages/add-icon.png`,
+        },
+        name: 'add-icon',
+        draggable: true,
+      });
+    }
   },
   // 状态改变
   setState(name, value, item) {
@@ -204,6 +217,8 @@ export default {
       const val = value ? 1 : 0;
       circles.forEach(c => {
         c.attr('opacity', val);
+        // cursor: 'crosshair'
+        c.attr('cursor', value ? 'crosshair' : 'move')
       })
     }
     // 选择变换背景色
@@ -223,12 +238,13 @@ export default {
       const color = value ? '#FF764A' : '#ffffff';
       shape.attr('stroke', color);
     }
+
     if (name === 'hover') {
       circlesOpacity(value);
     } else if (name === 'selected') {
+      addStroke(value);
+    } else if (name === 'highlight') {
       selectedFill(value);
-    } else if (name === 'click') {
-      addStroke(value)
     }
   }
 };

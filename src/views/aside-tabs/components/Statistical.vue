@@ -4,17 +4,6 @@
     <div class="statistics__title">
       <span>统计分析</span>
     </div>
-    <!-- 搜索 -->
-    <div class="statistics__search">
-      <el-input size="mini" v-model="searchValue"></el-input>
-      <el-button
-        type="primary"
-        size="mini"
-        icon="el-icon-search"
-        @click="handleSearchEntity"
-        >搜索</el-button
-      >
-    </div>
     <!-- 实体 -->
     <el-menu class="statistics__entity" :default-openeds="['1']">
       <el-submenu index="1">
@@ -28,8 +17,9 @@
             border
             header-cell-class-name="table-title"
             @selection-change="handleSelectionEntity"
+            row-key="key"
           >
-            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column type="selection" width="30"></el-table-column>
             <el-table-column label="实体类型">
               <template slot-scope="{ row }">
                 <div class="img-field" @click="handleLookDetail">
@@ -43,11 +33,14 @@
             </el-table-column>
             <el-table-column
               label="计数"
-              prop="count"
               align="center"
               header-align="center"
-              width="60"
-            ></el-table-column>
+              width="50"
+            >
+              <template slot-scope="{ row }">
+                <span>{{ row.ids.length }}</span>
+              </template>
+            </el-table-column>
           </el-table>
         </div>
       </el-submenu>
@@ -69,14 +62,15 @@
             :resizable="false"
             @selection-change="handleSelectionLink"
             header-cell-class-name="table-title"
+            row-key="linkId"
           >
-            <el-table-column type="selection" width="40"></el-table-column>
-            <el-table-column label="链接关系" prop="label"></el-table-column>
-            <el-table-column
-              label="计数"
-              prop="count"
-              width="60"
-            ></el-table-column>
+            <el-table-column type="selection" width="30"></el-table-column>
+            <el-table-column label="连接关系" prop="label"></el-table-column>
+            <el-table-column label="计数" width="50">
+              <template slot-scope="{ row }">
+                <span>{{ row.ids.length }}</span>
+              </template>
+            </el-table-column>
           </el-table>
         </div>
       </el-submenu>
@@ -107,7 +101,7 @@
             header-cell-class-name="table-title"
             @selection-change="handleLinkNum"
           >
-            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column type="selection" width="30"></el-table-column>
             <el-table-column
               label="关系发生次数"
               prop="links"
@@ -121,15 +115,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      searchValue: '',
       entityLinks: [],
       linksRange: {
-        start: '',
-        end: '',
+        start: "",
+        end: "",
       },
     };
   },
@@ -142,21 +135,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['hasEntitys', 'hasEdges', 'editors']),
+    ...mapGetters(["hasEntitys", "hasEdges", "editors"]),
   },
   methods: {
-    // 搜索实体
-    handleSearchEntity() {
-      const key = this.searchValue.trim();
-      if (!key) {
-        return this.$message({
-          type: 'warning',
-          message: '请输入搜索关键字',
-        });
-      }
-      this.editors.searchEntity(key);
-      // console.warn('handleSearchEntity')
-    },
     // 下转到类型实体详情
     handleLookDetail() {
       //
@@ -166,8 +147,8 @@ export default {
     },
     isInRnage(k) {
       let { start, end } = this.linksRange;
-      start = start === '' ? -1 : start;
-      end = end === '' ? 1000 : end;
+      start = start === "" ? -1 : start;
+      end = end === "" ? 1000 : end;
       if (k >= start && k <= end) {
         return true;
       }
@@ -183,8 +164,8 @@ export default {
         .getNodes()
         .filter((v) => v.isVisible());
       nodeList.forEach((node) => {
-        const k = `${node.get('edges').filter(v => v.isVisible()).length}`;
-        const id = node.get('id');
+        const k = `${node.get("edges").filter((v) => v.isVisible()).length}`;
+        const id = node.get("id");
         if (!this.isInRnage(k - 0)) {
           return;
         }
@@ -199,41 +180,32 @@ export default {
           obj[k].ids.push(id);
         }
       });
-      // this.editors.graph.findAll('node', (node) => {
-      //   const k = `${node.get('edges').length}`;
-      //   const id = node.get('id');
-      //   if (!this.isInRnage(k - 0)) {
-      //     return;
-      //   }
-      //   if (!obj[k]) {
-      //     obj[k] = {
-      //       count: 1,
-      //       ids: [id],
-      //       links: k,
-      //     };
-      //   } else {
-      //     obj[k].count += 1;
-      //     obj[k].ids.push(id);
-      //   }
-      // });
       this.entityLinks = Object.values(obj);
     },
     // 选择的实体节点
     handleSelectionEntity(select) {
-      select = select.map((v) => v.dxId);
+      // select = select.map((v) => v.dxId);
+      const ids = [];
+      select.forEach((v) => {
+        ids.push(...v.ids);
+      });
       this.editors.setItemBackground({
-        selectType: 'node',
-        selectIds: select,
-        idType: 'dxId',
+        selectType: "node",
+        selectIds: ids,
+        idType: "id",
       });
     },
     // 选择的连接关系
     handleSelectionLink(select) {
-      select = select.map((v) => v.linkId);
+      // select = select.map((v) => v.linkId);
+      const ids = [];
+      select.forEach((v) => {
+        ids.push(...v.ids);
+      });
       this.editors.setItemBackground({
-        selectType: 'edge',
-        selectIds: select,
-        idType: 'id',
+        selectType: "edge",
+        selectIds: ids,
+        idType: "id",
       });
     },
     handleLinkNum(select) {
@@ -241,19 +213,19 @@ export default {
         return [...a, ...b.ids];
       }, []);
       this.editors.setItemBackground({
-        selectType: 'node',
+        selectType: "node",
         selectIds: select,
-        idType: 'id',
+        idType: "id",
       });
     },
   },
   beforeDestroy() {
     const graph = this.editors.graph;
-    graph.findAll('node', (node) => {
-      graph.setItemState(node, 'selected', false);
+    graph.findAll("node", (node) => {
+      graph.setItemState(node, "selected", false);
     });
-    graph.findAll('edge', (node) => {
-      graph.setItemState(node, 'selected', false);
+    graph.findAll("edge", (node) => {
+      graph.setItemState(node, "selected", false);
     });
   },
 };
@@ -278,13 +250,6 @@ export default {
         margin-right: 10px;
         font-weight: 600;
       }
-    }
-  }
-  // 搜索
-  &__search {
-    display: flex;
-    & button {
-      margin-left: 10px;
     }
   }
   // 实体
@@ -371,7 +336,7 @@ export default {
     }
   }
   /deep/ {
-    .el-submenu [class^='el-icon-'] {
+    .el-submenu [class^="el-icon-"] {
       vertical-align: baseline;
       margin-right: 0px;
       width: 18px;

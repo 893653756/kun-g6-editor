@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="stylesheet" href="./icons/iconfont.css">
   <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
   <style>
     * {
@@ -45,12 +46,13 @@
     .right-menus {
       border: 1px solid #e2e2e2;
       border-radius: 4px;
-      font-size: 12px;
+      font-size: 15px;
       color: #545454;
       background-color: rgba(255, 255, 255, 0.9);
       padding: 4px 1px;
       box-shadow: rgb(174, 174, 174) 0px 0px 10px;
       min-width: 150px;
+      font-family: 'iconfont';
     }
 
     .right-menu__list {
@@ -59,21 +61,37 @@
       cursor: pointer;
     }
 
+    .right-menu__hide {
+      display: none;
+    }
+
     .right-menu__list div {
       padding: 8px 10px;
       position: relative;
     }
 
-    .right-menu__list div > span {
-      margin-left: 10px;
+    .right-menu__list>div {
+      display: flex;
+      align-items: center;
     }
 
-    .right-menu__list > div:hover {
+    .right-menu__list>div:nth-child(n + 2) {
+      border-top: 1px #dddddd dashed;
+    }
+
+    .right-menu__list div>span {
+      margin-left: 10px;
+      font-size: 12px;
+      min-width: 90px;
+      color: #000000;
+    }
+
+    .right-menu__list>div:hover {
       color: #000;
       background: rgba(0, 0, 0, .1);
     }
 
-    .right-menu__list > div:hover .second-menu {
+    .right-menu__list>div:hover .second-menu {
       visibility: visible;
     }
 
@@ -90,9 +108,14 @@
       background-color: rgba(255, 255, 255, 0.9);
       padding: 4px 1px;
       box-shadow: rgb(174, 174, 174) 0px 0px 10px;
-      min-width: 150px;
+      min-width: 170px;
     }
-    .second-menu > div:hover {
+
+    .second-menu>div:nth-child(n + 2) {
+      border-top: 1px #dddddd dashed;
+    }
+
+    .second-menu>div:hover {
       color: #000;
       background: rgba(0, 0, 0, .1);
     }
@@ -113,6 +136,10 @@
       flex-direction: column;
     }
 
+    .el-tooltip__popper.is-dark {
+      max-width: 600px;
+    }
+
     /* .g6-tooltip__box-source {
       display: flex;
       flex-direction: column;
@@ -123,20 +150,6 @@
       flex-direction: column;
     } */
   </style>
-
-  <!-- 你们需要注释掉 -->
-  <script src="./js/requestPath.js"></script>
-  <script>
-    var str = window.location.href.split('?')[1];
-    if (str && str.indexOf('access_token') !== -1) {
-      str.split('&').forEach(function(v) {
-        var arr = v.split('=');
-        if (arr[0] === 'access_token') {
-          window.access_token = arr[1];
-        }
-      })
-    };
-  </script>
   <!-- 这个需要放开 -->
   <!-- <script src="../lib/js/axios.min.js"></script>
   <script src="../js/sysConfig.js"></script>
@@ -144,12 +157,26 @@
     window.baseUrlPath = elypPath;
     window.baseImagePath = staticPagePath + '/yijianyanpan';
   </script> -->
+  <!-- 你们需要注释掉 -->
+  <script src="./js/requestPath.js"></script>
+  <script>
+    window.access_token = (Math.random() + '').replace('.', '');
+    var str = window.location.href.split('?')[1];
+    if (str && str.indexOf('access_token') !== -1) {
+      str.split('&').forEach(function (v) {
+        var arr = v.split('=');
+        if (arr[0] === 'access_token') {
+          window.access_token = arr[1];
+        }
+      })
+    };
+  </script>
 </head>
 
 <body>
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
+        Please enable it to continue.</strong>
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->

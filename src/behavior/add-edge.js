@@ -17,7 +17,7 @@ export default {
         source: item,
         target: item,
         type: 'dashed-line',
-        id: 'dashed-line'
+        id: `dashed-line-${Date.now()}`
       });
     } else {
       // 更新连线
@@ -32,10 +32,21 @@ export default {
     }
   },
   onMouseup(e) {
+    if (!this.startItem) {
+      return;
+    }
+    this.graph.setMode('default');
     const targetItem = e.item;
+    if (targetItem === this.startItem) {
+      this.graph.removeItem(this.edge);
+      this.graph.setItemState(this.startItem, 'hover', false);
+      this.graph.setMode('default');
+      this.edge = null;
+      this.startItem = null;
+      return;
+    }
     if (targetItem && targetItem.getType() === 'node') {
       if (this.edge) {
-        this.graph.removeItem(this.edge);
         // 如果目标节点是锁定状态
         if (!targetItem.hasLocked()) {
           this.graph._addEdge && this.graph._addEdge({
@@ -45,18 +56,10 @@ export default {
             // type: 'quadratic', // 二次贝塞尔曲线
           })
         }
-        // this.graph.addItem('edge', {
-        //   id: `${this.startItem._cfg.id}-${targetItem._cfg.id}`,
-        //   source: this.startItem,
-        //   target: targetItem,
-        //   // type: 'quadratic',
-        //   type: 'line',
-        // });
       }
-    } else {
-      if (this.edge) {
-        this.graph.removeItem(this.edge);
-      }
+    }
+    if (this.edge) {
+      this.graph.removeItem(this.edge);
     }
     this.graph.setItemState(this.startItem, 'hover', false);
     this.graph.setMode('default');

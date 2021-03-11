@@ -55,13 +55,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(['editors']),
+    ...mapGetters(["editors"]),
     allEntitys() {
       const arr = [];
       if (!this.editors) {
@@ -71,8 +71,8 @@ export default {
         .getNodes()
         .filter((v) => v.isVisible());
       nodeList.forEach((node) => {
-        const id = node.get('id');
-        const item = node.get('model').cellInfo;
+        const id = node.get("id");
+        const item = node.get("model").cellInfo;
         arr.push({
           id,
           label: item.label,
@@ -87,17 +87,17 @@ export default {
       // console.warn('1111', select)
       select = select.map((v) => v.id);
       this.editors.setItemBackground({
-        selectType: 'node',
+        selectType: "node",
         selectIds: select,
-        idType: 'id',
+        idType: "id",
       });
     },
   },
   beforeDestroy() {
     // console.warn('beforeDestroy')
     const graph = this.editors.graph;
-    graph.findAll('node', (node) => {
-      graph.setItemState(node, 'selected', false);
+    graph.findAll("node", (node) => {
+      graph.setItemState(node, "selected", false);
     });
   },
 };

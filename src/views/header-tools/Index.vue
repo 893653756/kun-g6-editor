@@ -1,19 +1,16 @@
 <template>
   <div class="header-tools">
     <div class="header-tools__piece">
-      <el-dropdown>
-        <icon-label icon="kf-icon-folder" label="文件" color="#ffcd2c">
-          <i class="el-icon-arrow-down"></i>
-        </icon-label>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item @click.native="handleClearCanvas"
-            >清空画布</el-dropdown-item
-          >
-        </el-dropdown-menu>
-      </el-dropdown>
       <!-- 保存 -->
-      <el-dropdown>
-        <icon-label icon="kf-icon-save" label="保存" color="#409eff"
+      <icon-label
+        icon="icon-baocun"
+        label="保存"
+        color="#409eff"
+        @click.native="handleSaveCaseClues"
+        v-if="isShow"
+      ></icon-label>
+      <el-dropdown v-else>
+        <icon-label icon="icon-baocun" label="保存" color="#409eff"
           ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handleSaveRelation">
@@ -21,14 +18,8 @@
           <el-dropdown-item data-type="saveAs">另存为</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <!-- <icon-label
-        icon="kf-icon-save"
-        label="保存"
-        color="#409eff"
-        @click.native="handleSaveRelation"
-      ></icon-label> -->
       <el-dropdown>
-        <icon-label icon="kf-icon-export" label="导出" color="#ffcd2c"
+        <icon-label icon="icon-daochu" label="导出" color="#ffcd2c"
           ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handleExportGraph">
@@ -37,36 +28,45 @@
         </el-dropdown-menu>
       </el-dropdown>
       <icon-label
-        icon="kf-icon-import"
+        icon="icon-daoru"
         label="导入"
         @click.native="openRelationDialog"
       ></icon-label>
     </div>
     <div class="header-tools__piece">
       <icon-label
-        icon="el-icon-lock"
+        icon="icon-suoding"
         label="锁定"
         color="#E6A23C"
         @click.native="handleLock"
+        title="批量操作"
       ></icon-label>
       <icon-label
-        icon="el-icon-unlock"
+        icon="icon-jiesuo"
         label="解锁"
+        title="批量操作"
         @click.native="handleUnLock"
       ></icon-label>
       <icon-label
-        icon="kf-icon-info"
+        icon="icon-tanhao"
         label="强调"
         color="#E6A23C"
+        title="批量操作"
         @click.native="handleEmphasize"
       ></icon-label>
       <icon-label
-        icon="kf-icon-info"
+        icon="icon-tanhao"
         label="取消强调"
+        title="批量操作"
         @click.native="handleUnEmphasize"
       ></icon-label>
-      <!-- 隐藏 | 显示 -->
       <icon-label
+        icon="icon-juzhong"
+        label="居中"
+        @click.native="handleCentered"
+      ></icon-label>
+      <!-- 隐藏 | 显示 -->
+      <!-- <icon-label
         icon="el-icon-view"
         label="隐藏"
         color="#000000"
@@ -77,11 +77,11 @@
         label="显示"
         color="#409eff"
         @click.native="handleShowNode"
-      ></icon-label>
+      ></icon-label> -->
     </div>
     <div class="header-tools__piece">
       <el-dropdown>
-        <icon-label icon="kf-icon-agent" :label="layoutName" color="#F56C6C"
+        <icon-label icon="icon-buju" :label="layoutName" color="#F56C6C"
           ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handelChangeLayout">
@@ -93,49 +93,35 @@
           >
         </el-dropdown-menu>
       </el-dropdown>
-      <!-- 单选 | 多选 -->
-      <el-dropdown>
-        <icon-label icon="kf-icon-blood" :label="selectName" color="#F56C6C"
-          ><i class="el-icon-arrow-down"></i
-        ></icon-label>
-        <el-dropdown-menu
-          slot="dropdown"
-          @click.native="handelChangeSelectModel"
-        >
-          <el-dropdown-item data-type="single">单选</el-dropdown-item>
-          <el-dropdown-item data-type="multiple">多选</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
       <!-- 分析 -->
       <el-dropdown>
-        <icon-label icon="el-icon-s-data" label="分析" color="#67C23A"
+        <icon-label icon="icon-fenxi" label="分析" color="#67C23A"
           ><i class="el-icon-arrow-down"></i
         ></icon-label>
         <el-dropdown-menu slot="dropdown" @click.native="handelDataAnalysis">
           <el-dropdown-item data-type="shortest-path"
             >最短路径</el-dropdown-item
           >
+          <el-dropdown-item data-type="statistical-analysis"
+            >统计分析</el-dropdown-item
+          >
         </el-dropdown-menu>
       </el-dropdown>
-      <icon-label
-        icon="kf-icon-setting"
-        label="重置"
-        @click.native="handleStyleReset"
-      ></icon-label>
-      <icon-label
-        icon="kf-icon-full-screen"
-        label="全屏"
-        @click.native="handleFullScreen"
-        v-if="!fullScreen"
-      ></icon-label>
-      <icon-label
-        icon=" kf-icon-small-screen"
-        label="还原"
-        @click.native="handleSmallScreen"
-        v-else
-      ></icon-label>
+      <el-dropdown>
+        <icon-label icon="icon-qingchu1" label="清除" color="#ffcd2c">
+          <i class="el-icon-arrow-down"></i>
+        </icon-label>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item @click.native="handleClearCanvas"
+            >清空画布</el-dropdown-item
+          >
+          <el-dropdown-item @click.native="handleStyleReset"
+            >清除状态</el-dropdown-item
+          >
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
-    <div class="header-tools__search">
+    <div class="header-tools__search" @keydown.enter="handleSearchEntity">
       <el-input size="mini" placeholder="请搜索" v-model="searchValue">
         <i
           slot="suffix"
@@ -143,15 +129,13 @@
           @click="handleSearchEntity"
         ></i>
       </el-input>
-      <el-select placeholder="请选择" size="mini" v-model="selectValue">
+      <el-select placeholder="请选择" size="mini" v-model="selectId" clearable>
         <el-option
-          v-for="item in options"
-          :key="item.value"
+          v-for="(item, index) of searchResult"
+          :key="item.id + index"
           :label="item.label"
-          :value="item.value"
+          :value="item.id"
         >
-          <span class="kf-icon-table-file"></span>
-          <span style="margin-left: 10px">{{ item.label }}</span>
         </el-option>
       </el-select>
     </div>
@@ -211,15 +195,19 @@
           show-overflow-tooltip
           prop="description"
         ></el-table-column>
-        <el-table-column
+        <!-- <el-table-column
           label="保存人姓名"
           show-overflow-tooltip
           prop="account"
-        ></el-table-column>
+        ></el-table-column> -->
       </el-table>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="handleClose">取 消</el-button>
-        <el-button size="small" type="primary" @click="getRelationDetail" :loading="btnLoading"
+        <el-button
+          size="small"
+          type="primary"
+          @click="getRelationDetail"
+          :loading="btnLoading"
           >确 定</el-button
         >
       </div>
@@ -232,73 +220,157 @@
 </template>
 
 <script>
-import IconLabel from '@/components/icon-label/Index.vue';
-import { layoutCfg } from '@/graph-cfg';
-import { mapGetters } from 'vuex';
-import * as MutationTypes from '@/store/mutation-types';
+import IconLabel from "@/components/icon-label/Index.vue";
+import { layoutCfg } from "@/graph-cfg";
+import { mapGetters } from "vuex";
+import * as MutationTypes from "@/store/mutation-types";
 import {
   saveAddUpdateRelations,
   getRelationsList,
   getRelationDetailById,
-} from '@/api/headerTools';
-import { getAllRelation } from '@/api/editors';
-import MyMixin from '@/mixin';
+} from "@/api/headerTools";
+// import { getAllRelation } from "@/api/editors";
+import { saveCaseclues } from "@/api/headerTools";
+import MyMixin from "@/mixin";
+import { getCasecluesInfo } from '@/utils'
 
 export default {
   data() {
     return {
+      // 查询
+      searchResult: [],
+      selectId: "",
       // 当前隐藏的节点列表
       hideNodeList: [],
       layoutCfg,
-      options: [
-        { value: 1, label: 'AAAA' },
-        { value: 2, label: 'BBBB' },
-        { value: 3, label: 'CCCC' },
-      ],
-      searchValue: '',
-      selectValue: '',
+      searchValue: "",
       // 保存
       saveCfg: {
         dialog: false,
-        label: '',
-        description: '',
+        label: "",
+        description: "",
       },
       saveLoading: false,
       rules: {
         label: [
-          { required: true, message: '请输入关系图名称', trigger: 'blur' },
+          { required: true, message: "请输入关系图名称", trigger: "blur" },
         ],
       },
       // 导入
       relationList: {
         dialog: false,
         list: [],
-        radio: '',
+        radio: "",
       },
       linkLoading: false,
       btnLoading: false,
-      graphId: '', // 当前关系图id
+      graphId: "", // 当前关系图id
       fullScreen: false,
     };
+  },
+  created() {
+    this.saveCfg.account = "";
+    try {
+      const sessionStorage = window.parent.sessionStorage;
+      let currentLoginUser = sessionStorage.getItem("currentLoginUser");
+      if (currentLoginUser) {
+        currentLoginUser = JSON.parse(currentLoginUser);
+        const account = currentLoginUser.loginName;
+        this.saveCfg.account = account;
+      }
+    } catch (error) {}
   },
   components: {
     IconLabel,
   },
   mixins: [MyMixin],
   computed: {
-    ...mapGetters(['editors', 'selectNodes', 'selectModel', 'layoutType']),
-    selectName() {
-      return this.selectModel === 'single' ? '单选' : '多选';
-    },
+    ...mapGetters(["editors", "layoutType", "xsbhs", "userAndDept", 'otherInfo']),
     layoutName() {
       return this.layoutCfg[this.layoutType].label;
     },
+    isShow() {
+      return this.xsbhs && !this.otherInfo.readOnly;
+    }
+  },
+  watch: {
+    selectId(val) {
+      this.editors.focusItem(val);
+    },
   },
   methods: {
+    // 保存案件线索关系
+    async handleSaveCaseClues() {
+      /**
+       * 1.如果是主犯关系，那么有且仅有xsBase与follower有值
+       * 2.如果是上下线关系，那么xsBase与mainer与follower都必须有值
+       * {
+       *     "xsBase": { "xsbh": "", "xsmc": "" }, 1 线索
+       *     "mainer": { "dxType": type, "idMap": idMap }, 2 上线
+       *     "follower": { "dxType": type, "idMap": idMap }, 3 下线
+       *     label: "",
+       *     description: ""
+       * }
+       */
+      const graph = this.editors.graph;
+      let edges = graph
+        .getEdges()
+        .filter((edge) => {
+          const cellInfo = edge.getModel().cellInfo;
+          return cellInfo.xsbh && cellInfo.custom;
+        })
+        .map((edge) => {
+          return getCasecluesInfo(edge, this.userAndDept, this.otherInfo);
+        });
+      const deleteEdges = this.$store.getters.deleteEdges || [];
+      deleteEdges.forEach(v => edges.push(v));
+      if (edges.length === 0) {
+        return;
+      }
+      console.warn("edges", edges);
+      this.$confirm("保存新创建团伙关系, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(async () => {
+          const { data } = await saveCaseclues(edges);
+          this.$message({
+            type: data.code === 0 ? "success" : "warning",
+            message: data.msg,
+          });
+          if (data.code === 0) {
+            this.$store.commit(MutationTypes.SET_DELETE_EDGE, []);
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    // 图居中
+    handleCentered() {
+      this.editors.graph && this.editors.graph.fitCenter();
+    },
     // 清空画布
     handleClearCanvas() {
-      this.editors.clearCanvas();
-      this.graphId = '';
+      this.$confirm("清空画布后不可撤销, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.editors.clearCanvas();
+          this.graphId = "";
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消",
+          });
+        });
     },
     // 导出
     handleExportGraph() {
@@ -306,47 +378,50 @@ export default {
       const { type } = target.dataset;
       this.editors.exportGraph(type);
     },
+    getSelectedNodes() {
+      return this.editors.graph.findAllByState("node", "selected") || [];
+    },
     // 锁定
     handleLock() {
-      if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((id) => {
-          const item = this.editors.graph.findById(id);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length > 0) {
+        selectNodes.forEach((item) => {
           this.editors.lockItem(item);
         });
       }
     },
     // 解锁
     handleUnLock() {
-      if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((id) => {
-          const item = this.editors.graph.findById(id);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length > 0) {
+        selectNodes.forEach((item) => {
           this.editors.unLockItem(item);
         });
       }
     },
     // 强调
     handleEmphasize() {
-      if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((id) => {
-          const item = this.editors.graph.findById(id);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length > 0) {
+        selectNodes.forEach((item) => {
           this.editors.emphasizeItem(item);
         });
       }
     },
     // 取消强调
     handleUnEmphasize() {
-      if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((id) => {
-          const item = this.editors.graph.findById(id);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length > 0) {
+        selectNodes.forEach((item) => {
           this.editors.unEmphasizeItem(item);
         });
       }
     },
     // 隐藏
     handleHideNode() {
-      if (this.selectNodes.length > 0) {
-        this.selectNodes.forEach((id) => {
-          const item = this.editors.graph.findById(id);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length > 0) {
+        selectNodes.forEach((item) => {
           this.editors.graph.hideItem(item);
         });
       }
@@ -354,18 +429,11 @@ export default {
     // 显示
     handleShowNode() {
       const nodes = this.editors.graph.getNodes();
-      // nodes = nodes.map((item) => !item.isVisible());
       nodes.forEach((item) => {
         if (!item.isVisible()) {
           this.editors.graph.showItem(item);
         }
       });
-    },
-    // 切换选择模式
-    handelChangeSelectModel(event) {
-      const target = event.target;
-      const { type } = target.dataset;
-      this.$store.commit(MutationTypes.SET_SELECT_MODEL, type);
     },
     // 切换布局
     handelChangeLayout(event) {
@@ -380,70 +448,48 @@ export default {
     handelDataAnalysis(event) {
       const target = event.target;
       const { type } = target.dataset;
-      if (type === 'shortest-path') {
+      if (type === "shortest-path") {
         this.shortestPath();
+      } else if (type === "statistical-analysis") {
+        this.$store.commit(MutationTypes.SET_TABLE_ID, type);
       }
     },
     // 路径分析
     shortestPath() {
-      if (this.selectNodes.length !== 2) {
-        // console.warn('this.selectNodes', this.selectNodes);
+      const selectNodes = this.getSelectedNodes();
+      if (selectNodes.length !== 2) {
         return this.$message({
-          type: 'warning',
-          message: '请选择两个节点',
+          type: "warning",
+          message: "请选择两个节点",
         });
       }
-      this.editors.findShortestPath(this.selectNodes[0], this.selectNodes[1]);
+      this.editors.findShortestPath(selectNodes[0], selectNodes[1]);
     },
     // 重置, 清除效果
     handleStyleReset() {
-      this.editors.styleReset();
-    },
-    // 全屏
-    handleFullScreen() {
-      const doc = window.top.document;
-      const element = doc.documentElement || doc.body;
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      }
-      this.fullScreen = true;
-    },
-    // 还原
-    handleSmallScreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      }
-      this.fullScreen = false;
+      this.editors.stateReset();
     },
     // 搜索实体
     handleSearchEntity() {
       const key = this.searchValue.trim();
       if (!key) {
         return this.$message({
-          type: 'warning',
-          message: '请输入搜索关键字',
+          type: "warning",
+          message: "请输入搜索关键字",
         });
       }
-      this.editors.searchEntity(key);
+      this.selectId = "";
+      this.searchResult = this.editors.searchEntity(key);
+      if (this.searchResult.length) {
+        this.selectId = this.searchResult[0].id;
+      }
       // console.warn('handleSearchEntity');
     },
     handleSaveRelation(event) {
       const target = event.target;
       const { type } = target.dataset;
       this.saveType = type;
-      if (type === 'save') {
+      if (type === "save") {
         if (this.graphId) {
           const item = this.relationList.list.find(
             (v) => v.id === this.graphId
@@ -452,8 +498,8 @@ export default {
           this.saveCfg.label = item.label;
         }
       } else {
-        this.saveCfg.description = '';
-        this.saveCfg.label = '';
+        this.saveCfg.description = "";
+        this.saveCfg.label = "";
       }
       this.saveCfg.dialog = true;
     },
@@ -461,12 +507,12 @@ export default {
       this.$refs.saveData.validate((valid) => {
         if (valid) {
           const label = this.saveCfg.label.trim();
-          // const account = this.saveCfg.account.trim();
+          // const account = this.saveCfg.account;
           if (!label) {
             return this.$message({
-              type: 'warning',
-              message: '请输入关系图名称',
-              message: '请输入关系图名称',
+              type: "warning",
+              message: "请输入关系图名称",
+              message: "请输入关系图名称",
             });
           }
           const content = this.editors.graph.save();
@@ -476,8 +522,8 @@ export default {
           }));
           if (content.nodes.length === 0) {
             return this.$message({
-              type: 'warning',
-              message: '当前没有数据可保存',
+              type: "warning",
+              message: "当前没有数据可保存",
             });
           }
           this.saveRelation(content);
@@ -490,9 +536,9 @@ export default {
         label: this.saveCfg.label,
         description: this.saveCfg.description,
         content: JSON.stringify(content),
-        // account: this.saveCfg.account,
+        account: this.saveCfg.account,
       };
-      if (this.saveType === 'save' && this.graphId) {
+      if (this.saveType === "save" && this.graphId) {
         payload.id = this.graphId;
       }
       this.saveLoading = true;
@@ -500,7 +546,7 @@ export default {
       this.saveLoading = false;
       // console.warn('保存后', data);
       this.$message({
-        type: data.code === 0 ? 'success' : 'warning',
+        type: data.code === 0 ? "success" : "warning",
         message: data.msg,
       });
       this.handleClose();
@@ -508,11 +554,11 @@ export default {
     handleClose() {
       // 保存配置
       this.saveCfg.dialog = false;
-      this.saveCfg.label = '';
-      this.saveCfg.description = '';
+      this.saveCfg.label = "";
+      this.saveCfg.description = "";
       // 关系列表配置
       this.relationList.dialog = false;
-      this.relationList.radio = '';
+      this.relationList.radio = "";
     },
     // 点击单选 (关系图)
     getCurrentRow(row) {
@@ -523,7 +569,9 @@ export default {
       this.relationList.dialog = true;
       this.linkLoading = true;
       // 请求关系列表
-      const { data } = await getRelationsList();
+      const { data } = await getRelationsList({
+        account: this.saveCfg.account,
+      });
       this.linkLoading = false;
       if (data.code === 0) {
         this.relationList.list = data.content.map((v) => ({
@@ -536,7 +584,7 @@ export default {
         }));
       } else {
         this.$message({
-          type: 'warning',
+          type: "warning",
           message: data.msg,
         });
       }
@@ -545,8 +593,8 @@ export default {
     async getRelationDetail() {
       if (!this.relationList.radio) {
         return this.$message({
-          type: 'warning',
-          message: '请选择需要导入的关系',
+          type: "warning",
+          message: "请选择需要导入的关系",
         });
       }
       this.btnLoading = true;
@@ -566,7 +614,7 @@ export default {
         this.editors.graph.read(content);
       } else {
         this.$message({
-          type: 'warning',
+          type: "warning",
           message: data.msg,
         });
       }
@@ -613,7 +661,8 @@ export default {
     width: 166px;
   }
   &__search {
-    flex: 1;
+    // flex: 1;
+    width: 200px;
     padding: 0px 10px;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 <template>
   <div class="icon-label">
-    <span class="icon" :class="icon" :style="{ color: color }"></span>
+    <span class="icon iconfont" :class="icon" :style="{ color: color }"></span>
     <div v-if="label">
       <span class="label">{{ label }}</span>
       <slot></slot>
